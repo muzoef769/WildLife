@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="NewUser.aspx.cs" Inherits="NewUser" %>
+﻿<%@ Page Title="Create User" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="NewUser.aspx.cs" Inherits="User" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
+<asp:Content ID="ContentBody" ContentPlaceHolderID="MainContent" runat="Server">
+
     <div>
-        <%--<h2 class="display-3 text-center text-white">New User</h2>--%>
-
+        <h2 class="display-3 text-center text-white mb-3">Create User</h2>
 
         <div class="container jumbotron w-50 bg-white shadow">
             <div class=" offset-2">
@@ -24,7 +24,7 @@
                             Enter Username
                         </div>
 
-                        
+
                     </div>
                 </div>
                 <div class="text-left form-group row">
@@ -42,7 +42,7 @@
                         <div class="invalid-feedback">
                             Enter First Name
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="text-left form-group row">
@@ -60,45 +60,47 @@
                         <div class="invalid-feedback">
                             Enter Last Name
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="text-left form-group row">
                     <label for="password" class="col-4 col-form-label font-weight-bold">Password:</label>
                     <div class="col-6">
-                        
+
                         <input id="txtPassword" type="password" class="form-control" autocomplete="off" runat="server" clientidmode="Static" required>
                         <div class="invalid-feedback">Enter Password</div>
-                        
+
                     </div>
                 </div>
                 <div class="text-left form-group row">
-                    <label for="confirmPW" class="col-4 font-weight-bold">Confirm Password:</label>
+                    <label for="confirmPW" class="col-4 col-form-label font-weight-bold">Confirm Password:</label>
                     <div class="col-6">
-                        
-                        <input id="txtConfirmPw" type="password" class="form-control" autocomplete="off" runat="server" clientidmode="Static" required>
-                        <asp:CompareValidator
-                            ID="cmpConfirmPw"
-                            runat="server"
-                            ControlToValidate="txtConfirmPw"
-                            ControlToCompare="txtPassword"
-                            Operator="Equal"
-                            Type="String">
-                        </asp:CompareValidator>
+
+                        <input id="txtConfirmPw" type="password" class="form-control mt-2" autocomplete="off" runat="server" clientidmode="Static" required>
                     </div>
                 </div>
             </div>
 
-            <div id="errors" class="text-center well" style="font-size: small"></div>
+            <div id="errors" class="text-center well" style="font-size: inherit"></div>
             <div class="text-center pb-4">
-                
+                <asp:Label runat="server" ID="lblUserStatus" Text=" "></asp:Label>
+                <br />
+                <asp:CompareValidator
+                    ID="cmpConfirmPw"
+                    runat="server"
+                    ControlToValidate="txtConfirmPw"
+                    ControlToCompare="txtPassword"
+                    Operator="Equal"
+                    ErrorMessage="Passwords Do Not Match"
+                    Type="String">
+                </asp:CompareValidator>
             </div>
 
 
             <div class="text-center container">
                 <div class="btn-group">
                     <asp:Button ID="btnCreate" runat="server" Text="Create" CssClass="btn btn-primary rounded shadow mr-4" CausesValidation="true" OnClick="btnCreate_Click" />
-                    
+
                     <a class="btn btn-primary rounded shadow" href="Login.aspx" role="button">Cancel</a>
                 </div>
             </div>
@@ -138,7 +140,11 @@
                 if (!valid || !match) $("#txtConfirmPw").css("border", "1px solid red");
             });
         });
- 
+
+
+
     </script>
+
+
 </asp:Content>
 

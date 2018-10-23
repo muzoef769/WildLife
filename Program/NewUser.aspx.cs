@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
 
 public partial class NewUser : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (IsPostBack)
-        {
-            lblStatus.Text = null;
-
-
-        }
+        lblStatus.Text = null;
+        lblUserStatus.Text = " ";
 
     }
 
@@ -24,51 +21,95 @@ public partial class NewUser : System.Web.UI.Page
     protected void btnCreate_Click(object sender, EventArgs e)
     {
 
-
         Page.Validate();
+
         if (Page.IsValid)
         {
-            // COMMIT VALUES
+            //COMMIT VALUES
             try
             {
-                System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection();
-                sc.ConnectionString = @"Server=LOCALHOST;Database=PBKDF2;Trusted_Connection=Yes;"; // connect to PBKDF2 database
-                lblStatus.Text = "Database Connection Successful";
+                // connect to PBKDF2 database
+                System.Data.SqlClient.SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
+
                 ViewState["password"] = txtConfirmPw.Value;
 
-                sc.Open();
+                String strGetUser = "Select UserID from [dbo].[Person] where Username = @Username";
 
-                System.Data.SqlClient.SqlCommand createUser = new System.Data.SqlClient.SqlCommand();
-                createUser.Connection = sc;
-                // INSERT USER RECORD
+                // CHECK FOR EXISTING USERNAMES IN USER RECORD
+                using (SqlCommand getUser = new SqlCommand(strGetUser, sc))
+                {
+                    sc.Open();
+                    getUser.Parameters.AddWithValue("@Username", txtUsername.Text);
+                    SqlDataReader reader = getUser.ExecuteReader();
 
-                createUser.CommandText = "insert into[dbo].[Person] values(@FName, @LName, @Username)";
-                createUser.Parameters.Add(new SqlParameter("@FName", txtFirstName.Text));
-                createUser.Parameters.Add(new SqlParameter("@LName", txtLastName.Text));
-                createUser.Parameters.Add(new SqlParameter("@Username", txtUsername.Text));
-                createUser.ExecuteNonQuery();
+                    // if the username exists, process will stop
+                    if (reader.HasRows)
+                    {
+                        txtUsername.Text = null;
+                        lblUserStatus.Text = "Username Already Exists!";
 
-                System.Data.SqlClient.SqlCommand setPass = new System.Data.SqlClient.SqlCommand();
-                setPass.Connection = sc;
+                    }
 
-                // INSERT PASSWORD RECORD AND CONNECT TO USER
-                setPass.CommandText = "insert into[dbo].[Pass] values((select max(userid) from person), @Username, @Password)";
-                setPass.Parameters.Add(new SqlParameter("@Username", txtUsername.Text));
-                setPass.Parameters.Add(new SqlParameter("@Password", PasswordHash.HashPassword(ViewState["password"].ToString()))); // hash entered password
-                setPass.ExecuteNonQuery();
+                    // if the username doesn't exist, it will show failure
+                    else
+                    {
+                        sc.Close();
 
-                sc.Close();
+                        // INSERT USER RECORD
+                        String strCreateUser = "insert into[dbo].[Person] values(@FName, @LName, @Username)";
+                        using (SqlCommand createUser = new SqlCommand(strCreateUser, sc))
+                        {
+                            try
+                            {
+                                sc.Open();
+                                createUser.Parameters.AddWithValue("@FName", txtFirstName.Text);
+                                createUser.Parameters.AddWithValue("@LName", txtLastName.Text);
+                                createUser.Parameters.AddWithValue("@Username", txtUsername.Text);
+                                createUser.ExecuteNonQuery();
+                                sc.Close();
+                            }
+                            catch
+                            {
+                                lblUserStatus.Text = "Error Submiting User Information";
+                                sc.Close();
+                            }
 
-                lblStatus.Text = "User Created!";
+                        }
 
-                // Modal popup when submitted
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "ModalView", "<script>$(function() { $('#newModal').modal('show'); });</script>", false);
 
-                // Clear Fields
-                txtUsername.Text = null;
-                txtFirstName.Text = null;
-                txtLastName.Text = null;
+                        // INSERT PASSWORD RECORD AND CONNECT TO USER
+                        String strSetPass = "insert into[dbo].[Pass] values((select max(userid) from person), @Username, @Password)";
+                        using (SqlCommand setPass = new SqlCommand(strSetPass, sc))
+                        {
+                            try
+                            {
+                                sc.Open();
+                                setPass.Parameters.AddWithValue("@Username", txtUsername.Text);
+                                setPass.Parameters.AddWithValue("@Password", PasswordHash.HashPassword(ViewState["password"].ToString())); // hash entered password
+                                setPass.ExecuteNonQuery();
+                                sc.Close();
+                                // Message in the Modal
+                                lblStatus.Text = "User Created!";
+                                // Modal popup when submitted
+                                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "ModalView", "<script>$(function() { $('#newModal').modal('show'); });</script>", false);
+                            }
+                            catch
+                            {
+                                lblUserStatus.Text = "Error Submiting Password";
+                                sc.Close();
+                            }
 
+                            // Reset Fields
+                            txtUsername.Text = null;
+                            txtFirstName.Text = null;
+                            txtLastName.Text = null;
+                            lblUserStatus.Text = " ";
+
+                        }
+
+                    }
+                    sc.Close();
+                }
             }
             catch
             {

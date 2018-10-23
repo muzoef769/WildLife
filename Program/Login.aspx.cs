@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
 
 public partial class Login : System.Web.UI.Page
 {
@@ -15,7 +16,6 @@ public partial class Login : System.Web.UI.Page
             lblStatus.Text = "";
             lblStatus.Visible = false;
             btnLogin.Enabled = true;
-            txtUsername.Text = null;
             txtUsername.Enabled = true;
             txtPassword.Enabled = true;
         }
@@ -28,8 +28,7 @@ public partial class Login : System.Web.UI.Page
         // connect to database to retrieve stored password string
         try
         {
-            System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection();
-            sc.ConnectionString = @"Server=LOCALHOST;Database=PBKDF2;Trusted_Connection=Yes;"; //change database name and new connection string
+            SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
 
 
             lblStatus.Text = "Database Connection Successful";
@@ -69,7 +68,7 @@ public partial class Login : System.Web.UI.Page
             // if the username doesn't exist, it will show failure
             else
             {
-                lblStatus.Text = "Login failed.";
+                lblStatus.Text = "Username does not exist.";
                 lblStatus.Visible = true;
             }
 
@@ -79,6 +78,7 @@ public partial class Login : System.Web.UI.Page
         {
             lblStatus.Text = "Database Error.";
             lblStatus.Visible = true;
+
         }
     }
 
