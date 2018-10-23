@@ -4,28 +4,71 @@
 
 <html>
 <head runat="server">
-    <title>Wildlife Center of Virginia</title>
-    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%:Page.Title%> - Virginia Wildlife Center</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
 
-    </asp:ContentPlaceHolder>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-        <ul>
-            <li><a href="Program.aspx">Program Page</a></li>
-            <li><a href="Animal.aspx">Animal Page</a></li>
-            <li><a href="Bird.aspx">Bird Page</a></li>
-            <li><a href="AnimalMainPage.aspx">Animal Profile</a></li>
-        </ul>
-
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
-    </div>
-    </form>
-    <script src="Scripts/jquery-3.0.0.slim.min.js"></script>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <script src="Scripts/jquery-3.3.1.slim.min.js"></script>
     <script src="Scripts/popper.min.js"></script>
     <script src="Scripts/bootstrap.bundle.min.js"></script>
+    <script src="Scripts/jquery.password-validation.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server" class="needs-validation" novalidate>
+        <div class="navbar navbar-expand-md navbar-light bg-light">
+            
+                <!-- Brand -->
+                <a class="navbar-brand ml-lg-5" href="Home.aspx">Virginia Wildlife Center</a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon text-light"></span>
+                </button>
+                <!-- Links -->
+                <div class="collapse navbar-collapse text-right mr-lg-5" id="collapsibleNavbar">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="Home.aspx">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Program.aspx">Programs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Animal.aspx">Animals</a>
+                        </li>
+                        <%--<li class="nav-item">
+                            <a class="nav-link" href="Payment.aspx">Payment</a>
+                        </li>--%>
+
+                        <!-- Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="dropdownMenu" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reports
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                                <a class="dropdown-item" href="MonthlyReports.aspx">Monthly Report</a>
+                                <a class="dropdown-item" href="AnnualReports.aspx">Animal Report</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" href="#">Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+            
+        </div>
+
+        <div class="body-content ml-lg-5 mr-lg-5 mb-auto">
+            <h3 class="display-3 text-center text-Danger mb-md-1"><%:Page.Title %></h3>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - The Wildlife Center of Virginia. All Rights Reserved.</p>
+            </footer>
+        </div>
+    </form>
 </body>
 </html>
