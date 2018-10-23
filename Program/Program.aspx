@@ -8,7 +8,7 @@
     </asp:RadioButtonList>
     <br />
         <fieldset>
-    <asp:Label ID="lblOrganzationName" runat="server" Text="Organization Name: "></asp:Label>
+    <asp:Label ID="lblOrganzationName" runat="server" Text="OrganizationName: "></asp:Label>
     <asp:DropDownList ID="drplistOrganizationName" runat="server">
         <asp:ListItem> </asp:ListItem>
         <asp:ListItem>Other</asp:ListItem>
