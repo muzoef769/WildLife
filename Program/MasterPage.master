@@ -14,6 +14,9 @@
     <div>
         <ul>
             <li><a href="Program.aspx">Program Page</a></li>
+            <li><a href="Animal.aspx">Animal Page</a></li>
+            <li><a href="Bird.aspx">Bird Page</a></li>
+            <li><a href="AnimalMainPage.aspx">Animal Profile</a></li>
         </ul>
 
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
