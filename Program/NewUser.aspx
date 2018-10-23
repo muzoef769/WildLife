@@ -1,0 +1,144 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="NewUser.aspx.cs" Inherits="NewUser" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
+    <div>
+        <%--<h2 class="display-3 text-center text-white">New User</h2>--%>
+
+
+        <div class="container jumbotron w-50 bg-white shadow">
+            <div class=" offset-2">
+                <div class="text-left form-group row">
+                    <label for="userName" class="col-4 col-form-label font-weight-bold">Username:</label>
+                    <div class="col-6">
+                        <asp:TextBox runat="server"
+                            ID="txtUsername"
+                            name="userName"
+                            type="text"
+                            class="form-control"
+                            AutoCompleteType="Disabled"
+                            Required="required"
+                            MaxLength="50">
+                            
+                        </asp:TextBox>
+                        <div class="invalid-feedback">
+                            Enter Username
+                        </div>
+
+                        
+                    </div>
+                </div>
+                <div class="text-left form-group row">
+                    <label for="firstName" class="col-4 col-form-label font-weight-bold">First Name:</label>
+                    <div class="col-6">
+                        <asp:TextBox runat="server"
+                            ID="txtFirstName"
+                            name="firstName"
+                            type="text"
+                            class="form-control here"
+                            AutoCompleteType="Disabled"
+                            Required="required"
+                            MaxLength="50">
+                        </asp:TextBox>
+                        <div class="invalid-feedback">
+                            Enter First Name
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="text-left form-group row">
+                    <label for="lastName" class="col-4 col-form-label font-weight-bold">Last Name:</label>
+                    <div class="col-6">
+                        <asp:TextBox runat="server"
+                            ID="txtLastName"
+                            name="lastName"
+                            type="text"
+                            class="form-control here"
+                            AutoCompleteType="Disabled"
+                            Required="required"
+                            MaxLength="50">
+                        </asp:TextBox>
+                        <div class="invalid-feedback">
+                            Enter Last Name
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="text-left form-group row">
+                    <label for="password" class="col-4 col-form-label font-weight-bold">Password:</label>
+                    <div class="col-6">
+                        
+                        <input id="txtPassword" type="password" class="form-control" autocomplete="off" runat="server" clientidmode="Static" required>
+                        <div class="invalid-feedback">Enter Password</div>
+                        
+                    </div>
+                </div>
+                <div class="text-left form-group row">
+                    <label for="confirmPW" class="col-4 font-weight-bold">Confirm Password:</label>
+                    <div class="col-6">
+                        
+                        <input id="txtConfirmPw" type="password" class="form-control" autocomplete="off" runat="server" clientidmode="Static" required>
+                        <asp:CompareValidator
+                            ID="cmpConfirmPw"
+                            runat="server"
+                            ControlToValidate="txtConfirmPw"
+                            ControlToCompare="txtPassword"
+                            Operator="Equal"
+                            Type="String">
+                        </asp:CompareValidator>
+                    </div>
+                </div>
+            </div>
+
+            <div id="errors" class="text-center well" style="font-size: small"></div>
+            <div class="text-center pb-4">
+                
+            </div>
+
+
+            <div class="text-center container">
+                <div class="btn-group">
+                    <asp:Button ID="btnCreate" runat="server" Text="Create" CssClass="btn btn-primary rounded shadow mr-4" CausesValidation="true" OnClick="btnCreate_Click" />
+                    
+                    <a class="btn btn-primary rounded shadow" href="Login.aspx" role="button">Cancel</a>
+                </div>
+            </div>
+
+            <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalTitle">Success</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="text-danger">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <asp:Label runat="server" ID="lblStatus" CssClass="modal-dialog"></asp:Label>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <asp:ScriptManager runat="server"></asp:ScriptManager>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#txtPassword").passwordValidation({ "confirmField": "#txtConfirmPw" }, function (element, valid, match, failedCases) {
+
+                $("#errors").html("<pre>" + failedCases.join("\n") + "</pre>");
+
+                if (valid) $(element).css("border", "2px solid green");
+                if (!valid) $(element).css("border", "1px solid red");
+                if (valid && match) $("#txtConfirmPw").css("border", "2px solid green");
+                if (!valid || !match) $("#txtConfirmPw").css("border", "1px solid red");
+            });
+        });
+ 
+    </script>
+</asp:Content>
+
