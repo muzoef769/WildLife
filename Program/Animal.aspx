@@ -26,7 +26,7 @@
 </asp:Content>--%>
 
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
 <h2>Three Equal Columns</h2>
 
