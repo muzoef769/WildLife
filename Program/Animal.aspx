@@ -34,7 +34,7 @@
   <div class="column" style="background-color:#aaa;">
     <h2>Birds</h2>
     <a href="Animal.aspx">
-  <img src="storyblocks-bald-eagle-haliaeetus-leucocephalus-portrait-of-brown-bird-of-prey-with-white-head-yellow-bill-symbol-of-freedom-of-the-united-states-of-america-alaska-usa_ScUQXlQ7-G.jpg" /> 
+  <img src="Images/storyblocks-bald-eagle-haliaeetus-leucocephalus-portrait-of-brown-bird-of-prey-with-white-head-yellow-bill-symbol-of-freedom-of-the-united-states-of-america-alaska-usa_ScUQXlQ7-G.jpg" /> 
 </a>
     <br /> 
      <br /> 
@@ -46,7 +46,7 @@
   <div class="column" style="background-color:#bbb;">
     <h3>Mammals</h3>
     <a href="Animal.aspx">
-        <img src="149_2101619.jpg" />
+        <img src="Images/149_2101619.jpg" />
         
 </a>
     <br /> 
@@ -62,7 +62,7 @@
   <div class="column" style="background-color:#ccc;">
 <h4>Reptiles</h4>
     <a href="Animal.aspx">
-        <img src="138_1079348.jpg" />
+        <img src="Images/138_1079348.jpg" />
         
 </a>
     <br /> 

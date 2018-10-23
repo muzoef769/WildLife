@@ -6,7 +6,7 @@
 
         <div class="container jumbotron w-25 bg-white shadow">
             <div class="pb-3">
-                <img src="owl.png" class="container" />
+                <img src="Images/owl.png" class="container" />
                 <a class="display-4 w-75 container">Login</a>
 
 
