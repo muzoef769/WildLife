@@ -9,6 +9,6 @@ public partial class Home : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        ddlMonth.SelectedValue = DateTime.Today.ToString("MM");
+        lblCurrentMonth.Text = DateTime.Today.ToString("MMMM");
     }
 }
