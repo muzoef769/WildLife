@@ -1,88 +1,77 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Animal.aspx.cs" Inherits="Animal" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Animal.aspx.cs" Inherits="Animal" %>
 
-<%--<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
- 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-    box-sizing: border-box;
-}
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 
-/* Create three equal columns that floats next to each other */
-.column {
-    float: left;
-    width: 33.33%;
-    padding: 10px;
-    height: 300px; /* Should be removed. Only for demonstration */
-}
+    <div class="jumbotron">
+         <h1 class ="text-dark text-center" style="font:50px arial">Wildlife Center</h1>
+        <br />
+        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataValueField ="AnimalID" DataTextField ="Name" autopostback="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" ></asp:DropDownList>
+           <br />
+        <br />
+        <br />
+           <br />
+        <br />
+        <br />
+         <asp:Label ID="lblName" runat="server" Text="Name: "></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="txtName" runat="server" Width="187px" ReadOnly="True"></asp:TextBox>
+        <br />
+        <br />
+        <asp:Label ID="lblType" runat="server" Text="Type: "></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp<asp:TextBox ID="txtType" runat="server" ReadOnly="True"></asp:TextBox>
+        <br />
+                <br />
+        <asp:Label ID="lblCommonName" runat="server" Text="Common Name: "></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="txtCommonName" runat="server" ReadOnly="True"></asp:TextBox>
+         <br />
+        <br />
+        <asp:Label ID="lblScientificName" runat="server" Text="Scientifc Name: "></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="txtScientificName" runat="server" ReadOnly="True"></asp:TextBox>
+        <br />
+        <br />
+    
+        <br />
+        <br />
+        <br />
+         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:WildlifeCenterConnectionString %>" SelectCommand="SELECT [AnimalID], [CommonName], [ScientificName], [Name], [Type] FROM [Animal]" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM [Animal] WHERE [AnimalID] = @original_AnimalID AND [CommonName] = @original_CommonName AND [ScientificName] = @original_ScientificName AND [Name] = @original_Name AND [Type] = @original_Type" InsertCommand="INSERT INTO [Animal] ([CommonName], [ScientificName], [Name], [Type]) VALUES (@CommonName, @ScientificName, @Name, @Type)" OldValuesParameterFormatString="original_{0}" UpdateCommand="UPDATE [Animal] SET [CommonName] = @CommonName, [ScientificName] = @ScientificName, [Name] = @Name, [Type] = @Type WHERE [AnimalID] = @original_AnimalID AND [CommonName] = @original_CommonName AND [ScientificName] = @original_ScientificName AND [Name] = @original_Name AND [Type] = @original_Type" >
+             <DeleteParameters>
+                 <asp:Parameter Name="original_AnimalID" Type="Int32" />
+                 <asp:Parameter Name="original_CommonName" Type="String" />
+                 <asp:Parameter Name="original_ScientificName" Type="String" />
+                 <asp:Parameter Name="original_Name" Type="String" />
+                 <asp:Parameter Name="original_Type" Type="String" />
+             </DeleteParameters>
+             <InsertParameters>
+                 <asp:Parameter Name="CommonName" Type="String" />
+                 <asp:Parameter Name="ScientificName" Type="String" />
+                 <asp:Parameter Name="Name" Type="String" />
+                 <asp:Parameter Name="Type" Type="String" />
+             </InsertParameters>
+             <UpdateParameters>
+                 <asp:Parameter Name="CommonName" Type="String" />
+                 <asp:Parameter Name="ScientificName" Type="String" />
+                 <asp:Parameter Name="Name" Type="String" />
+                 <asp:Parameter Name="Type" Type="String" />
+                 <asp:Parameter Name="original_AnimalID" Type="Int32" />
+                 <asp:Parameter Name="original_CommonName" Type="String" />
+                 <asp:Parameter Name="original_ScientificName" Type="String" />
+                 <asp:Parameter Name="original_Name" Type="String" />
+                 <asp:Parameter Name="original_Type" Type="String" />
+             </UpdateParameters>
+         </asp:SqlDataSource>
+         <br />
+        <br />
+        <asp:Button ID="btnEdit" runat="server" Text="Edit" Width="102px" OnClick="btnEdit_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" Visible="False" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+    <asp:Button ID="btnDelete" runat="server" Text="Delete" Width="102px" Visible="False" />
+    </div>
+   
+     
 
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-</style>
-</asp:Content>--%>
 
-
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-
-<h2>Three Equal Columns</h2>
-
-<div class="row">
-  <div class="column" style="background-color:#aaa;">
-    <h2>Birds</h2>
-    <a href="Animal.aspx">
-  <img src="Images/storyblocks-bald-eagle-haliaeetus-leucocephalus-portrait-of-brown-bird-of-prey-with-white-head-yellow-bill-symbol-of-freedom-of-the-united-states-of-america-alaska-usa_ScUQXlQ7-G.jpg" /> 
-</a>
-    <br /> 
-     <br /> 
-    <asp:Button ID="ViewBird" runat="server" Text="View Bird" OnClick="btnViewProfile"/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <asp:Button ID="BirdReport" runat="server" Text="Create Bird Report" />
-      
-  </div>
-  <div class="column" style="background-color:#bbb;">
-    <h3>Mammals</h3>
-    <a href="Animal.aspx">
-        <img src="Images/149_2101619.jpg" />
-        
-</a>
-    <br /> 
-     <br /> 
-      <asp:Button ID="ViewMammal" runat="server" Text="View Mammal" OnClick="btnViewProfile"/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <asp:Button ID="MammalReport" runat="server" Text="Create Mammal Report" />
-
-
-
-
-  </div>
-  <div class="column" style="background-color:#ccc;">
-<h4>Reptiles</h4>
-    <a href="Animal.aspx">
-        <img src="Images/138_1079348.jpg" />
-        
-</a>
-    <br /> 
-     <br /> 
-      <asp:Button ID="ViewReptile" runat="server" Text="View Reptile" OnClick="btnViewProfile"/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <asp:Button ID="ReptileReport" runat="server" Text="Create Reptile Report" />
-
-  </div>
-</div>
-
-  <%--  <h2>Animal Home Page</h2>
-<p>Select the type of Animal</p>
-
-<a href="Animal.aspx">
-  <img src="storyblocks-bald-eagle-haliaeetus-leucocephalus-portrait-of-brown-bird-of-prey-with-white-head-yellow-bill-symbol-of-freedom-of-the-united-states-of-america-alaska-usa_ScUQXlQ7-G.jpg" /> 
-</a>
-    <br /> 
-     <br /> 
-    <asp:Label ID="Label1" runat="server" Text="Birds"></asp:Label>--%>
 
 </asp:Content>
+
+
+
+
+
+
 
