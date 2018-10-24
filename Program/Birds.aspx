@@ -35,7 +35,7 @@
                 <h2>Buddy</h2>
                 <div >
                     <div class="">
-                        <a href="Animal.aspx">
+                        <a href="Animal.aspx?field1=Buddy">  <%--have to change if changing to pop form--%>
                             <img src="Buddy.jpg" style="width: 150px"/>
                         </a>
                     </div>

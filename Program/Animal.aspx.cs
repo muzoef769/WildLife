@@ -12,24 +12,27 @@ using System.Web.Configuration;
 public partial class Animal : System.Web.UI.Page
 {
     System.Data.SqlClient.SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
-
+    
+    int animalID;
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        String aName = Request.QueryString["field1"];
         sc.Open();
-        string myQuery = "SELECT [CommonName], [ScientificName], [Name], [Type] FROM [WildlifeCenter].[dbo].[Animal] WHERE Name = @Name";
+        string myQuery = "SELECT [AnimalID], [Species], [ScientificName], [AnimalType] FROM [WildlifeCenter].[dbo].[Animal] WHERE [AnimalName] = @AnimalName";
         SqlCommand myCommand = new SqlCommand(myQuery, sc);
-        myCommand.Parameters.AddWithValue("@Name", DropDownList1.SelectedItem.Text);
+        myCommand.Parameters.AddWithValue("@AnimalName", aName);
         try
         {
 
             SqlDataReader myReader = myCommand.ExecuteReader();
             while (myReader.Read())
             {
-
-                txtSpecies.Text = myReader.GetString(0);
-                txtScientificName.Text = myReader.GetString(1);
-                txtName.Text = myReader.GetString(2);
+                animalID = int.Parse(myReader["AnimalID"].ToString());
+                
+                txtSpecies.Text = myReader.GetString(1);
+                txtScientificName.Text = myReader.GetString(2);
+                txtName.Text = aName;
                 txtType.Text = myReader.GetString(3);
             }
         }
@@ -115,7 +118,7 @@ public partial class Animal : System.Web.UI.Page
 
         
 
-        string myQuery = "UPDATE [WildlifeCenter].[dbo].[Animal] SET [CommonName] = @CommonName,[ScientificName] = @ScientificName, [Name] = @Name, [Type] = @Type WHERE Name = @Name";
+        string myQuery = "UPDATE [WildlifeCenter].[dbo].[Animal] SET [Species] = @Species,[ScientificName] = @ScientificName, [AnimalName] = @Name, [AnimalType] = @Type WHERE AnimalID = @AnimalID";
 
 
 
@@ -124,7 +127,8 @@ public partial class Animal : System.Web.UI.Page
             sc.Open();
 
             SqlCommand myCommand = new SqlCommand(myQuery, sc);
-            myCommand.Parameters.AddWithValue("@CommonName", txtSpecies.Text);
+            myCommand.Parameters.AddWithValue("@AnimalID", animalID);
+            myCommand.Parameters.AddWithValue("@Species", txtSpecies.Text);
             myCommand.Parameters.AddWithValue("@ScientificName", txtScientificName.Text);
             myCommand.Parameters.AddWithValue("@Name", txtName.Text);
             myCommand.Parameters.AddWithValue("@Type", ddlType.SelectedValue);

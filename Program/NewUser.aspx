@@ -3,7 +3,7 @@
 <asp:Content ID="ContentBody" ContentPlaceHolderID="MainContent" runat="Server">
 
     <div>
-        <h2 class="display-3 text-center text-white mb-3">Create User</h2>
+        <%--<h2 class="display-3 text-center text-white mb-3">Create User</h2>--%>
 
         <div class="container jumbotron w-50 bg-white shadow">
             <div class=" offset-2">
