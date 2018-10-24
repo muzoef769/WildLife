@@ -101,7 +101,7 @@
                 <div class="btn-group">
                     <asp:Button ID="btnCreate" runat="server" Text="Create" CssClass="btn btn-primary rounded shadow mr-4" CausesValidation="true" OnClick="btnCreate_Click" />
 
-                    <a class="btn btn-primary rounded shadow" href="Login.aspx" role="button">Cancel</a>
+                    <a class="btn btn-primary rounded shadow" href="Login.aspx" role="button">Back</a>
                 </div>
             </div>
 

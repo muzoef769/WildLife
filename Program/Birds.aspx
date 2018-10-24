@@ -67,7 +67,7 @@
             <div class="column" style="background-color: #ccc;">
                 <h2>Verlon</h2>
                 <a href="Animal.aspx">
-                    <img src="Verlon.jpg" style="width: 150px" />
+                    <img src="Images/Verlon.jpg" style="width: 150px" />
                 </a>
                 <br />
                 <br />
