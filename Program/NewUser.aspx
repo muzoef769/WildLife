@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Create User" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="NewUser.aspx.cs" Inherits="NewUser" %>
+﻿<%@ Page Title="Create User" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="NewUser.aspx.cs" Inherits="NewUser" %>
 
 <asp:Content ID="ContentBody" ContentPlaceHolderID="MainContent" runat="Server">
 

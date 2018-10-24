@@ -26,7 +26,7 @@ public partial class NewUser : System.Web.UI.Page
         if (Page.IsValid)
         {
             //COMMIT VALUES
-            try
+            //try
             {
                 // connect to PBKDF2 database
                 System.Data.SqlClient.SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
@@ -59,20 +59,20 @@ public partial class NewUser : System.Web.UI.Page
                         String strCreateUser = "insert into[dbo].[Person] values(@FName, @LName, @Username)";
                         using (SqlCommand createUser = new SqlCommand(strCreateUser, sc))
                         {
-                            try
-                            {
+                            //try
+                            //{
                                 sc.Open();
                                 createUser.Parameters.AddWithValue("@FName", txtFirstName.Text);
                                 createUser.Parameters.AddWithValue("@LName", txtLastName.Text);
                                 createUser.Parameters.AddWithValue("@Username", txtUsername.Text);
                                 createUser.ExecuteNonQuery();
                                 sc.Close();
-                            }
-                            catch
-                            {
-                                lblUserStatus.Text = "Error Submiting User Information";
-                                sc.Close();
-                            }
+                            //}
+                            //catch
+                            //{
+                            //    lblUserStatus.Text = "Error Submiting User Information";
+                            //    sc.Close();
+                            //}
 
                         }
 
@@ -81,8 +81,8 @@ public partial class NewUser : System.Web.UI.Page
                         String strSetPass = "insert into[dbo].[Pass] values((select max(userid) from person), @Username, @Password)";
                         using (SqlCommand setPass = new SqlCommand(strSetPass, sc))
                         {
-                            try
-                            {
+                            //try
+                            //{
                                 sc.Open();
                                 setPass.Parameters.AddWithValue("@Username", txtUsername.Text);
                                 setPass.Parameters.AddWithValue("@Password", PasswordHash.HashPassword(ViewState["password"].ToString())); // hash entered password
@@ -92,12 +92,12 @@ public partial class NewUser : System.Web.UI.Page
                                 lblStatus.Text = "User Created!";
                                 // Modal popup when submitted
                                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "ModalView", "<script>$(function() { $('#newModal').modal('show'); });</script>", false);
-                            }
-                            catch
-                            {
-                                lblUserStatus.Text = "Error Submiting Password";
-                                sc.Close();
-                            }
+                            //}
+                            //catch
+                            //{
+                            //    lblUserStatus.Text = "Error Submiting Password";
+                            //    sc.Close();
+                            //}
 
                             // Reset Fields
                             txtUsername.Text = null;
@@ -111,10 +111,10 @@ public partial class NewUser : System.Web.UI.Page
                     sc.Close();
                 }
             }
-            catch
-            {
-                lblStatus.Text = "Database Error - User not created.";
-            }
+            //catch
+            //{
+            //    lblStatus.Text = "Database Error - User not created.";
+            //}
         }
     }
 }

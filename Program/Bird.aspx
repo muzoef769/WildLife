@@ -24,28 +24,28 @@
 </style>
 </asp:Content>--%>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <h2>Three Equal Columns</h2>
 
-<div class="row">
-  <div class="column" style="background-color:#aaa;">
-    <h2>Birds</h2>
-    <a href="Animal.aspx">
-  <img src="Images/storyblocks-bald-eagle-haliaeetus-leucocephalus-portrait-of-brown-bird-of-prey-with-white-head-yellow-bill-symbol-of-freedom-of-the-united-states-of-america-alaska-usa_ScUQXlQ7-G.jpg" /> 
-</a>
-    <br /> 
-     <br /> 
-    <asp:Label ID="Label1" runat="server" Text="Birds"></asp:Label>
-      <p></p>
-  </div>
-  <div class="column" style="background-color:#bbb;">
-    <h2>Column 2</h2>
-    <p>Some text..</p>
-  </div>
-  <div class="column" style="background-color:#ccc;">
-    <h2>Column 3</h2>
-    <p>Some text..</p>
-  </div>
-</div>
+    <div class="row">
+        <div class="column" style="background-color: #aaa;">
+            <h2>Birds</h2>
+            <a href="Animal.aspx">
+                <img src="Images/storyblocks-bald-eagle-haliaeetus-leucocephalus-portrait-of-brown-bird-of-prey-with-white-head-yellow-bill-symbol-of-freedom-of-the-united-states-of-america-alaska-usa_ScUQXlQ7-G.jpg" />
+            </a>
+            <br />
+            <br />
+            <asp:Label ID="Label1" runat="server" Text="Birds"></asp:Label>
+            <p></p>
+        </div>
+        <div class="column" style="background-color: #bbb;">
+            <h2>Column 2</h2>
+            <p>Some text..</p>
+        </div>
+        <div class="column" style="background-color: #ccc;">
+            <h2>Column 3</h2>
+            <p>Some text..</p>
+        </div>
+    </div>
 </asp:Content>
 

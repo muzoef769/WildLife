@@ -57,6 +57,7 @@ public partial class Login : System.Web.UI.Page
                         txtUsername.Text = null;
                         txtUsername.Enabled = false;
                         txtPassword.Enabled = false;
+                        Response.Redirect("Home.aspx", false);
                     }
                     else
                     {
