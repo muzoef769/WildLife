@@ -11,4 +11,8 @@ public partial class Animal : System.Web.UI.Page
     {
 
     }
+    protected void btnViewProfile(Object sender, EventArgs e)
+    {
+        Server.Transfer("AnimalMainPage.aspx", true);
+    }
 }

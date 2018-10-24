@@ -38,7 +38,7 @@
 </a>
     <br /> 
      <br /> 
-    <asp:Button ID="BirdAdd" runat="server" Text="Add New Bird" />
+    <asp:Button ID="BirdAdd" runat="server" Text="Add New Bird" OnClick="btnViewProfile"/>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <asp:Button ID="BirdReport" runat="server" Text="Create Bird Report" />
       
@@ -69,10 +69,7 @@
      <br /> 
       <asp:Button ID="ReptileAdd" runat="server" Text="Add New Reptile" />
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <asp:Button ID="ReptileReport" runat="server" Text="Create Reptile Report" />    
-
-
-
+      <asp:Button ID="ReptileReport" runat="server" Text="Create Reptile Report" />
 
   </div>
 </div>
