@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Birds.aspx.cs" Inherits="Birds" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
 
-    <html>
+<%--    <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">--%>
         <style>
             * {
                 box-sizing: border-box;
@@ -25,8 +25,8 @@
                 clear: both;
             }
         </style>
-    </head>
-    <body>
+<%--    </head>
+    <body>--%>
 
         <h2>All Birds</h2>
 
@@ -308,10 +308,10 @@
             </div>
 
 
-    </body>
+<%--    </body>
     </html>
 
-
+--%>
 
 
 

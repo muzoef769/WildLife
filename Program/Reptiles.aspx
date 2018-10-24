@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Reptiles.aspx.cs" Inherits="Reptiles" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
- <html>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
+<%-- <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">--%>
 <style>
 * {
     box-sizing: border-box;
@@ -24,8 +24,8 @@
     clear: both;
 }
 </style>
-</head>
-<body>
+<%--</head>
+<body>--%>
 
 <h2>All Reptiles</h2>
 
@@ -161,9 +161,9 @@
         </div>
 
 
-</body>
+<%--</body>
 </html>
-
+--%>
 
 
 

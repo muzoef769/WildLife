@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="AnimalFirstPage.aspx.cs" Inherits="AnimalFirstPage" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <html>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
+    <%--<html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">--%>
 <style>
 * {
     box-sizing: border-box;
@@ -24,8 +24,8 @@
     clear: both;
 }
 </style>
-</head>
-<body>
+<%--</head>
+<body>--%>
 
 <h2>Three Equal Columns</h2>
 
@@ -76,8 +76,8 @@
   </div>
 </div>
 
-</body>
-</html>
+<%--</body>
+</html>--%>
 
 
   <%--  <h2>Animal Home Page</h2>
