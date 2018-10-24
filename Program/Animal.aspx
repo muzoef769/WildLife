@@ -38,7 +38,7 @@
 </a>
     <br /> 
      <br /> 
-    <asp:Button ID="BirdAdd" runat="server" Text="Add New Bird" OnClick="btnViewProfile"/>
+    <asp:Button ID="ViewBird" runat="server" Text="View Bird" OnClick="btnViewProfile"/>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <asp:Button ID="BirdReport" runat="server" Text="Create Bird Report" />
       
@@ -51,7 +51,7 @@
 </a>
     <br /> 
      <br /> 
-      <asp:Button ID="MammalAdd" runat="server" Text="Add New Mammal" />
+      <asp:Button ID="ViewMammal" runat="server" Text="View Mammal" OnClick="btnViewProfile"/>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <asp:Button ID="MammalReport" runat="server" Text="Create Mammal Report" />
 
@@ -67,7 +67,7 @@
 </a>
     <br /> 
      <br /> 
-      <asp:Button ID="ReptileAdd" runat="server" Text="Add New Reptile" />
+      <asp:Button ID="ViewReptile" runat="server" Text="View Reptile" OnClick="btnViewProfile"/>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <asp:Button ID="ReptileReport" runat="server" Text="Create Reptile Report" />
 
