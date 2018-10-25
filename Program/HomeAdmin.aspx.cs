@@ -5,10 +5,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Bird : System.Web.UI.Page
+public partial class Home : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        lblCurrentMonth.Text = DateTime.Today.ToString("MMMM");
     }
 }

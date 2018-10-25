@@ -33,27 +33,23 @@
   <div class="column" style="background-color:#aaa;">
     <h2>Clifford</h2>
     <a href="Animal.aspx">
-        <img src="cliff.jpg" style="width: 150px" />
+        <img src="Images/cliff.jpg" style="width: 150px" />
         
 </a>
     <br /> 
      <br /> 
-      <asp:Button ID="ReptileAdd" runat="server" Text="Add New Reptile" />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <asp:Button ID="ReptileReport" runat="server" Text="Create Reptile Report" /> 
+      
       
   </div>
   <div class="column" style="background-color:#bbb;">
     <h2>Max</h2>
     <a href="Animal.aspx">
-        <img src="max.jpg" style="width: 150px" />
+        <img src="Images/max.jpg" style="width: 150px" />
         
 </a>
     <br /> 
      <br /> 
-      <asp:Button ID="Button1" runat="server" Text="Add New Reptile" />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <asp:Button ID="Button2" runat="server" Text="Create Reptile Report" /> 
+     
       
 
 
@@ -63,14 +59,12 @@
   <div class="column" style="background-color:#ccc;">
 <h2>Malcolm</h2>
     <a href="Animal.aspx">
-        <img src="21-malcolm.jpg" style="width: 150px" />
+        <img src="Images/21-malcolm.jpg" style="width: 150px" />
         
 </a>
     <br /> 
      <br /> 
-      <asp:Button ID="Button3" runat="server" Text="Add New Reptile" />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <asp:Button ID="Button4" runat="server" Text="Create Reptile Report" /> 
+       
          
 
 
@@ -85,27 +79,23 @@
   <div class="column" style="background-color:#aaa;">
     <h2>Albus</h2>
     <a href="Animal.aspx">
-        <img src="albus.jpg" style="width: 150px" />
+        <img src="Images/albus.jpg" style="width: 150px" />
         
 </a>
     <br /> 
      <br /> 
-      <asp:Button ID="Button5" runat="server" Text="Add New Reptile" />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <asp:Button ID="Button6" runat="server" Text="Create Reptile Report" /> 
+     
       
   </div>
   <div class="column" style="background-color:#bbb;">
     <h2>Severus</h2>
     <a href="Animal.aspx">
-        <img src="22-severus.jpg" style="width: 150px" />
+        <img src="Images/22-severus.jpg" style="width: 150px" />
         
 </a>
     <br /> 
      <br /> 
-      <asp:Button ID="Button7" runat="server" Text="Add New Reptile" />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <asp:Button ID="Button8" runat="server" Text="Create Reptile Report" /> 
+      
       
 
 
@@ -115,14 +105,12 @@
   <div class="column" style="background-color:#ccc;">
 <h2>Oscar</h2>
     <a href="Animal.aspx">
-        <img src="oscar.jpg" style="width: 150px" />
+        <img src="Images/oscar.jpg" style="width: 150px" />
         
 </a>
     <br /> 
      <br /> 
-      <asp:Button ID="Button9" runat="server" Text="Add New Reptile" />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <asp:Button ID="Button10" runat="server" Text="Create Reptile Report" /> 
+      
          
 
 
@@ -135,28 +123,23 @@
   <div class="column" style="background-color:#aaa;">
     <h2>Emma</h2>
     <a href="Animal.aspx">
-        <img src="23-emma.jpg" style="width: 150px" />
+        <img src="Images/23-emma.jpg" style="width: 150px" />
         
 </a>
     <br /> 
      <br /> 
-      <asp:Button ID="Button11" runat="server" Text="Add New Reptile" />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <asp:Button ID="Button12" runat="server" Text="Create Reptile Report" /> 
+       
       
   </div>
   <div class="column" style="background-color:#bbb;">
     <h2>Wilson</h2>
     <a href="Animal.aspx">
-        <img src="24-wilson.jpg" style="width: 150px" />
+        <img src="Images/24-wilson.jpg" style="width: 150px" />
         
 </a>
     <br /> 
      <br /> 
-      <asp:Button ID="Button13" runat="server" Text="Add New Reptile" />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <asp:Button ID="Button14" runat="server" Text="Create Reptile Report" /> 
-      
+            
       </div>
         </div>
 

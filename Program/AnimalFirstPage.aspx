@@ -27,32 +27,28 @@
 <%--</head>
 <body>--%>
 
-<h2>Three Equal Columns</h2>
+<h2>Education Animals</h2>
 
 <div class="row">
   <div class="column" style="background-color:#aaa;">
     <h2>Birds</h2>
     <a href="Birds.aspx">
-  <img src="storyblocks-bald-eagle-haliaeetus-leucocephalus-portrait-of-brown-bird-of-prey-with-white-head-yellow-bill-symbol-of-freedom-of-the-united-states-of-america-alaska-usa_ScUQXlQ7-G.jpg" /> 
+  <img src="Images/storyblocks-bald-eagle-haliaeetus-leucocephalus-portrait-of-brown-bird-of-prey-with-white-head-yellow-bill-symbol-of-freedom-of-the-united-states-of-america-alaska-usa_ScUQXlQ7-G.jpg" /> 
 </a>
     <br /> 
      <br /> 
-    <asp:Button ID="BirdAdd" runat="server" Text="Add New Bird" />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <asp:Button ID="BirdReport" runat="server" Text="Create Bird Report" />
+    
       
   </div>
   <div class="column" style="background-color:#bbb;">
     <h2>Mammals</h2>
     <a href="Mammals.aspx">
-        <img src="149_2101619.jpg" />
+        <img src="Images/149_2101619.jpg" />
         
 </a>
     <br /> 
      <br /> 
-      <asp:Button ID="MammalAdd" runat="server" Text="Add New Mammal" />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <asp:Button ID="MammalReport" runat="server" Text="Create Mammal Report" />
+      
 
 
 
@@ -61,14 +57,12 @@
   <div class="column" style="background-color:#ccc;">
 <h2>Reptiles</h2>
     <a href="Reptiles.aspx">
-        <img src="138_1079348.jpg" />
+        <img src="Images/138_1079348.jpg" />
         
 </a>
     <br /> 
      <br /> 
-      <asp:Button ID="ReptileAdd" runat="server" Text="Add New Reptile" />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <asp:Button ID="ReptileReport" runat="server" Text="Create Reptile Report" />    
+    
 
 
 
