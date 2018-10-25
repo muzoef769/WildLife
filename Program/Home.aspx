@@ -8,6 +8,7 @@
                 <label for="ddlMonth" class="col-4 col-form-label font-weight-bold">Upcoming Programs:</label>
                 <asp:Label runat="server" ID="lblCurrentMonth" CssClass="display-4"></asp:Label>
             </div>
+            <asp:Button ID="btnUser" runat="server" Text="Create User" OnClick="btnUser_Click" Visible="false" />
                <%-- schedule - gridview??--%>
 
 

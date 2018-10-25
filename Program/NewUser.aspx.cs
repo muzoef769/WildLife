@@ -22,7 +22,11 @@ public partial class NewUser : System.Web.UI.Page
     {
 
         Page.Validate();
-
+        if (userType.SelectedIndex < 1)
+        {
+            reqType.IsValid = false;
+            lblUserStatus.Text = "Choose a type";
+        }
         if (Page.IsValid)
         {
             //COMMIT VALUES
@@ -65,7 +69,7 @@ public partial class NewUser : System.Web.UI.Page
                             createUser.Parameters.AddWithValue("@FirstName", txtFirstName.Text);
                             createUser.Parameters.AddWithValue("@LastName", txtLastName.Text);
                             createUser.Parameters.AddWithValue("@Username", txtUsername.Text);
-                            createUser.Parameters.AddWithValue("@UserType", "Staff");
+                            createUser.Parameters.AddWithValue("@UserType", userType.SelectedValue);
                             createUser.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
                             createUser.Parameters.AddWithValue("@LastUpdatedBy", Session["Username"]);
                             createUser.ExecuteNonQuery();

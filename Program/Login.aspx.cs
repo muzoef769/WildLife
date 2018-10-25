@@ -26,9 +26,9 @@ public partial class Login : System.Web.UI.Page
     protected void btnLogin_Click(object sender, EventArgs e)
     {
         // connect to database to retrieve stored password string
-        //try
-        //{
-        SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
+        try
+        {
+            SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
 
 
         lblStatus.Text = "Database Connection Successful";
@@ -59,29 +59,8 @@ public partial class Login : System.Web.UI.Page
                     txtPassword.Enabled = false;
                     Session["Username"] = txtUsername.Text;
                     
+                    Response.Redirect("Home.aspx", false);
 
-                    System.Data.SqlClient.SqlCommand findType = new System.Data.SqlClient.SqlCommand();
-                    findType.Connection = sc;
-                    // SELECT PASSWORD STRING WHERE THE ENTERED USERNAME MATCHES
-                    findType.CommandText = "select [UserType] from [dbo].[User] where Username = @Username AND UserType = @UserType";
-                    findType.Parameters.AddWithValue("@Username", txtUsername.Text);
-                    findType.Parameters.AddWithValue("@UserType", "Admin");
-
-                    SqlDataReader reader2 = findType.ExecuteReader(); // create a reader
-                    
-
-                    if (reader2.HasRows) // if the username exists, it will continue
-                    {
-                        while (reader2.Read()) // this will read the single record that matches the entered username
-                        {
-                            Response.Redirect("HomeAdmin.aspx", false);
-                        }
-                    }
-
-                    else
-                    {
-                        Response.Redirect("Home.aspx", false);
-                    }
                 }
                 else
                 {
@@ -98,13 +77,13 @@ public partial class Login : System.Web.UI.Page
         }
 
         sc.Close();
-        //}
-        //catch
-        //{
-        //    lblStatus.Text = "Database Error.";
-        //    lblStatus.Visible = true;
+    }
+        catch
+        {
+            lblStatus.Text = "Database Error.";
+            lblStatus.Visible = true;
 
-        //}
+        }
     }
 
     protected void lnkCreate_Click(object sender, EventArgs e)
