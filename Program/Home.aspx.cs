@@ -14,27 +14,35 @@ public partial class Home : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         lblCurrentMonth.Text = DateTime.Today.ToString("MMMM");
-
         System.Data.SqlClient.SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
-        sc.Open();
-        System.Data.SqlClient.SqlCommand findType = new System.Data.SqlClient.SqlCommand();
-        findType.Connection = sc;
-        // SELECT PASSWORD STRING WHERE THE ENTERED USERNAME MATCHES
-        findType.CommandText = "select [UserType] from [dbo].[User] where Username = @Username AND UserType = @UserType";
-        findType.Parameters.AddWithValue("@Username", Session["Username"]);
-        findType.Parameters.AddWithValue("@UserType", "Admin");
-
-        SqlDataReader reader = findType.ExecuteReader(); // create a reader
-
-
-        if (reader.HasRows) // if the username is an Admin, Create User button appears
+        try
         {
-            while (reader.Read()) 
+
+            sc.Open();
+            System.Data.SqlClient.SqlCommand findType = new System.Data.SqlClient.SqlCommand();
+            findType.Connection = sc;
+            // SELECT PASSWORD STRING WHERE THE ENTERED USERNAME MATCHES
+            findType.CommandText = "select [UserType] from [dbo].[User] where Username = @Username AND UserType = @UserType";
+            findType.Parameters.AddWithValue("@Username", Session["Username"]);
+            findType.Parameters.AddWithValue("@UserType", "Admin");
+
+            SqlDataReader reader = findType.ExecuteReader(); // create a reader
+
+
+            if (reader.HasRows) // if the username is an Admin, Create User button appears
             {
-                btnUser.Visible=true;
+                while (reader.Read())
+                {
+                    btnUser.Visible = true;
+                }
             }
+            sc.Close();
         }
-        sc.Close();
+        catch
+        {
+            sc.Close();
+            Response.Redirect("Error.aspx", false);
+        }
 
     }
 
