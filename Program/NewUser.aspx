@@ -1,12 +1,31 @@
-﻿<%@ Page Title="Create User" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="NewUser.aspx.cs" Inherits="NewUser" %>
+﻿<%@ Page Title="Create User" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="NewUser.aspx.cs" Inherits="NewUser" %>
 
 <asp:Content ID="ContentBody" ContentPlaceHolderID="MainContent" runat="Server">
 
     <div>
-        <h2 class="display-3 text-center text-white mb-3">Create User</h2>
+        <%--<h2 class="display-3 text-center text-white mb-3">Create User</h2>--%>
 
         <div class="container jumbotron w-50 bg-white shadow">
             <div class=" offset-2">
+                <div class="text-left form-group row">
+                    <label for="userType" class="col-4 font-weight-bold">Type:</label>
+                    <div class="col-6">
+                        <asp:DropDownList ID="userType" runat="server">
+                            <asp:ListItem></asp:ListItem>
+                            <asp:ListItem>Staff</asp:ListItem>
+                            <asp:ListItem>Volunteer</asp:ListItem>
+                            <asp:ListItem>Admin</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator 
+                            ID="reqType" 
+                            runat="server" 
+                            visible="false">
+
+                        </asp:RequiredFieldValidator>
+
+
+                    </div>
+                </div>
                 <div class="text-left form-group row">
                     <label for="userName" class="col-4 col-form-label font-weight-bold">Username:</label>
                     <div class="col-6">
@@ -101,7 +120,7 @@
                 <div class="btn-group">
                     <asp:Button ID="btnCreate" runat="server" Text="Create" CssClass="btn btn-primary rounded shadow mr-4" CausesValidation="true" OnClick="btnCreate_Click" />
 
-                    <a class="btn btn-primary rounded shadow" href="Login.aspx" role="button">Cancel</a>
+                    <a class="btn btn-primary rounded shadow" href="javascript:history.go(-1)" role="button">Back</a>
                 </div>
             </div>
 
@@ -110,15 +129,15 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="modalTitle">Success</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true" class="text-danger">&times;</span>
-                            </button>
+                            <a role="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="text-danger" >&times;</span>
+                            </a>
                         </div>
                         <div class="modal-body">
                             <asp:Label runat="server" ID="lblStatus" CssClass="modal-dialog"></asp:Label>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            <a role="button" class="btn btn-primary" data-dismiss="modal">Close</a>
                         </div>
                     </div>
                 </div>

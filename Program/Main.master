@@ -38,7 +38,7 @@
                             <a class="nav-link" href="Program.aspx">Programs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Animal.aspx">Animals</a>
+                            <a class="nav-link" href="AnimalFirstPage.aspx">Animals</a>
                         </li>
 
                         <!-- Dropdown -->
@@ -51,7 +51,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-danger" href="#">Log Out</a>
+                            <a class="nav-link text-danger" href="Login.aspx">Log Out</a>
                         </li>
                     </ul>
                 </div>

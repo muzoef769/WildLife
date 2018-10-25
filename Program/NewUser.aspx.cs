@@ -22,7 +22,11 @@ public partial class NewUser : System.Web.UI.Page
     {
 
         Page.Validate();
-
+        if (userType.SelectedIndex < 1)
+        {
+            reqType.IsValid = false;
+            lblUserStatus.Text = "Choose a type";
+        }
         if (Page.IsValid)
         {
             //COMMIT VALUES
@@ -33,7 +37,7 @@ public partial class NewUser : System.Web.UI.Page
 
                 ViewState["password"] = txtConfirmPw.Value;
 
-                String strGetUser = "Select UserID from [dbo].[Person] where Username = @Username";
+                String strGetUser = "Select UserID from [dbo].[User] where Username = @Username";
 
                 // CHECK FOR EXISTING USERNAMES IN USER RECORD
                 using (SqlCommand getUser = new SqlCommand(strGetUser, sc))
@@ -56,17 +60,20 @@ public partial class NewUser : System.Web.UI.Page
                         sc.Close();
 
                         // INSERT USER RECORD
-                        String strCreateUser = "insert into[dbo].[Person] values(@FName, @LName, @Username)";
+                        String strCreateUser = "insert into[dbo].[User] values(@FirstName, @LastName, @Username, @UserType, @LastUpdated, @LastUpdatedBy)";
                         using (SqlCommand createUser = new SqlCommand(strCreateUser, sc))
                         {
                             //try
                             //{
-                                sc.Open();
-                                createUser.Parameters.AddWithValue("@FName", txtFirstName.Text);
-                                createUser.Parameters.AddWithValue("@LName", txtLastName.Text);
-                                createUser.Parameters.AddWithValue("@Username", txtUsername.Text);
-                                createUser.ExecuteNonQuery();
-                                sc.Close();
+                            sc.Open();
+                            createUser.Parameters.AddWithValue("@FirstName", txtFirstName.Text);
+                            createUser.Parameters.AddWithValue("@LastName", txtLastName.Text);
+                            createUser.Parameters.AddWithValue("@Username", txtUsername.Text);
+                            createUser.Parameters.AddWithValue("@UserType", userType.SelectedValue);
+                            createUser.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
+                            createUser.Parameters.AddWithValue("@LastUpdatedBy", Session["Username"]);
+                            createUser.ExecuteNonQuery();
+                            sc.Close();
                             //}
                             //catch
                             //{
@@ -78,20 +85,20 @@ public partial class NewUser : System.Web.UI.Page
 
 
                         // INSERT PASSWORD RECORD AND CONNECT TO USER
-                        String strSetPass = "insert into[dbo].[Pass] values((select max(userid) from person), @Username, @Password)";
+                        String strSetPass = "insert into [dbo].[Password] values((select max(UserID) from [dbo].[User]), @Username, @Password)";
                         using (SqlCommand setPass = new SqlCommand(strSetPass, sc))
                         {
                             //try
                             //{
-                                sc.Open();
-                                setPass.Parameters.AddWithValue("@Username", txtUsername.Text);
-                                setPass.Parameters.AddWithValue("@Password", PasswordHash.HashPassword(ViewState["password"].ToString())); // hash entered password
-                                setPass.ExecuteNonQuery();
-                                sc.Close();
-                                // Message in the Modal
-                                lblStatus.Text = "User Created!";
-                                // Modal popup when submitted
-                                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "ModalView", "<script>$(function() { $('#newModal').modal('show'); });</script>", false);
+                            sc.Open();
+                            setPass.Parameters.AddWithValue("@Username", txtUsername.Text);
+                            setPass.Parameters.AddWithValue("@Password", PasswordHash.HashPassword(ViewState["password"].ToString())); // hash entered password
+                            setPass.ExecuteNonQuery();
+                            sc.Close();
+                            // Message in the Modal
+                            lblStatus.Text = "User Created!";
+                            // Modal popup when submitted
+                            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "ModalView", "<script>$(function() { $('#newModal').modal('show'); });</script>", false);
                             //}
                             //catch
                             //{

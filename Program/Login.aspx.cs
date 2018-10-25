@@ -31,50 +31,53 @@ public partial class Login : System.Web.UI.Page
             SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
 
 
-            lblStatus.Text = "Database Connection Successful";
+        lblStatus.Text = "Database Connection Successful";
 
-            sc.Open();
-            System.Data.SqlClient.SqlCommand findPass = new System.Data.SqlClient.SqlCommand();
-            findPass.Connection = sc;
-            // SELECT PASSWORD STRING WHERE THE ENTERED USERNAME MATCHES
-            findPass.CommandText = "select PasswordHash from Pass where Username = @Username";
-            findPass.Parameters.Add(new SqlParameter("@Username", txtUsername.Text));
+        sc.Open();
+        System.Data.SqlClient.SqlCommand findPass = new System.Data.SqlClient.SqlCommand();
+        findPass.Connection = sc;
+        // SELECT PASSWORD STRING WHERE THE ENTERED USERNAME MATCHES
+        findPass.CommandText = "select PasswordHash from [dbo].[Password] where Username = @Username";
+        findPass.Parameters.Add(new SqlParameter("@Username", txtUsername.Text));
 
-            SqlDataReader reader = findPass.ExecuteReader(); // create a reader
+        SqlDataReader reader = findPass.ExecuteReader(); // create a reader
 
-            if (reader.HasRows) // if the username exists, it will continue
+        if (reader.HasRows) // if the username exists, it will continue
+        {
+            while (reader.Read()) // this will read the single record that matches the entered username
             {
-                while (reader.Read()) // this will read the single record that matches the entered username
-                {
-                    string storedHash = reader["PasswordHash"].ToString(); // store the database password into this variable
+                string storedHash = reader["PasswordHash"].ToString(); // store the database password into this variable
 
-                    if (PasswordHash.ValidatePassword(txtPassword.Text, storedHash)) // if the entered password matches what is stored, it will show success
-                    {
-                        // Clear Fields
-                        lblStatus.Text = "Success!";
-                        lblStatus.Visible = true;
-                        btnLogin.Enabled = false;
-                        txtUsername.Text = null;
-                        txtUsername.Enabled = false;
-                        txtPassword.Enabled = false;
-                        Response.Redirect("Home.aspx", false);
-                    }
-                    else
-                    {
-                        lblStatus.Text = "Password is wrong.";
-                        lblStatus.Visible = true;
-                    }
+                if (PasswordHash.ValidatePassword(txtPassword.Text, storedHash)) // if the entered password matches what is stored, it will show success
+                {
+                    // Clear Fields
+                    lblStatus.Text = "Success!";
+                    lblStatus.Visible = true;
+                    btnLogin.Enabled = false;
+                   
+                    txtUsername.Enabled = false;
+                    txtPassword.Enabled = false;
+                    Session["Username"] = txtUsername.Text;
+                    
+                    Response.Redirect("Home.aspx", false);
+
+                }
+                else
+                {
+                    lblStatus.Text = "Password is wrong.";
+                    lblStatus.Visible = true;
                 }
             }
-            // if the username doesn't exist, it will show failure
-            else
-            {
-                lblStatus.Text = "Username does not exist.";
-                lblStatus.Visible = true;
-            }
-
-            sc.Close();
         }
+        // if the username doesn't exist, it will show failure
+        else
+        {
+            lblStatus.Text = "Username does not exist.";
+            lblStatus.Visible = true;
+        }
+
+        sc.Close();
+    }
         catch
         {
             lblStatus.Text = "Database Error.";
