@@ -17,11 +17,15 @@ public partial class Animal : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        String aID = Request.QueryString["field1"];
+        //Animals pageAnimal = new Animals(txtSpecies.Text, txtScientificName.Text, txtName.Text, txtType.Text, DateTime.Today, "Muzo");
         sc.Open();
-        string myQuery = "SELECT [AnimalID], [AnimalName], [Species], [ScientificName], [AnimalType] FROM [WildlifeCenter].[dbo].[Animal] WHERE [AnimalID] = @AnimalID";
+        String aID = Request.QueryString["field1"];
+        SqlCommand animal_Id = new SqlCommand("SELECT AnimalID from Animal", sc);
+        int selectPerson = Convert.ToInt32(animal_Id.ExecuteScalar());
+        
+        string myQuery = "SELECT [Species], [ScientificName], [AnimalName], [AnimalType] FROM [WildlifeCenter].[dbo].[Animal] WHERE [AnimalID] = @AnimalID";
         SqlCommand myCommand = new SqlCommand(myQuery, sc);
-        myCommand.Parameters.AddWithValue("@AnimalID", aID);
+        myCommand.Parameters.AddWithValue("@AnimalID", animal_Id);
         try
         {
 
@@ -29,10 +33,9 @@ public partial class Animal : System.Web.UI.Page
             while (myReader.Read())
             {
                 animalID = int.Parse(myReader["AnimalID"].ToString());
-                txtName.Text = myReader.GetString(1);
-                txtSpecies.Text = myReader.GetString(2);
-                txtScientificName.Text = myReader.GetString(3);
-
+                txtSpecies.Text = myReader.GetString(1);
+                txtScientificName.Text = myReader.GetString(2);
+                txtName.Text = myReader.GetString(3);
                 txtType.Text = myReader.GetString(4);
             }
         }
