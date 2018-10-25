@@ -12,7 +12,7 @@
                 <label for="ddlMonth" class=" offset-4 col-6 col-form-item font-weight-bold">November 26: Off-Site; James Madison University</label>
             </div>
 
-            <asp:Button ID="btnUser" runat="server" Text="Create Burger" OnClick="btnUser_Click" Visible="false" />
+            <asp:Button ID="btnUser" runat="server" Text="Create User" OnClick="btnUser_Click" Visible="false" />
                <%-- schedule - gridview??--%>
 
 
