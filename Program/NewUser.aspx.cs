@@ -56,18 +56,18 @@ public partial class NewUser : System.Web.UI.Page
                         sc.Close();
 
                         // INSERT USER RECORD
-                        String strCreateUser = "insert into[dbo].[User] values(@FName, @LName, @Username)";
+                        String strCreateUser = "insert into[dbo].[User] values(@FirstName, @LastName, @Username, @UserType, @LastUpdated, @LastUpdatedBy)";
                         using (SqlCommand createUser = new SqlCommand(strCreateUser, sc))
                         {
                             //try
                             //{
                             sc.Open();
-                            createUser.Parameters.AddWithValue("@FName", txtFirstName.Text);
-                            createUser.Parameters.AddWithValue("@LName", txtLastName.Text);
+                            createUser.Parameters.AddWithValue("@FirstName", txtFirstName.Text);
+                            createUser.Parameters.AddWithValue("@LastName", txtLastName.Text);
                             createUser.Parameters.AddWithValue("@Username", txtUsername.Text);
                             createUser.Parameters.AddWithValue("@UserType", "Staff");
                             createUser.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
-                            createUser.Parameters.AddWithValue("@LastUpdatedBy", txtUsername.Text);
+                            createUser.Parameters.AddWithValue("@LastUpdatedBy", Session["Username"]);
                             createUser.ExecuteNonQuery();
                             sc.Close();
                             //}
@@ -81,7 +81,7 @@ public partial class NewUser : System.Web.UI.Page
 
 
                         // INSERT PASSWORD RECORD AND CONNECT TO USER
-                        String strSetPass = "insert into[dbo].[Pass] values((select max(userid) from User), @Username, @Password)";
+                        String strSetPass = "insert into [dbo].[Password] values((select max(UserID) from [dbo].[User]), @Username, @Password)";
                         using (SqlCommand setPass = new SqlCommand(strSetPass, sc))
                         {
                             //try
