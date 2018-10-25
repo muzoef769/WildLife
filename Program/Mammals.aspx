@@ -124,7 +124,13 @@
         </div>
     </div>
 
+    <script>
+        function open_win() {
+            var url = "http://" + location.host
 
+        }
+
+    </script>
 
 
 </asp:Content>
