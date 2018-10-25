@@ -11,4 +11,9 @@ public partial class Mammals : System.Web.UI.Page
     {
 
     }
+
+    protected void animal_OnClicked(object sender, EventArgs e)
+    {
+        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "ModalView", "<script>$(function() { $('#animalModal').modal('show'); });</script>", false);
+    }
 }
