@@ -14,7 +14,6 @@
 	  <h4 class=" ProgramCardTitle Underline d-flex justify-content-center "> Off-Site</h4>
 	 
     <div class="d-flex justify-content-center "> <button data-toggle="modal" data-target="#AddProgramModal" data-dismiss="modal" class="btn btn-primary LoginButton" type="submit">Add Program</button></div>
-   
 
     <form>
   
@@ -94,14 +93,9 @@
   </div>
   </div>
   
-  	
-
-  
   
 		<br>
-		
 	
-		
 </form>
   </div>
 </div>
