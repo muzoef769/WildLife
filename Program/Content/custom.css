@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /* CSS Document */
 
 body, html {
@@ -20,12 +20,12 @@ body, html {
 
 
 body {
-   background-image: url("../Images/UrlBg.jpg");
-  background-color: #c3dbf5; /* Used if the image is unavailable */
-  height: auto;/* You must set a specified height */
-  background-position:center;/* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size:cover; /* Resize the background image to cover the entire container */
+    background-image: url("../Images/UrlBg.jpg");
+    background-color: #c3dbf5; /* Used if the image is unavailable */
+    height: auto; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
 }
 
 .navbar {;
