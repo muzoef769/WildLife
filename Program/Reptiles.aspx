@@ -32,7 +32,7 @@
 <div class="row">
   <div class="column" style="background-color:#aaa;">
     <h2>Clifford</h2>
-    <a href="Animal.aspx">
+    <a href="Animal.aspx?field1=19">
         <img src="Images/cliff.jpg" style="width: 150px" />
         
 </a>
@@ -43,7 +43,7 @@
   </div>
   <div class="column" style="background-color:#bbb;">
     <h2>Max</h2>
-    <a href="Animal.aspx">
+    <a href="Animal.aspx?field1=20">
         <img src="Images/max.jpg" style="width: 150px" />
         
 </a>
@@ -58,7 +58,7 @@
   </div>
   <div class="column" style="background-color:#ccc;">
 <h2>Malcolm</h2>
-    <a href="Animal.aspx">
+    <a href="Animal.aspx?field1=21">
         <img src="Images/21-malcolm.jpg" style="width: 150px" />
         
 </a>
@@ -78,7 +78,7 @@
  <div class="row">
   <div class="column" style="background-color:#aaa;">
     <h2>Albus</h2>
-    <a href="Animal.aspx">
+    <a href="Animal.aspx?field1=22">
         <img src="Images/albus.jpg" style="width: 150px" />
         
 </a>
@@ -89,7 +89,7 @@
   </div>
   <div class="column" style="background-color:#bbb;">
     <h2>Severus</h2>
-    <a href="Animal.aspx">
+    <a href="Animal.aspx?field1=23">
         <img src="Images/22-severus.jpg" style="width: 150px" />
         
 </a>
@@ -104,7 +104,7 @@
   </div>
   <div class="column" style="background-color:#ccc;">
 <h2>Oscar</h2>
-    <a href="Animal.aspx">
+    <a href="Animal.aspx?field1=24">
         <img src="Images/oscar.jpg" style="width: 150px" />
         
 </a>
@@ -122,7 +122,7 @@
     <div class="row">
   <div class="column" style="background-color:#aaa;">
     <h2>Emma</h2>
-    <a href="Animal.aspx">
+    <a href="Animal.aspx?field1=25">
         <img src="Images/23-emma.jpg" style="width: 150px" />
         
 </a>
@@ -133,7 +133,7 @@
   </div>
   <div class="column" style="background-color:#bbb;">
     <h2>Wilson</h2>
-    <a href="Animal.aspx">
+    <a href="Animal.aspx?field1=26">
         <img src="Images/24-wilson.jpg" style="width: 150px" />
         
 </a>
