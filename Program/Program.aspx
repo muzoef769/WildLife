@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Program" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Program.aspx.cs" Inherits="Program" %>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-    <div class="main">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
+<div class="main">
 
 <div class="row">
 
@@ -14,6 +14,7 @@
 	  <h4 class=" ProgramCardTitle Underline d-flex justify-content-center "> Off-Site</h4>
 	 
     <div class="d-flex justify-content-center "> <button data-toggle="modal" data-target="#AddProgramModal" data-dismiss="modal" class="btn btn-primary LoginButton" type="submit">Add Program</button></div>
+   
 
     <form>
   
@@ -93,9 +94,14 @@
   </div>
   </div>
   
+  	
+
+  
   
 		<br>
+		
 	
+		
 </form>
   </div>
 </div>
@@ -421,7 +427,7 @@
 			</div> <!-- End  Description --> 
 			
 			 <div class=" col-md-6 ">
-	  <h4> Organizaion:</h4> <p class="LongOrg"> James Madison University</p>
+	  <h4> Organization:</h4> <p class="LongOrg"> James Madison University</p>
 	    <h4> Contact:</h4> <p class="Contact">Jimmy Neutron</p>
 	    <h4> Email:</h4> <p class="Email"> Blastoff@gmail.com</p>
 	    <h4> Primary Phone:</h4> <p class="PrPhn"> xxx-xxx-xxxx</p>
@@ -442,6 +448,52 @@
 	   
 			</div> <!-- End  Description --> 
 		
-	</div>
+	</div><!-- End  row --> 
+          
+          
+           
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ul class="container MonthNav">
+                <h3><u>Month</u></h3>
+                <li class="MonthLi">January</li>
+               
+                <li class="MonthLi">February</li>
+           
+                <li class="MonthLi">March</li>
+              
+                <li class="MonthLi">April</li>
+              
+                <li class="MonthLi">May</li>
+             
+                <li class="MonthLi">June</li>
+           
+                <li class="MonthLi">July</li>
+             
+                <li class="MonthLi">August</li>
+             
+                <li class="MonthLi">September</li>
+              
+                <li class="MonthLi">October</li>
+               
+                <li class="MonthLi">November</li>
+               
+                <li class="MonthLi">December</li>
+                
+                
+            
+            </ul>
+
+
+
+
+</div>
 </asp:Content>
 
