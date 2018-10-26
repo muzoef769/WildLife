@@ -3,17 +3,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
 
         <div class="row AnimalNav d-flex justify-content-center ">
-		<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
-			<h1 class="AnimalLi  ">Birds</h1>
+		<div  class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle" >
+			<a class="AnimalLi nav-link" href="#">Birds</a>
 			
 		</div>
 	<div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
-			<h1 class="AnimalLi ">Reptiles</h1>
-			
+			<a class="AnimalLi nav-link" href ="Reptiles.aspx">Reptiles</a>
+
 		</div>
 	<div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
-			<h1 class="AnimalLi  ">Mammals</h1>
-			
+			<a class="AnimalLi nav-link " href ="Mammals.aspx">Mammals</a>
+
 		</div>
 	</div>
     <div class="row">
@@ -61,7 +61,7 @@
          <img src="Images/Verlon.jpg" />
                  </a>
          <div class="caption">
-         <h4>Vernon</h4>
+         <h4>Verlon</h4>
               </div>
           </div>
         </div>
@@ -81,9 +81,9 @@
 
     <div class="row text-center text-lg-center">
 
-        <div id="Bird5" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+        <div id="Bird27" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
             <div class="thumbnail AnimalInfoDiv">
-             <a href="Animal.aspx?field1=5">
+             <a href="Animal.aspx?field1=27">
              <img src="Images/hudson.jpg" />
                  </a>
                 <div class="caption">
@@ -92,9 +92,9 @@
           </div>
         </div>
 
-        <div id="Bird6" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+        <div id="Bird5" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
             <div class="thumbnail AnimalInfoDiv">
-             <a href="Animal.aspx?field1=6">
+             <a href="Animal.aspx?field1=5">
                  <img src="Images/grayson.jpg" />
                  </a>
                 <div class="caption">
@@ -103,9 +103,9 @@
           </div>
         </div>
 
-<div id="Bird7" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+<div id="Bird6" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
             <div class="thumbnail AnimalInfoDiv">
-             <a href="Animal.aspx?field1=7">
+             <a href="Animal.aspx?field1=6">
                  <img src="Images/keeya.jpg" />
                  </a>
                 <div class="caption">
@@ -114,9 +114,9 @@
           </div>
         </div>
 
-<div id="Bird8" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+<div id="Bird7" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
             <div class="thumbnail AnimalInfoDiv">
-             <a href="Animal.aspx?field1=8">
+             <a href="Animal.aspx?field1=7">
                  <img src="Images/07-ruby.jpg" />
                  </a>
                 <div class="caption">
@@ -128,9 +128,9 @@
    
  <div class="row text-center text-lg-center">
 
-        <div id="Bird9" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+        <div id="Bird8" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
             <div class="thumbnail AnimalInfoDiv">
-             <a href="Animal.aspx?field1=9">
+             <a href="Animal.aspx?field1=8">
                  <img src="Images/rose.jpg" />  
                  </a>
                 <div class="caption">
@@ -139,9 +139,9 @@
           </div>
         </div>
 
-        <div id="Bird10" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+        <div id="Bird9" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
             <div class="thumbnail AnimalInfoDiv">
-             <a href="Animal.aspx?field1=10">
+             <a href="Animal.aspx?field1=9">
                <img src="Images/athena.jpg" />
                  </a>
                 <div class="caption">
@@ -150,9 +150,9 @@
           </div>
         </div>
 
-         <div id="Bird11" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+         <div id="Bird10" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
             <div class="thumbnail AnimalInfoDiv">
-             <a href="Animal.aspx?field1=11">
+             <a href="Animal.aspx?field1=10">
                  <img src="Images/gus.jpg" />
                  </a>
                 <div class="caption">
@@ -161,9 +161,9 @@
           </div>
         </div>
 
-      <div id="Bird12" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+      <div id="Bird11" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
             <div class="thumbnail AnimalInfoDiv">
-             <a href="Animal.aspx?field1=12">
+             <a href="Animal.aspx?field1=11">
                  <img src="Images/papagho.jpg" />
                  </a>
                 <div class="caption">
@@ -174,9 +174,9 @@
      </div>
 
      <div class="row text-center text-lg-center">
-         <div id="Bird13" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+         <div id="Bird12" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
             <div class="thumbnail AnimalInfoDiv">
-             <a href="Animal.aspx?field1=13">
+             <a href="Animal.aspx?field1=12">
                  <img src="Images/quinn.jpg" />
                  </a>
                 <div class="caption">
@@ -185,9 +185,9 @@
           </div>
         </div>
 
-<div id="Bird14" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+<div id="Bird13" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
             <div class="thumbnail AnimalInfoDiv">
-             <a href="Animal.aspx?field1=14">
+             <a href="Animal.aspx?field1=13">
                  <img src="Images/alex.jpg" />
                  </a>
                 <div class="caption">
@@ -196,9 +196,9 @@
           </div>
         </div>
 
-<div id="Bird15" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+<div id="Bird14" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
             <div class="thumbnail AnimalInfoDiv">
-             <a href="Animal.aspx?field1=15">
+             <a href="Animal.aspx?field1=14">
                  <img src="Images/Buttercup%202014%20(17).jpg" />
                  </a>
                 <div class="caption">
@@ -206,9 +206,9 @@
             </div>
           </div>
         </div>
-    <div id="Bird16" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+    <div id="Bird15" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
             <div class="thumbnail AnimalInfoDiv">
-             <a href="Animal.aspx?field1=16">
+             <a href="Animal.aspx?field1=15">
                  <img src="Images/14-jaz.jpg" />
                  </a>
                 <div class="caption">

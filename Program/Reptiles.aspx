@@ -1,152 +1,131 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Reptiles.aspx.cs" Inherits="Reptiles" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-<%-- <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">--%>
-<style>
-* {
-    box-sizing: border-box;
-}
+<div class="row AnimalNav d-flex justify-content-center ">
+		<div  class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle" >
+			<a class="AnimalLi nav-link" href="Birds.aspx">Birds</a>
+			
+		</div>
+	<div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
+			<a class="AnimalLi nav-link" href ="#">Reptiles</a>
 
-/* Create three equal columns that floats next to each other */
-.column {
-    float: left;
-    width: 33.33%;
-    padding: 10px;
-    height: 300px; /* Should be removed. Only for demonstration */
-}
+		</div>
+	<div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
+			<a class="AnimalLi nav-link " href ="Mammals.aspx">Mammals</a>
 
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-</style>
-<%--</head>
-<body>--%>
-
-<h2>All Reptiles</h2>
-
+		</div>
+	</div>	
 <div class="row">
-  <div class="column" style="background-color:#aaa;">
-    <h2>Clifford</h2>
-    <a href="Animal.aspx?field1=19">
-        <img src="Images/cliff.jpg" style="width: 150px" />
-        
-</a>
-    <br /> 
-     <br /> 
-      
-      
-  </div>
-  <div class="column" style="background-color:#bbb;">
-    <h2>Max</h2>
-    <a href="Animal.aspx?field1=20">
-        <img src="Images/max.jpg" style="width: 150px" />
-        
-</a>
-    <br /> 
-     <br /> 
-     
-      
-
-
-
-
-  </div>
-  <div class="column" style="background-color:#ccc;">
-<h2>Malcolm</h2>
-    <a href="Animal.aspx?field1=21">
-        <img src="Images/21-malcolm.jpg" style="width: 150px" />
-        
-</a>
-    <br /> 
-     <br /> 
-       
+		<div class="col-md-4"></div>
+	<div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
+			<div id="AddAnimalButton" class="col-md-12">
+         <a class="btn btn-primary d-flex  mx-auto justify-content-center btn-AddAnimal" href="#" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a> <%--ADD A BIRD/ANIMAL LINK IN THE HREF--%>
          
-
-
-
-
-  </div>
-</div>
-
-
-
- <div class="row">
-  <div class="column" style="background-color:#aaa;">
-    <h2>Albus</h2>
-    <a href="Animal.aspx?field1=22">
-        <img src="Images/albus.jpg" style="width: 150px" />
-        
-</a>
-    <br /> 
-     <br /> 
-     
-      
-  </div>
-  <div class="column" style="background-color:#bbb;">
-    <h2>Severus</h2>
-    <a href="Animal.aspx?field1=23">
-        <img src="Images/22-severus.jpg" style="width: 150px" />
-        
-</a>
-    <br /> 
-     <br /> 
-      
-      
-
-
-
-
-  </div>
-  <div class="column" style="background-color:#ccc;">
-<h2>Oscar</h2>
-    <a href="Animal.aspx?field1=24">
-        <img src="Images/oscar.jpg" style="width: 150px" />
-        
-</a>
-    <br /> 
-     <br /> 
-      
-         
-
-
-
-
-  </div>
-</div>
-
-    <div class="row">
-  <div class="column" style="background-color:#aaa;">
-    <h2>Emma</h2>
-    <a href="Animal.aspx?field1=25">
-        <img src="Images/23-emma.jpg" style="width: 150px" />
-        
-</a>
-    <br /> 
-     <br /> 
-       
-      
-  </div>
-  <div class="column" style="background-color:#bbb;">
-    <h2>Wilson</h2>
-    <a href="Animal.aspx?field1=26">
-        <img src="Images/24-wilson.jpg" style="width: 150px" />
-        
-</a>
-    <br /> 
-     <br /> 
-            
-      </div>
         </div>
+        </div>
+				<div class="col-md-4"></div>
+
+	
+</div>
+  <div class="container">       
+    <div class="row text-center text-lg-center">
+     <div id="Reptile1" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+          <div class="thumbnail AnimalInfoDiv">
+              <a href="Animal.aspx?field1=19"> 
+            <img src="Images/cliff.jpg" />
+                 </a>
+              <div class="caption">
+                  <h4>Clifford</h4>
+              
+               
+            </div>
+            </div>
+            </div>
+    <div id="Reptile2" class=" AnimalIcons col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
+    <div class="thumbnail AnimalInfoDiv">
+        <a href="Animal.aspx?field1=20">
+            <img src="Images/max.jpg" />
+            </a>
+              <div class="caption">
+                <h4>Max</h4>
+
+         </div>
+          </div>
+        </div>
+		 
+		 <div id="Reptile3" class=" AnimalIcons  col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
+         <div class="thumbnail AnimalInfoDiv">
+             <a href="Animal.aspx?field1=21">
+         <img src="Images/21-malcolm.jpg" />
+                 </a>
+         <div class="caption">
+         <h4>Malcom</h4>
+              </div>
+          </div>
+        </div>
+         
+        <div id="Reptile4" class=" AnimalIcons  col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
+          <div class="thumbnail AnimalInfoDiv"> 
+               <a href="Animal.aspx?field1=22">
+                   <img src="Images/albus.jpg" />
+                   </a>
+                <div class="caption">
+                  <h4>Albus</h4>
+           </div>
+          </div>
+        </div>
+         </div>
+
+	
+<div class="row text-center text-lg-center">
+     <div id="Reptile5" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+          <div class="thumbnail AnimalInfoDiv">
+              <a href="Animal.aspx?field1=23"> 
+            <img src="Images/22-severus.jpg" />
+                 </a>
+              <div class="caption">
+                  <h4>Severus</h4>
+              
+               
+            </div>
+            </div>
+            </div>
+    <div id="Reptile6" class=" AnimalIcons col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
+    <div class="thumbnail AnimalInfoDiv">
+        <a href="Animal.aspx?field1=24">
+            <img src="Images/oscar.jpg" />
+            </a>
+              <div class="caption">
+                <h4>Oscar</h4>
+
+         </div>
+          </div>
+        </div>
+		 
+		 <div id="Reptile7" class=" AnimalIcons  col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
+         <div class="thumbnail AnimalInfoDiv">
+             <a href="Animal.aspx?field1=25">
+                 <img src="Images/23-emma.jpg" />
+                 </a>
+         <div class="caption">
+         <h4>Emma</h4>
+              </div>
+          </div>
+        </div>
+         
+        <div id="Reptile8" class=" AnimalIcons  col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
+          <div class="thumbnail AnimalInfoDiv"> 
+               <a href="Animal.aspx?field1=26">
+                   <img src="Images/24-wilson.jpg" />  
+                   </a>
+                <div class="caption">
+                  <h4>Wilson</h4>
+           </div>
+          </div>
+        </div>
+         </div>
 
 
-<%--</body>
-</html>
---%>
 
 
 
@@ -156,5 +135,5 @@
 
 
 
-
+</div>
 </asp:Content>
