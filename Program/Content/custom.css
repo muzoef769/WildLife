@@ -11,7 +11,7 @@ body, html {
 
     /* Full height */
     height: 100%; 
-
+    background-attachment:fixed;
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
@@ -26,6 +26,7 @@ body {
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
+    background-attachment: fixed;
 }
 
 #overlay {
@@ -355,7 +356,7 @@ ul {
 
 .MonthBreak {font-size:  .2em;}
 
-.AnimalIcons {padding-left: 10%;}
+.AnimalIcons {padding-left: 0%;}
 
 a.ProgramCaption{color: black;
 background-color: whitesmoke;
