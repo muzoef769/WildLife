@@ -35,7 +35,7 @@
 
             <asp:Label ID="lblStatus" runat="server" Visible="false"></asp:Label>
 
-            <h6><a class="nav-link" href="NewUser.aspx">Not a User, Click Here!</a></h6> <%--remove, move to admin--%>
+            <h6><a class="nav-link" href="NewUser.aspx">Not a User? Click Here!</a></h6> <%--remove, move to admin--%>
 
             <div class="pt-1">
                 <asp:Button ID="btnLogin" runat="server" CssClass="shadow-sm btn-primary rounded" OnClick="btnLogin_Click" Text="Login" CausesValidation="true" />
