@@ -8,8 +8,6 @@ using System.Web;
 /// </summary>
 public class Programs
 {
-    private int newProgramID;
-    private int programID;
     private int numKids;
     private int numAdults;
     private int totalPeople;
@@ -22,13 +20,11 @@ public class Programs
     private DateTime LastUpdated;
     private string LastUpdatedBy;
 
-    public Programs(int newProgramID, int programID, int numKids,
+    public Programs(int numKids,
         int numAdults, int totalPeople, int totalMileage,DateTime dateCreated,
         DateTime dateCompleted, string ageLevel, string status, string miscNotes,
         DateTime lastUpdated, string lastUpdatedBy)
     {
-        this.newProgramID = newProgramID;
-        this.programID = programID;
         this.numKids = numKids;
         this.numAdults = numAdults;
         this.totalPeople = totalPeople;
@@ -42,8 +38,6 @@ public class Programs
         LastUpdatedBy = lastUpdatedBy;
     }
 
-    public int NewProgramID { get => newProgramID; set => newProgramID = value; }
-    public int ProgramID { get => programID; set => programID = value; }
     public int NumKids { get => numKids; set => numKids = value; }
     public int NumAdults { get => numAdults; set => numAdults = value; }
     public int TotalPeople { get => totalPeople; set => totalPeople = value; }
