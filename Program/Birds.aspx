@@ -20,7 +20,7 @@
 		<div class="col-md-4"></div>
 	<div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
 			<div id="AddAnimalButton" class="col-md-12">
-         <a class="btn btn-primary d-flex  mx-auto justify-content-center btn-AddAnimal" href="#" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a> <%--ADD A BIRD/ANIMAL LINK IN THE HREF--%>
+         <a class="btn btn-primary d-flex  mx-auto justify-content-center btn-AddAnimal text-light"  onclick="Redirect()" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a> <%--ADD A BIRD/ANIMAL LINK IN THE HREF--%>
          
         </div>
         </div>
@@ -34,7 +34,8 @@
      <div id="Bird1" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
           <div class="thumbnail AnimalInfoDiv">
               <a href="Animal.aspx?field1=1"> 
-            <img src="Images/Buddy.jpg" />
+                  
+            <img class="AnimalPic" src="Images/Buddy.jpg" alt=""/>
                  </a>
               <div class="caption">
                   <h4>Buddy</h4>
@@ -43,10 +44,10 @@
             </div>
             </div>
             </div>
-    <div id="Bird2" class=" AnimalIcons col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
+    <div id="Bird2" class="AnimalPic AnimalIcons col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
     <div class="thumbnail AnimalInfoDiv">
         <a href="Animal.aspx?field1=2">
-    <img src="Images/edie.jpg" />
+    <img class="AnimalPic"src="Images/edie.jpg" alt=""/>
             </a>
               <div class="caption">
                 <h4>Edie</h4>
@@ -58,7 +59,7 @@
 		 <div id="Bird3" class=" AnimalIcons  col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
          <div class="thumbnail AnimalInfoDiv">
              <a href="Animal.aspx?field1=3">
-         <img src="Images/Verlon.jpg" />
+         <img src="Images/Verlon.jpg"  class="AnimalPic"/>
                  </a>
          <div class="caption">
          <h4>Verlon</h4>
@@ -69,14 +70,14 @@
         <div id="Bird4" class=" AnimalIcons  col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
           <div class="thumbnail AnimalInfoDiv"> 
                <a href="Animal.aspx?field1=4">
-            <img src="Images/maggie.jpg" />
+            <img src="Images/maggie.jpg" class="AnimalPic" />
                    </a>
                 <div class="caption">
                   <h4>Maggie</h4>
            </div>
           </div>
         </div>
-         </div>
+   </div>
 
 
     <div class="row text-center text-lg-center">
@@ -218,6 +219,18 @@
         </div>
          </div>
     </div>
+
+          <script type="text/javascript">
+         <!--
+            function Redirect() {
+             window.location="AddAnimal.aspx";
+            }
+         //-->
+      </script>
+
+
+
+
      <%--       <div class="column" style="background-color: #ccc;">
                 <h2>Verlon</h2>
                 <a href="Animal.aspx?field1=3">
@@ -446,6 +459,6 @@
 
 
 
-
+</div>
 </asp:Content>
 

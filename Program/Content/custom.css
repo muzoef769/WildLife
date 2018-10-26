@@ -422,7 +422,10 @@ thumbnail {
     width: 100%;
 	
 }
-
+.AnimalPic{
+    height: 150px;
+    width: 150px;
+}
 .AnimalInfoDiv {background-color: whitesmoke;
 border-radius: 12px;}
 

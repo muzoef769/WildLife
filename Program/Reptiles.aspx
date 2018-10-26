@@ -19,7 +19,7 @@
 		<div class="col-md-4"></div>
 	<div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
 			<div id="AddAnimalButton" class="col-md-12">
-         <a class="btn btn-primary d-flex  mx-auto justify-content-center btn-AddAnimal" href="#" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a> <%--ADD A BIRD/ANIMAL LINK IN THE HREF--%>
+         <a class="btn btn-primary d-flex  mx-auto justify-content-center btn-AddAnimal" href="AddAnimal.aspx" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a> <%--ADD A BIRD/ANIMAL LINK IN THE HREF--%>
          
         </div>
         </div>
