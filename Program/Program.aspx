@@ -13,10 +13,9 @@
 	  <h1 id="ProgramMonth" class=" ProgramCardTitle d-flex justify-content-center "> April</h1>
 	  <h4 class=" ProgramCardTitle Underline d-flex justify-content-center "> Off-Site</h4>
 	 
-    <div class="d-flex justify-content-center "> <button data-toggle="modal" data-target="#AddProgramModal" data-dismiss="modal" class="btn btn-primary LoginButton" type="submit">Add Program</button></div>
+    <div class="d-flex justify-content-center "> <button data-toggle="modal" data-target="#AddProgramModal" class="btn btn-primary LoginButton" type="button">Add Program</button></div>
    
 
-    <form>
   
   	
   <div class="ProgramShort">
@@ -91,29 +90,18 @@
         </tbody>
     </table>
 </div>
-  </div>
-  </div>
-  
-  	
+</div>
+</div>
+ 
+	<br>
 
-  
-  
-		<br>
-		
-	
-		
-</form>
-  </div>
+</div>
+</div>
 </div>
 </div>
 
 
-
-</div>
-
-
-
-<div class="modal" id="EditProgramModal" tabindex="-1" role="dialog" aria-hidden="true">
+<%--<div class="modal" id="EditProgramModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-full" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -217,23 +205,35 @@
 			</div> <!-- End  Description --> 
 			
 			 <div class=" col-md-6 ">
-	  <h4> Organization:</h4> <input type="name" class="form-control" id="EditOrg" placeholder="Change Organizaion">
-	    <h4> Contact:</h4> <input type="name" class="form-control" id="EditContact" placeholder="Change Contact">
-	    <h4> Email:</h4> <input type="name" class="form-control" id="EditEmail" placeholder="Change Email">
-	    <h4> Primary Number:</h4> <input type="name" class="form-control" id="EditPrimPhone" placeholder="Change Primary #">
-	    <h4> Secondary Number:</h4> <input type="name" class="form-control" id="EditSecPhone" placeholder="Change Secondary #">
-	    <h4> Billing Address:</h4> <input type="name" class="form-control" id="EditBilling" placeholder="Change Billing Address">
-	    <h4> County:</h4> <input type="name" class="form-control" id="EditCounty" placeholder="Change County">
-	    
+	    <h4> Organization:</h4>
+            <asp:TextBox ID="txtOrganization" runat="server" CssClass="form-control" Placeholder="Add DICK Organization"></asp:TextBox>
+        <h4> Contact:</h4>
+            <asp:TextBox ID="txtContact" runat="server" CssClass="form-control" Placeholder="Add Contact"></asp:TextBox>
+	    <h4> Email:</h4>
+                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" Placeholder="Add Email"></asp:TextBox>
+	    <h4> Primary Number:</h4>
+                 <asp:TextBox ID="txtPrimaryNumber" runat="server" CssClass="form-control" Placeholder="Add Primary #"></asp:TextBox>
+	    <h4> Secondary Number:</h4>
+                 <asp:TextBox ID="txtSecondaryNumber" runat="server" CssClass="form-control" Placeholder="Add Secondary #"></asp:TextBox>
+	    <h4> Billing Address:</h4>
+                 <asp:TextBox ID="txtBillingAddress" runat="server" CssClass="form-control" Placeholder="Add Billing Address"></asp:TextBox>
+	    <h4> County:</h4>
+                 <asp:TextBox ID="txtCounty" runat="server" CssClass="form-control" Placeholder="Add County"></asp:TextBox>
 	    <hr>
 	   
-	    <h4> Program Total:</h4> <input type="name" class="form-control" id="EditProgTtl" placeholder="Change Program Total">
-	    <h4> $/Mileage:</h4> <input type="name" class="form-control" id="EditMileCost" placeholder="Change $/Mileage">
-	    <h4> Check # / Payment:</h4> <input type="name" class="form-control" id="EditCheckNum" placeholder="Change Check # / Payment">
-	    <h4> Amount Paid:</h4> <input type="name" class="form-control" id="EditPaid" placeholder="Change Amount Paid">
+	    <h4> Program Total:</h4>
+                 <asp:TextBox ID="txtProgramTotal" runat="server" CssClass="form-control" Placeholder="Add County"></asp:TextBox>
+	    <h4> $/Mileage:</h4>
+                 <asp:TextBox ID="txtMileage1" runat="server" CssClass="form-control" Placeholder="Add County"></asp:TextBox>
+	    <h4> Check # / Payment:</h4>
+                 <asp:TextBox ID="txtPayment" runat="server" CssClass="form-control" Placeholder="Add County"></asp:TextBox>
+	    <h4> Amount Paid:</h4>
+                 <asp:TextBox ID="txtPaid" runat="server" CssClass="form-control" Placeholder="Add County"></asp:TextBox>
 	    <hr>
-	    <h4> Balance:</h4> <input type="name" class="form-control" id="EditBalance" placeholder="Change Balance">
-	    <h4> Invoice:</h4> <input type="name" class="form-control" id="EditInvoice" placeholder="Change Invoice">
+	    <h4> Balance:</h4>
+                 <asp:TextBox ID="txtBalance" runat="server" CssClass="form-control" Placeholder="Add County"></asp:TextBox>
+	    <h4> Invoice:</h4>
+                 <asp:TextBox ID="Invoice" runat="server" CssClass="form-control" Placeholder="Add County"></asp:TextBox>
 
 	   
 			</div> <!-- End  Description --> 
@@ -248,7 +248,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>--%>
 
 <div class="modal" id="AddProgramModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-full" role="document">
@@ -264,13 +264,20 @@
                   <div class="row  ">
                   
 	    <div class=" col-md-6">
-	    <h4> Program:</h4> <input type="name" class="form-control" id="AddProgram" placeholder="Add Program Name">
-	    <h4> Type:</h4> <input type="name" class="form-control" id="AddProgramType" placeholder="Add Type">
-	    <h4> Date/Time:</h4> <input type="name" class="form-control" id="AddDT" placeholder="Add Date/Time">
-	    <h4> Number of Kids:</h4> <input type="name" class="form-control" id="AddNumKid" placeholder=" Add Number of Kids">
-	    <h4> Number of Adults:</h4> <input type="name" class="form-control" id="AddNumAdult" placeholder=" Add Number of Adults">
-	    <h4> Educators:</h4> <input type="name" class="form-control" id="AddEd" placeholder="Add Educators">
-	    <h4> Mileage:</h4> <input type="name" class="form-control" id="AddMiles" placeholder="Add Mileage">
+	    <h4> Program:</h4>
+            <asp:TextBox ID="txtProgram" Cssclass="form-control" runat="server" Placeholder="Add Program Name"></asp:TextBox>
+	    <h4> Type:</h4>
+            <asp:TextBox ID="txtType" runat="server" CssClass="form-control" Placeholder="Add Type"></asp:TextBox>
+	    <h4> Date/Time:</h4>
+            <asp:TextBox ID="txtDate" Cssclass="form-control" runat="server" Placeholder="Add Date/Time"></asp:TextBox>
+	    <h4> Number of Kids:</h4>>
+            <asp:TextBox ID="txtKids" Cssclass="form-control" runat="server" Placeholder="Add Number of Kids"></asp:TextBox>
+	    <h4> Number of Adults:</h4>
+            <asp:TextBox ID="txtAdults" Cssclass="form-control" runat="server" Placeholder="Add Number of Adults"></asp:TextBox>
+	    <h4> Educators:</h4>
+            <asp:TextBox ID="txtEducators" Cssclass="form-control" runat="server" Placeholder="Add Educators"></asp:TextBox>
+	    <h4> Mileage:</h4>
+            <asp:TextBox ID="txtMileage" Cssclass="form-control" runat="server" Placeholder="Add Mileage"></asp:TextBox>
 	    
 	    <br>
 	     <h4 class="Animal"> Birds:</h4> <br/>
@@ -345,32 +352,44 @@
     
     <div class="row">
     <br>
-</div>
+    </div>
 	    <div class="row">
-    <div class="col-md-4"> <button data-dismiss="modal" class="btn btn-primary LoginButton" type="submit">Add</button></div>
-   
-</div>
+        <div class="col-md-4"> <button data-dismiss="modal" class="btn btn-primary LoginButton" type="submit">Add</button></div> <%--Needs to add functionality to this button--%>
+        </div>
 	   
 			</div> <!-- End  Description --> 
 			
 			 <div class=" col-md-6 ">
-	  <h4> Organizaion:</h4> <input type="name" class="form-control" id="AddOrg" placeholder="Add Organizaion">
-	    <h4> Contact:</h4> <input type="name" class="form-control" id="AddContact" placeholder="Add Contact">
-	    <h4> Email:</h4> <input type="name" class="form-control" id="AddEmail" placeholder="Add Email">
-	    <h4> Primary Number:</h4> <input type="name" class="form-control" id="AddPrimPhone" placeholder="Add Primary #">
-	    <h4> Secondary Number:</h4> <input type="name" class="form-control" id="AddSecPhone" placeholder="Add Secondary #">
-	    <h4> Billing Address:</h4> <input type="name" class="form-control" id="AddBilling" placeholder="Add Billing Address">
-	    <h4> County:</h4> <input type="name" class="form-control" id="AddCounty" placeholder="Add County">
+	    <h4> Organization:</h4>
+                 <asp:TextBox ID="txtOrganization" Cssclass="form-control" runat="server" Placeholder="Add Organization"></asp:TextBox>
+	    <h4> Contact:</h4>
+                 <asp:TextBox ID="txtContact" Cssclass="form-control" runat="server" Placeholder="Add Contact"></asp:TextBox>
+	    <h4> Email:</h4>
+                 <asp:TextBox ID="txtEmail" Cssclass="form-control" runat="server" Placeholder="Add Email"></asp:TextBox>
+	    <h4> Primary Number:</h4>
+                 <asp:TextBox ID="txtPrimaryNumber" Cssclass="form-control" runat="server" Placeholder="Add Primary #"></asp:TextBox>
+	    <h4> Secondary Number:</h4>
+                 <asp:TextBox ID="txtSecondaryNumber" Cssclass="form-control" runat="server" Placeholder="Add Secondary #"></asp:TextBox>
+	    <h4> Billing Address:</h4>
+                 <asp:TextBox ID="txtBilling" Cssclass="form-control" runat="server" Placeholder="Add Address"></asp:TextBox>
+	    <h4> County:</h4>
+                 <asp:TextBox ID="txtCounty" Cssclass="form-control" runat="server" Placeholder="Add County"></asp:TextBox>
 	    
 	    <hr>
 	   
-	    <h4> Program Total:</h4> <input type="name" class="form-control" id="AddProgTtl" placeholder="Add Program Total">
-	    <h4> $/Mileage:</h4> <input type="name" class="form-control" id="AddMileCost" placeholder="Add $/Mileage">
-	    <h4> Check # / Payment:</h4> <input type="name" class="form-control" id="AddCheckNum" placeholder="Add Check # / Payment">
-	    <h4> Amount Paid:</h4> <input type="name" class="form-control" id="AddPaid" placeholder="Add Amount Paid">
+	    <h4> Program Total:</h4>
+                 <asp:TextBox ID="txtProgramTotal" Cssclass="form-control" runat="server" Placeholder="Add Program Total"></asp:TextBox>
+	    <h4> $/Mileage:</h4>
+                 <asp:TextBox ID="txtMileageAmount" Cssclass="form-control" runat="server" Placeholder="Add $/Mileage"></asp:TextBox>
+	    <h4> Check # / Payment:</h4>
+                 <asp:TextBox ID="txtCheck" Cssclass="form-control" runat="server" Placeholder="Add Type of Payment"></asp:TextBox>
+	    <h4> Amount Paid:</h4>
+                 <asp:TextBox ID="txtAmountPaid" Cssclass="form-control" runat="server" Placeholder="Add Amount Paid"></asp:TextBox>
 	    <hr>
-	    <h4> Balance:</h4> <input type="name" class="form-control" id="AddBalance" placeholder="Add Balance">
-	    <h4> Invoice:</h4> <input type="name" class="form-control" id="AddInvoice" placeholder="Add Invoice">
+	    <h4> Balance:</h4>
+                 <asp:TextBox ID="txtBalance" Cssclass="form-control" runat="server" Placeholder="Add Balance"></asp:TextBox>
+	    <h4> Invoice:</h4>
+                 <asp:TextBox ID="txtInvoice" Cssclass="form-control" runat="server" Placeholder="Add Invoice"></asp:TextBox>
 
 	   
 			</div> <!-- End  Description --> 
@@ -381,14 +400,15 @@
            
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <%--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--%>
+                <asp:Button ID="btnSubmitProgram" runat="server" CssClass="btn btn-primary LoginButton" Text="Submit Program" CauseValidation="true" OnClick="btnSubmit_Program" UseSubmitBehavior="false" />
             </div>
         </div>
     </div>
 </div>
 
 
-<div class="modal" id="ProgramModal" tabindex="-1" role="dialog" aria-hidden="true">
+<%--<div class="modal" id="ProgramModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-full" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -458,7 +478,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>--%>
 
 
 <ul class="container MonthNav">
