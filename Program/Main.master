@@ -32,20 +32,17 @@
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Animal Report</a>
-                        <a class="dropdown-item" href="#">Annual Report</a>
-                        <a class="dropdown-item" href="#">Monthly Report</a>
+                        <a class="dropdown-item" href="#">Simple Report</a>
                             </div>
                     </li>
 <%--                    <li class="nav-item">
                         <a class="nav-link" href="#">Online</a>
                     </li>--%>
                     <li class="nav-item">
-<<<<<<< HEAD
-                        <a class="nav-link" href="MonthlyPaymentReport.aspx">Payment</a>
+                        <a class="nav-link" href="MonthlyPaymentReport.aspx">Payments</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="Program.aspx" id="navbarDropdownProgram" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Progam</a>
-=======
                     <%--<li class="nav-item dropdown">--%>
              <%--           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Animal
         </a>
@@ -56,9 +53,6 @@
                         <%--</div>--%>
                    <%-- </li>--%>
                         </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Payments</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Programs.aspx">Programs</a>
                     </li>
