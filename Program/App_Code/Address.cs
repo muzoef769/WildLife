@@ -16,16 +16,16 @@ public class Address
     private string lastUpdatedBy;
 
     //Address constructor - OG constructor Will made
-    public Address(int addressID, string streetName, string city, string county, string zipCode, DateTime lastUpdated, string lastUpdatedBy)
-    {
-        setAddressID(addressID);
-        setStreetName(streetName);
-        setCity(city);
-        setCounty(county);
-        setZipCode(zipCode);
-        setLastUpdated(lastUpdated);
-        setLastUpdatedBy(lastUpdatedBy);
-    }
+    //public Address(int addressID, string streetName, string city, string county, string zipCode, DateTime lastUpdated, string lastUpdatedBy)
+    //{
+    //    setAddressID(addressID);
+    //    setStreetName(streetName);
+    //    setCity(city);
+    //    setCounty(county);
+    //    setZipCode(zipCode);
+    //    setLastUpdated(lastUpdated);
+    //    setLastUpdatedBy(lastUpdatedBy);
+    //}
 
     public Address(int addressID, string streetName, string city, string county, string country, string zipCode, string type, DateTime lastUpdated, string lastUpdatedBy)
     {
