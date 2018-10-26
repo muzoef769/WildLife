@@ -20,7 +20,7 @@ public partial class MonthlyPaymentReport : System.Web.UI.Page
     //    {
     //        e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(julGrid, "Select$" + e.Row.RowIndex);
     //        e.Row.ToolTip = "Click to select this row.";
-    //    }      
+    //    }
     //}
 
     //protected void julGrid_SelectedIndexChanged(object sender, EventArgs e)
