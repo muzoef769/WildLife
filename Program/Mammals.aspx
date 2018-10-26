@@ -30,7 +30,6 @@
     <div class="row">
         <div class="column" style="background-color: #aaa;">
             <h2>Bo</h2>
-            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Images/bo.jpg" OnClick="animal_OnClick" />
             <%--<a href="Animal.aspx?field1=16" >
                 <img src="Images/bo.jpg" style="width: 150px" />
 
