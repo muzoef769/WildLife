@@ -38,8 +38,9 @@ public partial class Animal : System.Web.UI.Page
                 txtScientificName.Text = myReader.GetString(1);
                 txtName.Text = myReader.GetString(2);
                 txtType.Text = myReader.GetString(3);
+                
             }
-        }
+    }
         catch (Exception ex)
         {
             Response.Redirect("Error.aspx", true);
@@ -123,7 +124,7 @@ public partial class Animal : System.Web.UI.Page
 
         
 
-        string myQuery = "UPDATE [WildlifeCenter].[dbo].[Animal] SET [Species] = @Species,[ScientificName] = @ScientificName, [AnimalName] = @Name, [AnimalType] = @Type WHERE AnimalID = @AnimalID";
+        string myQuery = "UPDATE [WildlifeCenter].[dbo].[Animal] SET [Species] = @Species,[ScientificName] = @ScientificName, [AnimalName] = @Name, [AnimalType] = @Type, [Status] = @Status WHERE AnimalID = @AnimalID";
 
 
 
@@ -137,6 +138,7 @@ public partial class Animal : System.Web.UI.Page
             myCommand.Parameters.AddWithValue("@ScientificName", txtScientificName.Text);
             myCommand.Parameters.AddWithValue("@Name", txtName.Text);
             myCommand.Parameters.AddWithValue("@Type", ddlType.SelectedValue);
+            myCommand.Parameters.AddWithValue("@Status", DropDownList1.SelectedValue);
             myCommand.ExecuteNonQuery();
         }
         catch (Exception E)

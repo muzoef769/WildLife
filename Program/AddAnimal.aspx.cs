@@ -39,13 +39,14 @@ public partial class AddAnimal : System.Web.UI.Page
            );
 
 
-        string createAnimal = "Insert into [dbo].[Animal] values (@Species, @ScientificName, @AnimalName, @AnimalType, @LastUpdated, @LastUpdatedBy)";
+        string createAnimal = "Insert into [dbo].[Animal] values (@Species, @ScientificName, @AnimalName, @AnimalType, @Status, @LastUpdated, @LastUpdatedBy)";
         SqlCommand addAnimal = new SqlCommand(createAnimal, sc);
         sc.Open();
         addAnimal.Parameters.AddWithValue("@Species", newAnimal.getSpecies());
         addAnimal.Parameters.AddWithValue("@ScientificName", newAnimal.getScientificName());
         addAnimal.Parameters.AddWithValue("@AnimalName", newAnimal.getAnimalName());
         addAnimal.Parameters.AddWithValue("@AnimalType", newAnimal.getAnimalType());
+        addAnimal.Parameters.AddWithValue("@Status", "1");
         addAnimal.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
         addAnimal.Parameters.AddWithValue("@LastUpdatedBy", "Staff");
         addAnimal.ExecuteNonQuery();
