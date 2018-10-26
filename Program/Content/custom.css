@@ -28,6 +28,19 @@ body {
     background-size: cover; /* Resize the background image to cover the entire container */
 }
 
+#overlay {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.overlay-content {
+    height: 100%;
+    overflow: scroll;
+}
+
 .navbar {
  position: relative;
     z-index: 10000;
@@ -248,7 +261,7 @@ padding-top: 10%;
 
 
 
-.WelcomeName {;
+.WelcomeName {
 color: green}
 
 .UpcomingPro {color: white;}
