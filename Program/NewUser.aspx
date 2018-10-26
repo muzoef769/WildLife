@@ -14,7 +14,6 @@
                             <asp:ListItem></asp:ListItem>
                             <asp:ListItem>Staff</asp:ListItem>
                             <asp:ListItem>Volunteer</asp:ListItem>
-                            <asp:ListItem>Admin</asp:ListItem>
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator 
                             ID="reqType" 

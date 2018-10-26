@@ -21,36 +21,36 @@ public partial class Home : System.Web.UI.Page
         //{
 
 
-            try
-            {
+            //try
+            //{
 
-                sc.Open();
-                System.Data.SqlClient.SqlCommand findType = new System.Data.SqlClient.SqlCommand();
-                findType.Connection = sc;
-                // SELECT PASSWORD STRING WHERE THE ENTERED USERNAME MATCHES
-                findType.CommandText = "select [UserType] from [dbo].[User] where Username = @Username AND UserType = @UserType";
+            //    sc.Open();
+            //    System.Data.SqlClient.SqlCommand findType = new System.Data.SqlClient.SqlCommand();
+            //    findType.Connection = sc;
+            //    // SELECT PASSWORD STRING WHERE THE ENTERED USERNAME MATCHES
+            //    findType.CommandText = "select [UserType] from [dbo].[User] where Username = @Username AND UserType = @UserType";
 
-                findType.Parameters.AddWithValue("@Username", Session["Username"]);
-                findType.Parameters.AddWithValue("@UserType", "Admin");
-
-
-                SqlDataReader reader = findType.ExecuteReader(); // create a reader
+            //    findType.Parameters.AddWithValue("@Username", Session["Username"]);
+            //    findType.Parameters.AddWithValue("@UserType", "Staff");
 
 
-                if (reader.HasRows) // if the username is an Admin, Create User button appears
-                {
-                    while (reader.Read())
-                    {
-                        btnUser.Visible = true;
-                    }
-                }
-                sc.Close();
-            }
-            catch
-            {
-                sc.Close();
-                Response.Redirect("Error.aspx", false);
-            }
+            //    SqlDataReader reader = findType.ExecuteReader(); // create a reader
+
+
+            //    if (reader.HasRows) // if the username is an Admin, Create User button appears
+            //    {
+            //        while (reader.Read())
+            //        {
+            //            btnUser.Visible = true;
+            //        }
+            //    }
+            //    sc.Close();
+            //}
+            //catch
+            //{
+            //    sc.Close();
+            //    Response.Redirect("Error.aspx", false);
+            //}
         //}
 
     }
