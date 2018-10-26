@@ -33,8 +33,7 @@
                         <a class="nav-link" href="#">Online</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Animal
-        </a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Animal</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Animal Report</a>
                             <a class="dropdown-item" href="Animal.html">Animal List</a>
@@ -43,11 +42,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Payment</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Programs.html">Programs</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="Program.aspx" id="navbarDropdownProgram" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Progam</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="NewProgram.aspx">Create Program</a>
+                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Login.html">Logout</a>
+                        <a class="nav-link" href="Login.aspx">Logout</a>
                     </li>
                 </ul>
 
