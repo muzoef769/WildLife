@@ -42,7 +42,7 @@ public partial class Animal : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            Response.Redirect("Error.aspx", false);
+            Response.Redirect("Error.aspx", true);
             throw ex;
         }
 
