@@ -20,27 +20,29 @@ public partial class Animal : System.Web.UI.Page
         //Animals pageAnimal = new Animals(txtSpecies.Text, txtScientificName.Text, txtName.Text, txtType.Text, DateTime.Today, "Muzo");
         sc.Open();
         String aID = Request.QueryString["field1"];
-        SqlCommand animal_Id = new SqlCommand("SELECT AnimalID from Animal", sc);
-        int selectPerson = Convert.ToInt32(animal_Id.ExecuteScalar());
+        //SqlCommand animal_Id = new SqlCommand("SELECT AnimalID from Animal", sc);
+        //int selectPerson = Convert.ToInt32(animal_Id.ExecuteScalar());
         
         string myQuery = "SELECT [Species], [ScientificName], [AnimalName], [AnimalType] FROM [WildlifeCenter].[dbo].[Animal] WHERE [AnimalID] = @AnimalID";
         SqlCommand myCommand = new SqlCommand(myQuery, sc);
-        myCommand.Parameters.AddWithValue("@AnimalID", animal_Id);
+        myCommand.Parameters.AddWithValue("@AnimalID", aID);
         try
         {
 
             SqlDataReader myReader = myCommand.ExecuteReader();
             while (myReader.Read())
             {
-                animalID = int.Parse(myReader["AnimalID"].ToString());
-                txtSpecies.Text = myReader.GetString(1);
-                txtScientificName.Text = myReader.GetString(2);
-                txtName.Text = myReader.GetString(3);
-                txtType.Text = myReader.GetString(4);
+                //animalID = int.Parse(myReader["AnimalID"].ToString());
+                animalID = Convert.ToInt32(aID);
+                txtSpecies.Text = myReader.GetString(0);
+                txtScientificName.Text = myReader.GetString(1);
+                txtName.Text = myReader.GetString(2);
+                txtType.Text = myReader.GetString(3);
             }
         }
         catch (Exception ex)
         {
+            Response.Redirect("Error.aspx", true);
             throw ex;
         }
 
