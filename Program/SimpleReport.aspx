@@ -28,7 +28,7 @@
 
         <li class="MonthLi">December</li>
  </ul>--%>
-
+<div id="simpleReports" class="jumbotron jumbotron-fluid">
     <div id="jan">
         <h3>January</h3>
 
@@ -83,7 +83,7 @@
 
         <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p inner join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '2' Group by ProgramType"></asp:SqlDataSource>
     </div>
-    <div id="mar">
+    <%--<div id="mar">
         <h3>March</h3>
 
         <h5>Monthly Attendance</h5>
@@ -108,8 +108,9 @@
         </asp:GridView>
 
         <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p inner join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '3' Group by ProgramType"></asp:SqlDataSource>
-    </div>
-    <div id="feb">
+    </div>--%>
+</div>
+   <%-- <div id="feb">
         <h3>February</h3>
 
         <h5>Monthly Attendance</h5>
@@ -316,7 +317,7 @@
         </asp:GridView>
 
         <asp:SqlDataSource ID="SqlDataSource23" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p inner join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '2' Group by ProgramType"></asp:SqlDataSource>
-    </div>
+    </div>--%>
 
     <asp:GridView ID="animalNumbers" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" Style="float: right;">
         <Columns>
