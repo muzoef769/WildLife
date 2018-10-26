@@ -1,17 +1,30 @@
-﻿@charset "UTF-8";
+@charset "UTF-8";
 /* CSS Document */
 
 body, html {
     height: 100%;
 }
 
-.bg { 
+
+body, html {
+    height: 100%;
+	
+	
+}
+
+body {
+	background-image: url("img_girl.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.b { 
     /* The image used */
     background-image: url("img_girl.jpg");
-
+position: static;
     /* Full height */
     height: 100%; 
-    background-attachment:fixed;
+
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
@@ -20,31 +33,17 @@ body, html {
 
 
 body {
-    background-image: url("../Images/UrlBg.jpg");
-    background-color: #c3dbf5; /* Used if the image is unavailable */
-    height: auto; /* You must set a specified height */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
-    background-attachment: fixed;
+   background-image: url("../Images/UrlBg.jpg");
+  background-color: #c3dbf5; /* Used if the image is unavailable */
+  height: auto;/* You must set a specified height */
+  background-position:center;/* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size:cover; /* Resize the background image to cover the entire container */
 }
-
-#overlay {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-}
-
-.overlay-content {
-    height: 100%;
-    overflow: scroll;
-}
-
-.navbar {
- position: relative;
+.navbar {;
+ position: fixed;
     z-index: 10000;
+	width: 100%;
 }
 
 .nav-link {color: white;}
@@ -262,7 +261,7 @@ padding-top: 10%;
 
 
 
-.WelcomeName {
+.WelcomeName {;
 color: green}
 
 .UpcomingPro {color: white;}
@@ -286,7 +285,7 @@ ul {
     height: auto;
     display: block;
     box-sizing: border-box;
-    position: absolute;
+    position: fixed;
     top: 45%;
     left: -.5em;
     transform: translateY(-50%);
@@ -299,9 +298,10 @@ ul {
     line-height: 2em;
     flex-grow: 1;
     font-size: .94em;
-    color: #fff;
+    color:white;
     transition: .5s;
     transition-timing-function: linear, ease-out ;
+	
 	
 	
     
@@ -311,7 +311,7 @@ ul {
 /*    -webkit-transform: scale(1.0);
     -ms-trasform: scale(1.0);
     transform: scale(1.0);*/
-    color: #00FF75;
+    color: black;
     line-height: 1.8em;
     flex-grow: 3;
     max-width: 100%;
@@ -347,7 +347,7 @@ ul {
     line-height: 1.8em;
     flex-grow: 3;
     max-width: 100%;
-    font-size: 3em;
+    folacknt-size: 3em;
     transition: .3s;
     transform-origin: right;
     align-items: center;
@@ -356,7 +356,8 @@ ul {
 
 .MonthBreak {font-size:  .2em;}
 
-.AnimalIcons {padding-left: 0%;}
+.AnimalIcons {padding-left: 5%;
+padding-right: 5%}
 
 a.ProgramCaption{color: black;
 background-color: whitesmoke;
@@ -422,10 +423,7 @@ thumbnail {
     width: 100%;
 	
 }
-.AnimalPic{
-    height: 150px;
-    width: 150px;
-}
+
 .AnimalInfoDiv {background-color: whitesmoke;
 border-radius: 12px;}
 

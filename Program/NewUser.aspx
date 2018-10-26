@@ -5,8 +5,9 @@
     <div>
         <%--<h2 class="display-3 text-center text-white mb-3">Create User</h2>--%>
 
-        <div class="container jumbotron w-50 bg-white shadow">
-            <div class=" offset-2">
+        <div class="container-fluid ProgramContainer">
+            <div class=" card mx-auto ProgramCard">
+                <div class="card-body">
                 <div class="text-left form-group row">
                     <label for="userType" class="col-4 font-weight-bold">Type:</label>
                     <div class="col-6">
@@ -113,7 +114,7 @@
                     Type="String">
                 </asp:CompareValidator>
             </div>
-
+            
 
             <div class="text-center container">
                 <div class="btn-group">
@@ -122,6 +123,7 @@
                     <a class="btn btn-primary rounded shadow" href="javascript:history.go(-1)" role="button">Back</a>
                 </div>
             </div>
+                </div>
 
             <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">

@@ -1,23 +1,69 @@
 ﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Home" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-    <div class="jumbotron">
-        <div class="container">
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
+    <div class="row">
 
-            <div class="text-left form-group row">
-                <label for="ddlMonth" class="col-4 col-form-label font-weight-bold">Upcoming Programs:</label>
-                <asp:Label runat="server" ID="lblCurrentMonth" CssClass="display-4 col-6"></asp:Label>
-            </div>
-            <div class="text-left form-group row">
-                <label for="ddlMonth" class=" offset-4 col-6 col-form-item font-weight-bold">November 26: Off-Site; James Madison University</label>
+
+        <div class="container-fluid WelcomeContainer">
+
+            <div class="card mx-auto  WelcomeCard">
+                <div class="card-body">
+
+                    <h1 class=" CardTitle  d-flex justify-content-center ">Welcome</h1>
+
+
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <img src="Images/notfound.jpg" style="width: 100px;" alt="...">
+                                <h3 class="WelcomeName">Raina</h3>
+                            </div>
+
+                        </div>
+                        <div class="col-md-9">
+                            <h3 class="UpcomingPro">Upcoming Programs: 
+       
+                                <span class=" col-md-auto">
+                                    <asp:Label ID="lblCurrentMonth" runat="server" Text="Month" CssClass="text-success"></asp:Label>
+
+                                </span>
+
+                            </h3>
+
+                            <div welcomedate>
+                            </div>
+                            <asp:Button ID="btnUser" runat="server" Text="Create User" OnClick="btnUser_Click" Visible="false" />
+                            <hr class="WelcomeLine">
+                            <h4 class="UpcomingThin">November 13: Off-Site, James Madison University</h4>
+                            <br>
+                            <h4 class="UpcomingThin">November 13: Off-Site, James Madison University</h4>
+
+
+                            <div>
+
+
+
+
+
+                                <br>
+                            </div>
+
+
+
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
             </div>
 
-            <asp:Button ID="btnUser" runat="server" Text="Create User" OnClick="btnUser_Click" Visible="false" />
-               <%-- schedule - gridview??--%>
 
 
         </div>
-
-    </div>
 </asp:Content>
-
