@@ -99,7 +99,7 @@ public partial class Animal : System.Web.UI.Page
         txtType.Visible = false;
         ddlType.Visible = true;
         btnUpdate.Visible = true;
-        btnDelete.Visible = true;
+        
 
         if (txtType.Text == "Bird")
         {
@@ -150,6 +150,8 @@ public partial class Animal : System.Web.UI.Page
 
 
     }
+
+    
 }
 
 

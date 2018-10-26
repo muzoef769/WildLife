@@ -71,25 +71,15 @@
   </div>
 </div>
 
-<%--</body>
-</html>--%>
 
-
-  <%--  <h2>Animal Home Page</h2>
-<p>Select the type of Animal</p>
-
-<a href="Animal.aspx">
-  <img src="storyblocks-bald-eagle-haliaeetus-leucocephalus-portrait-of-brown-bird-of-prey-with-white-head-yellow-bill-symbol-of-freedom-of-the-united-states-of-america-alaska-usa_ScUQXlQ7-G.jpg" /> 
-</a>
     <br /> 
      <br /> 
-    <asp:Label ID="Label1" runat="server" Text="Birds"></asp:Label>--%>
+    <br /> 
+     <br /> 
+    <br /> 
+     <br /> 
 
-
-
-
-
-
+    <a href="AddAnimal.aspx?field1=0" style="font-size: 40px">Create New Animal</a>
 
 
 </asp:Content>
