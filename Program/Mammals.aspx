@@ -73,6 +73,7 @@
     </div>
 
 
+
     <div class="modal" id="animalModal" aria-labelledby="modalTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -110,7 +111,7 @@
 
                             <asp:Label runat="server" ID="lblMessage"></asp:Label>
                             <br />
-                            <asp:Button ID="btnEdit" runat="server" Text="Edit" Width="102px" OnClick="btnEdit_OnClick" UseSubmitBehavior="false" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:Button ID="btnEdit" runat="server" Text="Edit" Width="102px" OnClick="btnEdit_OnClick"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnUpdate" runat="server" Text="Update" Visible="False" />
                         </asp:Panel>
 
@@ -124,13 +125,7 @@
         </div>
     </div>
 
-    <script>
-        function open_win() {
-            var url = "http://" + location.host
 
-        }
-
-    </script>
 
 
 </asp:Content>

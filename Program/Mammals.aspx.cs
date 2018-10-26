@@ -14,7 +14,11 @@ public partial class Mammals : System.Web.UI.Page
 
     protected void animal_OnClick(object sender, EventArgs e)
     {
-        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "ModalView", "<script>$(function() { $('#animalModal').modal('show'); });</script>", false);
+        //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "ModalView", "<script>$(function() { $('#animalModal').modal('show'); });</script>", false);
+
+        string page = "Animal.aspx?field1=16";
+        string newWin = "window.open('" + page +"');";
+        ClientScript.RegisterStartupScript(this.GetType(), "pop", newWin, true);
     }
     
     protected void btnEdit_OnClick(object sender, EventArgs e)
