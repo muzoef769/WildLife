@@ -12,7 +12,7 @@
 
 		</div>
 	<div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
-			<a class="AnimalLi nav-link " href ="#">Mammals</a>
+			<a class="AnimalLi nav-link font-weight-bold Underline text-success " href ="#">Mammals</a>
 
 		</div>
 	</div>

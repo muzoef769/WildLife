@@ -15,11 +15,12 @@
 
                     <div class="row">
                         <div class="col-md-3">
-                            <div class="thumbnail">
-                                <img src="Images/notfound.jpg" style="width: 100px;" alt="...">
-                                <h3 class="WelcomeName">Raina</h3>
+                            <div class="thumbnail AnimalInfoDiv">
+                                <img src="Images/Raina-and-Edie.jpg" class="AnimalPic" alt="...">
+                               <div class ="caption">
+                                <h3 class ="WelcomeName text-center">Raina</h3>
                             </div>
-
+                           </div>
                         </div>
                         <div class="col-md-9">
                             <h3 class="UpcomingPro">Upcoming Programs: 

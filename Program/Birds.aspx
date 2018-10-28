@@ -4,7 +4,7 @@
 
         <div class="row AnimalNav d-flex justify-content-center ">
 		<div  class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle" >
-			<a class="AnimalLi nav-link" href="#">Birds</a>
+			<a class="AnimalLi nav-link font-weight-bold Underline text-success" href="#">Birds</a>
 			
 		</div>
 	<div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">

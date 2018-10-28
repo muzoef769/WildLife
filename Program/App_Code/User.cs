@@ -26,6 +26,16 @@ public class User
         setLastUpdated(lastUpdated);
         setLastUpdatedBy(lastUpdatedBy);
     }
+    public User(string userName, string firstName, string lastName, string userType, DateTime lastUpdated, string lastUpdatedBy)
+    {
+
+        setUserName(userName);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setUserType(userType);
+        setLastUpdated(lastUpdated);
+        setLastUpdatedBy(lastUpdatedBy);
+    }
 
     //Getters
     public int getUserID()

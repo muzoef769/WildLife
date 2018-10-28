@@ -3,8 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
     <%--<h1 class ="text-dark text-center" style="font:50px arial">Wildlife Center</h1>--%>
-    <div class="container jumbotron w-50 bg-white shadow"">
-         <div class=" offset-2">
+    <div class="container-fluid ProgramContainer">
+         <div class="card mx-auto  ProgramCard">
         <br />
         <%--<asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataValueField ="AnimalID" DataTextField ="Name" autopostback="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" ></asp:DropDownList>--%>
         <asp:Label ID="lblType" runat="server" Text="Type: "></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp<asp:TextBox ID="txtType" runat="server" ReadOnly="True"></asp:TextBox>
@@ -29,7 +29,7 @@
         <br />
         <br />
              <asp:Label ID="Label1" runat="server" Text="Animal Status"></asp:Label>
-         <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT [AnimalID], [CommonName], [ScientificName], [Name], [Type] FROM [Animal]" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM [Animal] WHERE [AnimalID] = @original_AnimalID AND [CommonName] = @original_CommonName AND [ScientificName] = @original_ScientificName AND [Name] = @original_Name AND [Type] = @original_Type" InsertCommand="INSERT INTO [Animal] ([CommonName], [ScientificName], [Name], [Type]) VALUES (@CommonName, @ScientificName, @Name, @Type)" OldValuesParameterFormatString="original_{0}" UpdateCommand="UPDATE [Animal] SET [CommonName] = @CommonName, [ScientificName] = @ScientificName, [Name] = @Name, [Type] = @Type WHERE [AnimalID] = @original_AnimalID AND [CommonName] = @original_CommonName AND [ScientificName] = @original_ScientificName AND [Name] = @original_Name AND [Type] = @original_Type" >
+         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT [AnimalID], [CommonName], [ScientificName], [Name], [Type] FROM [Animal]" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM [Animal] WHERE [AnimalID] = @original_AnimalID AND [CommonName] = @original_CommonName AND [ScientificName] = @original_ScientificName AND [Name] = @original_Name AND [Type] = @original_Type" InsertCommand="INSERT INTO [Animal] ([CommonName], [ScientificName], [Name], [Type]) VALUES (@CommonName, @ScientificName, @Name, @Type)" OldValuesParameterFormatString="original_{0}" UpdateCommand="UPDATE [Animal] SET [CommonName] = @CommonName, [ScientificName] = @ScientificName, [Name] = @Name, [Type] = @Type WHERE [AnimalID] = @original_AnimalID AND [CommonName] = @original_CommonName AND [ScientificName] = @original_ScientificName AND [Name] = @original_Name AND [Type] = @original_Type" >
              <DeleteParameters>
                  <asp:Parameter Name="original_AnimalID" Type="Int32" />
                  <asp:Parameter Name="original_CommonName" Type="String" />
@@ -54,7 +54,7 @@
                  <asp:Parameter Name="original_Name" Type="String" />
                  <asp:Parameter Name="original_Type" Type="String" />
              </UpdateParameters>
-         </asp:SqlDataSource>--%>
+         </asp:SqlDataSource>
          <br />
         <asp:Label runat="server" ID="lblMessage"></asp:Label>&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="DropDownList1" runat="server">
                  <asp:ListItem Value="0">Deactive</asp:ListItem>

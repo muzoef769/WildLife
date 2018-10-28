@@ -14,18 +14,26 @@ public class Password
 
     //these are not in the create statements - do we need them here?
 
-    //private DateTime lastUpdated;
-    //private string lastUpdatedBy;
+    private DateTime lastUpdated;
+    private string lastUpdatedBy;
 
 
     //Password Constructor
-    public Password(int userID, string userName, string passwordHash, DateTime lastUpdated, string lastUpdatedBy)
+    public Password(int userID, string userName, string passwordHash, string lastUpdatedBy)
     {
         setUserID(userID);
         setUserName(userName);
         setPasswordHash(passwordHash);
-        //setLastUpdated(lastUpdated);
+        setLastUpdated(DateTime.Today);
         //setLastUpdatedBy(lastUpdatedBy);
+    }
+
+    public Password(int userID, string userName, string passwordHash)
+    {
+        setUserID(userID);
+        setUserName(userName);
+        setPasswordHash(passwordHash);
+
     }
 
     //Getters
@@ -41,14 +49,14 @@ public class Password
     {
         return this.passwordHash;
     }
-    //public DateTime getLastUpdated()
-    //{
-    //    return this.lastUpdated
-    //}
-    //public string getLastUpdatedBy()
-    //{
-    //    return this.lastUpdatedBy;
-    //}
+    public DateTime getLastUpdated()
+    {
+        return this.lastUpdated;
+    }
+    public string getLastUpdatedBy()
+    {
+        return this.lastUpdatedBy;
+    }
 
     //Setters
     public void setUserID(int x)
@@ -63,12 +71,12 @@ public class Password
     {
         this.passwordHash = x;
     }
-    //public void setLastUpdated(DateTime x)
-    //{
-    //    this.lastUpdated = x;
-    //}
-    //public void setLastUpdatedBy(string x)
-    //{
-    //    this.lastUpdatedBy = x;
-    //}
+    public void setLastUpdated(DateTime x)
+    {
+        this.lastUpdated = x;
+    }
+    public void setLastUpdatedBy(string x)
+    {
+        this.lastUpdatedBy = x;
+    }
 }
