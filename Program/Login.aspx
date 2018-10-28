@@ -59,7 +59,7 @@
                 <div class="form-group ">
                     <div class="text-center">
                         <asp:label id="lblStatus" runat="server" visible="true" forecolor="Transparent"></asp:label>
-                        <h6><a class="nav-link" href="NewUser.aspx">Not a User, Click Here!</a></h6>
+
                     </div>
                 </div>
                 <br>

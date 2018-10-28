@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 public partial class Login : System.Web.UI.Page
 {
 
-    SqlConnection myConnection = new SqlConnection("server=localhost;database=WildlifeCenter;Trusted_Connection=True");
+    SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
     //NEED TO EDIT THIS CODE WHEN ON AWS
 
     protected void Page_Load(object sender, EventArgs e)
@@ -33,7 +33,7 @@ public partial class Login : System.Web.UI.Page
         //connect to database to retrieve stored password string
         try
         {
-            SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
+            
 
 
             //lblStatus.Text = "Database Connection Successful";
@@ -122,9 +122,9 @@ public partial class Login : System.Web.UI.Page
        
         try
         {
-            myConnection.Open();
+            sc.Open();
 
-            SqlCommand myCommand = new SqlCommand(myQuery, myConnection);
+            SqlCommand myCommand = new SqlCommand(myQuery, sc);
             myCommand.Parameters.AddWithValue("@userName", newUser.getUserName());
             myCommand.Parameters.AddWithValue("@firstName", newUser.getFirstName());
             myCommand.Parameters.AddWithValue("@lastName", newUser.getLastName());
@@ -142,7 +142,7 @@ public partial class Login : System.Web.UI.Page
         }
         finally
         {
-            myConnection.Close();
+            sc.Close();
         }
         try
         {
@@ -154,7 +154,7 @@ public partial class Login : System.Web.UI.Page
             //myCommand2.ExecuteNonQuery();
             
 
-            myConnection.Close();
+            sc.Close();
 
             Password newPassword = new Password(
                 newUser.getUserID(),
@@ -164,9 +164,9 @@ public partial class Login : System.Web.UI.Page
 
             String myQuery3 = "INSERT INTO [WildlifeCenter].[dbo].[Password] (UserId, Username, PasswordHash) VALUES ((SELECT MAX([UserID]) FROM [WildlifeCenter].[dbo].[User]), @Username, @PasswordHash)";
 
-            myConnection.Open();
+            sc.Open();
 
-            SqlCommand myCommand3 = new SqlCommand(myQuery3, myConnection);
+            SqlCommand myCommand3 = new SqlCommand(myQuery3, sc);
             //myCommand3.Parameters.AddWithValue("@UserID", newPassword.getUserID());
             myCommand3.Parameters.AddWithValue("@Username", newPassword.getUserName());
             myCommand3.Parameters.AddWithValue("@PasswordHash", PasswordHash.HashPassword(txtNewPassword.Text));
@@ -180,7 +180,7 @@ public partial class Login : System.Web.UI.Page
         }
         finally
         {
-            myConnection.Close();
+            sc.Close();
         }
 
 
