@@ -2,8 +2,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <div class="row">
-
-
         <div class="container-fluid WelcomeContainer">
 
             <div class="card mx-auto  WelcomeCard">
@@ -16,15 +14,17 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="thumbnail AnimalInfoDiv">
-                                <img src="Images/Raina-and-Edie.jpg" class="AnimalPic" alt="...">
-                               <div class ="caption">
-                                <h3 class ="WelcomeName text-center">Raina</h3>
+                                <img src="Images/Raina-and-Edie.jpg" class="AnimalPic rounded-top" alt="...">
+                                <div class="caption">
+                                    <h3 class="WelcomeName text-center">Raina</h3>
+                                </div>
                             </div>
-                           </div>
                         </div>
                         <div class="col-md-9">
                             <h3 class="UpcomingPro">Upcoming Programs: 
        
+                               
+
                                 <span class=" col-md-auto">
                                     <asp:Label ID="lblCurrentMonth" runat="server" Text="Month" CssClass="text-success"></asp:Label>
 
@@ -52,19 +52,20 @@
 
 
 
-
-
-
                         </div>
+
 
                     </div>
 
-
-
                 </div>
+
+
+
+
             </div>
-
-
-
         </div>
+
+
+
+    </div>
 </asp:Content>

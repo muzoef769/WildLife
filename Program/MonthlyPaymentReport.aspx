@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="MonthlyPaymentReport.aspx.cs" Inherits="MonthlyPaymentReport" EnableEventValidation="false" %>
+﻿<%@ Page Title="Monthly Report" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="MonthlyPaymentReport.aspx.cs" Inherits="MonthlyPaymentReport" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <div id="monthlyReports" class="jumbotron">
