@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <h2>Simple Report</h2>
-    <%--<ul class="container MonthNav">
+    <ul class="container MonthNav">
         <h3><u>Month</u></h3>
         <li class="MonthLi" onclick="showJan()">January</li>
 
@@ -27,12 +27,25 @@
         <li class="MonthLi">November</li>
 
         <li class="MonthLi">December</li>
- </ul>--%>
-<div id="simpleReports" class="jumbotron jumbotron-fluid">
+ </ul>
+<div id="animalReport" class="offset-2" style="float:right; margin-right: 100px;">
+    <asp:GridView ID="animalGrid" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
+        <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
+        <Columns>
+            <asp:BoundField DataField="AnimalName" HeaderText="AnimalName" SortExpression="AnimalName" />
+            <asp:BoundField DataField="Programs" HeaderText="Programs" ReadOnly="True" SortExpression="Programs" />
+            <asp:BoundField DataField="TotalPeople" HeaderText="TotalPeople" SortExpression="TotalPeople" />
+        </Columns>
+    </asp:GridView>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT a.AnimalName, count(aa.AnimalID) as Programs, np.TotalPeople 
+        FROM dbo.NewProgram np inner join dbo.AssignAnimal aa on np.NewProgramID = aa.NewProgramID right join dbo.Animal a on aa.AnimalID = a.AnimalID
+        GROUP BY a.AnimalName, np.TotalPeople"></asp:SqlDataSource>
+</div>
+    
+<div id="monthlyReports" class="container offset-2">
     <div id="jan">
-        <h3>January</h3>
-
-        <h5>Monthly Attendance</h5>
+        <h2 class="card-header">January</h2>
+        <h5>Attendance</h5>
         <asp:GridView ID="janGridAtt" runat="server" AutoGenerateColumns="False" DataSourceID="janAttSource" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
             <Columns>
@@ -46,7 +59,7 @@
         <asp:SqlDataSource ID="janAttSource" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select DAY(DateCompleted) as 'Day', TotalKids, TotalAdults, (SELECT SUM(TotalKids)+SUM(TotalAdults)) as 'Total People' from dbo.NewProgram WHERE MONTH(DateCompleted) = '1' GROUP BY DAY(DateCompleted), TotalKids, TotalAdults"></asp:SqlDataSource>
         <br />
 
-        <h5>Monthly Program Count</h5>
+        <h5>Program Count</h5>
         <asp:GridView ID="janGridCount" runat="server" AutoGenerateColumns="False" DataSourceID="janCountSource" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
             <Columns>
@@ -55,10 +68,10 @@
             </Columns>
         </asp:GridView>
 
-        <asp:SqlDataSource ID="janCountSource" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p inner join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '1' Group by ProgramType"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="janCountSource" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '1' Group by ProgramType"></asp:SqlDataSource>
     </div>
-    <div id="feb">
-        <h3>February</h3>
+    <%--<div id="feb">
+        <h2 class="card-header">February</h2>
 
         <h5>Monthly Attendance</h5>
         <asp:GridView ID="febGridAtt" runat="server" AutoGenerateColumns="False" DataSourceID="febAttSource" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
@@ -82,7 +95,7 @@
         </asp:GridView>
 
         <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p inner join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '2' Group by ProgramType"></asp:SqlDataSource>
-    </div>
+    </div>--%>
     <%--<div id="mar">
         <h3>March</h3>
 
@@ -319,16 +332,7 @@
         <asp:SqlDataSource ID="SqlDataSource23" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p inner join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '2' Group by ProgramType"></asp:SqlDataSource>
     </div>--%>
 
-    <asp:GridView ID="animalNumbers" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" Style="float: right;">
-        <Columns>
-            <asp:BoundField DataField="AnimalName" HeaderText="AnimalName" SortExpression="AnimalName" />
-            <asp:BoundField DataField="Programs" HeaderText="Programs" ReadOnly="True" SortExpression="Programs" />
-            <asp:BoundField DataField="TotalPeople" HeaderText="TotalPeople" SortExpression="TotalPeople" />
-        </Columns>
-    </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT a.AnimalName, count(aa.AnimalID) as Programs, np.TotalPeople 
-FROM dbo.NewProgram np inner join dbo.AssignAnimal aa on np.NewProgramID = aa.NewProgramID right join dbo.Animal a on aa.AnimalID = a.AnimalID
-GROUP BY a.AnimalName, np.TotalPeople"></asp:SqlDataSource>
+    
 
 
 </asp:Content>
