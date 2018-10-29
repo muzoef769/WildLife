@@ -34,7 +34,7 @@
 
 
         <div class="row text-center text-lg-center">
-            <div id="Mammal1" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+            <div id="Mammal1" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
                     <asp:ImageButton ID="ani16" CssClass="animalImg" runat="server" src="Images/bo.jpg" OnClick="AnimalInfo_Click" />
 
@@ -47,7 +47,7 @@
                 </div>
             </div>
 
-            <div id="Mammal2" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+            <div id="Mammal2" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
                     <asp:ImageButton ID="ani17" CssClass="animalImg" runat="server" src="Images/Posiesmaller.jpg" OnClick="AnimalInfo_Click" />
 
@@ -60,7 +60,7 @@
                 </div>
             </div>
 
-            <div id="Mammal3" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+            <div id="Mammal3" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
                     <asp:ImageButton ID="ani18" CssClass="animalImg" runat="server" src="Images/Willowsmall.jpg" OnClick="AnimalInfo_Click" />
 
@@ -105,7 +105,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Program Details</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body p-4" id="result">
@@ -113,10 +113,10 @@
 
                     <div id="Bird1-1" class=" AnimalIcons AnimalPopUp float-right">
                         <div class=" thumbnail AnimalInfoDiv">
-                            <img src="Images/Buddy.jpg" alt="">
+                            <img src="Images/Bo.jpg" class="animalImg" alt="">
 
                             <div class="caption">
-                                <h4>Clifford</h4>
+                                <h4>Bo</h4>
                             </div>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                             <h4>Type: </h4>
                             <p class="ProgramCardTitle">Reptile</p>
                             <h4>Name: </h4>
-                            <asp:TextBox ID="txtName" runat="server" Width="187px" ReadOnly="False"></asp:TextBox>
+                            <asp:TextBox ID="txtName" runat="server" CssClass="form-control" ReadOnly="True"></asp:TextBox>
                             <h4>Species: </h4>
                             <p class="LongDT">Cornsnake</p>
                             <h4>Scientific Name: </h4>
@@ -163,7 +163,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Add Animal</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body p-4" id="resultAdd">
@@ -230,7 +230,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Edit Animal</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body p-4" id="resultEdit">
@@ -238,7 +238,7 @@
 
                     <div id="Bird1-1Edit" class=" AnimalIcons AnimalPopUp float-right">
                         <div class=" thumbnail AnimalInfoDiv">
-                            <img src="Images/Wildlife-Pics/babyboy.jpg" alt="">
+                            <img src="Images/Wildlife-Pics/Bo.jpg" class="animalImg" alt="">
                             <div class="caption">
                                 <h4>Buddy</h4>
                             </div>
