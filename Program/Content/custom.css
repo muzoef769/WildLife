@@ -424,9 +424,8 @@ thumbnail {
    
 }
 
-.thumbnail img {
+.thumbnail .animalImg {
     width: 100%;
-	
 }
 
 .AnimalInfoDiv {background-color: whitesmoke;

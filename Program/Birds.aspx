@@ -38,35 +38,35 @@
     <div class="container">
         <div class="row text-center text-lg-center">
 
-            <div id="Bird1" data-toggle="modal" data-target="#myModal" onclick="" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+            <div id="Bird1" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <img src="Images/Buddy.jpg" alt="">
+                    <asp:ImageButton ID="ani1" CssClass="animalImg" runat="server" src="Images/Buddy.jpg" OnClick="AnimalInfo_Click" />
                     <div class="caption">
                         <h4>Buddy</h4>
                     </div>
                 </div>
             </div>
 
-            <div id="Bird2" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+            <div id="Bird2" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <img src="Images/edie.jpg" alt="">
+                    <asp:ImageButton ID="ani2" CssClass="animalImg" runat="server" src="Images/edie.jpg" OnClick="AnimalInfo_Click" />
                     <div class="caption">
                         <h4>Edie</h4>
                     </div>
                 </div>
             </div>
-            <div id="Bird3" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+            <div id="Bird3" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <img src="Images/verlon.jpg" alt="">
+                    <asp:ImageButton ID="ani3" CssClass="animalImg" runat="server" src="Images/Verlon.jpg" OnClick="AnimalInfo_Click" />
                     <div class="caption">
                         <h4>Verlon</h4>
                     </div>
                 </div>
             </div>
 
-            <div id="Bird4" data-toggle="modal" data-target="#myModal" class=" AnimalIcons  col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
+            <div id="Bird4" class=" AnimalIcons  col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <img class="AnimalPic" src="Images/maggie.jpg" />
+                    <asp:ImageButton ID="ani4" CssClass="animalImg" runat="server" src="Images/maggie.jpg" OnClick="AnimalInfo_Click" />
                     <div class="caption">
                         <h4>Maggie</h4>
                     </div>
@@ -263,7 +263,7 @@
                             <h4>Type: </h4>
                             <p class="ProgramCardTitle">Bird</p>
                             <h4>Name: </h4>
-                            <p class="LongType">Buddy</p>
+                            <asp:TextBox ID="txtName" runat="server" Width="187px" ReadOnly="False"></asp:TextBox>
                             <h4>Species: </h4>
                             <p class="LongDT">Bald Eagle</p>
                             <h4>Scientific Name: </h4>
@@ -323,7 +323,7 @@
                     <asp:ListItem>Reptile</asp:ListItem>
                     </asp:DropDownList>   
                             <h4>Name: </h4>
-                            <asp:TextBox ID="txtName" runat="server" ReadOnly="False"></asp:TextBox>
+                            <asp:TextBox ID="txtAddName" runat="server" ReadOnly="False"></asp:TextBox>
                             <h4>Species: </h4>
                             <asp:TextBox ID="txtSpecies" runat="server" ReadOnly="False"></asp:TextBox>
                             <h4>Scientific Name: </h4>
