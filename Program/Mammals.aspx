@@ -111,7 +111,7 @@
                 <div class="modal-body p-4" id="result">
 
 
-                    <div id="Bird1-1" class=" AnimalIcons AnimalPopUp float-right">
+                    <div id="myAnimal" class=" AnimalIcons AnimalPopUp float-right">
                         <div class=" thumbnail AnimalInfoDiv">
                             <img src="Images/Bo.jpg" class="animalImg" alt="">
 
@@ -175,23 +175,23 @@
 
                         <div class=" col-md-8">
                             <h4>Animal Status: </h4>
-                            <asp:DropDownList ID="DropDownList1" runat="server">
+                            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control">
                                 <asp:ListItem></asp:ListItem>
                                 <asp:ListItem Value="1">Active</asp:ListItem>
                                 <asp:ListItem Value="0">Deactive</asp:ListItem>
                             </asp:DropDownList>
                             <h4>Type: </h4>
-                            <asp:DropDownList ID="ddlType" runat="server" Visible="true">
+                            <asp:DropDownList ID="ddlType" runat="server" CssClass="form-control">
                                 <asp:ListItem>Mammal</asp:ListItem>
                                 <asp:ListItem>Bird</asp:ListItem>
                                 <asp:ListItem>Reptile</asp:ListItem>
                             </asp:DropDownList>
                             <h4>Name: </h4>
-                            <asp:TextBox ID="txtAddName" runat="server" ReadOnly="False"></asp:TextBox>
+                            <asp:TextBox ID="txtAddName" runat="server" CssClass="form-control" ReadOnly="False"></asp:TextBox>
                             <h4>Species: </h4>
-                            <asp:TextBox ID="txtAddSpecies" runat="server" ReadOnly="False"></asp:TextBox>
+                            <asp:TextBox ID="txtAddSpecies" runat="server" CssClass="form-control" ReadOnly="False"></asp:TextBox>
                             <h4>Scientific Name: </h4>
-                            <asp:TextBox ID="txtAddScientificName" runat="server" ReadOnly="False"></asp:TextBox>
+                            <asp:TextBox ID="txtAddScientificName" runat="server" CssClass="form-control" ReadOnly="False"></asp:TextBox>
                             <br>
                             <br>
                             <br>
@@ -236,7 +236,7 @@
                 <div class="modal-body p-4" id="resultEdit">
 
 
-                    <div id="Bird1-1Edit" class=" AnimalIcons AnimalPopUp float-right">
+                    <div id="mammalEdit" class=" AnimalIcons AnimalPopUp float-right">
                         <div class=" thumbnail AnimalInfoDiv">
                             <img src="Images/Wildlife-Pics/Bo.jpg" class="animalImg" alt="">
                             <div class="caption">
@@ -248,17 +248,24 @@
                     <div class="row  ">
 
                         <div class=" col-md-8">
-                            <h4>Name:</h4>
-                            <asp:TextBox runat="server" ID="txtEditName" CssClass="form-control" Placeholder="ChangeName" ></asp:TextBox>
-                            
-                            <h4>Common Name:</h4>
-                            <input type="name" class="form-control" id="EditCom" placeholder="Change Common Name">
-                            <h4>Scientific Name:</h4>
-                            <input type="name" class="form-control" id="EditSci" placeholder="Change Scientific Name">
-                            <h4>Type:</h4>
-                            <input type="name" class="form-control" id="EditType" placeholder="Change Type">
-                            <h4>Age:</h4>
-                            <input type="name" class="form-control" id="EditAge" placeholder="Change Age">
+                            <h4>Animal Status: </h4>
+                            <asp:DropDownList ID="ddlEditStatus" runat="server" CssClass="form-control">
+                                <asp:ListItem Value="1">Active</asp:ListItem>
+                                <asp:ListItem Value="0">Deactive</asp:ListItem>
+                            </asp:DropDownList>
+                            <h4>Type: </h4>
+                            <asp:DropDownList ID="ddlEditType" runat="server" CssClass="form-control">
+                                <asp:ListItem>Mammal</asp:ListItem>
+                                <asp:ListItem>Bird</asp:ListItem>
+                                <asp:ListItem>Reptile</asp:ListItem>
+                            </asp:DropDownList>
+                            <h4>Name: </h4>
+                            <asp:TextBox runat="server" ID="txtEditName" CssClass="form-control" ReadOnly="False"></asp:TextBox>
+                            <h4>Species: </h4>
+                            <asp:TextBox ID="txtEditSpecies" runat="server" CssClass="form-control" ReadOnly="False"></asp:TextBox>
+                            <h4>Scientific Name: </h4>
+                            <asp:TextBox ID="txtEditSciName" runat="server" CssClass="form-control" ReadOnly="False"></asp:TextBox>
+
                         </div>
                         <!-- End  Description -->
 
