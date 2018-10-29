@@ -23,7 +23,7 @@
 </head>
 <body>
     <form id="form1" runat="server" class="needs-validation" novalidate>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="Home.aspx">Wildlife Center of Virginia</a>
             <button class="navbar-toggler header-top" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -62,7 +62,7 @@
                    <%-- </li>--%>
                        
                     <li class="nav-item">
-                        <a class="nav-link" href="MonthlyPaymentReport.aspx">Payments</a>
+                        <a class="nav-link" href="PaymentRecords.aspx">Payments</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Program.aspx">Programs</a>
@@ -75,7 +75,7 @@
             </div>
         </nav>
 
-        <div class="pt-5">
+        <div class="">
             <%--<h3 class="display-3 text-center mt-md-2"><%:Page.Title %></h3>--%>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
