@@ -57,6 +57,8 @@ public partial class Birds : System.Web.UI.Page
                     txtBirdName.Text = reader.GetString(2);
                     txtBirdSpecies.Text = reader.GetString(3);
                     txtBirdSciName.Text = reader.GetString(4);
+                    //Animal currentAnimal = new Animal(id, reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(1));
+
                 }
 
             }
