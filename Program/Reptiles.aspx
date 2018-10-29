@@ -128,9 +128,9 @@
 
        <%-- <script type="text/javascript">
          <!--
-    function Redirect() {
-        window.location = "AddAnimal.aspx";
-    }
+    //function Redirect() {
+    //    window.location = "AddAnimal.aspx";
+    //}
          //-->
       </script>--%>
 

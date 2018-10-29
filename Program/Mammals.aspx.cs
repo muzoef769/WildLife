@@ -1,51 +1,115 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class Mammals : System.Web.UI.Page
 {
+    System.Data.SqlClient.SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
     }
 
-    //protected void animal_OnClick(object sender, EventArgs e)
-    //{
-    //    //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "ModalView", "<script>$(function() { $('#animalModal').modal('show'); });</script>", false);
+    protected void AnimalInfo_Click(object sender, EventArgs e)
+    {
+        String strGetUser = "Select AnimalName from [dbo].[Animal] where AnimalID = @AnimalID";
 
-    //    string page = "Animal.aspx?field1=16";
-    //    string newWin = "window.open('" + page +"');";
-    //    ClientScript.RegisterStartupScript(this.GetType(), "pop", newWin, true);
-    //}
-    
-    //protected void btnEdit_OnClick(object sender, EventArgs e)
-    //{
-        
+        // CHECK FOR EXISTING USERNAMES IN USER RECORD
+        using (SqlCommand getAnimal = new SqlCommand(strGetUser, sc))
+        {
+            sc.Open();
 
-    //    txtName.ReadOnly = false;
-    //    txtSpecies.ReadOnly = false;
-    //    txtScientificName.ReadOnly = false;
-    //    // txtAge.ReadOnly = false;
-    //    txtType.Visible = false;
-    //    ddlType.Visible = true;
+            string btn = ((ImageButton)sender).ID;
+            string btnID = btn.ToString();
+            Int32 id = Convert.ToInt32(btnID.Substring(3));
+
+            txtName.Text = id.ToString();
+
+            getAnimal.Parameters.AddWithValue("@AnimalID", id);
+            SqlDataReader reader = getAnimal.ExecuteReader();
+
+            // if the username exists, process will stop
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    txtName.Text = reader.GetString(0);
+                }
+
+            }
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "ModalView", "<script>$(function() { $('#myModal').modal('show'); });</script>", false);
+
+            sc.Close();
+
+        }
+    }
+
+    protected void btnAddModal_Click(object sender, EventArgs e)
+    {
 
 
-    //    if (txtType.Text == "Bird")
-    //    {
-    //        ddlType.SelectedIndex = 0;
-    //    }
-    //    if (txtType.Text == "Mammal")
-    //    {
-    //        ddlType.SelectedIndex = 1;
-    //    }
-    //    if (txtType.Text == "Reptile")
-    //    {
-    //        ddlType.SelectedIndex = 2;
-    //    }
-        
-    //    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "ModalView", "<script>$(function() { $('#animalModal').modal('show'); });</script>", false);
-    //}
+        Animals newAnimal = new Animals(
+           txtSpecies.Text,
+           txtScientificName.Text,
+           txtName.Text,
+           ddlType.SelectedValue.ToString(),
+          Convert.ToChar(DropDownList1.SelectedValue),
+           DateTime.Today,
+           "Staff"
+
+
+
+           );
+
+
+        string createAnimal = "Insert into [dbo].[Animal] values (@Species, @ScientificName, @AnimalName, @AnimalType, @Status, @LastUpdated, @LastUpdatedBy)";
+        SqlCommand addAnimal = new SqlCommand(createAnimal, sc);
+        sc.Open();
+        addAnimal.Parameters.AddWithValue("@Species", newAnimal.getSpecies());
+        addAnimal.Parameters.AddWithValue("@ScientificName", newAnimal.getScientificName());
+        addAnimal.Parameters.AddWithValue("@AnimalName", newAnimal.getAnimalName());
+        addAnimal.Parameters.AddWithValue("@AnimalType", newAnimal.getAnimalType());
+        addAnimal.Parameters.AddWithValue("@Status", DropDownList1.SelectedValue);
+        addAnimal.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
+        addAnimal.Parameters.AddWithValue("@LastUpdatedBy", "Staff");
+        addAnimal.ExecuteNonQuery();
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

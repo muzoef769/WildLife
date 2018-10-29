@@ -246,7 +246,7 @@
 
                     <div id="Bird1-1" class=" AnimalIcons AnimalPopUp float-right">
                         <div class=" thumbnail AnimalInfoDiv">
-                            <img src="Images/Buddy.jpg" alt="">
+                            <img src="Images/Buddy.jpg" class="animalImg" alt="">
                             
                             <div class="caption">
                                 <h4>Buddy</h4>
@@ -262,7 +262,7 @@
                             <h4>Type: </h4>
                             <p class="ProgramCardTitle">Bird</p>
                             <h4>Name: </h4>
-                            <asp:TextBox ID="txtName" runat="server" Width="187px" ReadOnly="False"></asp:TextBox>
+                            <asp:TextBox ID="txtName" runat="server" ReadOnly="true"></asp:TextBox>
                             <h4>Species: </h4>
                             <p class="LongDT">Bald Eagle</p>
                             <h4>Scientific Name: </h4>
