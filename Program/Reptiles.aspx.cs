@@ -75,11 +75,11 @@ public partial class Reptiles : System.Web.UI.Page
 
 
         Animals newAnimal = new Animals(
-           txtSpecies.Text,
-           txtScientificName.Text,
-           txtRepName.Text,
-           ddlType.SelectedValue.ToString(),
-          Convert.ToChar(DropDownList1.SelectedValue),
+           txtAddSpecies.Text,
+           txtAddSciName.Text,
+           txtAddName.Text,
+           ddlAddType.SelectedValue.ToString(),
+           Convert.ToChar(ddlAddStatus.SelectedValue),
            DateTime.Today,
            "Staff"
 
@@ -94,8 +94,8 @@ public partial class Reptiles : System.Web.UI.Page
         addAnimal.Parameters.AddWithValue("@Species", newAnimal.getSpecies());
         addAnimal.Parameters.AddWithValue("@ScientificName", newAnimal.getScientificName());
         addAnimal.Parameters.AddWithValue("@AnimalName", newAnimal.getAnimalName());
-        addAnimal.Parameters.AddWithValue("@AnimalType", newAnimal.getAnimalType());
-        addAnimal.Parameters.AddWithValue("@Status", DropDownList1.SelectedValue);
+        addAnimal.Parameters.AddWithValue("@AnimalType", ddlAddType.SelectedValue);
+        addAnimal.Parameters.AddWithValue("@Status", ddlAddStatus.SelectedValue);
         addAnimal.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
         addAnimal.Parameters.AddWithValue("@LastUpdatedBy", "Staff");
         addAnimal.ExecuteNonQuery();

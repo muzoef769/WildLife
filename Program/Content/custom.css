@@ -3,10 +3,14 @@
 
 
 
+p, h1, h2, h3, h4, h5, h6, {
+    font-family: 'Raleway', sans-serif !important;
+}
+
 body, html {
     height: 100%;
-    /*max-width: 100%;
-    overflow-x: hidden;*/
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -55,16 +59,18 @@ body {
     background-color: seagreen;
     overflow-x: hidden;
     padding-top: 13px;
-	border-radius: 7px;
+    border-radius: 7px;
+    font-family: 'Raleway', sans-serif !important;
 }
 
-.sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 1em;
-    color: White;
-    display: block;
-}
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 1em;
+        color: White;
+        display: block;
+        font-family: 'Raleway', sans-serif !important;
+    }
 
 .sidenav a:hover {
     color: #f1f1f1;
@@ -74,46 +80,53 @@ body {
     display: none;
 }
 
-.LoginCard {opacity: .7;
-background-color: black;
-border-radius: 15px;
-    border: 2px ;
- display: block;
+.LoginCard {
+    opacity: .83;
+    background-color: black;
+    border-radius: 15px;
+    border: 2px;
+    display: block;
     height: auto;
-	 text-align: center;
+    text-align: center;
     vertical-align: middle;
-   }
-.WelcomeCard {opacity: .7;
-background-color: black;
-border-radius: 15px;
-    border: 2px ;
- display: block;
+    font-family: 'Raleway', sans-serif !important;
+}
+.WelcomeCard {
+    opacity: .83;
+    background-color: black;
+    border-radius: 15px;
+    border: 2px;
+    display: block;
     height: auto;
-	
-   }
+    font-family: 'Raleway', sans-serif !important;
+}
 
-.ProgramCard {border-style: none;
+.ProgramCard {
+    border-style: none;
     border-color: inherit;
     border-width: 2px;
     opacity: .7;
     background-color: whitesmoke;
     border-radius: 15px;
     display: block;
-    height: 409px;
-    text-align: center;
-    vertical-align: middle;
-    top: 14px;
-    left: 0px;
-}
-
-.SpeciesCard {opacity: .7;
-background-color: whitesmoke;
-border-radius: 15px;
-    border: 2px ;
- display: block;
     height: auto;
     text-align: center;
-    vertical-align: middle;}
+    vertical-align: middle;
+   
+    font-family: 'Raleway', sans-serif !important;
+}
+
+.SpeciesCard {
+    opacity: .7;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    border: 2px;
+    display: block;
+    height: auto;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Raleway', sans-serif !important;
+}
 
 .SpeciesContainer {padding-top: 10%;}
 
@@ -186,19 +199,27 @@ padding-top: 10%;}
 
 
 
-.WelcomeContainer {padding-left: 25%;
-	padding-right: 25%;
-padding-top: 10%;}
+.WelcomeContainer {
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-top: 10%;
+    font-family: 'Raleway', sans-serif !important;
+}
 
 
 
-	
+
 .LoginContainer {
-padding-top: 10%;}
+    padding-top: 10%;
+    font-family: 'Raleway', sans-serif !important;
+}
 
-.MonthContainer {padding-left: 5%;
-	padding-right: 80%;
-padding-top: 10%;}
+.MonthContainer {
+    padding-left: 5%;
+    padding-right: 80%;
+    padding-top: 10%;
+    font-family: 'Raleway', sans-serif !important;
+}
 
 
 .card .row {
@@ -213,246 +234,380 @@ padding-top: 10%;}
     padding: 20px; 
     height: 15px; }
 
-.CardTitle{color: white;
+.CardTitle {
+    color: white;
+    font-family: 'Raleway', sans-serif;
 }
 .ProgramCardTitle{color: black;
 }
 
-.CardTitle.form-check-label{text-align: left;}
+.CardTitle.form-check-label {
+    text-align: left;
+    font-family: 'Raleway', sans-serif !important;
+}
 
-.LoginButton{ opacity: 100 !important;
-background-color: darkgreen;
-border: 0px ;
+.LoginButton {
+    opacity: 100 !important;
+    background-color: darkgreen;
+    border: 0px;
+    border-color: #099708;
+    font-family: 'Raleway', sans-serif !important;
+    margin-left:5px !important;
+    margin-right: 5px !important;
 }
 
 .LoginButton:hover {background-color: green;
 opacity: 100;}
 
-.SpeciesButton{ opacity: 100 !important;
-background-color: darkgreen;
-border: 0px;
-	padding: 10px 70px;
+.SpeciesButton {
+    opacity: 100 !important;
+    background-color: darkgreen;
+    border: 0px;
+    padding: 10px 70px;
     font-size: 20px;
     border-radius: 10px;
+    font-family: 'Raleway', sans-serif !important;
 }
 
 .SpeciesButton:hover {background-color: green;
 opacity: 100;}
 
-.modal-full {
 
-    min-width: 100%;
-    margin: 0;
-padding-left: 15%;
-	padding-right: 15%;
-padding-top: 10%;
-	padding-bottom: 20%;
-	
 
+@media only screen and (max-width: 2600px) {
+    .modal-full {
+        min-width: 100%;
+        margin: 0;
+        padding-left: 15%;
+        padding-right: 15%;
+        padding-top: 3%;
+        font-family: 'Raleway', sans-serif !important;
+    }
+
+    .modal-half {
+        min-width: 60%;
+        margin: 0;
+        padding-left: 30%;
+        padding-right: 5%;
+        padding-top: 5%;
+        font-family: 'Raleway', sans-serif !important;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .modal-full {
+        min-width: 100%;
+        margin: 0;
+        padding-left: 15%;
+        padding-right: 15%;
+        padding-top: 13%;
+        font-family: 'Raleway', sans-serif !important;
+    }
+
+    .modal-half {
+        min-width: 60%;
+        margin: 0;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-top: 15%;
+        font-family: 'Raleway', sans-serif !important;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    .modal-full {
+        min-width: 100%;
+        margin: 0;
+        padding-left: 15%;
+        padding-right: 15%;
+        padding-top: 10%;
+        font-family: 'Raleway', sans-serif !important;
+    }
+
+
+    .modal-half {
+        min-width: 60%;
+        margin: 0;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-top: 12%;
+        font-family: 'Raleway', sans-serif !important;
+    }
 }
 
 
+    .modal-full .modal-content {
+        min-height: 80vh;
+        background-color: whitesmoke;
+        font-family: 'Raleway', sans-serif !important;
+    }
 
-.modal-full .modal-content {
+    .Animal {
+        text-decoration: underline;
+    }
 
-    min-height: 80vh;
-	background-color: whitesmoke;
-
-}
-
-.Animal {text-decoration: underline;}
-
-.ProgramMoney {border: thin;}
+    .ProgramMoney {
+        border: thin;
+    }
 
 
 
 
-.WelcomeName {
-color: green}
+    .WelcomeName {
+        color: green;
+        font-family: 'Raleway', sans-serif !important;
+    }
 
-.UpcomingPro {color: white;}
+    .UpcomingPro {
+        color: white;
+        font-family: 'Raleway', sans-serif !important;
+    }
 
-.UpcomingThin {font-stretch: semi-condensed;;
-color: lightslategray;}
+    .UpcomingThin {
+        font-stretch: semi-condensed;
+        color: lightslategray;
+        font-family: 'Raleway', sans-serif !important;
+    }
 
-.WelcomeLine {border-color: white;
-}
+    .WelcomeLine {
+        border-color: white;
+        font-family: 'Raleway', sans-serif !important;
+    }
 
-.DDMonth{color: white;
-	padding-left: 5%;
-}
+    .DDMonth {
+        color: white;
+        padding-left: 5%;
+        font-family: 'Raleway', sans-serif !important;
+    }
 
-ul {
-    list-style: none;
-}
+    ul {
+        list-style: none;
+        font-family: 'Raleway', sans-serif !important;
+    }
 
-.MonthNav {
-    width: 130px;
-    height: auto;
-    display: block;
-    box-sizing: border-box;
-    position: fixed;
-    top: 45%;
-    left: -.5em;
-    transform: translateY(-50%);
-	color: #005D00;
-}
+    .MonthNav {
+        width: 130px;
+        height: auto;
+        display: block;
+        box-sizing: border-box;
+        position: fixed;
+        top: 45%;
+        left: -.5em;
+        transform: translateY(-50%);
+        color: #005D00;
+        font-family: 'Raleway', sans-serif !important;
+    }
 
-.MonthLi {
-    height: auto;
-    text-align: left;
-    line-height: 2em;
-    flex-grow: 1;
-    font-size: .94em;
-    color:white;
-    transition: .5s;
-    transition-timing-function: linear, ease-out ;
-	
-	
-	
-    
-}
+    .MonthLi {
+        height: auto;
+        text-align: left;
+        line-height: 2em;
+        flex-grow: 1;
+        font-size: .94em;
+        color: white;
+        transition: .5s;
+        transition-timing-function: linear, ease-out;
+        font-family: 'Raleway', sans-serif !important;
+    }
 
-.MonthLi:hover {
-/*    -webkit-transform: scale(1.0);
+        .MonthLi:hover {
+            /*    -webkit-transform: scale(1.0);
     -ms-trasform: scale(1.0);
     transform: scale(1.0);*/
-    color: lightsalmon;
-    line-height: 1.8em;
-    flex-grow: 3;
-    max-width: 100%;
-    font-size: 1.5em;
-    transition: .3s;
-    transform-origin: left;
-    align-items: center;
-    font-weight:bold;
-}
+            color: lightsalmon;
+            line-height: 1.8em;
+            flex-grow: 3;
+            max-width: 100%;
+            font-size: 1.5em;
+            transition: .3s;
+            transform-origin: left;
+            align-items: center;
+            font-weight: bold;
+        }
 
 
-.AnimalNav{
-    position:relative;
-    padding-top: 5%;
-}
-.AnimalLi {
-    margin: 5%;
-    Width: auto;
-    text-align: center;
-    line-height: 2em;
-    flex-grow: 1;
-    font-size: 2.5em;
-    color: Black;
-    transition: .5s;
-    transition-timing-function: linear, ease-out ;
-	
-	
-    
-}
+    .AnimalNav {
+        position: relative;
+        padding-top: 5%;
+        font-family: 'Raleway', sans-serif !important;
+    }
 
-.AnimalLi:hover {
-/*    -webkit-transform: scale(1.0);
+    .AnimalLi {
+        margin: 5%;
+        Width: auto;
+        text-align: center;
+        line-height: 2em;
+        flex-grow: 1;
+        font-size: 2.5em;
+        color: Black;
+        transition: .5s;
+        transition-timing-function: linear, ease-out;
+        font-family: 'Raleway', sans-serif !important;
+    }
+
+        .AnimalLi:hover {
+            /*    -webkit-transform: scale(1.0);
     -ms-trasform: scale(1.0);
     transform: scale(1.0);*/
-    color: #057F24;
-    line-height: 1.8em;
-    flex-grow: 3;
-    max-height: 100%;
-    font-size: 3em;
-    transition: .3s;
-    transform-origin: right;
-    align-items: center;
-    text-decoration:underline;
-    
-}
+            color: #057F24;
+            line-height: 1.8em;
+            flex-grow: 3;
+            max-height: 100%;
+            font-size: 3em;
+            transition: .3s;
+            transform-origin: right;
+            align-items: center;
+            text-decoration: underline;
+        }
 
-.MonthBreak {font-size:  .2em;}
+    .MonthBreak {
+        font-size: .2em;
+    }
 
-.AnimalIcons {padding-left: 5%;
-padding-right: 5%}
-
-a.ProgramCaption{color: black;
-background-color: whitesmoke;
-border-radius: 12%; 
-}
-
-.AnimalIcons {padding-top: 2%}
-
-@media only screen and (min-width: 600px) {
-
-.AnimalIcons {padding-top: 8%}
-}
+    .AnimalIcons {
+        padding-left: 5%;
+        padding-right: 5%
+    }
 
 
-.btn-AddAnimal{ opacity: 100 !important;
-background-color: darkgreen;
-border: 0px ;
-	align-content: center;
-	width: 100%;
-}
+    a.ProgramCaption {
+        color: black;
+        background-color: whitesmoke;
+        border-radius: 12%;
+        font-family: 'Raleway', sans-serif !important;
+    }
 
-.btn-AddAnimal:hover {background-color: green;
-opacity: 100;}
+    .AnimalIcons {
+        padding-top: 2%
+    }
 
-@media only screen and (min-width: 1200px) {
-	
-	.AnimalIcons {padding-top: 8%}
-}
+    @media only screen and (min-width: 600px) {
 
-
-.btn-AddAnimal{ opacity: 100 !important;
-background-color: darkgreen;
-border: 0px ;
-	align-content: center;
-	width: 50%;
-}
-
-@media only screen and (min-width: 800px) {
-	
-	.AnimalIcons {padding-top: 8%}
-}
+        .AnimalIcons {
+            padding-top: 8%
+        }
+    }
 
 
-.btn-AddAnimal{ opacity: 100 !important;
-background-color: darkgreen;
-border: 0px ;
-	align-content: center;
-	width: 60%;
-}
+    .btn-AddAnimal {
+        opacity: 100 !important;
+        background-color: darkgreen;
+        border: 0px;
+        align-content: center;
+        width: 100%;
+        font-family: 'Raleway', sans-serif !important;
+    }
 
-.SpeciesButton {color: white;
-width: 45%;
-padding-top: 5%}
+        .btn-AddAnimal:hover {
+            background-color: green;
+            opacity: 100;
+        }
+
+    @media only screen and (min-width: 1200px) {
+
+        .AnimalIcons {
+            padding-top: 8%
+        }
+    }
 
 
-thumbnail {
-    border: 2px;
-	border-color: whitesmoke;
-   
-}
+    .btn-AddAnimal {
+        opacity: 100 !important;
+        background-color: darkgreen;
+        border: 0px;
+        align-content: center;
+        width: 50%;
+        font-family: 'Raleway', sans-serif !important;
+    }
 
-.thumbnail .animalImg {
-    width: 100%;
-}
+    @media only screen and (min-width: 800px) {
 
-.AnimalInfoDiv {background-color: whitesmoke;
-border-radius: 12px;}
+        .AnimalIcons {
+            padding-top: 8%
+        }
+    }
 
-.btn-AnimalInfo {padding-bottom: 5px;}
 
-.AnimalPopUp{ width: 30%;
-    height: auto;
-  padding-top: 30%;
-	text-align: center;
-    transform: translateY(-50%);
-	color: #005D00;}
-.Underline {text-decoration: underline;}
+    .btn-AddAnimal {
+        opacity: 100 !important;
+        background-color: darkgreen;
+        border: 0px;
+        align-content: center;
+        width: 60%;
+        font-family: 'Raleway', sans-serif !important;
+    }
 
-.DropdownAnimal {color: black;
-padding-left: 4%;}
+    .SpeciesButton {
+        color: white;
+        width: 45%;
+        padding-top: 5%
+    }
 
-.form-group{color: black;}
 
-.form-control{
-border: #099708;
+    thumbnail {
+        border: 2px;
+        border-color: whitesmoke;
+    }
 
-}
+    .thumbnail {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
 
+        .thumbnail .animalImg {
+            width: 100%;
+        }
+
+    .animalImg {
+        width: 150px;
+        height: 150px;
+    }
+
+    WelcomeInfoDiv {
+    }
+
+    .AnimalInfoDiv {
+        background-color: whitesmoke;
+        border-radius: 12px;
+    }
+
+    .WelcomeInfoDiv {
+        background-color: whitesmoke;
+        border-radius: 12px;
+        display: block;
+    }
+
+    .btn-AnimalInfo {
+        padding-bottom: 5px;
+    }
+
+    .AnimalPopUp {
+        width: 30%;
+        height: auto;
+        padding-top: 30%;
+        text-align: center;
+        transform: translateY(-50%);
+        color: #005D00;
+    }
+
+    .Underline {
+        text-decoration: underline;
+    }
+
+    .DropdownAnimal {
+        color: black;
+        padding-left: 4%;
+    }
+
+    .form-group {
+        color: black;
+    }
+
+    .form-control {
+        border: #099708;
+    }
+
+    .caption {
+        text-align: center;
+    }

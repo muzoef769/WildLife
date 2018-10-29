@@ -13,7 +13,7 @@
 	  <h1 id="ProgramMonth" class=" ProgramCardTitle d-flex justify-content-center "> April</h1>
 	  <h4 class=" ProgramCardTitle Underline d-flex justify-content-center "> Off-Site</h4>
 	 
-    <div class="d-flex justify-content-center "> <button data-toggle="modal" data-target="#AddProgramModal" class="btn btn-primary LoginButton" type="button">Add Program</button></div>
+    <div class="d-flex justify-content-center "> <button data-toggle="modal" data-target="#AddProgramModal" class="btn btn-primary LoginButton" type="button">Add Program</button> <br /></div>
    
 
   
@@ -59,12 +59,12 @@
   
   
   
-<%--  <div class="row">
+  <div class="row">
   <a href="#" data-toggle="modal" data-target="#ProgramModal">
   <div class="col-md-12"><h5 class="ProgramCardTitle float-left " > Wild Winter Worlds</h5></div></a>
-</div>--%>
+</div>
  
-<%-- <div class="row">
+ <div class="row">
   <div class="table-responsive">
     <table class="table table-bordered ProgramBioShort">
         <thead>
@@ -90,10 +90,10 @@
         </tbody>
     </table>
 </div>
-</div>--%>
+</div>
 </div>
  
-	<br>
+
 
 </div>
 </div>
@@ -409,7 +409,7 @@
 </div>
 
 
-<%--<div class="modal" id="ProgramModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal" id="ProgramModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-full" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -479,7 +479,7 @@
             </div>
         </div>
     </div>
-</div>--%>
+</div>
 
 
 <ul class="container MonthNav">
