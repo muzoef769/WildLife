@@ -257,16 +257,18 @@
                     <div class="row  ">
 
                         <div class=" col-md-8">
-                            <h4>Status: </h4>
-                            <p class="NumAd">Activated</p>
+                       <h4>Status: </h4>
+                            <asp:TextBox ID="txtBirdStatus" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
                             <h4>Type: </h4>
-                            <p class="ProgramCardTitle">Bird</p>
+                             <asp:TextBox ID="txtBirdType" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>   
                             <h4>Name: </h4>
-                            <asp:textbox id="txtName" runat="server" readonly="true"></asp:textbox>
+                            <asp:TextBox ID="txtBirdName" class="form-control" runat="server"  ReadOnly="True"></asp:TextBox>
                             <h4>Species: </h4>
-                            <p class="LongDT">Bald Eagle</p>
+                            <asp:TextBox ID="txtBirdSpecies" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
                             <h4>Scientific Name: </h4>
-                            <p class="NumCh">Haliaeetus leucocephalus</p>
+                            <asp:TextBox ID="txtBirdSciName" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
+
+
 
 
 

@@ -22,10 +22,10 @@ public partial class Birds : System.Web.UI.Page
 
     protected void AnimalInfo_Click(object sender, EventArgs e)
     {
-        String strGetUser = "Select AnimalName from [dbo].[Animal] where AnimalID = @AnimalID";
-        string tempStatus;
+        String strGetAnimal = "Select Status, AnimalType, AnimalName, Species, ScientificName from [dbo].[Animal] where AnimalID = @AnimalID";
+        Boolean tempStatus;
         // CHECK FOR EXISTING USERNAMES IN USER RECORD
-        using (SqlCommand getAnimal = new SqlCommand(strGetUser, sc))
+        using (SqlCommand getAnimal = new SqlCommand(strGetAnimal, sc))
         {
             sc.Open();
 
@@ -33,7 +33,7 @@ public partial class Birds : System.Web.UI.Page
             string btnID = btn.ToString();
             Int32 id = Convert.ToInt32(btnID.Substring(3));
 
-            txtName.Text = id.ToString();
+            txtBirdName.Text = id.ToString();
 
             getAnimal.Parameters.AddWithValue("@AnimalID", id);
             SqlDataReader reader = getAnimal.ExecuteReader();
@@ -43,20 +43,20 @@ public partial class Birds : System.Web.UI.Page
             {
                 while (reader.Read())
                 {
-                    tempStatus = reader["Status"].ToString();
-                    if (tempStatus == "1")
+                    tempStatus = Convert.ToBoolean(reader["Status"]);
+                    if (tempStatus == true)
                     {
-                        txtStatus.Text = "Active";
+                        txtBirdStatus.Text = "Active";
                     }
                     else
                     {
-                        txtStatus.Text = "Deactive";
+                        txtBirdStatus.Text = "Deactive";
                     }
-                    txtType.Text = reader.GetString(1);
+                    txtBirdType.Text = reader.GetString(1);
 
-                    txtName.Text = reader.GetString(2);
-                    txtSpecies.Text = reader.GetString(3);
-                    txtSciName.Text = reader.GetString(4);
+                    txtBirdName.Text = reader.GetString(2);
+                    txtBirdSpecies.Text = reader.GetString(3);
+                    txtBirdSciName.Text = reader.GetString(4);
                 }
 
             }
@@ -74,7 +74,7 @@ public partial class Birds : System.Web.UI.Page
         Animals newAnimal = new Animals(
            txtSpecies.Text,
            txtScientificName.Text,
-           txtName.Text,
+           txtBirdName.Text,
            ddlType.SelectedValue.ToString(),
           Convert.ToChar(DropDownList1.SelectedValue),
            DateTime.Today,

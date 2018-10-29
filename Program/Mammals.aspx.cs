@@ -18,11 +18,11 @@ public partial class Mammals : System.Web.UI.Page
 
     protected void AnimalInfo_Click(object sender, EventArgs e)
     {
-        String strGetUser = "Select Status, AnimalType, AnimalName, Species, ScientificName from [dbo].[Animal] where AnimalID = @AnimalID";
+        String strGetAnimal = "Select Status, AnimalType, AnimalName, Species, ScientificName from [dbo].[Animal] where AnimalID = @AnimalID";
         Boolean tempStatus;
 
         // CHECK FOR EXISTING USERNAMES IN USER RECORD
-        using (SqlCommand getAnimal = new SqlCommand(strGetUser, sc))
+        using (SqlCommand getAnimal = new SqlCommand(strGetAnimal, sc))
         {
             sc.Open();
 
