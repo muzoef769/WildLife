@@ -7,14 +7,17 @@
                 <a class="AnimalLi nav-link" href="Birds.aspx">Birds</a>
 
             </div>
-            <div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
-                <a class="AnimalLi nav-link font-weight-bold text-success" href="#">Reptiles</a>
 
-            </div>
             <div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
                 <a class="AnimalLi nav-link " href="Mammals.aspx">Mammals</a>
 
             </div>
+
+            <div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
+                <a class="AnimalLi nav-link font-weight-bold text-success" href="#">Reptiles</a>
+
+            </div>
+
         </div>
     </div>
     <div class="row">
@@ -126,7 +129,7 @@
         </div>
 
 
-        <%-- <script type="text/javascript">
+    <%-- <script type="text/javascript">
          <!--
     //function Redirect() {
     //    window.location = "AddAnimal.aspx";
@@ -161,15 +164,15 @@
 
                         <div class=" col-md-8">
                             <h4>Status: </h4>
-                            <asp:TextBox ID="txtRepStatus" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
+                            <asp:TextBox ID="txtStatus" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
                             <h4>Type: </h4>
-                            <asp:TextBox ID="txtRepType" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
+                            <asp:TextBox ID="txtType" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
                             <h4>Name: </h4>
-                            <asp:TextBox ID="txtRepName" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
+                            <asp:TextBox ID="txtName" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
                             <h4>Species: </h4>
-                            <asp:TextBox ID="txtRepSpecies" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
+                            <asp:TextBox ID="txtSpecies" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
                             <h4>Scientific Name: </h4>
-                            <asp:TextBox ID="txtRepSciName" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
+                            <asp:TextBox ID="txtSciName" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
 
 
 
@@ -211,12 +214,12 @@
 
                         <div class=" col-md-8 ">
                             <h4>Animal Status: </h4>
-                            <asp:DropDownList ID="ddlAddStatus" runat="server" CssClass="form-control">
+                            <asp:DropDownList ID="ddlAddStatus" runat="server" CssClass="form-control-plaintext attributeDropDown">
                                 <asp:ListItem Value="1">Active</asp:ListItem>
                                 <asp:ListItem Value="0">Deactive</asp:ListItem>
                             </asp:DropDownList>
                             <h4>Type: </h4>
-                            <asp:DropDownList ID="ddlAddType" runat="server" CssClass="form-control-plaintext bg-white" style="height:2.5em; border-radius:10px;">
+                            <asp:DropDownList ID="ddlAddType" runat="server" CssClass="form-control-plaintext attributeDropDown">
                                 <asp:ListItem>Bird</asp:ListItem>
                                 <asp:ListItem>Mammal</asp:ListItem>
                                 <asp:ListItem>Reptile</asp:ListItem>
@@ -226,7 +229,7 @@
                             <h4>Species: </h4>
                             <asp:TextBox ID="txtAddSpecies" runat="server" class="form-control" ReadOnly="false"></asp:TextBox>
                             <h4>Scientific Name: </h4>
-                            <asp:TextBox ID="txtAddSciName" runat="server" class="form-control"  ReadOnly="false"></asp:TextBox>
+                            <asp:TextBox ID="txtAddSciName" runat="server" class="form-control" ReadOnly="false"></asp:TextBox>
 
 
                             <br>
@@ -301,7 +304,7 @@
                             <h4>Species: </h4>
                             <asp:TextBox ID="txtEditSpecies" runat="server" class="form-control" ReadOnly="false"></asp:TextBox>
                             <h4>Scientific Name: </h4>
-                            <asp:TextBox ID="txtEditSciName" runat="server" class="form-control"  ReadOnly="false"></asp:TextBox>
+                            <asp:TextBox ID="txtEditSciName" runat="server" class="form-control" ReadOnly="false"></asp:TextBox>
 
 
 

@@ -16,7 +16,7 @@ public class Animal
     private string type; //This value will either be 'B' for bird, 'M' for Mammal, or 'R' for Reptile ------- changed to string
     //private DateTime dateAdded;   removed dateAdded
     //private int age               removed age
-
+    private char Status;
     //added species, scientificname to match DB
     private DateTime lastUpdated;
     private string lastUpdatedBy;
@@ -144,4 +144,14 @@ public class Animal
     {
         this.lastUpdatedBy = x;
     }
+
+    public char getStatus()
+    {
+        return this.Status;
+    }
+    public void setStatus(char status)
+    {
+        this.Status = status;
+    }
+
 }

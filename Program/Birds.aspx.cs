@@ -33,7 +33,6 @@ public partial class Birds : System.Web.UI.Page
             string btnID = btn.ToString();
             Int32 id = Convert.ToInt32(btnID.Substring(3));
 
-            txtBirdName.Text = id.ToString();
 
             getAnimal.Parameters.AddWithValue("@AnimalID", id);
             SqlDataReader reader = getAnimal.ExecuteReader();
@@ -46,17 +45,17 @@ public partial class Birds : System.Web.UI.Page
                     tempStatus = Convert.ToBoolean(reader["Status"]);
                     if (tempStatus == true)
                     {
-                        txtBirdStatus.Text = "Active";
+                        txtStatus.Text = "Active";
                     }
                     else
                     {
-                        txtBirdStatus.Text = "Deactive";
+                        txtStatus.Text = "Deactive";
                     }
-                    txtBirdType.Text = reader.GetString(1);
+                    txtType.Text = reader.GetString(1);
 
-                    txtBirdName.Text = reader.GetString(2);
-                    txtBirdSpecies.Text = reader.GetString(3);
-                    txtBirdSciName.Text = reader.GetString(4);
+                    txtName.Text = reader.GetString(2);
+                    txtSpecies.Text = reader.GetString(3);
+                    txtSciName.Text = reader.GetString(4);
                     //Animal currentAnimal = new Animal(id, reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(1));
 
                 }
@@ -74,11 +73,11 @@ public partial class Birds : System.Web.UI.Page
 
 
         Animals newAnimal = new Animals(
-           txtSpecies.Text,
-           txtScientificName.Text,
-           txtBirdName.Text,
-           ddlType.SelectedValue.ToString(),
-          Convert.ToChar(DropDownList1.SelectedValue),
+           txtAddSpecies.Text,
+           txtAddSciName.Text,
+           txtAddName.Text,
+           ddlAddType.SelectedValue.ToString(),
+          Convert.ToChar(ddlAddStatus.SelectedValue),
            DateTime.Today,
            "Staff"
 
@@ -94,9 +93,9 @@ public partial class Birds : System.Web.UI.Page
         addAnimal.Parameters.AddWithValue("@ScientificName", newAnimal.getScientificName());
         addAnimal.Parameters.AddWithValue("@AnimalName", newAnimal.getAnimalName());
         addAnimal.Parameters.AddWithValue("@AnimalType", newAnimal.getAnimalType());
-        addAnimal.Parameters.AddWithValue("@Status", DropDownList1.SelectedValue);
-        addAnimal.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
-        addAnimal.Parameters.AddWithValue("@LastUpdatedBy", "Staff");
+        addAnimal.Parameters.AddWithValue("@Status", newAnimal.getStatus());
+        addAnimal.Parameters.AddWithValue("@LastUpdated", newAnimal.getLastUpdated());
+        addAnimal.Parameters.AddWithValue("@LastUpdatedBy", newAnimal.getLastUpdatedBy());
         addAnimal.ExecuteNonQuery();
 
 
