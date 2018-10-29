@@ -79,9 +79,9 @@
 
             <div id="Bird27" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a <%--href="Animal.aspx?field1=27"--%>>
-                        <img class="AnimalPic" src="Images/hudson.jpg" />
-                    </a>
+                    <asp:ImageButton ID="ImageButton1" CssClass="animalImg" runat="server" src="Images/hudson.jpg" OnClick="AnimalInfo_Click" />
+                        
+                    
                     <div class="caption">
                         <h4>Hudson</h4>
                     </div>
@@ -90,9 +90,9 @@
 
             <div id="Bird5" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a <%-- href=""--%>>
-                        <img class="AnimalPic" src="Images/grayson.jpg" />
-                    </a>
+                    <asp:ImageButton ID="ImageButton2" CssClass="animalImg" runat="server" src="Images/grayson.jpg" OnClick="AnimalInfo_Click" />
+                        
+                    
                     <div class="caption">
                         <h4>Grayson</h4>
                     </div>
@@ -101,9 +101,9 @@
 
             <div id="Bird6" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a <%--href="Animal.aspx?field1=6"--%>>
-                        <img class="AnimalPic" src="Images/keeya.jpg" />
-                    </a>
+                    <asp:ImageButton ID="ImageButton3" CssClass="animalImg" runat="server" src="Images/keeya.jpg" OnClick="AnimalInfo_Click" />
+                        
+                    
                     <div class="caption">
                         <h4>Keeya</h4>
                     </div>
@@ -112,9 +112,9 @@
 
             <div id="Bird7" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a <%--href="Animal.aspx?field1=7"--%>>
-                        <img class="AnimalPic" src="Images/07-ruby.jpg" />
-                    </a>
+                    <asp:ImageButton ID="ImageButton4" CssClass="animalImg" runat="server" src="Images/07-ruby.jpg" OnClick="AnimalInfo_Click" />
+                        
+                   
                     <div class="caption">
                         <h4>Ruby</h4>
                     </div>
@@ -126,9 +126,9 @@
 
             <div id="Bird8" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a <%--href="Animal.aspx?field1=8"--%>>
-                        <img class="AnimalPic" src="Images/rose.jpg" />
-                    </a>
+                    <asp:ImageButton ID="ImageButton5" CssClass="animalImg" runat="server" src="Images/rose.jpg" OnClick="AnimalInfo_Click" />
+                        
+                    
                     <div class="caption">
                         <h4>Rosalie</h4>
                     </div>
@@ -137,9 +137,9 @@
 
             <div id="Bird9" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a <%--href="Animal.aspx?field1=9"--%>>
-                        <img class="AnimalPic" src="Images/athena.jpg" />
-                    </a>
+                    <asp:ImageButton ID="ImageButton6" CssClass="animalImg" runat="server" src="Images/athena.jpg" OnClick="AnimalInfo_Click" />
+                        
+                    
                     <div class="caption">
                         <h4>Athena</h4>
                     </div>
@@ -148,9 +148,9 @@
 
             <div id="Bird10" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a <%--href="Animal.aspx?field1=10"--%>>
-                        <img class="AnimalPic" src="Images/gus.jpg" />
-                    </a>
+                    <asp:ImageButton ID="ImageButton7" CssClass="animalImg" runat="server" src="Images/gus.jpg" OnClick="AnimalInfo_Click" />
+                        
+                    
                     <div class="caption">
                         <h4>Gus</h4>
                     </div>
@@ -159,9 +159,9 @@
 
             <div id="Bird11" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a <%--href="Animal.aspx?field1=11"--%>>
-                        <img class="AnimalPic" src="Images/papagho.jpg" />
-                    </a>
+                    <asp:ImageButton ID="ImageButton8" CssClass="animalImg" runat="server" src="Images/papagho.jpg" OnClick="AnimalInfo_Click" />
+                        
+                   
                     <div class="caption">
                         <h4>Papa G'Ho</h4>
                     </div>
@@ -172,9 +172,9 @@
         <div class="row text-center text-lg-center">
             <div id="Bird12" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a <%--href="Animal.aspx?field1=12"--%>>
-                        <img class="AnimalPic" src="Images/quinn.jpg" />
-                    </a>
+                    <asp:ImageButton ID="ImageButton9" CssClass="animalImg" runat="server" src="Images/quinn.jpg" OnClick="AnimalInfo_Click" />
+                        
+                    
                     <div class="caption">
                         <h4>Quinn</h4>
                     </div>
@@ -183,9 +183,9 @@
 
             <div id="Bird13" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a <%--href="Animal.aspx?field1=13"--%>>
-                        <img class="AnimalPic" src="Images/alex.jpg" />
-                    </a>
+                    <asp:ImageButton ID="ImageButton10" CssClass="animalImg" runat="server" src="Images/alex.jpg" OnClick="AnimalInfo_Click" />
+                        
+                   
                     <div class="caption">
                         <h4>Alex</h4>
                     </div>
@@ -194,9 +194,9 @@
 
             <div id="Bird14" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a <%--href="Animal.aspx?field1=14"--%>>
-                        <img class="AnimalPic" src="Images/Buttercup%202014%20(17).jpg" />
-                    </a>
+                    <asp:ImageButton ID="ImageButton11" CssClass="animalImg" runat="server" src="Images/Buttercup%202014%20(17).jpg" OnClick="AnimalInfo_Click" />
+                        
+                    
                     <div class="caption">
                         <h4>Buttercup</h4>
                     </div>
@@ -204,9 +204,8 @@
             </div>
             <div id="Bird15" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a <%--href='"Animal.aspx?field1=15"--%>'>
-                        <img class="AnimalPic" src="Images/14-jaz.jpg" />
-                    </a>
+                    <asp:ImageButton ID="ImageButton12" CssClass="animalImg" runat="server" src="Images/14-jaz.jpg" OnClick="AnimalInfo_Click" />
+                        
                     <div class="caption">
                         <h4>Jaz</h4>
                     </div>
