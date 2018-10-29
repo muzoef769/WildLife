@@ -157,7 +157,7 @@
 
                     <div id="Bird1-1" class=" AnimalIcons AnimalPopUp float-right">
                         <div class=" thumbnail AnimalInfoDiv">
-                            <img src="Images/Buddy.jpg"  alt="">
+                            <img src="Images/cliff.jpg" class="animalImg" alt="">
                             
                             <div class="caption">
                                 <h4>Clifford</h4>
@@ -173,7 +173,7 @@
                             <h4>Type: </h4>
                             <p class="ProgramCardTitle">Reptile</p>
                             <h4>Name: </h4>
-                            <asp:TextBox ID="txtName" runat="server" Width="187px" ReadOnly="False"></asp:TextBox>
+                            <asp:TextBox ID="txtName" runat="server" Width="187px" ReadOnly="True"></asp:TextBox>
                             <h4>Species: </h4>
                             <p class="LongDT">Cornsnake</p>
                             <h4>Scientific Name: </h4>
@@ -300,8 +300,7 @@
                             <input type="name" class="form-control" id="EditSci" placeholder="Change Scientific Name">
                             <h4>Type:</h4>
                             <input type="name" class="form-control" id="EditType" placeholder="Change Type">
-                            <h4>Age:</h4>
-                            <input type="name" class="form-control" id="EditAge" placeholder="Change Age">
+                            
                         </div>
                         <!-- End  Description -->
 
