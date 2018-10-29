@@ -23,7 +23,7 @@ public partial class Birds : System.Web.UI.Page
     protected void AnimalInfo_Click(object sender, EventArgs e)
     {
         String strGetUser = "Select AnimalName from [dbo].[Animal] where AnimalID = @AnimalID";
-
+        string tempStatus;
         // CHECK FOR EXISTING USERNAMES IN USER RECORD
         using (SqlCommand getAnimal = new SqlCommand(strGetUser, sc))
         {
@@ -43,7 +43,20 @@ public partial class Birds : System.Web.UI.Page
             {
                 while (reader.Read())
                 {
-                    txtName.Text = reader.GetString(0);
+                    tempStatus = reader["Status"].ToString();
+                    if (tempStatus == "1")
+                    {
+                        txtStatus.Text = "Active";
+                    }
+                    else
+                    {
+                        txtStatus.Text = "Deactive";
+                    }
+                    txtType.Text = reader.GetString(1);
+
+                    txtName.Text = reader.GetString(2);
+                    txtSpecies.Text = reader.GetString(3);
+                    txtSciName.Text = reader.GetString(4);
                 }
 
             }

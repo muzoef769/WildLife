@@ -30,7 +30,7 @@
     </div>
     <div class="container">
         <div class="row text-center text-lg-center">
-            <div id="Reptile1" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+            <div id="Reptile1"  class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
                     <asp:ImageButton ID="ani19" CssClass="animalImg" runat="server" src="Images/cliff.jpg" OnClick="AnimalInfo_Click" />
 
@@ -79,7 +79,7 @@
 
 
         <div class="row text-center text-lg-center">
-            <div id="Reptile5" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+            <div id="Reptile5" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
                     <asp:ImageButton ID="ani23" CssClass="animalImg" runat="server" src="Images/22-severus.jpg" OnClick="AnimalInfo_Click" />
 
@@ -161,15 +161,15 @@
 
                         <div class=" col-md-8">
                             <h4>Status: </h4>
-                            <p class="NumAd">Activated</p>
+                            <asp:TextBox ID="txtRepStatus" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
                             <h4>Type: </h4>
-                            <p class="ProgramCardTitle">Reptile</p>
+                             <asp:TextBox ID="txtRepType" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>   
                             <h4>Name: </h4>
-                            <asp:TextBox ID="txtName" class="form-control" runat="server" Width="187px" ReadOnly="True"></asp:TextBox>
+                            <asp:TextBox ID="txtRepName" class="form-control" runat="server"  ReadOnly="True"></asp:TextBox>
                             <h4>Species: </h4>
-                            <p class="LongDT">Cornsnake</p>
+                            <asp:TextBox ID="txtRepSpecies" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
                             <h4>Scientific Name: </h4>
-                            <p class="NumCh">Pantherophis guttatus</p>
+                            <asp:TextBox ID="txtRepSciName" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
 
 
 
