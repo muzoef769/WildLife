@@ -17,8 +17,8 @@
             </div>
         </div>
     </div>
-    
-   
+
+
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
@@ -37,8 +37,8 @@
             <div id="Mammal1" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
                     <asp:ImageButton ID="ani16" CssClass="animalImg" runat="server" src="Images/bo.jpg" OnClick="AnimalInfo_Click" />
-                        
-                    
+
+
                     <div class="caption">
                         <h4>Bo</h4>
 
@@ -50,8 +50,8 @@
             <div id="Mammal2" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
                     <asp:ImageButton ID="ani17" CssClass="animalImg" runat="server" src="Images/Posiesmaller.jpg" OnClick="AnimalInfo_Click" />
-                        
-                    
+
+
                     <div class="caption">
                         <h4>Posie</h4>
 
@@ -59,12 +59,12 @@
                     </div>
                 </div>
             </div>
-            
-                        <div id="Mammal3" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+
+            <div id="Mammal3" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
                     <asp:ImageButton ID="ani18" CssClass="animalImg" runat="server" src="Images/Willowsmall.jpg" OnClick="AnimalInfo_Click" />
-                        
-                    
+
+
                     <div class="caption">
                         <h4>Willow</h4>
 
@@ -113,8 +113,8 @@
 
                     <div id="Bird1-1" class=" AnimalIcons AnimalPopUp float-right">
                         <div class=" thumbnail AnimalInfoDiv">
-                            <img src="Images/Buddy.jpg"  alt="">
-                            
+                            <img src="Images/Buddy.jpg" alt="">
+
                             <div class="caption">
                                 <h4>Clifford</h4>
                             </div>
@@ -134,7 +134,7 @@
                             <p class="LongDT">Cornsnake</p>
                             <h4>Scientific Name: </h4>
                             <p class="NumCh">Pantherophis guttatus</p>
-                           
+
 
 
                         </div>
@@ -157,7 +157,7 @@
         </div>
     </div>
 
-     <div class="modal" id="AddModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal" id="AddModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-full" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -177,15 +177,15 @@
                             <h4>Animal Status: </h4>
                             <asp:DropDownList ID="DropDownList1" runat="server">
 
-                  <asp:ListItem Value="1">Active</asp:ListItem>
-            <asp:ListItem Value="0">Deactive</asp:ListItem>
-                        </asp:DropDownList>
+                                <asp:ListItem Value="1">Active</asp:ListItem>
+                                <asp:ListItem Value="0">Deactive</asp:ListItem>
+                            </asp:DropDownList>
                             <h4>Type: </h4>
                             <asp:DropDownList ID="ddlType" runat="server" Visible="true">
-                     <asp:ListItem>Bird</asp:ListItem>
-                    <asp:ListItem>Mammal</asp:ListItem>
-                    <asp:ListItem>Reptile</asp:ListItem>
-                    </asp:DropDownList>   
+                                <asp:ListItem>Bird</asp:ListItem>
+                                <asp:ListItem>Mammal</asp:ListItem>
+                                <asp:ListItem>Reptile</asp:ListItem>
+                            </asp:DropDownList>
                             <h4>Name: </h4>
                             <asp:TextBox ID="txtAddName" runat="server" ReadOnly="False"></asp:TextBox>
                             <h4>Species: </h4>
@@ -209,7 +209,7 @@
                     <div class="row">
 
                         <div class="col-md-2">
-                            <asp:Button ID="btnAddModal" runat ="server" Text="Add" Class="btn btn-primary LoginButton FormButton" UseSubmitBehavior="false" OnClick="btnAddModal_Click" ></asp:Button>
+                            <asp:Button ID="btnAddModal" runat="server" Text="Add" Class="btn btn-primary LoginButton FormButton" UseSubmitBehavior="false" OnClick="btnAddModal_Click"></asp:Button>
                         </div>
 
 

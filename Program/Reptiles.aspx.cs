@@ -30,7 +30,7 @@ public partial class Reptiles : System.Web.UI.Page
             string btn = ((ImageButton)sender).ID;
             string btnID = btn.ToString();
             Int32 id = Convert.ToInt32(btnID.Substring(3));
-            
+
             txtName.Text = id.ToString();
 
             getAnimal.Parameters.AddWithValue("@AnimalID", id);
