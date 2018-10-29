@@ -22,7 +22,7 @@ public partial class Reptiles : System.Web.UI.Page
     {
         String strGetUser = "Select Status, AnimalType, AnimalName, Species, ScientificName from [dbo].[Animal] where AnimalID = @AnimalID";
         string tempStatus;
-        string tempType;
+        
         // CHECK FOR EXISTING USERNAMES IN USER RECORD
         using (SqlCommand getAnimal = new SqlCommand(strGetUser, sc))
         {
