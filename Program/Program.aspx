@@ -361,7 +361,8 @@
 			
 			 <div class=" col-md-6 ">
 	    <h4> Organization:</h4>
-                 <asp:TextBox ID="txtOrganization" Cssclass="form-control" runat="server" Placeholder="Add Organization"></asp:TextBox>
+                 <asp:DropDownList ID="drpOrganizationList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle"></asp:DropDownList>
+                 <asp:Button ID="AddOrganization" runat="server" CssClass="btn btn-primary LoginButton" UseSubmitBehavior="false" CauseValidation="true" Text="Add Organization" OnClick="btnAddOrganization"/>
 	    <h4> Contact:</h4>
                  <asp:TextBox ID="txtContact" Cssclass="form-control" runat="server" Placeholder="Add Contact"></asp:TextBox>
 	    <h4> Email:</h4>

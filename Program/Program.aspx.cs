@@ -14,12 +14,20 @@ public partial class Program : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         DataTable programList = new DataTable();
+        DataTable organzationList = new DataTable();
         using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
         {
             try
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT ProgramName, ProgramID FROM Program", connection);
+                SqlDataAdapter adapter1 = new SqlDataAdapter("SELECT OrganizationName, OrganizationID FROM Organization", connection);
                 adapter.Fill(programList);
+                adapter1.Fill(organzationList);
+
+                drpOrganizationList.DataSource = organzationList;
+                drpOrganizationList.DataTextField = "OrganizationName";
+                drpOrganizationList.DataValueField = "OrganizationID";
+                drpOrganizationList.DataBind();
 
                 drpProgramList.DataSource = programList;
                 drpProgramList.DataTextField = "ProgramName";
@@ -73,6 +81,30 @@ public partial class Program : System.Web.UI.Page
 
                 command.ExecuteNonQuery();
                 lblErrorMessage.Text = "Entry is in database";
+            }
+        }
+    }
+    protected void btnAddOrganization(object sender, EventArgs e)
+    {
+        lblErrorMessage.Text = "Organization Added!";
+
+        using(SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+        {
+            Organization organization = new Organization(1, 1, drpOrganizationList.SelectedItem.Text, DateTime.Now, "Muzo");
+
+            string insertIntoOrganization = "INSERT INTO Organization (OrganizationName, AddressID, ContactID, LastUpdated, LastUpdatedBy) VALUES (" +
+                "@OrgName, @AddressID, @ContactID, @LB, @LUB)";
+            connection.Open();
+            using (SqlCommand command = new SqlCommand(insertIntoOrganization, connection))
+            {
+                command.Parameters.AddWithValue("@OrgName", organization.OrgName);
+                command.Parameters.AddWithValue("@AddressID", organization.AddressID);
+                command.Parameters.AddWithValue("@ContactID", organization.ContactID);
+                command.Parameters.AddWithValue("@LB", organization.LastUpdated);
+                command.Parameters.AddWithValue("@LUB", organization.LastUpdatedBy);
+
+                command.ExecuteNonQuery();
+                lblErrorMessage.Text = "Organization Added!";
             }
         }
     }
