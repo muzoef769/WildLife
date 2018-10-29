@@ -54,6 +54,9 @@ public partial class Mammals : System.Web.UI.Page
                     txtName.Text = reader.GetString(2);
                     txtSpecies.Text = reader.GetString(3);
                     txtScientificName.Text = reader.GetString(4);
+
+
+                    Animal currentAnimal = new Animal(id, reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(1)); 
                 }
 
             }

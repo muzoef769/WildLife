@@ -20,7 +20,7 @@ public class Animal
     //added species, scientificname to match DB
     private DateTime lastUpdated;
     private string lastUpdatedBy;
-
+    public Animal currentAnimal;
     //Animal constructor -OG constructor Will made
     //public Animal(int animalID, string name, string type, int age, DateTime dateAdded, DateTime lastUpdated, string lastUpdatedBy)
     //{
@@ -43,6 +43,16 @@ public class Animal
         setAnimalType(type);
         setLastUpdated(lastUpdated);
         setLastUpdatedBy(lastUpdatedBy);
+    }
+    public Animal(int ID, string name, string species, string scientificName, string type)
+    {
+        setAnimalID(ID);
+        setAnimalName(name);
+        setSpecies(species);
+        setScientificName(scientificName);
+        setAnimalType(type);
+        setLastUpdated(DateTime.Today);
+        setLastUpdatedBy("Raina");
     }
 
 

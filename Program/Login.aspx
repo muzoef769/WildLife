@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" %>
 
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
+   
+
+
     <%-- <div class="text-center mt-5">--%>
     <%--        <h2 class="display-3 text-white">Virginia Wildlife Center</h2>
 
@@ -129,7 +134,7 @@
                                             <div class="form-label-group">
                                                 <label for="confirmPassword">Confirm password</label>
                                                 <%--                     <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password" required="required" runat="server">--%>
-                                                <asp:textbox id="txtConfirmPassword" class="form-control" textmode="Password" placeholder="Password" required="required" runat="server"></asp:textbox>
+                                                <asp:textbox id="txtConfirmPassword" class="form-control " textmode="Password" placeholder="Password" required="required" runat="server"></asp:textbox>
 
                                                 <br>
                                             </div>
@@ -145,7 +150,7 @@
 </asp:radiobuttonlist>
 
                             </div>
-                            <asp:button id="btnRegister" runat="server" text="Register" cssclass="btn btn-primary btn-login LoginButton btn-block" onclick="btnRegister_Click" usesubmitbehavior="false" />
+                            <asp:button id="btnRegister" runat="server" text="Register" cssclass="btn mx-auto d-flex btn-primary justify-content-center btn-login LoginButton btn-block" onclick="btnRegister_Click" usesubmitbehavior="false" />
 
                             <div class="text-center">
                                 <a class="d-block small mt-3" data-dismiss="modal" href="#" runat="server">Login Page</a>

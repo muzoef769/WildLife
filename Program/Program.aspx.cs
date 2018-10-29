@@ -15,17 +15,14 @@ public partial class Program : System.Web.UI.Page
     {
         DataTable programList = new DataTable();
         DataTable organzationList = new DataTable();
-        DataTable mammalList = new DataTable();
         using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
         {
             try
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT ProgramName, ProgramID FROM Program", connection);
                 SqlDataAdapter adapter1 = new SqlDataAdapter("SELECT OrganizationName, OrganizationID FROM Organization", connection);
-                SqlDataAdapter adapter2 = new SqlDataAdapter("SELECT AnimalName, AnimalID FROM Animal where AnimaltType='Mammal'", connection);
                 adapter.Fill(programList);
                 adapter1.Fill(organzationList);
-                //adapter2.Fill(mammalList);
 
                 drpOrganizationList.DataSource = organzationList;
                 drpOrganizationList.DataTextField = "OrganizationName";
@@ -36,13 +33,6 @@ public partial class Program : System.Web.UI.Page
                 drpProgramList.DataTextField = "ProgramName";
                 drpProgramList.DataValueField = "ProgramID";
                 drpProgramList.DataBind();
-
-
-                //    chkMammalsList.DataSource = mammalList;
-                //    chkMammalsList.DataTextField = "AnimalName";
-                //    chkMammalsList.DataValueField = "AnimalID";
-                //    chkMammalsList.DataBind();
-                //
             }
             catch (Exception ex)
             {
@@ -98,7 +88,7 @@ public partial class Program : System.Web.UI.Page
     {
         lblErrorMessage.Text = "Organization Added!";
 
-        using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+        using(SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
         {
             Organization organization = new Organization(1, 1, drpOrganizationList.SelectedItem.Text, DateTime.Now, "Muzo");
 

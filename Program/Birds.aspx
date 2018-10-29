@@ -40,7 +40,7 @@
 
             <div id="Bird1" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <asp:imagebutton id="ani1" cssclass="animalImg" runat="server" src="Images/Buddy.jpg" onclick="AnimalInfo_Click" />
+                    <asp:ImageButton ID="ani1" CssClass="animalImg" runat="server" src="Images/Buddy.jpg" OnClick="AnimalInfo_Click" />
                     <div class="caption">
                         <h4>Buddy</h4>
                     </div>
@@ -49,7 +49,7 @@
 
             <div id="Bird2" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <asp:imagebutton id="ani2" cssclass="animalImg" runat="server" src="Images/edie.jpg" onclick="AnimalInfo_Click" />
+                    <asp:ImageButton ID="ani2" CssClass="animalImg" runat="server" src="Images/edie.jpg" OnClick="AnimalInfo_Click" />
                     <div class="caption">
                         <h4>Edie</h4>
                     </div>
@@ -57,7 +57,7 @@
             </div>
             <div id="Bird3" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <asp:imagebutton id="ani3" cssclass="animalImg" runat="server" src="Images/Verlon.jpg" onclick="AnimalInfo_Click" />
+                    <asp:ImageButton ID="ani3" CssClass="animalImg" runat="server" src="Images/Verlon.jpg" OnClick="AnimalInfo_Click" />
                     <div class="caption">
                         <h4>Verlon</h4>
                     </div>
@@ -66,7 +66,7 @@
 
             <div id="Bird4" class=" AnimalIcons  col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <asp:imagebutton id="ani4" cssclass="animalImg" runat="server" src="Images/maggie.jpg" onclick="AnimalInfo_Click" />
+                    <asp:ImageButton ID="ani4" CssClass="animalImg" runat="server" src="Images/maggie.jpg" OnClick="AnimalInfo_Click" />
                     <div class="caption">
                         <h4>Maggie</h4>
                     </div>
@@ -79,9 +79,9 @@
 
             <div id="Bird27" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <asp:imagebutton id="ImageButton1" cssclass="animalImg" runat="server" src="Images/hudson.jpg" onclick="AnimalInfo_Click" />
-
-
+                    <asp:ImageButton ID="ImageButton1" CssClass="animalImg" runat="server" src="Images/hudson.jpg" OnClick="AnimalInfo_Click" />
+                        
+                    
                     <div class="caption">
                         <h4>Hudson</h4>
                     </div>
@@ -90,9 +90,9 @@
 
             <div id="Bird5" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <asp:imagebutton id="ImageButton2" cssclass="animalImg" runat="server" src="Images/grayson.jpg" onclick="AnimalInfo_Click" />
-
-
+                    <asp:ImageButton ID="ImageButton2" CssClass="animalImg" runat="server" src="Images/grayson.jpg" OnClick="AnimalInfo_Click" />
+                        
+                    
                     <div class="caption">
                         <h4>Grayson</h4>
                     </div>
@@ -101,9 +101,9 @@
 
             <div id="Bird6" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <asp:imagebutton id="ImageButton3" cssclass="animalImg" runat="server" src="Images/keeya.jpg" onclick="AnimalInfo_Click" />
-
-
+                    <asp:ImageButton ID="ImageButton3" CssClass="animalImg" runat="server" src="Images/keeya.jpg" OnClick="AnimalInfo_Click" />
+                        
+                    
                     <div class="caption">
                         <h4>Keeya</h4>
                     </div>
@@ -112,9 +112,9 @@
 
             <div id="Bird7" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <asp:imagebutton id="ImageButton4" cssclass="animalImg" runat="server" src="Images/07-ruby.jpg" onclick="AnimalInfo_Click" />
-
-
+                    <asp:ImageButton ID="ImageButton4" CssClass="animalImg" class="animalImg" runat="server" src="Images/07-ruby.jpg" OnClick="AnimalInfo_Click" />
+                        
+                   
                     <div class="caption">
                         <h4>Ruby</h4>
                     </div>
@@ -126,9 +126,9 @@
 
             <div id="Bird8" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <asp:imagebutton id="ImageButton5" cssclass="animalImg" runat="server" src="Images/rose.jpg" onclick="AnimalInfo_Click" />
-
-
+                    <asp:ImageButton ID="ImageButton5" CssClass="animalImg" runat="server" src="Images/rose.jpg" OnClick="AnimalInfo_Click" />
+                        
+                    
                     <div class="caption">
                         <h4>Rosalie</h4>
                     </div>
@@ -137,9 +137,9 @@
 
             <div id="Bird9" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <asp:imagebutton id="ImageButton6" cssclass="animalImg" runat="server" src="Images/athena.jpg" onclick="AnimalInfo_Click" />
-
-
+                    <asp:ImageButton ID="ImageButton6" CssClass="animalImg" runat="server" src="Images/athena.jpg" OnClick="AnimalInfo_Click" />
+                        
+                    
                     <div class="caption">
                         <h4>Athena</h4>
                     </div>
@@ -148,9 +148,9 @@
 
             <div id="Bird10" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <asp:imagebutton id="ImageButton7" cssclass="animalImg" runat="server" src="Images/gus.jpg" onclick="AnimalInfo_Click" />
-
-
+                    <asp:ImageButton ID="ImageButton7" CssClass="animalImg" runat="server" src="Images/gus.jpg" OnClick="AnimalInfo_Click" />
+                        
+                    
                     <div class="caption">
                         <h4>Gus</h4>
                     </div>
@@ -159,9 +159,9 @@
 
             <div id="Bird11" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <asp:imagebutton id="ImageButton8" cssclass="animalImg" runat="server" src="Images/papagho.jpg" onclick="AnimalInfo_Click" />
-
-
+                    <asp:ImageButton ID="ImageButton8" CssClass="animalImg" runat="server" src="Images/papagho.jpg" OnClick="AnimalInfo_Click" />
+                        
+                   
                     <div class="caption">
                         <h4>Papa G'Ho</h4>
                     </div>
@@ -172,9 +172,9 @@
         <div class="row text-center text-lg-center">
             <div id="Bird12" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <asp:imagebutton id="ImageButton9" cssclass="animalImg" runat="server" src="Images/quinn.jpg" onclick="AnimalInfo_Click" />
-
-
+                    <asp:ImageButton ID="ImageButton9" CssClass="animalImg" runat="server" src="Images/quinn.jpg" OnClick="AnimalInfo_Click" />
+                        
+                    
                     <div class="caption">
                         <h4>Quinn</h4>
                     </div>
@@ -183,9 +183,9 @@
 
             <div id="Bird13" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <asp:imagebutton id="ImageButton10" cssclass="animalImg" runat="server" src="Images/alex.jpg" onclick="AnimalInfo_Click" />
-
-
+                    <asp:ImageButton ID="ImageButton10" CssClass="animalImg" runat="server" src="Images/alex.jpg" OnClick="AnimalInfo_Click" />
+                        
+                   
                     <div class="caption">
                         <h4>Alex</h4>
                     </div>
@@ -194,9 +194,9 @@
 
             <div id="Bird14" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <asp:imagebutton id="ImageButton11" cssclass="animalImg" runat="server" src="Images/Buttercup%202014%20(17).jpg" onclick="AnimalInfo_Click" />
-
-
+                    <asp:ImageButton ID="ImageButton11" CssClass="animalImg" runat="server" src="Images/Buttercup%202014%20(17).jpg" OnClick="AnimalInfo_Click" />
+                        
+                    
                     <div class="caption">
                         <h4>Buttercup</h4>
                     </div>
@@ -204,8 +204,8 @@
             </div>
             <div id="Bird15" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <asp:imagebutton id="ImageButton12" cssclass="animalImg" runat="server" src="Images/14-jaz.jpg" onclick="AnimalInfo_Click" />
-
+                    <asp:ImageButton ID="ImageButton12" CssClass="animalImg" runat="server" src="Images/14-jaz.jpg" OnClick="AnimalInfo_Click" />
+                        
                     <div class="caption">
                         <h4>Jaz</h4>
                     </div>
@@ -233,7 +233,7 @@
 
 
     <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-full" role="document">
+        <div class="modal-dialog modal-half" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Program Details</h5>
@@ -244,32 +244,22 @@
                 <div class="modal-body p-4" id="result">
 
 
-                    <div id="Bird1-1" class=" AnimalIcons AnimalPopUp float-right">
-                        <div class=" thumbnail AnimalInfoDiv">
-                            <img src="Images/Buddy.jpg" class="animalImg" alt="">
-
-                            <div class="caption">
-                                <h4>Buddy</h4>
-                            </div>
-                        </div>
-                    </div>
+                  
 
                     <div class="row  ">
 
                         <div class=" col-md-8">
-                       <h4>Status: </h4>
-                            <asp:TextBox ID="txtBirdStatus" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
+                            <h4>Status: </h4>
+                            <p class="NumAd">Activated</p>
                             <h4>Type: </h4>
-                             <asp:TextBox ID="txtBirdType" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>   
+                            <p class="ProgramCardTitle">Bird</p>
                             <h4>Name: </h4>
-                            <asp:TextBox ID="txtBirdName" class="form-control" runat="server"  ReadOnly="True"></asp:TextBox>
+                            <asp:TextBox ID="txtName" runat="server" ReadOnly="true"></asp:TextBox>
                             <h4>Species: </h4>
-                            <asp:TextBox ID="txtBirdSpecies" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
+                            <p class="LongDT">Bald Eagle</p>
                             <h4>Scientific Name: </h4>
-                            <asp:TextBox ID="txtBirdSciName" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
-
-
-
+                            <p class="NumCh">Haliaeetus leucocephalus</p>
+                           
 
 
                         </div>
@@ -295,7 +285,7 @@
 
 
     <div class="modal" id="AddModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-full" role="document">
+        <div class="modal-dialog modal-half" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Add Animal</h5>
@@ -312,23 +302,23 @@
 
                         <div class=" col-md-8">
                             <h4>Animal Status: </h4>
-                            <asp:dropdownlist id="DropDownList1" runat="server">
+                            <asp:DropDownList ID="DropDownList1" runat="server">
 
                   <asp:ListItem Value="1">Active</asp:ListItem>
             <asp:ListItem Value="0">Deactive</asp:ListItem>
-                        </asp:dropdownlist>
+                        </asp:DropDownList>
                             <h4>Type: </h4>
-                            <asp:dropdownlist id="ddlType" runat="server" visible="true">
+                            <asp:DropDownList ID="ddlType" runat="server" Visible="true">
                      <asp:ListItem>Bird</asp:ListItem>
                     <asp:ListItem>Mammal</asp:ListItem>
                     <asp:ListItem>Reptile</asp:ListItem>
-                    </asp:dropdownlist>
+                    </asp:DropDownList>   
                             <h4>Name: </h4>
-                            <asp:textbox id="txtAddName" runat="server" readonly="False"></asp:textbox>
+                            <asp:TextBox ID="txtAddName" runat="server" ReadOnly="False"></asp:TextBox>
                             <h4>Species: </h4>
-                            <asp:textbox id="txtSpecies" runat="server" readonly="False"></asp:textbox>
+                            <asp:TextBox ID="txtSpecies" runat="server" ReadOnly="False"></asp:TextBox>
                             <h4>Scientific Name: </h4>
-                            <asp:textbox id="txtScientificName" runat="server" readonly="False"></asp:textbox>
+                            <asp:TextBox ID="txtScientificName" runat="server" ReadOnly="False"></asp:TextBox>
                             <br>
                             <label for="exampleInputFile">Add Picture</label>
                             <input type="file" id="exampleInputFile">
@@ -344,7 +334,7 @@
                     <div class="row">
 
                         <div class="col-md-2">
-                            <asp:button id="btnAddModal" runat="server" text="Add" class="btn btn-primary LoginButton FormButton" usesubmitbehavior="false" onclick="btnAddModal_Click"></asp:button>
+                            <asp:Button ID="btnAddModal" runat ="server" Text="Add" Class="btn btn-primary LoginButton FormButton" UseSubmitBehavior="false" OnClick="btnAddModal_Click" ></asp:Button>
                         </div>
 
 
@@ -361,7 +351,7 @@
 
 
     <div class="modal" id="EditModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-full" role="document">
+        <div class="modal-dialog modal-half" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Edit Animal</h5>
@@ -372,14 +362,7 @@
                 <div class="modal-body p-4" id="resultEdit">
 
 
-                    <div id="Bird1-1Edit" class=" AnimalIcons AnimalPopUp float-right">
-                        <div class=" thumbnail AnimalInfoDiv">
-                            <img src="Images/Wildlife-Pics/babyboy.jpg" alt="">
-                            <div class="caption">
-                                <h4>Buddy</h4>
-                            </div>
-                        </div>
-                    </div>
+                   
 
                     <div class="row  ">
 
