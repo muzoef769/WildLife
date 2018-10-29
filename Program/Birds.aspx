@@ -2,75 +2,71 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <div class="container-fluid">
-    <div class="row AnimalNav d-flex justify-content-center fixed">
-        <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
-            <a class="AnimalLi nav-link text-success font-weight-bold" href="#">Birds</a>
 
-        </div>
-        <div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
-            <a class="AnimalLi nav-link" href="Reptiles.aspx">Reptiles</a>
+        <div class="row AnimalNav d-flex justify-content-center ">
+            <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
+                <h1 class="AnimalLi  ">Birds</h1>
 
-        </div>
-        <div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
-            <a class="AnimalLi nav-link " href="Mammals.aspx">Mammals</a>
+            </div>
+            <div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
+                <h1 class="AnimalLi ">Reptiles</h1>
 
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
-            <div id="AddAnimalButton" class="col-md-12">
-                <a class="btn btn-primary d-flex  mx-auto justify-content-center btn-AddAnimal text-light" onclick="Redirect()" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a> <%--ADD A BIRD/ANIMAL LINK IN THE HREF--%>
+            </div>
+            <div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
+                <h1 class="AnimalLi  ">Mammals</h1>
+
             </div>
         </div>
-        <div class="col-md-4"></div>
+        <div class="col-md-12">
+            <br>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+            </div>
 
+            <div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
+                <div id="AddAnimalButton" class="col-md-12">
+                    <a class="btn btn-primary d-flex  mx-auto justify-content-center btn-AddAnimal" href="#" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a>
+                </div>
+            </div>
+
+            <div class="col-md-4"></div>
         </div>
     </div>
+
 
     <div class="container">
         <div class="row text-center text-lg-center">
+
             <div id="Bird1" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a href="Animal.aspx?field1=1">
-
-                        <img class="AnimalPic" src="Images/Buddy.jpg" alt="" />
-                    </a>
+                    <img src="Images/Buddy.jpg" alt="">
                     <div class="caption">
                         <h4>Buddy</h4>
-
-
                     </div>
                 </div>
             </div>
-            <div id="Bird2" class=" AnimalIcons col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
+
+            <div id="Bird2" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a href="Animal.aspx?field1=2">
-                        <img class="AnimalPic" src="Images/edie.jpg" />
-                    </a>
+                    <img src="Images/edie.jpg" alt="">
                     <div class="caption">
                         <h4>Edie</h4>
-
                     </div>
                 </div>
             </div>
-
-            <div id="Bird3" class=" AnimalIcons  col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
+            <div id="Bird3" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a href="Animal.aspx?field1=3">
-                        <img class="AnimalPic" src="Images/Verlon.jpg" />
-                    </a>
+                    <img src="Images/verlon.jpg" alt="">
                     <div class="caption">
                         <h4>Verlon</h4>
                     </div>
                 </div>
             </div>
 
-            <div id="Bird4" class=" AnimalIcons  col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
+            <div id="Bird4" data-toggle="modal" data-target="#myModal" class=" AnimalIcons  col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a href="Animal.aspx?field1=4">
-                        <img class="AnimalPic" src="Images/maggie.jpg" />
-                    </a>
+                    <img class="AnimalPic" src="Images/maggie.jpg" />
                     <div class="caption">
                         <h4>Maggie</h4>
                     </div>
@@ -83,7 +79,7 @@
 
             <div id="Bird27" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a href="Animal.aspx?field1=27">
+                    <a <%--href="Animal.aspx?field1=27"--%>>
                         <img class="AnimalPic" src="Images/hudson.jpg" />
                     </a>
                     <div class="caption">
@@ -94,7 +90,7 @@
 
             <div id="Bird5" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a href="Animal.aspx?field1=5">
+                    <a <%-- href=""--%>>
                         <img class="AnimalPic" src="Images/grayson.jpg" />
                     </a>
                     <div class="caption">
@@ -105,7 +101,7 @@
 
             <div id="Bird6" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a href="Animal.aspx?field1=6">
+                    <a <%--href="Animal.aspx?field1=6"--%>>
                         <img class="AnimalPic" src="Images/keeya.jpg" />
                     </a>
                     <div class="caption">
@@ -116,7 +112,7 @@
 
             <div id="Bird7" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a href="Animal.aspx?field1=7">
+                    <a <%--href="Animal.aspx?field1=7"--%>>
                         <img class="AnimalPic" src="Images/07-ruby.jpg" />
                     </a>
                     <div class="caption">
@@ -130,7 +126,7 @@
 
             <div id="Bird8" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a href="Animal.aspx?field1=8">
+                    <a <%--href="Animal.aspx?field1=8"--%>>
                         <img class="AnimalPic" src="Images/rose.jpg" />
                     </a>
                     <div class="caption">
@@ -141,7 +137,7 @@
 
             <div id="Bird9" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a href="Animal.aspx?field1=9">
+                    <a <%--href="Animal.aspx?field1=9"--%>>
                         <img class="AnimalPic" src="Images/athena.jpg" />
                     </a>
                     <div class="caption">
@@ -152,7 +148,7 @@
 
             <div id="Bird10" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a href="Animal.aspx?field1=10">
+                    <a <%--href="Animal.aspx?field1=10"--%>>
                         <img class="AnimalPic" src="Images/gus.jpg" />
                     </a>
                     <div class="caption">
@@ -163,7 +159,7 @@
 
             <div id="Bird11" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a href="Animal.aspx?field1=11">
+                    <a <%--href="Animal.aspx?field1=11"--%>>
                         <img class="AnimalPic" src="Images/papagho.jpg" />
                     </a>
                     <div class="caption">
@@ -176,7 +172,7 @@
         <div class="row text-center text-lg-center">
             <div id="Bird12" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a href="Animal.aspx?field1=12">
+                    <a <%--href="Animal.aspx?field1=12"--%>>
                         <img class="AnimalPic" src="Images/quinn.jpg" />
                     </a>
                     <div class="caption">
@@ -187,7 +183,7 @@
 
             <div id="Bird13" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a href="Animal.aspx?field1=13">
+                    <a <%--href="Animal.aspx?field1=13"--%>>
                         <img class="AnimalPic" src="Images/alex.jpg" />
                     </a>
                     <div class="caption">
@@ -198,7 +194,7 @@
 
             <div id="Bird14" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a href="Animal.aspx?field1=14">
+                    <a <%--href="Animal.aspx?field1=14"--%>>
                         <img class="AnimalPic" src="Images/Buttercup%202014%20(17).jpg" />
                     </a>
                     <div class="caption">
@@ -208,7 +204,7 @@
             </div>
             <div id="Bird15" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
-                    <a href="Animal.aspx?field1=15">
+                    <a <%--href='"Animal.aspx?field1=15"--%>'>
                         <img class="AnimalPic" src="Images/14-jaz.jpg" />
                     </a>
                     <div class="caption">
@@ -216,239 +212,203 @@
                     </div>
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
     </div>
 
-    <script type="text/javascript">
-         <!--
-    function Redirect() {
-        window.location = "AddAnimal.aspx";
-    }
-         //-->
-      </script>
 
 
 
 
-    <%--       <div class="column" style="background-color: #ccc;">
-                <h2>Verlon</h2>
-                <a href="Animal.aspx?field1=3">
-                    <img src="Images/Verlon.jpg" style="width: 150px" />
-                </a>
-                <br />
-                <br />
-                
-
-
-
-
-
-            </div>
-        </div>
-
-
-
-        <div class="row">
-            <div class="column" style="background-color: #aaa;">
-                <h2>Maggie</h2>
-                <a href="Animal.aspx?field1=4">
-                    <img src="Images/maggie.jpg" style="width: 150px" />
-                </a>
-                <br />
-                <br />
-               
-
-            </div>
-            <div class="column" style="background-color: #bbb;">
-                <h2>Hudson</h2>
-                <a href="Animal.aspx?field1=27">
-                    <img src="Images/hudson.jpg" style="width: 150px" />
-                </a>
-                <br />
-                <br />
-               
-
-
-
-
-
-
-            </div>
-            <div class="column" style="background-color: #ccc;">
-                <h2>Grayson</h2>
-                <a href="Animal.aspx?field1=5">
-                    <img src="Images/grayson.jpg" style="width: 150px" />
-                </a>
-                <br />
-                <br />
-               
-
-
-
-
-
-
-            </div>
-        </div>
-<div class="row">
-            <div class="column" style="background-color: #aaa;">
-                <h2>Keeya</h2>
-                <div >
-                    <div class="">
-                        <a href="Animal.aspx?field1=6">
-                            <img src="Images/keeya.jpg" style="width: 150px" />
-                        </a>
-                    </div>
+    <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-full" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Program Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </div>
-
-                <br />
-                <br />
-                
-
-            </div>
-            <div class="column" style="background-color: #bbb;">
-                <h2>Ruby</h2>
-                <a href="Animal.aspx?field1=7">
-                    <img src="Images/07-ruby.jpg" style="width: 150px" />
-                </a>
-                <br />
-                <br />
-               
+                <div class="modal-body p-4" id="result">
 
 
+                    <div id="Bird1-1" class=" AnimalIcons AnimalPopUp float-right">
+                        <div class=" thumbnail AnimalInfoDiv">
+                            <img src="Images/Wildlife-Pics/babyboy.jpg" alt="">
+                            <div class="caption">
+                                <h4>Baby Boy</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row  ">
+
+                        <div class=" col-md-8">
+                            <h4>Name:</h4>
+                            <p class="ProgramCardTitle">Baby Boy</p>
+                            <h4>Common Name:</h4>
+                            <p class="LongType">No Idea</p>
+                            <h4>Scientific Name:</h4>
+                            <p class="LongDT">Cute Bird</p>
+                            <h4>Type:</h4>
+                            <p class="NumCh">Bird</p>
+                            <h4>Age:</h4>
+                            <p class="NumAd">5</p>
 
 
+                        </div>
+                        <!-- End  Description -->
 
-            </div>
-            <div class="column" style="background-color: #ccc;">
-                <h2>Rosalie</h2>
-                <a href="Animal.aspx?field1=8">
-                    <img src="Images/rose.jpg" style="width: 150px" />
-                </a>
-                <br />
-                <br />
-                >
+                    </div>
 
+                    <div class="row">
+                        <div class="col-md-4">
+                            <button data-toggle="modal" data-target="#EditModal" data-dismiss="modal" class="btn btn-primary LoginButton" type="submit">Edit</button>
+                        </div>
 
+                    </div>
 
-
-
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
+    </div>
 
-<div class="row">
-            <div class="column" style="background-color: #aaa;">
-                <h2>Athena</h2>
-                <div >
-                    <div class="">
-                        <a href="Animal.aspx?field1=9">
-                            <img src="Images/athena.jpg" style="width: 150px" />
-                        </a>
-                    </div>
+
+
+    <div class="modal" id="AddModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-full" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Animal</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </div>
-
-                <br />
-                <br />
-               
-
-            </div>
-            <div class="column" style="background-color: #bbb;">
-                <h2>Gus</h2>
-                <a href="Animal.aspx?field1=10">
-                    <img src="Images/gus.jpg" style="width: 150px" />
-                </a>
-                <br />
-                <br />
-                
+                <div class="modal-body p-4" id="resultAdd">
 
 
 
 
+                    <div class="row  ">
 
-            </div>
-            <div class="column" style="background-color: #ccc;">
-                <h2>Papa G'Ho</h2>
-                <a href="Animal.aspx?field1=11">
-                    <img src="Images/papagho.jpg" style="width: 150px" />
-                </a>
-                <br />
-                <br />
-               
+                        <div class=" col-md-8">
+                            <h4>Name:</h4>
+                            <input type="name" class="form-control" id="AddName" placeholder="Name">
+                            <h4>Common Name:</h4>
+                            <input type="name" class="form-control" id="AddCom" placeholder="Common Name">
+                            <h4>Scientific Name:</h4>
+                            <input type="name" class="form-control" id="AddSci" placeholder="Scientific Name">
+                            <h4>Type:</h4>
+                            <input type="name" class="form-control" id="AddType" placeholder="Type">
+                            <h4>Age:</h4>
+                            <input type="name" class="form-control" id="AddAge" placeholder="Age">
+                            <br>
+                            <label for="exampleInputFile">Add Picture</label>
+                            <input type="file" id="exampleInputFile">
+                            <p class="help-block">Choose Picture of animal</p>
+                        </div>
+                        <!-- End  Description -->
+
+
+                    </div>
+                    <div class="row">
+                        <br>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-2">
+                            <button class="btn btn-primary LoginButton FormButton" data-dismiss="modal" type="submit">Add</button>
+                        </div>
 
 
 
+                    </div>
 
-
+                </div>
+                <div class="modal-footer">
+                    <%--                    <button type="button" data-toggle="modal" data-target="#EditModal" class="btn btn-secondary" data-dismiss="modal">Edit</button>--%>
+                </div>
             </div>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="column" style="background-color: #aaa;">
-                <h2>Quinn</h2>
-                <div >
-                    <div class="">
-                        <a href="Animal.aspx?field1=12">
-                            <img src="Images/quinn.jpg" style="width: 150px" />
-                        </a>
-                    </div>
+
+    <div class="modal" id="EditModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-full" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Animal</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </div>
-
-                <br />
-                <br />
-                
-
-            </div>
-            <div class="column" style="background-color: #bbb;">
-                <h2>Alex</h2>
-                <a href="Animal.aspx?field1=13">
-                    <img src="Images/alex.jpg" style="width: 150px" />
-                </a>
-                <br />
-                <br />
-               
+                <div class="modal-body p-4" id="resultEdit">
 
 
+                    <div id="Bird1-1Edit" class=" AnimalIcons AnimalPopUp float-right">
+                        <div class=" thumbnail AnimalInfoDiv">
+                            <img src="Images/Wildlife-Pics/babyboy.jpg" alt="">
+                            <div class="caption">
+                                <h4>Baby Boy</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row  ">
+
+                        <div class=" col-md-8">
+                            <h4>Name:</h4>
+                            <input type="name" class="form-control" id="EditName" placeholder="Change Name">
+                            <h4>Common Name:</h4>
+                            <input type="name" class="form-control" id="EditCom" placeholder="Change Common Name">
+                            <h4>Scientific Name:</h4>
+                            <input type="name" class="form-control" id="EditSci" placeholder="Change Scientific Name">
+                            <h4>Type:</h4>
+                            <input type="name" class="form-control" id="EditType" placeholder="Change Type">
+                            <h4>Age:</h4>
+                            <input type="name" class="form-control" id="EditAge" placeholder="Change Age">
+                        </div>
+                        <!-- End  Description -->
 
 
+                    </div>
+                    <div class="row">
+                        <br>
+                    </div>
+                    <div class="row">
 
-            </div>
-            <div class="column" style="background-color: #ccc;">
-                <h2>Buttercup</h2>
-                <a href="Animal.aspx?field1=14">
-                    <img src="Images/Buttercup%202014%20(17).jpg" style="width: 150px"   />
-                </a>
-                <br />
-                <br />
-               
+                        <div class="col-md-2">
+                            <button data-toggle="modal" data-target="#myModal" data-dismiss="modal" class="btn btn-primary LoginButton FormButton" type="submit">Update</button>
+                        </div>
 
+                        <div class="col-md-2">
+                            <button class="btn btn-primary LoginButton FormButton" type="submit">Delete</button>
+                        </div>
 
+                    </div>
 
-
-
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="column" style="background-color: #aaa;">
-                <h2>Jaz</h2>
-                <div >
-                    <div class="">
-                        <a href="Animal.aspx?field1=15">
-                            <img src="Images/14-jaz.jpg" style="width: 150px"  />
-                        </a>
-                    </div>
-                </div>
-
-                <br />
-                <br />
-                
-
-            </div>
-            </div>--%>
-
-
-    <%--    </body>
-    </html>
-
---%>
+    </div>
 </asp:Content>
 
