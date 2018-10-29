@@ -30,7 +30,7 @@
     </div>
     <div class="container">
         <div class="row text-center text-lg-center">
-            <div id="Reptile1"  class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+            <div id="Reptile1" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
                     <asp:ImageButton ID="ani19" CssClass="animalImg" runat="server" src="Images/cliff.jpg" OnClick="AnimalInfo_Click" />
 
@@ -163,9 +163,9 @@
                             <h4>Status: </h4>
                             <asp:TextBox ID="txtRepStatus" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
                             <h4>Type: </h4>
-                             <asp:TextBox ID="txtRepType" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>   
+                            <asp:TextBox ID="txtRepType" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
                             <h4>Name: </h4>
-                            <asp:TextBox ID="txtRepName" class="form-control" runat="server"  ReadOnly="True"></asp:TextBox>
+                            <asp:TextBox ID="txtRepName" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
                             <h4>Species: </h4>
                             <asp:TextBox ID="txtRepSpecies" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
                             <h4>Scientific Name: </h4>
@@ -211,23 +211,24 @@
 
                         <div class=" col-md-8">
                             <h4>Animal Status: </h4>
-                            <asp:DropDownList ID="DropDownList1" runat="server">
-
+                            <asp:DropDownList ID="ddlAddStatus" runat="server" CssClass="form-control">
                                 <asp:ListItem Value="1">Active</asp:ListItem>
                                 <asp:ListItem Value="0">Deactive</asp:ListItem>
                             </asp:DropDownList>
                             <h4>Type: </h4>
-                            <asp:DropDownList ID="ddlType" runat="server" Visible="true">
+                            <asp:DropDownList ID="ddlAddType" runat="server" CssClass="form-control">
                                 <asp:ListItem>Bird</asp:ListItem>
                                 <asp:ListItem>Mammal</asp:ListItem>
                                 <asp:ListItem>Reptile</asp:ListItem>
                             </asp:DropDownList>
                             <h4>Name: </h4>
-                            <asp:TextBox ID="txtAddName" runat="server" ReadOnly="False"></asp:TextBox>
+                            <asp:TextBox ID="txtAddName" runat="server" class="form-control" ReadOnly="false"></asp:TextBox>
                             <h4>Species: </h4>
-                            <asp:TextBox ID="txtSpecies" runat="server" ReadOnly="False"></asp:TextBox>
+                            <asp:TextBox ID="txtAddSpecies" runat="server" class="form-control" ReadOnly="false"></asp:TextBox>
                             <h4>Scientific Name: </h4>
-                            <asp:TextBox ID="txtScientificName" runat="server" ReadOnly="False"></asp:TextBox>
+                            <asp:TextBox ID="txtAddSciName" runat="server" class="form-control"  ReadOnly="false"></asp:TextBox>
+
+
                             <br>
                             <br>
                             <br>
@@ -284,15 +285,26 @@
                     <div class="row  ">
 
                         <div class=" col-md-8">
-                            <h4>Name:</h4>
-                            <input type="name" class="form-control" id="EditName" placeholder="Change Name">
-                            <h4>Common Name:</h4>
-                            <input type="name" class="form-control" id="EditCom" placeholder="Change Common Name">
-                            <h4>Scientific Name:</h4>
-                            <input type="name" class="form-control" id="EditSci" placeholder="Change Scientific Name">
-                            <h4>Type:</h4>
-                            <input type="name" class="form-control" id="EditType" placeholder="Change Type">
-                            
+                            <h4>Animal Status: </h4>
+                            <asp:DropDownList ID="ddlEditStatus" runat="server" CssClass="form-control">
+                                <asp:ListItem Value="1">Active</asp:ListItem>
+                                <asp:ListItem Value="0">Deactive</asp:ListItem>
+                            </asp:DropDownList>
+                            <h4>Type: </h4>
+                            <asp:DropDownList ID="ddlEditType" runat="server" CssClass="form-control">
+                                <asp:ListItem>Bird</asp:ListItem>
+                                <asp:ListItem>Mammal</asp:ListItem>
+                                <asp:ListItem>Reptile</asp:ListItem>
+                            </asp:DropDownList>
+                            <h4>Name: </h4>
+                            <asp:TextBox ID="txtEditName" runat="server" class="form-control" ReadOnly="false"></asp:TextBox>
+                            <h4>Species: </h4>
+                            <asp:TextBox ID="txtEditSpecies" runat="server" class="form-control" ReadOnly="false"></asp:TextBox>
+                            <h4>Scientific Name: </h4>
+                            <asp:TextBox ID="txtEditSciName" runat="server" class="form-control"  ReadOnly="false"></asp:TextBox>
+
+
+
                         </div>
                         <!-- End  Description -->
 
