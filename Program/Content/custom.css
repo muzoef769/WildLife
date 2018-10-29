@@ -262,7 +262,7 @@ padding-top: 10%;
 
 
 
-.WelcomeName {;
+.WelcomeName {
 color: green}
 
 .UpcomingPro {color: white;}
@@ -312,7 +312,7 @@ ul {
 /*    -webkit-transform: scale(1.0);
     -ms-trasform: scale(1.0);
     transform: scale(1.0);*/
-    color: black;
+    color: lightsalmon;
     line-height: 1.8em;
     flex-grow: 3;
     max-width: 100%;
@@ -320,14 +320,16 @@ ul {
     transition: .3s;
     transform-origin: left;
     align-items: center;
-    
+    font-weight:bold;
 }
 
-.AnimalNa
-.AnimalNav{padding-top: 5%;
+.AnimalNav{
+    position:relative;
+    padding-top: 5%;
 }
 .AnimalLi {
-    height: auto;
+    margin: 5%;
+    Width: auto;
     text-align: center;
     line-height: 2em;
     flex-grow: 1;
@@ -347,11 +349,12 @@ ul {
     color: #057F24;
     line-height: 1.8em;
     flex-grow: 3;
-    max-width: 100%;
-    folacknt-size: 3em;
+    max-height: 100%;
+    font-size: 3em;
     transition: .3s;
     transform-origin: right;
     align-items: center;
+    text-decoration:underline;
     
 }
 
@@ -439,9 +442,12 @@ border-radius: 12px;}
 .Underline {text-decoration: underline;}
 
 .DropdownAnimal {color: black;
-padding-left: 5%;}
+padding-left: 4%;}
 
 .form-group{color: black;}
 
 .form-control{
-border: #099708;}
+border: #099708;
+
+}
+
