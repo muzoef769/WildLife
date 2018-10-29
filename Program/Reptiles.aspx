@@ -209,14 +209,14 @@
 
                     <div class="row  ">
 
-                        <div class=" col-md-8">
+                        <div class=" col-md-8 ">
                             <h4>Animal Status: </h4>
                             <asp:DropDownList ID="ddlAddStatus" runat="server" CssClass="form-control">
                                 <asp:ListItem Value="1">Active</asp:ListItem>
                                 <asp:ListItem Value="0">Deactive</asp:ListItem>
                             </asp:DropDownList>
                             <h4>Type: </h4>
-                            <asp:DropDownList ID="ddlAddType" runat="server" CssClass="form-control">
+                            <asp:DropDownList ID="ddlAddType" runat="server" CssClass="form-control-plaintext bg-white" style="height:2.5em; border-radius:10px;">
                                 <asp:ListItem>Bird</asp:ListItem>
                                 <asp:ListItem>Mammal</asp:ListItem>
                                 <asp:ListItem>Reptile</asp:ListItem>
