@@ -1,9 +1,18 @@
 ﻿<%@ Page Title="Payment Records" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="PaymentRecords.aspx.cs" Inherits="PaymentRecords" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
-    <div id="monthlyReports" class="jumbotron">
-        <h1>Payment Reports</h1>
-        <div id="monthButtons" style="padding-bottom: 15px;">
+<div class="main">
+
+<div class="row">
+
+
+<div class="container-fluid ProgramContainer">
+
+<div class="card mx-auto ProgramCard" style="opacity: .8;">
+  <div class="card-body">
+    <div id="monthlyReports">
+        <h1 id="payTitle" class=" ProgramCardTitle d-flex justify-content-center ">Payment Records</h1>
+        <div id="monthButtons" class="ProgramShort d-flex justify-content-center">
             <asp:button class="btn btn-primary" data-toggle="collapse" data-target="#jan" id="btnJan" runat="server" text="January" onclientclick="return false" />
             <asp:button class="btn btn-primary" data-toggle="collapse" data-target="#feb" id="btnFeb" runat="server" text="February" onclientclick="return false" />
             <asp:button class="btn btn-primary" data-toggle="collapse" data-target="#mar" id="btnMar" runat="server" text="March" onclientclick="return false" />
@@ -16,7 +25,8 @@
             <asp:button class="btn btn-primary" data-toggle="collapse" data-target="#oct" id="btnOct" runat="server" text="October" onclientclick="return false" />
             <asp:button class="btn btn-primary" data-toggle="collapse" data-target="#nov" id="btnNov" runat="server" text="November" onclientclick="return false" />
             <asp:button class="btn btn-primary" data-toggle="collapse" data-target="#dec" id="btnDec" runat="server" text="December" onclientclick="return false" />
-            <asp:button class="btn btn-danger" data-toggle="collapse" data-target="#ann" id="btn2018" runat="server" text="Annual Report" onclientclick="return false" />
+            <br />
+            <asp:button class="btn btn-danger"  data-toggle="collapse" data-target="#ann" id="btn2018" runat="server" text="Annual Report" onclientclick="return false" />
 
         </div>
         <div id="monthGrids">
@@ -43,7 +53,7 @@
             </div>
             <div id="jan" class="collapse">
                 <h3>January</h3>
-                <asp:gridview id="janGrid" runat="server" autogeneratecolumns="False" datasourceid="SqlDataSource2" enablesortingandpagingcallbacks="true" allowpaging="True" allowsorting="True" cellpadding="4" forecolor="#333333" gridlines="None">
+                <asp:gridview id="janGrid" runat="server" autogeneratecolumns="False" datasourceid="SqlDataSource2" enablesortingandpagingcallbacks="true" allowpaging="True" allowsorting="True" cellpadding="4" forecolor="#000000" gridlines="None">
             <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                    <Columns>
                         <asp:BoundField DataField="InvoiceID" HeaderText="Invoice #" SortExpression="InvoiceID" />
@@ -61,7 +71,7 @@
             </div>
             <div id="feb" class="collapse">
                 <h3>February</h3>
-                <asp:gridview id="febGrid" runat="server" autogeneratecolumns="False" datasourceid="SqlDataSource3" enablesortingandpagingcallbacks="true" allowpaging="True" allowsorting="True" cellpadding="4" forecolor="#333333" gridlines="None">
+                <asp:gridview id="febGrid" runat="server" autogeneratecolumns="False" datasourceid="SqlDataSource3" enablesortingandpagingcallbacks="true" allowpaging="True" allowsorting="True" cellpadding="4" forecolor="#000000" gridlines="None">
             <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                    <Columns>
                         <asp:BoundField DataField="InvoiceID" HeaderText="Invoice #" SortExpression="InvoiceID" />
@@ -270,6 +280,11 @@
             </div>
             
         </div>
+    </div>
+      </div>
+    </div>
+    </div>
+    </div>
     </div>
 </asp:Content>
 

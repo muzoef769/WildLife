@@ -332,9 +332,9 @@
     </div>--%>
     <div class="main">
         <div class="row">
-            <div class="container-fluid ProgramContainer">
+            <div class="container-fluid ProgramContainer" >
 
-                <div class="card mx-auto  ProgramCard">
+                <div class="card mx-auto  ProgramCard" style="opacity: 0.8;">
                     <div id="ann" class="card-body">
                         <h1 id="annTitle" class=" ProgramCardTitle d-flex justify-content-center ">Annual Report</h1>
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
