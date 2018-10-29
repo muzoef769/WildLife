@@ -336,7 +336,7 @@
 
                 <div class="card mx-auto  ProgramCard" style="opacity: 0.8;">
                     <div id="ann" class="card-body">
-                        <h1 id="annTitle" class=" ProgramCardTitle d-flex justify-content-center ">Annual Report</h1>
+                        <h1 id="annTitle" class=" ProgramCardTitle d-flex justify-content-center ">Annual Simple Report</h1>
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
@@ -374,7 +374,7 @@
 
                         </div>
                         <hr />
-                        <h1 id="monTitle" class=" ProgramCardTitle d-flex justify-content-center">Monthly Report</h1>
+                        <h1 id="monTitle" class=" ProgramCardTitle d-flex justify-content-center">Monthly Simple Report</h1>
                     </div>
                     <div id="jan" class="card-body" style="display: none;">
                         <h1 id="janTitle" class=" ProgramCardTitle d-flex justify-content-center ">January</h1>
