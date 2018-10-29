@@ -5,15 +5,15 @@
 
         <div class="row AnimalNav d-flex justify-content-center ">
             <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
-                <h1 class="AnimalLi  ">Birds</h1>
+                <a class="AnimalLi nav-link font-weight-bold text-success" href="#">Birds</a>
 
             </div>
             <div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
-                <h1 class="AnimalLi ">Reptiles</h1>
+                <a class="AnimalLi nav-link " href="Reptiles.aspx">Reptile</a>
 
             </div>
             <div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
-                <h1 class="AnimalLi  ">Mammals</h1>
+                <a class="AnimalLi nav-link " href="Mammals.aspx">Mammals</a>
 
             </div>
         </div>
