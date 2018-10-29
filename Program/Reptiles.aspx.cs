@@ -20,9 +20,8 @@ public partial class Reptiles : System.Web.UI.Page
 
     protected void AnimalInfo_Click(object sender, EventArgs e)
     {
-        String strGetUser = "Select Status, AnimalType, AnimalName, Species, ScientificName from [dbo].[Animal] where AnimalID = @AnimalID";
-        string tempStatus;
-        
+        String strGetUser = "Select AnimalName from [dbo].[Animal] where AnimalID = @AnimalID";
+
         // CHECK FOR EXISTING USERNAMES IN USER RECORD
         using (SqlCommand getAnimal = new SqlCommand(strGetUser, sc))
         {
@@ -31,9 +30,9 @@ public partial class Reptiles : System.Web.UI.Page
             string btn = ((ImageButton)sender).ID;
             string btnID = btn.ToString();
             Int32 id = Convert.ToInt32(btnID.Substring(3));
-
-            txtRepName.Text = id.ToString();
             
+            txtName.Text = id.ToString();
+
             getAnimal.Parameters.AddWithValue("@AnimalID", id);
             SqlDataReader reader = getAnimal.ExecuteReader();
 
@@ -42,24 +41,7 @@ public partial class Reptiles : System.Web.UI.Page
             {
                 while (reader.Read())
                 {
-                    tempStatus = reader["Status"].ToString();
-                    if (tempStatus == "1")
-                    {
-                        txtRepStatus.Text = "Active";
-                    }
-                    else
-                    {
-                        txtRepStatus.Text = "Deactive";
-                    }
-                    txtRepType.Text = reader.GetString(1);
-                  
-                    txtRepName.Text = reader.GetString(2);
-                    txtRepSpecies.Text = reader.GetString(3);
-                    txtRepSciName.Text = reader.GetString(4);
-                    
-                    
-
-
+                    txtName.Text = reader.GetString(0);
                 }
 
             }
@@ -77,7 +59,7 @@ public partial class Reptiles : System.Web.UI.Page
         Animals newAnimal = new Animals(
            txtSpecies.Text,
            txtScientificName.Text,
-           txtRepName.Text,
+           txtName.Text,
            ddlType.SelectedValue.ToString(),
           Convert.ToChar(DropDownList1.SelectedValue),
            DateTime.Today,

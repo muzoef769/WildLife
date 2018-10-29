@@ -9,6 +9,8 @@
     <title><%:Page.Title %> - Virginia Wildlife Center</title>
     <link href="Content/bootstrap.css" rel="stylesheet" type="text/css" media="screen"/>
     <link href="Content/custom.css" rel="stylesheet" type="text/css" media="screen"/>
+     <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+
 
     <%--<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <script src="Scripts/jquery-3.3.1.slim.min.js"></script>
