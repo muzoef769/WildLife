@@ -20,8 +20,9 @@ public partial class Reptiles : System.Web.UI.Page
 
     protected void AnimalInfo_Click(object sender, EventArgs e)
     {
-        String strGetUser = "Select AnimalName from [dbo].[Animal] where AnimalID = @AnimalID";
-
+        String strGetUser = "Select Status, AnimalType, AnimalName, Species, ScientificName from [dbo].[Animal] where AnimalID = @AnimalID";
+        string tempStatus;
+        
         // CHECK FOR EXISTING USERNAMES IN USER RECORD
         using (SqlCommand getAnimal = new SqlCommand(strGetUser, sc))
         {
@@ -30,9 +31,9 @@ public partial class Reptiles : System.Web.UI.Page
             string btn = ((ImageButton)sender).ID;
             string btnID = btn.ToString();
             Int32 id = Convert.ToInt32(btnID.Substring(3));
-            
-            txtName.Text = id.ToString();
 
+            txtRepName.Text = id.ToString();
+            
             getAnimal.Parameters.AddWithValue("@AnimalID", id);
             SqlDataReader reader = getAnimal.ExecuteReader();
 
@@ -41,7 +42,24 @@ public partial class Reptiles : System.Web.UI.Page
             {
                 while (reader.Read())
                 {
-                    txtName.Text = reader.GetString(0);
+                    tempStatus = reader["Status"].ToString();
+                    if (tempStatus == "1")
+                    {
+                        txtRepStatus.Text = "Active";
+                    }
+                    else
+                    {
+                        txtRepStatus.Text = "Deactive";
+                    }
+                    txtRepType.Text = reader.GetString(1);
+                  
+                    txtRepName.Text = reader.GetString(2);
+                    txtRepSpecies.Text = reader.GetString(3);
+                    txtRepSciName.Text = reader.GetString(4);
+                    
+                    
+
+
                 }
 
             }
@@ -57,11 +75,11 @@ public partial class Reptiles : System.Web.UI.Page
 
 
         Animals newAnimal = new Animals(
-           txtSpecies.Text,
-           txtScientificName.Text,
-           txtName.Text,
-           ddlType.SelectedValue.ToString(),
-          Convert.ToChar(DropDownList1.SelectedValue),
+           txtAddSpecies.Text,
+           txtAddSciName.Text,
+           txtAddName.Text,
+           ddlAddType.SelectedValue.ToString(),
+           Convert.ToChar(ddlAddStatus.SelectedValue),
            DateTime.Today,
            "Staff"
 
@@ -76,8 +94,8 @@ public partial class Reptiles : System.Web.UI.Page
         addAnimal.Parameters.AddWithValue("@Species", newAnimal.getSpecies());
         addAnimal.Parameters.AddWithValue("@ScientificName", newAnimal.getScientificName());
         addAnimal.Parameters.AddWithValue("@AnimalName", newAnimal.getAnimalName());
-        addAnimal.Parameters.AddWithValue("@AnimalType", newAnimal.getAnimalType());
-        addAnimal.Parameters.AddWithValue("@Status", DropDownList1.SelectedValue);
+        addAnimal.Parameters.AddWithValue("@AnimalType", ddlAddType.SelectedValue);
+        addAnimal.Parameters.AddWithValue("@Status", ddlAddStatus.SelectedValue);
         addAnimal.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
         addAnimal.Parameters.AddWithValue("@LastUpdatedBy", "Staff");
         addAnimal.ExecuteNonQuery();
