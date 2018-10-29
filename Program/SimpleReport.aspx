@@ -348,7 +348,7 @@
                                     <asp:BoundField DataField="Total People" HeaderText="Total People" SortExpression="Total People" />
                                 </Columns>
                             </asp:GridView>
-                            
+
                             <asp:SqlDataSource ID="SqlDataSource46" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select sum(totalKids) as 'Total Kids', sum(totalAdults) as 'Total Adults', (SELECT SUM(TotalKids)+SUM(TotalAdults)) as 'Total People' from dbo.NewProgram "></asp:SqlDataSource>
                         </div>
 
@@ -369,14 +369,14 @@
                                 </Columns>
                             </asp:GridView>
 
-                            <asp:SqlDataSource ID="SqlDataSource45" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select Count(np.NewProgramID) as 'Total Programs' from dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID "></asp:SqlDataSource>      
+                            <asp:SqlDataSource ID="SqlDataSource45" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select Count(np.NewProgramID) as 'Total Programs' from dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID "></asp:SqlDataSource>
                             <asp:SqlDataSource ID="SqlDataSource47" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select ProgramType, count(np.NewProgramID) as 'Total Programs' from dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID GROUP BY ProgramType"></asp:SqlDataSource>
-                            
+
                         </div>
                         <hr />
                         <h1 id="monTitle" class=" ProgramCardTitle d-flex justify-content-center">Monthly Report</h1>
                     </div>
-                    <div id="jan" class="card-body" style="display:none;">
+                    <div id="jan" class="card-body" style="display: none;">
                         <h1 id="janTitle" class=" ProgramCardTitle d-flex justify-content-center ">January</h1>
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
@@ -417,12 +417,12 @@
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
                                 </Columns>
                             </asp:GridView>
-                            
+
                             <asp:SqlDataSource ID="janCountTotalSource" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select Count(np.NewProgramID) as 'Total Programs' from dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '1' "></asp:SqlDataSource>
                             <asp:SqlDataSource ID="janCountSource" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '1' Group by ProgramType"></asp:SqlDataSource>
                         </div>
                     </div>
-                    <div id="feb" class="card-body" style="display:none;">
+                    <div id="feb" class="card-body" style="display: none;">
                         <h1 id="febTitle" class=" ProgramCardTitle d-flex justify-content-center ">February</h1>
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
@@ -463,12 +463,12 @@
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
                                 </Columns>
                             </asp:GridView>
-                            
+
                             <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select Count(np.NewProgramID) as 'Total Programs' from dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '2' "></asp:SqlDataSource>
                             <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '2' Group by ProgramType"></asp:SqlDataSource>
                         </div>
                     </div>
-                    <div id="mar" class="card-body" style="display:none;">
+                    <div id="mar" class="card-body" style="display: none;">
                         <h1 id="marTitle" class=" ProgramCardTitle d-flex justify-content-center ">March</h1>
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
@@ -509,12 +509,12 @@
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
                                 </Columns>
                             </asp:GridView>
-                            
+
                             <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select Count(np.NewProgramID) as 'Total Programs' from dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '3' "></asp:SqlDataSource>
                             <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '3' Group by ProgramType"></asp:SqlDataSource>
                         </div>
                     </div>
-                    <div id="apr" class="card-body" style="display:none;">
+                    <div id="apr" class="card-body" style="display: none;">
                         <h1 id="aprTitle" class=" ProgramCardTitle d-flex justify-content-center ">April</h1>
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
@@ -555,12 +555,12 @@
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
                                 </Columns>
                             </asp:GridView>
-                            
+
                             <asp:SqlDataSource ID="SqlDataSource11" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select Count(np.NewProgramID) as 'Total Programs' from dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '4' "></asp:SqlDataSource>
                             <asp:SqlDataSource ID="SqlDataSource12" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '4' Group by ProgramType"></asp:SqlDataSource>
                         </div>
                     </div>
-                    <div id="may" class="card-body" style="display:none;">
+                    <div id="may" class="card-body" style="display: none;">
                         <h1 id="mayTitle" class=" ProgramCardTitle d-flex justify-content-center ">May</h1>
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
@@ -601,12 +601,12 @@
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
                                 </Columns>
                             </asp:GridView>
-                            
+
                             <asp:SqlDataSource ID="SqlDataSource15" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select Count(np.NewProgramID) as 'Total Programs' from dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '5' "></asp:SqlDataSource>
                             <asp:SqlDataSource ID="SqlDataSource16" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '5' Group by ProgramType"></asp:SqlDataSource>
                         </div>
                     </div>
-                    <div id="jun" class="card-body" style="display:none;">
+                    <div id="jun" class="card-body" style="display: none;">
                         <h1 id="junTitle" class=" ProgramCardTitle d-flex justify-content-center ">June</h1>
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
@@ -647,12 +647,12 @@
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
                                 </Columns>
                             </asp:GridView>
-                            
+
                             <asp:SqlDataSource ID="SqlDataSource19" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select Count(np.NewProgramID) as 'Total Programs' from dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '6' "></asp:SqlDataSource>
                             <asp:SqlDataSource ID="SqlDataSource20" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '6' Group by ProgramType"></asp:SqlDataSource>
                         </div>
                     </div>
-                    <div id="jul" class="card-body" style="display:none;">
+                    <div id="jul" class="card-body" style="display: none;">
                         <h1 id="julTitle" class=" ProgramCardTitle d-flex justify-content-center ">July</h1>
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
@@ -693,12 +693,12 @@
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
                                 </Columns>
                             </asp:GridView>
-                            
+
                             <asp:SqlDataSource ID="SqlDataSource23" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select Count(np.NewProgramID) as 'Total Programs' from dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '7' "></asp:SqlDataSource>
                             <asp:SqlDataSource ID="SqlDataSource24" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '7' Group by ProgramType"></asp:SqlDataSource>
                         </div>
                     </div>
-                    <div id="aug" class="card-body" style="display:none;">
+                    <div id="aug" class="card-body" style="display: none;">
                         <h1 id="augTitle" class=" ProgramCardTitle d-flex justify-content-center ">August</h1>
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
@@ -739,12 +739,12 @@
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
                                 </Columns>
                             </asp:GridView>
-                            
+
                             <asp:SqlDataSource ID="SqlDataSource27" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select Count(np.NewProgramID) as 'Total Programs' from dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '8' "></asp:SqlDataSource>
                             <asp:SqlDataSource ID="SqlDataSource28" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '8' Group by ProgramType"></asp:SqlDataSource>
                         </div>
                     </div>
-                    <div id="sep" class="card-body" style="display:none;">
+                    <div id="sep" class="card-body" style="display: none;">
                         <h1 id="sepTitle" class=" ProgramCardTitle d-flex justify-content-center ">September</h1>
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
@@ -785,12 +785,12 @@
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
                                 </Columns>
                             </asp:GridView>
-                            
+
                             <asp:SqlDataSource ID="SqlDataSource31" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select Count(np.NewProgramID) as 'Total Programs' from dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '9' "></asp:SqlDataSource>
                             <asp:SqlDataSource ID="SqlDataSource32" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '9' Group by ProgramType"></asp:SqlDataSource>
                         </div>
                     </div>
-                    <div id="oct" class="card-body" style="display:none;">
+                    <div id="oct" class="card-body" style="display: none;">
                         <h1 id="octTitle" class=" ProgramCardTitle d-flex justify-content-center ">October</h1>
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
@@ -831,12 +831,12 @@
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
                                 </Columns>
                             </asp:GridView>
-                            
+
                             <asp:SqlDataSource ID="SqlDataSource35" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select Count(np.NewProgramID) as 'Total Programs' from dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '10' "></asp:SqlDataSource>
                             <asp:SqlDataSource ID="SqlDataSource36" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '10' Group by ProgramType"></asp:SqlDataSource>
                         </div>
                     </div>
-                    <div id="nov" class="card-body" style="display:none;">
+                    <div id="nov" class="card-body" style="display: none;">
                         <h1 id="novTitle" class=" ProgramCardTitle d-flex justify-content-center ">November</h1>
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
@@ -877,12 +877,12 @@
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
                                 </Columns>
                             </asp:GridView>
-                            
+
                             <asp:SqlDataSource ID="SqlDataSource39" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select Count(np.NewProgramID) as 'Total Programs' from dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '11' "></asp:SqlDataSource>
                             <asp:SqlDataSource ID="SqlDataSource40" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '11' Group by ProgramType"></asp:SqlDataSource>
                         </div>
                     </div>
-                    <div id="dec" class="card-body" style="display:none;">
+                    <div id="dec" class="card-body" style="display: none;">
                         <h1 id="decTitle" class=" ProgramCardTitle d-flex justify-content-center ">December</h1>
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
@@ -923,12 +923,29 @@
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
                                 </Columns>
                             </asp:GridView>
-                            
+
                             <asp:SqlDataSource ID="SqlDataSource43" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select Count(np.NewProgramID) as 'Total Programs' from dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '12' "></asp:SqlDataSource>
                             <asp:SqlDataSource ID="SqlDataSource44" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '12' Group by ProgramType"></asp:SqlDataSource>
                         </div>
-                    </div>
 
+                    </div>
+                    <hr />
+                    <div id="animalReport" class="card-body">
+                        <h1 id="aniTitle" class=" ProgramCardTitle d-flex justify-content-center">Annual Animal Statistics</h1>
+                        <div class="ProgramShort d-flex justify-content-center">
+                            <asp:GridView ID="animalGrid" runat="server" AllowSorting="True" EnableSortingAndPagingCallbacks="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource48" ForeColor ="#000000">
+                                <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
+                                <Columns>
+                                    <asp:BoundField DataField="AnimalName" HeaderText="AnimalName" SortExpression="AnimalName" />
+                                    <asp:BoundField DataField="Programs" HeaderText="Programs" ReadOnly="True" SortExpression="Programs" />
+                                    <asp:BoundField DataField="TotalPeople" HeaderText="TotalPeople" SortExpression="TotalPeople" />
+                                </Columns>
+                            </asp:GridView>
+                            <asp:SqlDataSource ID="SqlDataSource48" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT a.AnimalName, count(aa.AnimalID) as Programs, np.TotalPeople 
+                        FROM dbo.NewProgram np inner join dbo.AssignAnimal aa on np.NewProgramID = aa.NewProgramID right join dbo.Animal a on aa.AnimalID = a.AnimalID
+                        GROUP BY a.AnimalName, np.TotalPeople"></asp:SqlDataSource>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -968,44 +985,44 @@
 
     </div>
 
-<script type="text/javascript">
-    $("#janBtn").click(function() {
-    $("#jan").toggle();
-});
-    $("#febBtn").click(function() {
-    $("#feb").toggle();
-    });
-    $("#marBtn").click(function() {
-    $("#mar").toggle();
-    });
-    $("#aprBtn").click(function() {
-    $("#apr").toggle();
-    });
-    $("#mayBtn").click(function() {
-    $("#may").toggle();
-    });
-    $("#junBtn").click(function() {
-    $("#jun").toggle();
-    });
-    $("#julBtn").click(function() {
-    $("#jul").toggle();
-    });
-    $("#augBtn").click(function() {
-    $("#aug").toggle();
-    });
-    $("#sepBtn").click(function() {
-    $("#sep").toggle();
-    });
-    $("#octBtn").click(function() {
-    $("#oct").toggle();
-    });
-    $("#novBtn").click(function() {
-    $("#nov").toggle();
-    });
-    $("#decBtn").click(function() {
-    $("#dec").toggle();
-});
-</script>
+    <script type="text/javascript">
+        $("#janBtn").click(function () {
+            $("#jan").toggle();
+        });
+        $("#febBtn").click(function () {
+            $("#feb").toggle();
+        });
+        $("#marBtn").click(function () {
+            $("#mar").toggle();
+        });
+        $("#aprBtn").click(function () {
+            $("#apr").toggle();
+        });
+        $("#mayBtn").click(function () {
+            $("#may").toggle();
+        });
+        $("#junBtn").click(function () {
+            $("#jun").toggle();
+        });
+        $("#julBtn").click(function () {
+            $("#jul").toggle();
+        });
+        $("#augBtn").click(function () {
+            $("#aug").toggle();
+        });
+        $("#sepBtn").click(function () {
+            $("#sep").toggle();
+        });
+        $("#octBtn").click(function () {
+            $("#oct").toggle();
+        });
+        $("#novBtn").click(function () {
+            $("#nov").toggle();
+        });
+        $("#decBtn").click(function () {
+            $("#dec").toggle();
+        });
+    </script>
 
 
 </asp:Content>
