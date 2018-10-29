@@ -46,7 +46,7 @@
     <div id="jan">
         <h2 class="card-header">January</h2>
         <h5>Attendance</h5>
-        <asp:GridView ID="janGridAtt" runat="server" AutoGenerateColumns="False" DataSourceID="janAttSource" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+        <asp:GridView ID="janGridAtt" runat="server" AutoGenerateColumns="False" DataSourceID="janAttSource" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="Both">
             <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
             <Columns>
                 <asp:BoundField DataField="Day" HeaderText="Day of Month" SortExpression="Day" />
@@ -335,12 +335,53 @@
             <div class="container-fluid ProgramContainer">
 
                 <div class="card mx-auto  ProgramCard">
+                    <div id="ann" class="card-body">
+                        <h1 id="annTitle" class=" ProgramCardTitle d-flex justify-content-center ">Annual Report</h1>
+                        <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
+                        <div class="ProgramShort d-flex justify-content-center">
+
+                            <asp:GridView ID="GridView41" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource46" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None" AllowSorting="True">
+                                <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
+                                <Columns>
+                                    <asp:BoundField DataField="Total Kids" HeaderText="Total Kids" SortExpression="Total Kids" />
+                                    <asp:BoundField DataField="Total Adults" HeaderText="Total Adults" SortExpression="Total Adults" />
+                                    <asp:BoundField DataField="Total People" HeaderText="Total People" SortExpression="Total People" />
+                                </Columns>
+                            </asp:GridView>
+                            
+                            <asp:SqlDataSource ID="SqlDataSource46" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select sum(totalKids) as 'Total Kids', sum(totalAdults) as 'Total Adults', (SELECT SUM(TotalKids)+SUM(TotalAdults)) as 'Total People' from dbo.NewProgram "></asp:SqlDataSource>
+                        </div>
+
+                        <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Program Count</h4>
+                        <div class="ProgramShort d-flex justify-content-center">
+
+                            <asp:GridView ID="GridView43" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource47" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None" AllowSorting="True">
+                                <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
+                                <Columns>
+                                    <asp:BoundField DataField="ProgramType" HeaderText="Type" SortExpression="ProgramType" />
+                                    <asp:BoundField DataField="Total Programs" HeaderText="Programs" SortExpression="Total Programs" />
+                                </Columns>
+                            </asp:GridView>
+                            <asp:GridView ID="GridView42" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource45" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
+                                <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
+                                <Columns>
+                                    <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
+                                </Columns>
+                            </asp:GridView>
+
+                            <asp:SqlDataSource ID="SqlDataSource45" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select Count(np.NewProgramID) as 'Total Programs' from dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID "></asp:SqlDataSource>      
+                            <asp:SqlDataSource ID="SqlDataSource47" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="select ProgramType, count(np.NewProgramID) as 'Total Programs' from dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID GROUP BY ProgramType"></asp:SqlDataSource>
+                            
+                        </div>
+                        <hr />
+                        <h1 id="monTitle" class=" ProgramCardTitle d-flex justify-content-center">Monthly Report</h1>
+                    </div>
                     <div id="jan" class="card-body" style="display:none;">
                         <h1 id="janTitle" class=" ProgramCardTitle d-flex justify-content-center ">January</h1>
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="janGridAtt" runat="server" AutoGenerateColumns="False" DataSourceID="janAttSource" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="janGridAtt" runat="server" AutoGenerateColumns="False" DataSourceID="janAttSource" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="DateCompleted" HeaderText="Date" SortExpression="DateCompleted" />
@@ -349,7 +390,7 @@
                                     <asp:BoundField DataField="Total People" HeaderText="Total People" SortExpression="Total People" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="janGridTotal" runat="server" AutoGenerateColumns="False" DataSourceID="janTotalSource" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="janGridTotal" runat="server" AutoGenerateColumns="False" DataSourceID="janTotalSource" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="January Total" HeaderText="Total Attendance" SortExpression="January Total" />
@@ -363,14 +404,14 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Program Count</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="janGridCount" runat="server" AutoGenerateColumns="False" DataSourceID="janCountSource" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="janGridCount" runat="server" AutoGenerateColumns="False" DataSourceID="janCountSource" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="ProgramType" HeaderText="Program Type" SortExpression="ProgramType" />
                                     <asp:BoundField DataField="Number of Programs" HeaderText="Number of Programs" SortExpression="Number of Programs" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="janCountTotal" runat="server" AutoGenerateColumns="False" DataSourceID="janCountTotalSource" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="janCountTotal" runat="server" AutoGenerateColumns="False" DataSourceID="janCountTotalSource" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
@@ -386,7 +427,7 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="febGridAtt" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="febGridAtt" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="DateCompleted" HeaderText="Date" SortExpression="DateCompleted" />
@@ -395,7 +436,7 @@
                                     <asp:BoundField DataField="Total People" HeaderText="Total People" SortExpression="Total People" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="febAttTotal" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="febAttTotal" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total" HeaderText="Total Attendance" SortExpression="Total" />
@@ -409,14 +450,14 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Program Count</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="febGridCount" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource4" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="febGridCount" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource4" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="ProgramType" HeaderText="Program Type" SortExpression="ProgramType" />
                                     <asp:BoundField DataField="Number of Programs" HeaderText="Number of Programs" SortExpression="Number of Programs" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="febCountTotal" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource3" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="febCountTotal" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource3" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
@@ -432,7 +473,7 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource6" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource6" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="DateCompleted" HeaderText="Date" SortExpression="DateCompleted" />
@@ -441,7 +482,7 @@
                                     <asp:BoundField DataField="Total People" HeaderText="Total People" SortExpression="Total People" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource5" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource5" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total" HeaderText="Total Attendance" SortExpression="Total" />
@@ -455,14 +496,14 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Program Count</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource8" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource8" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="ProgramType" HeaderText="Program Type" SortExpression="ProgramType" />
                                     <asp:BoundField DataField="Number of Programs" HeaderText="Number of Programs" SortExpression="Number of Programs" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView4" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource7" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView4" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource7" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
@@ -478,7 +519,7 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView5" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource10" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView5" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource10" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="DateCompleted" HeaderText="Date" SortExpression="DateCompleted" />
@@ -487,7 +528,7 @@
                                     <asp:BoundField DataField="Total People" HeaderText="Total People" SortExpression="Total People" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView6" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource9" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView6" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource9" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total" HeaderText="Total Attendance" SortExpression="Total" />
@@ -501,14 +542,14 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Program Count</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView7" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource12" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView7" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource12" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="ProgramType" HeaderText="Program Type" SortExpression="ProgramType" />
                                     <asp:BoundField DataField="Number of Programs" HeaderText="Number of Programs" SortExpression="Number of Programs" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView8" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource11" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView8" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource11" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
@@ -524,7 +565,7 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView9" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource14" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView9" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource14" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="DateCompleted" HeaderText="Date" SortExpression="DateCompleted" />
@@ -533,7 +574,7 @@
                                     <asp:BoundField DataField="Total People" HeaderText="Total People" SortExpression="Total People" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView10" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource13" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView10" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource13" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total" HeaderText="Total Attendance" SortExpression="Total" />
@@ -547,14 +588,14 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Program Count</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView11" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource16" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView11" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource16" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="ProgramType" HeaderText="Program Type" SortExpression="ProgramType" />
                                     <asp:BoundField DataField="Number of Programs" HeaderText="Number of Programs" SortExpression="Number of Programs" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView12" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource15" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView12" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource15" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
@@ -570,7 +611,7 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView13" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource18" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView13" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource18" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="DateCompleted" HeaderText="Date" SortExpression="DateCompleted" />
@@ -579,7 +620,7 @@
                                     <asp:BoundField DataField="Total People" HeaderText="Total People" SortExpression="Total People" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView14" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource17" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView14" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource17" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total" HeaderText="Total Attendance" SortExpression="Total" />
@@ -593,14 +634,14 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Program Count</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView15" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource20" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView15" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource20" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="ProgramType" HeaderText="Program Type" SortExpression="ProgramType" />
                                     <asp:BoundField DataField="Number of Programs" HeaderText="Number of Programs" SortExpression="Number of Programs" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView16" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource19" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView16" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource19" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
@@ -616,7 +657,7 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView17" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource22" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView17" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource22" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="DateCompleted" HeaderText="Date" SortExpression="DateCompleted" />
@@ -625,7 +666,7 @@
                                     <asp:BoundField DataField="Total People" HeaderText="Total People" SortExpression="Total People" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView18" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource21" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView18" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource21" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total" HeaderText="Total Attendance" SortExpression="Total" />
@@ -639,14 +680,14 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Program Count</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView19" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource24" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView19" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource24" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="ProgramType" HeaderText="Program Type" SortExpression="ProgramType" />
                                     <asp:BoundField DataField="Number of Programs" HeaderText="Number of Programs" SortExpression="Number of Programs" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView20" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource23" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView20" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource23" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
@@ -662,7 +703,7 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView21" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource26" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView21" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource26" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="DateCompleted" HeaderText="Date" SortExpression="DateCompleted" />
@@ -671,7 +712,7 @@
                                     <asp:BoundField DataField="Total People" HeaderText="Total People" SortExpression="Total People" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView22" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource25" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView22" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource25" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total" HeaderText="Total Attendance" SortExpression="Total" />
@@ -685,14 +726,14 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Program Count</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView23" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource28" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView23" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource28" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="ProgramType" HeaderText="Program Type" SortExpression="ProgramType" />
                                     <asp:BoundField DataField="Number of Programs" HeaderText="Number of Programs" SortExpression="Number of Programs" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView24" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource27" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView24" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource27" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
@@ -708,7 +749,7 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView25" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource30" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView25" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource30" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="DateCompleted" HeaderText="Date" SortExpression="DateCompleted" />
@@ -717,7 +758,7 @@
                                     <asp:BoundField DataField="Total People" HeaderText="Total People" SortExpression="Total People" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView26" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource29" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView26" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource29" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total" HeaderText="Total Attendance" SortExpression="Total" />
@@ -731,14 +772,14 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Program Count</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView27" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource32" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView27" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource32" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="ProgramType" HeaderText="Program Type" SortExpression="ProgramType" />
                                     <asp:BoundField DataField="Number of Programs" HeaderText="Number of Programs" SortExpression="Number of Programs" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView28" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource31" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView28" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource31" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
@@ -754,7 +795,7 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView29" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource34" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView29" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource34" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="DateCompleted" HeaderText="Date" SortExpression="DateCompleted" />
@@ -763,7 +804,7 @@
                                     <asp:BoundField DataField="Total People" HeaderText="Total People" SortExpression="Total People" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView30" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource33" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView30" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource33" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total" HeaderText="Total Attendance" SortExpression="Total" />
@@ -777,14 +818,14 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Program Count</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView31" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource36" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView31" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource36" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="ProgramType" HeaderText="Program Type" SortExpression="ProgramType" />
                                     <asp:BoundField DataField="Number of Programs" HeaderText="Number of Programs" SortExpression="Number of Programs" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView32" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource35" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView32" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource35" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
@@ -800,7 +841,7 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView33" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource38" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView33" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource38" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="DateCompleted" HeaderText="Date" SortExpression="DateCompleted" />
@@ -809,7 +850,7 @@
                                     <asp:BoundField DataField="Total People" HeaderText="Total People" SortExpression="Total People" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView34" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource37" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView34" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource37" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total" HeaderText="Total Attendance" SortExpression="Total" />
@@ -823,14 +864,14 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Program Count</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView35" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource40" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView35" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource40" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="ProgramType" HeaderText="Program Type" SortExpression="ProgramType" />
                                     <asp:BoundField DataField="Number of Programs" HeaderText="Number of Programs" SortExpression="Number of Programs" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView36" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource39" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView36" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource39" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
@@ -846,7 +887,7 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView37" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource42" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView37" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource42" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="DateCompleted" HeaderText="Date" SortExpression="DateCompleted" />
@@ -855,7 +896,7 @@
                                     <asp:BoundField DataField="Total People" HeaderText="Total People" SortExpression="Total People" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView38" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource41" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView38" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource41" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total" HeaderText="Total Attendance" SortExpression="Total" />
@@ -869,14 +910,14 @@
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Program Count</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
-                            <asp:GridView ID="GridView39" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource44" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None" AllowSorting="True">
+                            <asp:GridView ID="GridView39" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource44" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="Both" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="ProgramType" HeaderText="Program Type" SortExpression="ProgramType" />
                                     <asp:BoundField DataField="Number of Programs" HeaderText="Number of Programs" SortExpression="Number of Programs" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:GridView ID="GridView40" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource43" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <asp:GridView ID="GridView40" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource43" EnableSortingAndPagingCallbacks="true" CellPadding="4" ForeColor="#000000" GridLines="None">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="Total Programs" HeaderText="Total Programs" SortExpression="Total Programs" />
