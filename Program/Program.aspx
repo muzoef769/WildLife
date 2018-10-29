@@ -250,6 +250,34 @@
     </div>
 </div>--%>
 
+
+
+    <%--Add Organization ModaL--%>
+<div class="modal" id="AddOrganizationModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-full" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"> Add Organization </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </div>
+                <div class="modal-body p-4" id="resultAddOrganization">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4> Organization Name:</h4>
+                            <asp:textbox id="txtOrganizationName" cssclass="form-control" runat="server" placeholder="Add Organization Name"></asp:textbox>
+                            <h4> Address:</h4>
+                            <asp:TextBox id="txtOrganizationAddress" cssclass="form-control" runat="server" placeholder="Add Address"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+            </div>
+
+    <%--End of AddOrganization Modal--%>
+
 <div class="modal" id="AddProgramModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-full" role="document">
         <div class="modal-content">
@@ -331,12 +359,15 @@
 </div>
 	     
 	     <br>
-	     <h4 class="Animal"> Mammals:</h4> 
+	     <h4 class="Animal"> Mammals:</h4>
+            <asp:CheckBoxList id="chkMammalsList" runat="server"></asp:CheckBoxList>
 	     <br>
 	     <div class="container">
   <div class="row">
        <div class="col-lg-12">
-     <div class="button-group">
+           
+
+     <%--<div class="button-group">
         <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Choose Mammals <span class="caret"></span></button>
 <ul class="dropdown-menu">
   <li><a href="#" class="small DropdownAnimal" data-value="option1" tabIndex="-1"><input type="checkbox"/>&nbsp;Bo</a></li>
@@ -345,7 +376,7 @@
 
   
 </ul>
-  </div>
+  </div>--%>
 </div>
   </div>
 </div>
@@ -362,7 +393,8 @@
 			 <div class=" col-md-6 ">
 	    <h4> Organization:</h4>
                  <asp:DropDownList ID="drpOrganizationList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle"></asp:DropDownList>
-                 <asp:Button ID="AddOrganization" runat="server" CssClass="btn btn-primary LoginButton" UseSubmitBehavior="false" CauseValidation="true" Text="Add Organization" OnClick="btnAddOrganization"/>
+                 <%--<asp:Button ID="AddOrganization" runat="server" CssClass="btn btn-primary LoginButton" UseSubmitBehavior="false" CauseValidation="true" Text="Add Organization" OnClick="btnAddOrganization"/>--%>
+                 <button data-toggle="modal" data-target="#AddOrganizationModal" class="btn btn-primary LoginButton" type="button">Add Organization</button>
 	    <h4> Contact:</h4>
                  <asp:TextBox ID="txtContact" Cssclass="form-control" runat="server" Placeholder="Add Contact"></asp:TextBox>
 	    <h4> Email:</h4>
