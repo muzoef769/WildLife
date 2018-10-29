@@ -31,6 +31,7 @@ public partial class AddAnimal : System.Web.UI.Page
            txtScientificName.Text,
            txtName.Text,
            ddlType.SelectedValue.ToString(),
+          Convert.ToChar(DropDownList1.SelectedValue),
            DateTime.Today,
            "Staff"
 
@@ -46,7 +47,7 @@ public partial class AddAnimal : System.Web.UI.Page
         addAnimal.Parameters.AddWithValue("@ScientificName", newAnimal.getScientificName());
         addAnimal.Parameters.AddWithValue("@AnimalName", newAnimal.getAnimalName());
         addAnimal.Parameters.AddWithValue("@AnimalType", newAnimal.getAnimalType());
-        addAnimal.Parameters.AddWithValue("@Status", "1");
+        addAnimal.Parameters.AddWithValue("@Status", DropDownList1.SelectedValue);
         addAnimal.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
         addAnimal.Parameters.AddWithValue("@LastUpdatedBy", "Staff");
         addAnimal.ExecuteNonQuery();

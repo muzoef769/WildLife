@@ -17,7 +17,7 @@ public class Animals
     private string AnimalType; //This value will either be 'B' for bird, 'M' for Mammal, or 'R' for Reptile ------- changed to string
     //private DateTime dateAdded;   removed dateAdded
     //private int age               removed age
-
+    private char Status;
     //added species, scientificname to match DB
     private DateTime LastUpdated;
     private string LastUpdatedBy;
@@ -46,7 +46,7 @@ public class Animals
     //    setLastUpdatedBy(lastUpdatedBy);
     //}
 
-    public Animals(string species, string scientificName, string AnimalName, string AnimalType, DateTime lastUpdated, string lastUpdatedBy)
+    public Animals(string species, string scientificName, string AnimalName, string AnimalType, char Status, DateTime lastUpdated, string lastUpdatedBy)
     {
         
         
@@ -54,6 +54,7 @@ public class Animals
         setScientificName(scientificName);
         setAnimalName(AnimalName);
         setAnimalType(AnimalType);
+        setStatus(Status);
         setLastUpdated(lastUpdated);
         setLastUpdatedBy(lastUpdatedBy);
     }
@@ -146,4 +147,15 @@ public class Animals
     {
         this.LastUpdatedBy = x;
     }
+    public char getStatus()
+    {
+        return this.Status;
+    }
+    public void setStatus(char status)
+    {
+        this.Status = status;
+    }
+
+
+
 }

@@ -7,8 +7,15 @@
     <div class="container jumbotron w-50 bg-white shadow"">
          <div class=" offset-2">
         <br />
-        <%--<asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataValueField ="AnimalID" DataTextField ="Name" autopostback="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" ></asp:DropDownList>--%>
-        <asp:Label ID="lblType" runat="server" Text="Type: "></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+             <asp:Label ID="Label1" runat="server" Text="Animal Status:  "></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="DropDownList1" runat="server">
+
+                  <asp:ListItem Value="1">Active</asp:ListItem>
+            <asp:ListItem Value="0">Deactive</asp:ListItem>
+                        </asp:DropDownList>
+              
+             <br />
+        <br />
+             <asp:Label ID="lblType" runat="server" Text="Type: "></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
                 <asp:DropDownList ID="ddlType" runat="server" Visible="true">
             <asp:ListItem>Bird</asp:ListItem>
             <asp:ListItem>Mammal</asp:ListItem>
