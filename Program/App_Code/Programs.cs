@@ -18,12 +18,13 @@ public class Programs
     private string status;
     private string miscNotes;
     private DateTime LastUpdated;
+    private int ProgramID;
     private string LastUpdatedBy;
 
     public Programs(int numKids,
         int numAdults, int totalPeople, int totalMileage,DateTime dateCreated,
         DateTime dateCompleted, string ageLevel, string status, string miscNotes,
-        DateTime lastUpdated, string lastUpdatedBy)
+        DateTime lastUpdated, string lastUpdatedBy, int programID)
     {
         this.numKids = numKids;
         this.numAdults = numAdults;
@@ -36,6 +37,7 @@ public class Programs
         this.miscNotes = miscNotes;
         LastUpdated = lastUpdated;
         LastUpdatedBy = lastUpdatedBy;
+        this.ProgramID = programID;
     }
 
     public int NumKids { get => numKids; set => numKids = value; }
@@ -49,4 +51,5 @@ public class Programs
     public string MiscNotes { get => miscNotes; set => miscNotes = value; }
     public DateTime LastUpdated1 { get => LastUpdated; set => LastUpdated = value; }
     public string LastUpdatedBy1 { get => LastUpdatedBy; set => LastUpdatedBy = value; }
+    public int ProgramID2 { get => ProgramID; set => ProgramID = value; }
 }

@@ -1802,6 +1802,7 @@ pre code {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
+    margin-top: 0px;
 }
 
 .table-responsive > .table-bordered {

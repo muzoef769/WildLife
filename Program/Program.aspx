@@ -59,12 +59,12 @@
   
   
   
-  <div class="row">
+<%--  <div class="row">
   <a href="#" data-toggle="modal" data-target="#ProgramModal">
   <div class="col-md-12"><h5 class="ProgramCardTitle float-left " > Wild Winter Worlds</h5></div></a>
-</div>
+</div>--%>
  
- <div class="row">
+<%-- <div class="row">
   <div class="table-responsive">
     <table class="table table-bordered ProgramBioShort">
         <thead>
@@ -90,7 +90,7 @@
         </tbody>
     </table>
 </div>
-</div>
+</div>--%>
 </div>
  
 	<br>
@@ -99,7 +99,7 @@
 </div>
 </div>
 </div>
-
+<asp:Label ID="lblErrorMessage" runat="server"></asp:Label>
 
 <%--<div class="modal" id="EditProgramModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-full" role="document">
@@ -260,17 +260,17 @@
                 </button>
             </div>
             <div class="modal-body p-4" id="resultAddProgram">
-                    
-                  <div class="row  ">
+
+                <div class="row  ">
                   
 	    <div class=" col-md-6">
 	    <h4> Program:</h4>
-            <asp:TextBox ID="txtProgram" Cssclass="form-control" runat="server" Placeholder="Add Program Name"></asp:TextBox>
+        <asp:DropDownList ID="drpProgramList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle"></asp:DropDownList>
 	    <h4> Type:</h4>
             <asp:TextBox ID="txtType" runat="server" CssClass="form-control" Placeholder="Add Type"></asp:TextBox>
 	    <h4> Date/Time:</h4>
             <asp:TextBox ID="txtDate" Cssclass="form-control" runat="server" Placeholder="Add Date/Time"></asp:TextBox>
-	    <h4> Number of Kids:</h4>>
+	    <h4> Number of Kids:</h4>
             <asp:TextBox ID="txtKids" Cssclass="form-control" runat="server" Placeholder="Add Number of Kids"></asp:TextBox>
 	    <h4> Number of Adults:</h4>
             <asp:TextBox ID="txtAdults" Cssclass="form-control" runat="server" Placeholder="Add Number of Adults"></asp:TextBox>

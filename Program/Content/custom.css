@@ -92,14 +92,19 @@ border-radius: 15px;
 	
    }
 
-.ProgramCard {opacity: .7;
-background-color: whitesmoke;
-border-radius: 15px;
-    border: 2px ;
- display: block;
-    height: auto;
+.ProgramCard {border-style: none;
+    border-color: inherit;
+    border-width: 2px;
+    opacity: .7;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    display: block;
+    height: 409px;
     text-align: center;
-    vertical-align: middle;}
+    vertical-align: middle;
+    top: 14px;
+    left: 0px;
+}
 
 .SpeciesCard {opacity: .7;
 background-color: whitesmoke;
