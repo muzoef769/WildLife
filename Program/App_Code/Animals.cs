@@ -21,30 +21,8 @@ public class Animals
     //added species, scientificname to match DB
     private DateTime LastUpdated;
     private string LastUpdatedBy;
+    Animals[] animalArray = new Animals[4];
 
-    //Animal constructor -OG constructor Will made
-    //public Animal(int animalID, string name, string type, int age, DateTime dateAdded, DateTime lastUpdated, string lastUpdatedBy)
-    //{
-    //    setAnimalID(animalID);
-    //    setAnimalType(type);
-    //    setAnimalName(name);
-    //    setAnimalDateAdded(dateAdded);
-    //    setLastUpdated(lastUpdated);
-    //    setLastUpdatedBy(lastUpdatedBy);
-    //}
-
-
-    //Animal constructor - constructor Kelly made
-    //public Animals(int ID, string name, string species, string scientificName, string type,  DateTime lastUpdated, string lastUpdatedBy)
-    //{
-    //    setAnimalID(ID);
-    //    setAnimalName(name);
-    //    setSpecies(species);
-    //    setScientificName(scientificName);
-    //    setAnimalType(type);
-    //    setLastUpdated(lastUpdated);
-    //    setLastUpdatedBy(lastUpdatedBy);
-    //}
 
     public Animals(string species, string scientificName, string AnimalName, string AnimalType, char Status, DateTime lastUpdated, string lastUpdatedBy)
     {
@@ -95,17 +73,6 @@ public class Animals
     {
         return this.AnimalType;
     }
-
-    //age is no longer needed
-    //public int getAnimalAge()
-    //{
-    //    return this.age;
-    //}
-
-    //public DateTime getDateAdded()
-    //{
-    //    return this.dateAdded;
-    //}
 
     public DateTime getLastUpdated()
     {
