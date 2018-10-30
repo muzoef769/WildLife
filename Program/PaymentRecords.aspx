@@ -13,70 +13,63 @@
     <div id="monthlyReports">
         <h1 id="payTitle" class=" ProgramCardTitle d-flex justify-content-center ">Payment Records</h1>
         <div id="monthButtons" class="ProgramShort d-flex justify-content-center">
-            <asp:button class="btn btn-primary" id="btnJan" runat="server" text="January" onclick="btnJan_Click"/>
-            <asp:button class="btn btn-primary" id="btnFeb" runat="server" text="February" onclick="btnFeb_Click" />
-            <asp:button class="btn btn-primary" id="btnMar" runat="server" text="March" onclick="btnMar_Click" />
-            <asp:button class="btn btn-primary" id="btnApr" runat="server" text="April" onclick="btnApr_Click" />
-            <asp:button class="btn btn-primary" id="btnMay" runat="server" text="May" onclick="btnMay_Click" />
-            <asp:button class="btn btn-primary" id="btnJun" runat="server" text="June" onclick="btnJun_Click" />
-            <asp:button class="btn btn-primary" id="btnJul" runat="server" text="July" onclick="btnJul_Click" />
-            <asp:button class="btn btn-primary" id="btnAug" runat="server" text="August" onclick="btnAug_Click" />
-            <asp:button class="btn btn-primary" id="btnSep" runat="server" text="September" onclick="btnSep_Click" />
-            <asp:button class="btn btn-primary" id="btnOct" runat="server" text="October" onclick="btnOct_Click" />
-            <asp:button class="btn btn-primary" id="btnNov" runat="server" text="November" onclick="btnNov_Click" />
-            <asp:button class="btn btn-primary" id="btnDec" runat="server" text="December" onclick="btnDec_Click" />
+            <asp:button class="btn btn-primary" data-toggle="collapse" data-target="#jan" id="btnJan" runat="server" text="January" onclientclick="return false" />
+            <asp:button class="btn btn-primary" data-toggle="collapse" data-target="#feb" id="btnFeb" runat="server" text="February" onclientclick="return false" />
+            <asp:button class="btn btn-primary" data-toggle="collapse" data-target="#mar" id="btnMar" runat="server" text="March" onclientclick="return false" />
+            <asp:button class="btn btn-primary" data-toggle="collapse" data-target="#apr" id="btnApr" runat="server" text="April" onclientclick="return false" />
+            <asp:button class="btn btn-primary" data-toggle="collapse" data-target="#may" id="btnMay" runat="server" text="May" onclientclick="return false" />
+            <asp:button class="btn btn-primary" data-toggle="collapse" data-target="#jun" id="btnJun" runat="server" text="June" onclientclick="return false" />
+            <asp:button class="btn btn-primary" data-toggle="collapse" data-target="#jul" id="btnJul" runat="server" text="July" onclientclick="return false" />
+            <asp:button class="btn btn-primary" data-toggle="collapse" data-target="#aug" id="btnAug" runat="server" text="August" onclientclick="return false" />
+            <asp:button class="btn btn-primary" data-toggle="collapse" data-target="#sep" id="btnSep" runat="server" text="September" onclientclick="return false" />
+            <asp:button class="btn btn-primary" data-toggle="collapse" data-target="#oct" id="btnOct" runat="server" text="October" onclientclick="return false" />
+            <asp:button class="btn btn-primary" data-toggle="collapse" data-target="#nov" id="btnNov" runat="server" text="November" onclientclick="return false" />
+            <asp:button class="btn btn-primary" data-toggle="collapse" data-target="#dec" id="btnDec" runat="server" text="December" onclientclick="return false" />
+            <br />
+            <asp:button class="btn btn-danger"  data-toggle="collapse" data-target="#ann" id="btn2018" runat="server" text="Annual Report" onclientclick="return false" />
+
         </div>
         <div id="monthGrids">
-            <h3 id="monTitle" class=" ProgramCardTitle d-flex justify-content-center " style="margin-top: 15px;">Monthly View</h3>
-            <div id="month" class="ProgramShort d-flex justify-content-center">
-                <asp:GridView ID="janGrid" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" EnableSortingAndPagingCallbacks="true" AllowPaging="True" AllowSorting="True" >
-                    <AlternatingRowStyle BackColor="#CCCCFF" BorderColor="Black" BorderStyle="None" />
-                <Columns>
-                    <asp:BoundField DataField="DateCreated" HeaderText="Date Created" SortExpression="DateCreated" />
-                    <asp:BoundField DataField="InvoiceID" HeaderText="Invoice #" SortExpression="InvoiceID" />
-                    <asp:BoundField DataField="OrganizationName" HeaderText="Organization" SortExpression="OrganizationName" />
-                    <asp:BoundField DataField="PaymentType" HeaderText="Payment Type" SortExpression="PaymentType" />
-                    <asp:BoundField DataField="TotalCost" HeaderText="Amount Due" SortExpression="TotalCost" />
-                </Columns>
-                </asp:GridView>
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource3" EnableSortingAndPagingCallbacks="true" AllowPaging="True" AllowSorting="True" >
-                    <AlternatingRowStyle BackColor="#CCCCFF" BorderColor="Black" BorderStyle="None" />
-                <Columns>
-                    <asp:BoundField DataField="TotalAmount" HeaderText="Total Amount" SortExpression="TotalAmount" />
-                </Columns>
-                </asp:GridView>
-
-                <asp:sqldatasource id="SqlDataSource2" runat="server" connectionstring="<%$ ConnectionStrings:connString %>" selectcommand="SELECT p.[InvoiceID], FORMAT(DateCreated, 'yyyy-MM-dd') as 'DateCreated', o.[OrganizationName], p.[PaymentType], i.[TotalCost] FROM [Payment] p inner join [Organization] o on p.OrganizationID = o.OrganizationID inner join [Invoice] i on i.InvoiceID = p.InvoiceID WHERE MONTH(i.[DateCreated]) = @month ORDER BY [InvoiceID] ">
-                    <SelectParameters>
-                        <asp:Parameter DefaultValue="1" Name="month" Type="Int32" />
-                    </SelectParameters>
-                </asp:sqldatasource>
-                <asp:sqldatasource id="SqlDataSource3" runat="server" connectionstring="<%$ ConnectionStrings:connString %>" selectcommand="SELECT SUM([TotalCost]) as 'TotalAmount' FROM dbo.[Invoice] WHERE MONTH([DateCreated]) = @month">
-                    <SelectParameters>
-                        <asp:Parameter DefaultValue="1" Name="month" Type="Int32" />
-                    </SelectParameters>
-                </asp:sqldatasource>
-                
-            </div>
-            <h3 id="annTitle" class=" ProgramCardTitle d-flex justify-content-center" style="margin-top: 15px;">Annual View</h3>
-            <div id="ann" class="ProgramShort d-flex justify-content-center">
+            <div id="ann" class="collapse">
+                <h3>Annual Report</h3>
                 <asp:gridview id="annualGrid" runat="server" autogeneratecolumns="False" datasourceid="SqlDataSource1" enablesortingandpagingcallbacks="true" allowpaging="True" allowsorting="True">
             <AlternatingRowStyle BackColor="#CCCCFF" BorderColor="Black" BorderStyle="None" />
             <Columns>
-                <asp:BoundField DataField="DateCreated" HeaderText="Date Created" SortExpression="DateCreated" />
-                    <asp:BoundField DataField="InvoiceID" HeaderText="Invoice #" SortExpression="InvoiceID" />
-                    <asp:BoundField DataField="OrganizationName" HeaderText="Organization" SortExpression="OrganizationName" />
-                    <asp:BoundField DataField="PaymentType" HeaderText="Payment Type" SortExpression="PaymentType" />
-                    <asp:BoundField DataField="TotalCost" HeaderText="Amount Due" SortExpression="TotalCost" />
+                <asp:BoundField DataField="InvoiceID" HeaderText="Invoice #" SortExpression="InvoiceID" />
+                <asp:BoundField DataField="OrganizationName" HeaderText="Organization" SortExpression="OrganizationName" />
+                <asp:BoundField DataField="PaymentType" HeaderText="Payment Type" SortExpression="PaymentType" />
+                <asp:BoundField DataField="TotalCost" HeaderText="Amount Due" SortExpression="TotalCost" />
+                <asp:BoundField DataField="InvoiceStatus" HeaderText="Status" SortExpression="InvoiceStatus" />
+                <asp:BoundField DataField="DateCompleted" HeaderText="Date Completed" SortExpression="DateCompleted" />
+                <asp:BoundField DataField="LastUpdated" HeaderText="Last Updated" SortExpression="LastUpdated" />
+                <asp:BoundField DataField="LastUpdatedBy" HeaderText="Last Updated By" SortExpression="LastUpdatedBy" />
             </Columns>
             </asp:gridview>
             <asp:sqldatasource id="SqlDataSource1" runat="server" connectionstring="<%$ ConnectionStrings:connString %>"
-                        selectcommand="SELECT p.[InvoiceID], FORMAT(DateCreated, 'yyyy-MM-dd') as 'DateCreated', o.[OrganizationName], p.[PaymentType], i.[TotalCost] FROM [Payment] p inner join [Organization] o on p.OrganizationID = o.OrganizationID inner join [Invoice] i on i.InvoiceID = p.InvoiceID ORDER BY [InvoiceID] ">
+                        selectcommand="SELECT p.[InvoiceID], o.[OrganizationName], p.[PaymentType], i.[TotalCost], i.[InvoiceStatus], p.[DateCompleted], p.[LastUpdated], p.[LastUpdatedBy] FROM [Payment] p inner join [Organization] o on p.OrganizationID = o.OrganizationID inner join [Invoice] i on i.InvoiceID = p.InvoiceID ORDER BY [InvoiceID]">
 
                 </asp:sqldatasource>
                 
             </div>
-            <%--<div id="feb" class="collapse">
+            <div id="jan" class="collapse">
+                <h3>January</h3>
+                <asp:gridview id="janGrid" runat="server" autogeneratecolumns="False" datasourceid="SqlDataSource2" enablesortingandpagingcallbacks="true" allowpaging="True" allowsorting="True" cellpadding="4" forecolor="#000000" gridlines="None">
+            <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
+                   <Columns>
+                        <asp:BoundField DataField="InvoiceID" HeaderText="Invoice #" SortExpression="InvoiceID" />
+                        <asp:BoundField DataField="OrganizationName" HeaderText="Organization" SortExpression="OrganizationName" />
+                        <asp:BoundField DataField="PaymentType" HeaderText="Payment Type" SortExpression="PaymentType" />
+                        <asp:BoundField DataField="TotalCost" HeaderText="Amount Due" SortExpression="TotalCost" />
+                        <asp:BoundField DataField="InvoiceStatus" HeaderText="Status" SortExpression="InvoiceStatus" />
+                       <asp:BoundField DataField="DateCompleted" HeaderText="Date Completed" SortExpression="DateCompleted" />
+                        <asp:BoundField DataField="LastUpdated" HeaderText="Last Updated" SortExpression="LastUpdated" />
+                        <asp:BoundField DataField="LastUpdatedBy" HeaderText="Last Updated By" SortExpression="LastUpdatedBy" />
+                   </Columns>
+                </asp:gridview>
+
+                <asp:sqldatasource id="SqlDataSource2" runat="server" connectionstring="<%$ ConnectionStrings:connString %>" selectcommand="SELECT p.[InvoiceID], o.[OrganizationName], p.[PaymentType], i.[TotalCost], i.[InvoiceStatus], p.[DateCompleted],p.[LastUpdated], p.[LastUpdatedBy] FROM [Payment] p inner join [Organization] o on p.OrganizationID = o.OrganizationID inner join [Invoice] i on i.InvoiceID = p.InvoiceID WHERE MONTH(p.[DateCompleted]) = '1' ORDER BY [InvoiceID] "></asp:sqldatasource>
+            </div>
+            <div id="feb" class="collapse">
                 <h3>February</h3>
                 <asp:gridview id="febGrid" runat="server" autogeneratecolumns="False" datasourceid="SqlDataSource3" enablesortingandpagingcallbacks="true" allowpaging="True" allowsorting="True" cellpadding="4" forecolor="#000000" gridlines="None">
             <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
@@ -284,7 +277,7 @@
 
                 <asp:sqldatasource id="SqlDataSource13" runat="server" connectionstring="<%$ ConnectionStrings:connString %>" selectcommand="SELECT p.[InvoiceID], o.[OrganizationName], p.[PaymentType], i.[TotalCost], i.[InvoiceStatus], p.[DateCompleted],p.[LastUpdated], p.[LastUpdatedBy] FROM [Payment] p inner join [Organization] o on p.OrganizationID = o.OrganizationID inner join [Invoice] i on i.InvoiceID = p.InvoiceID WHERE MONTH(p.[DateCompleted]) = '12' ORDER BY [InvoiceID] "></asp:sqldatasource>
 
-            </div>--%>
+            </div>
             
         </div>
     </div>

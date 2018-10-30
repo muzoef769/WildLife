@@ -2,21 +2,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <div class="main">
-        <div class="row AnimalNav d-flex justify-content-center ">
-            <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle" style="padding-top: 0%;">
-                <a id="annBtn" class="AnimalLi nav-link font-weight-bold" href="#">Annual Report</a>
-
-            </div>
-
-            <div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
-                <a id="monBtn" class="AnimalLi nav-link font-weight-bold" href="#">Monthly Report</a>
-            </div>
-        </div>
         <div class="row">
-            <div class="container-fluid ProgramContainer">
+            <div class="container-fluid ProgramContainer" >
 
-                <div class="card mx-auto  ProgramCard" style="opacity: 0.9;">
-                    <%--<div id="ann" class="card-body">
+                <div class="card mx-auto  ProgramCard" style="opacity: 0.8;">
+                    <div id="ann" class="card-body">
                         <h1 id="annTitle" class=" ProgramCardTitle d-flex justify-content-center ">Annual Report</h1>
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
@@ -626,95 +616,83 @@
                         FROM dbo.NewProgram np inner join dbo.AssignAnimal aa on np.NewProgramID = aa.NewProgramID right join dbo.Animal a on aa.AnimalID = a.AnimalID
                         GROUP BY a.AnimalName, np.TotalPeople"></asp:SqlDataSource>
                         </div>
-                    </div>--%>
-                    <div id="simpleAnnual" class="card-body" style="display: none;">
-                        <h1 id="annTitle" class=" ProgramCardTitle d-flex justify-content-center ">Annual Report</h1>
-                        <div class='tableauPlaceholder' id='viz1540861317278' style='position: relative'>
-                            <noscript><a href='#'>
-                                <img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Si&#47;SimpleandAnimalReports&#47;SimpleAnnual&#47;1_rss.png' style='border: none' /></a></noscript>
-                            <object class='tableauViz' style='display: none;'>
-                                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-                                <param name='embed_code_version' value='3' />
-                                <param name='site_root' value='' />
-                                <param name='name' value='SimpleandAnimalReports&#47;SimpleAnnual' />
-                                <param name='tabs' value='no' />
-                                <param name='toolbar' value='yes' />
-                                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Si&#47;SimpleandAnimalReports&#47;SimpleAnnual&#47;1.png' />
-                                <param name='animate_transition' value='yes' />
-                                <param name='display_static_image' value='yes' />
-                                <param name='display_spinner' value='yes' />
-                                <param name='display_overlay' value='yes' />
-                                <param name='display_count' value='yes' />
-                                <param name='filter' value='publish=yes' />
-                            </object>
-                        </div>
-                        <script type='text/javascript'>                    var divElement = document.getElementById('viz1540861317278'); var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.width = '1000px'; vizElement.style.height = '827px'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
                     </div>
-                    <div id="simpleMonthly" class="card-body" style="display: none;">
-                        <h1 id="monTitle" class=" ProgramCardTitle d-flex justify-content-center ">Monthly Report</h1>
-                        <div class='tableauPlaceholder' id='viz1540861369677' style='position: relative'>
-                            <noscript><a href='#'>
-                                <img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Si&#47;SimpleandAnimalReports&#47;SimpleMonthly&#47;1_rss.png' style='border: none' /></a></noscript>
-                            <object class='tableauViz' style='display: none;'>
-                                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-                                <param name='embed_code_version' value='3' />
-                                <param name='site_root' value='' />
-                                <param name='name' value='SimpleandAnimalReports&#47;SimpleMonthly' />
-                                <param name='tabs' value='no' />
-                                <param name='toolbar' value='yes' />
-                                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Si&#47;SimpleandAnimalReports&#47;SimpleMonthly&#47;1.png' />
-                                <param name='animate_transition' value='yes' />
-                                <param name='display_static_image' value='yes' />
-                                <param name='display_spinner' value='yes' />
-                                <param name='display_overlay' value='yes' />
-                                <param name='display_count' value='yes' />
-                                <param name='filter' value='publish=yes' />
-                            </object>
-                        </div>
-                        <script type='text/javascript'>                    var divElement = document.getElementById('viz1540861369677'); var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.width = '1000px'; vizElement.style.height = '827px'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-                    </div>
+
                 </div>
             </div>
         </div>
+        <ul class="container MonthNav">
+            <h3><u>Month</u></h3>
+            <li class="MonthLi" id="janBtn">January</li>
+
+            <li class="MonthLi" id="febBtn">February</li>
+
+            <li class="MonthLi" id="marBtn">March</li>
+
+            <li class="MonthLi" id="aprBtn">April</li>
+
+            <li class="MonthLi" id="mayBtn">May</li>
+
+            <li class="MonthLi" id="junBtn">June</li>
+
+            <li class="MonthLi" id="julBtn">July</li>
+
+            <li class="MonthLi" id="augBtn">August</li>
+
+            <li class="MonthLi" id="sepBtn">September</li>
+
+            <li class="MonthLi" id="octBtn">October</li>
+
+            <li class="MonthLi" id="novBtn">November</li>
+
+            <li class="MonthLi" id="decBtn">December</li>
+
+
+
+        </ul>
+
+
+
+
     </div>
 
     <script type="text/javascript">
-        $("#annBtn").click(function () {
-            $("#simpleAnnual").toggle();
+        $("#janBtn").click(function () {
+            $("#jan").toggle();
         });
-        $("#monBtn").click(function () {
-            $("#simpleMonthly").toggle();
+        $("#febBtn").click(function () {
+            $("#feb").toggle();
         });
-        //$("#marBtn").click(function () {
-        //    $("#mar").toggle();
-        //});
-        //$("#aprBtn").click(function () {
-        //    $("#apr").toggle();
-        //});
-        //$("#mayBtn").click(function () {
-        //    $("#may").toggle();
-        //});
-        //$("#junBtn").click(function () {
-        //    $("#jun").toggle();
-        //});
-        //$("#julBtn").click(function () {
-        //    $("#jul").toggle();
-        //});
-        //$("#augBtn").click(function () {
-        //    $("#aug").toggle();
-        //});
-        //$("#sepBtn").click(function () {
-        //    $("#sep").toggle();
-        //});
-        //$("#octBtn").click(function () {
-        //    $("#oct").toggle();
-        //});
-        //$("#novBtn").click(function () {
-        //    $("#nov").toggle();
-        //});
-        //$("#decBtn").click(function () {
-        //    $("#dec").toggle();
-        //});
+        $("#marBtn").click(function () {
+            $("#mar").toggle();
+        });
+        $("#aprBtn").click(function () {
+            $("#apr").toggle();
+        });
+        $("#mayBtn").click(function () {
+            $("#may").toggle();
+        });
+        $("#junBtn").click(function () {
+            $("#jun").toggle();
+        });
+        $("#julBtn").click(function () {
+            $("#jul").toggle();
+        });
+        $("#augBtn").click(function () {
+            $("#aug").toggle();
+        });
+        $("#sepBtn").click(function () {
+            $("#sep").toggle();
+        });
+        $("#octBtn").click(function () {
+            $("#oct").toggle();
+        });
+        $("#novBtn").click(function () {
+            $("#nov").toggle();
+        });
+        $("#decBtn").click(function () {
+            $("#dec").toggle();
+        });
     </script>
 
 
