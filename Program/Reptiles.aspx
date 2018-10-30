@@ -7,14 +7,17 @@
                 <a class="AnimalLi nav-link" href="Birds.aspx">Birds</a>
 
             </div>
-            <div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
-                <a class="AnimalLi nav-link font-weight-bold text-success" href="#">Reptiles</a>
 
-            </div>
             <div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
                 <a class="AnimalLi nav-link " href="Mammals.aspx">Mammals</a>
 
             </div>
+
+            <div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
+                <a class="AnimalLi nav-link font-weight-bold text-success" href="#">Reptiles</a>
+
+            </div>
+
         </div>
     </div>
     <div class="row">
@@ -30,11 +33,11 @@
     </div>
     <div class="container">
         <div class="row text-center text-lg-center">
-            <div id="Reptile1" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+            <div id="Reptile1" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
                     <asp:ImageButton ID="ani19" CssClass="animalImg" runat="server" src="Images/cliff.jpg" OnClick="AnimalInfo_Click" />
-                        
-                    
+
+
                     <div class="caption">
                         <h4>Clifford</h4>
 
@@ -45,8 +48,8 @@
             <div id="Reptile2" class=" AnimalIcons col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
                     <asp:ImageButton ID="ani20" CssClass="animalImg" runat="server" src="Images/max.jpg" OnClick="AnimalInfo_Click" />
-                        
-                    
+
+
                     <div class="caption">
                         <h4>Max</h4>
 
@@ -57,8 +60,8 @@
             <div id="Reptile3" class=" AnimalIcons  col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
                     <asp:ImageButton ID="ani21" CssClass="animalImg" runat="server" src="Images/21-malcolm.jpg" OnClick="AnimalInfo_Click" />
-                        
-                    
+
+
                     <div class="caption">
                         <h4>Malcom</h4>
                     </div>
@@ -68,8 +71,8 @@
             <div id="Reptile4" class=" AnimalIcons  col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
                     <asp:ImageButton ID="ani22" CssClass="animalImg" runat="server" src="Images/albus.jpg" OnClick="AnimalInfo_Click" />
-                        
-                    
+
+
                     <div class="caption">
                         <h4>Albus</h4>
                     </div>
@@ -79,11 +82,11 @@
 
 
         <div class="row text-center text-lg-center">
-            <div id="Reptile5" data-toggle="modal" data-target="#myModal" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
+            <div id="Reptile5" class=" AnimalIcons col-xl-3 col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
                     <asp:ImageButton ID="ani23" CssClass="animalImg" runat="server" src="Images/22-severus.jpg" OnClick="AnimalInfo_Click" />
-                        
-                    
+
+
                     <div class="caption">
                         <h4>Severus</h4>
 
@@ -94,8 +97,8 @@
             <div id="Reptile6" class=" AnimalIcons col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
                     <asp:ImageButton ID="ani24" CssClass="animalImg" runat="server" src="Images/oscar.jpg" OnClick="AnimalInfo_Click" />
-                        
-                    
+
+
                     <div class="caption">
                         <h4>Oscar</h4>
 
@@ -106,8 +109,8 @@
             <div id="Reptile7" class=" AnimalIcons  col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
                     <asp:ImageButton ID="ani25" CssClass="animalImg" runat="server" src="Images/23-emma.jpg" OnClick="AnimalInfo_Click" />
-                        
-                   
+
+
                     <div class="caption">
                         <h4>Emma</h4>
                     </div>
@@ -117,7 +120,7 @@
             <div id="Reptile8" class=" AnimalIcons  col-xl-3  col-lg-4 col-md-6  col-s-6 col-xs-6">
                 <div class="thumbnail AnimalInfoDiv">
                     <asp:ImageButton ID="ani26" CssClass="animalImg" runat="server" src="Images/24-wilson.jpg" OnClick="AnimalInfo_Click" />
-                       
+
                     <div class="caption">
                         <h4>Wilson</h4>
                     </div>
@@ -126,21 +129,13 @@
         </div>
 
 
-       <%-- <script type="text/javascript">
+    <%-- <script type="text/javascript">
          <!--
     //function Redirect() {
     //    window.location = "AddAnimal.aspx";
     //}
          //-->
       </script>--%>
-
-
-
-
-
-
-
-
     </div>
 
     <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -158,7 +153,7 @@
                     <div id="Bird1-1" class=" AnimalIcons AnimalPopUp float-right">
                         <div class=" thumbnail AnimalInfoDiv">
                             <img src="Images/cliff.jpg" class="animalImg" alt="">
-                            
+
                             <div class="caption">
                                 <h4>Clifford</h4>
                             </div>
@@ -169,16 +164,16 @@
 
                         <div class=" col-md-8">
                             <h4>Status: </h4>
-                            <p class="NumAd">Activated</p>
+                            <asp:TextBox ID="txtStatus" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
                             <h4>Type: </h4>
-                            <p class="ProgramCardTitle">Reptile</p>
+                            <asp:TextBox ID="txtType" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
                             <h4>Name: </h4>
-                            <asp:TextBox ID="txtName" runat="server" Width="187px" ReadOnly="True"></asp:TextBox>
+                            <asp:TextBox ID="txtName" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
                             <h4>Species: </h4>
-                            <p class="LongDT">Cornsnake</p>
+                            <asp:TextBox ID="txtSpecies" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
                             <h4>Scientific Name: </h4>
-                            <p class="NumCh">Pantherophis guttatus</p>
-                           
+                            <asp:TextBox ID="txtSciName" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
+
 
 
                         </div>
@@ -201,7 +196,7 @@
         </div>
     </div>
 
-     <div class="modal" id="AddModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal" id="AddModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-full" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -217,25 +212,26 @@
 
                     <div class="row  ">
 
-                        <div class=" col-md-8">
+                        <div class=" col-md-8 ">
                             <h4>Animal Status: </h4>
-                            <asp:DropDownList ID="DropDownList1" runat="server">
-
-                  <asp:ListItem Value="1">Active</asp:ListItem>
-            <asp:ListItem Value="0">Deactive</asp:ListItem>
-                        </asp:DropDownList>
+                            <asp:DropDownList ID="ddlAddStatus" runat="server" CssClass="form-control-plaintext attributeDropDown">
+                                <asp:ListItem Value="1">Active</asp:ListItem>
+                                <asp:ListItem Value="0">Deactive</asp:ListItem>
+                            </asp:DropDownList>
                             <h4>Type: </h4>
-                            <asp:DropDownList ID="ddlType" runat="server" Visible="true">
-                     <asp:ListItem>Bird</asp:ListItem>
-                    <asp:ListItem>Mammal</asp:ListItem>
-                    <asp:ListItem>Reptile</asp:ListItem>
-                    </asp:DropDownList>   
+                            <asp:DropDownList ID="ddlAddType" runat="server" CssClass="form-control-plaintext attributeDropDown">
+                                <asp:ListItem>Bird</asp:ListItem>
+                                <asp:ListItem>Mammal</asp:ListItem>
+                                <asp:ListItem>Reptile</asp:ListItem>
+                            </asp:DropDownList>
                             <h4>Name: </h4>
-                            <asp:TextBox ID="txtAddName" runat="server" ReadOnly="False"></asp:TextBox>
+                            <asp:TextBox ID="txtAddName" runat="server" class="form-control" ReadOnly="false"></asp:TextBox>
                             <h4>Species: </h4>
-                            <asp:TextBox ID="txtSpecies" runat="server" ReadOnly="False"></asp:TextBox>
+                            <asp:TextBox ID="txtAddSpecies" runat="server" class="form-control" ReadOnly="false"></asp:TextBox>
                             <h4>Scientific Name: </h4>
-                            <asp:TextBox ID="txtScientificName" runat="server" ReadOnly="False"></asp:TextBox>
+                            <asp:TextBox ID="txtAddSciName" runat="server" class="form-control" ReadOnly="false"></asp:TextBox>
+
+
                             <br>
                             <br>
                             <br>
@@ -253,7 +249,7 @@
                     <div class="row">
 
                         <div class="col-md-2">
-                            <asp:Button ID="btnAddModal" runat ="server" Text="Add" Class="btn btn-primary LoginButton FormButton" UseSubmitBehavior="false" OnClick="btnAddModal_Click" ></asp:Button>
+                            <asp:Button ID="btnAddModal" runat="server" Text="Add" Class="btn btn-primary LoginButton FormButton" UseSubmitBehavior="false" OnClick="btnAddModal_Click"></asp:Button>
                         </div>
 
 
@@ -282,9 +278,9 @@
 
                     <div id="Bird1-1Edit" class=" AnimalIcons AnimalPopUp float-right">
                         <div class=" thumbnail AnimalInfoDiv">
-                            <img src="Images/Wildlife-Pics/babyboy.jpg" alt="">
+                            <img src="Images/cliff.jpg" class="animalImg" alt="">
                             <div class="caption">
-                                <h4>Buddy</h4>
+                                <h4>Clifford</h4>
                             </div>
                         </div>
                     </div>
@@ -292,15 +288,26 @@
                     <div class="row  ">
 
                         <div class=" col-md-8">
-                            <h4>Name:</h4>
-                            <input type="name" class="form-control" id="EditName" placeholder="Change Name">
-                            <h4>Common Name:</h4>
-                            <input type="name" class="form-control" id="EditCom" placeholder="Change Common Name">
-                            <h4>Scientific Name:</h4>
-                            <input type="name" class="form-control" id="EditSci" placeholder="Change Scientific Name">
-                            <h4>Type:</h4>
-                            <input type="name" class="form-control" id="EditType" placeholder="Change Type">
-                            
+                            <h4>Animal Status: </h4>
+                            <asp:DropDownList ID="ddlEditStatus" runat="server" CssClass="form-control">
+                                <asp:ListItem Value="1">Active</asp:ListItem>
+                                <asp:ListItem Value="0">Deactive</asp:ListItem>
+                            </asp:DropDownList>
+                            <h4>Type: </h4>
+                            <asp:DropDownList ID="ddlEditType" runat="server" CssClass="form-control">
+                                <asp:ListItem>Bird</asp:ListItem>
+                                <asp:ListItem>Mammal</asp:ListItem>
+                                <asp:ListItem>Reptile</asp:ListItem>
+                            </asp:DropDownList>
+                            <h4>Name: </h4>
+                            <asp:TextBox ID="txtEditName" runat="server" class="form-control" ReadOnly="false"></asp:TextBox>
+                            <h4>Species: </h4>
+                            <asp:TextBox ID="txtEditSpecies" runat="server" class="form-control" ReadOnly="false"></asp:TextBox>
+                            <h4>Scientific Name: </h4>
+                            <asp:TextBox ID="txtEditSciName" runat="server" class="form-control" ReadOnly="false"></asp:TextBox>
+
+
+
                         </div>
                         <!-- End  Description -->
 

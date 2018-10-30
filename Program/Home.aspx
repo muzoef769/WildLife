@@ -45,9 +45,11 @@
                             </div>
                             <asp:Button ID="btnUser" runat="server" Text="Create User" OnClick="btnUser_Click" Visible="false" />
                             <hr class="WelcomeLine">
-                            <h4 class="UpcomingThin">November 3: Off-Site, James Madison University</h4>
-                            <br>
-                            <h4 class="UpcomingThin">November 8: Off-Site, James Madison University</h4>
+                            <h4 class="UpcomingThin">November 3: On-Site, James Madison University</h4>
+                           
+                            <h4 class="UpcomingThin">November 8: Off-Site, Penn Elementary Program 1</h4>
+                            <h4 class="UpcomingThin">November 8: Off-Site, Penn Elementary Program 2</h4>
+                            <h4 class="UpcomingThin">November 14: Online, University of Antwerp</h4>
 
 
                             <div>

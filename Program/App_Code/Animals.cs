@@ -10,7 +10,7 @@ public class Animals
 {
     //Attributes
     //private int ID; //changed ID  to animalID
-    
+    private int animalID;
     private string Species;
     private string ScientificName;
     private string AnimalName;
@@ -59,11 +59,23 @@ public class Animals
         setLastUpdatedBy(lastUpdatedBy);
     }
 
+    public Animals(int ID, string name, string species, string scientificName, string type, char status)
+    {
+        setAnimalID(ID);
+        setAnimalName(name);
+        setSpecies(species);
+        setScientificName(scientificName);
+        setAnimalType(type);
+        setStatus(status);
+        setLastUpdated(DateTime.Today);
+        setLastUpdatedBy("Raina");
+    }
+
     //Getters
-    //public int getAnimalID()
-    //{
-    //    return this.ID;
-    //}
+    public int getAnimalID()
+    {
+        return this.animalID;
+    }
     public string getAnimalName()
     {
         return this.AnimalName;
@@ -105,10 +117,10 @@ public class Animals
     }
 
     //Setters
-    //public void setAnimalID(int x)
-    //{
-    //    this.ID = x;
-    //}
+    public void setAnimalID(int x)
+    {
+        this.animalID = x;
+    }
     public void setAnimalType(string x)
     {
         this.AnimalType = x;

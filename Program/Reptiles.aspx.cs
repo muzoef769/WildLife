@@ -32,7 +32,6 @@ public partial class Reptiles : System.Web.UI.Page
             string btnID = btn.ToString();
             Int32 id = Convert.ToInt32(btnID.Substring(3));
 
-            txtRepName.Text = id.ToString();
             
             getAnimal.Parameters.AddWithValue("@AnimalID", id);
             SqlDataReader reader = getAnimal.ExecuteReader();
@@ -45,17 +44,17 @@ public partial class Reptiles : System.Web.UI.Page
                     tempStatus = reader["Status"].ToString();
                     if (tempStatus == "1")
                     {
-                        txtRepStatus.Text = "Active";
+                        txtStatus.Text = "Active";
                     }
                     else
                     {
-                        txtRepStatus.Text = "Deactive";
+                        txtStatus.Text = "Deactive";
                     }
-                    txtRepType.Text = reader.GetString(1);
+                    txtType.Text = reader.GetString(1);
                   
-                    txtRepName.Text = reader.GetString(2);
-                    txtRepSpecies.Text = reader.GetString(3);
-                    txtRepSciName.Text = reader.GetString(4);
+                    txtName.Text = reader.GetString(2);
+                    txtSpecies.Text = reader.GetString(3);
+                    txtSciName.Text = reader.GetString(4);
                     
                     
 
@@ -94,10 +93,10 @@ public partial class Reptiles : System.Web.UI.Page
         addAnimal.Parameters.AddWithValue("@Species", newAnimal.getSpecies());
         addAnimal.Parameters.AddWithValue("@ScientificName", newAnimal.getScientificName());
         addAnimal.Parameters.AddWithValue("@AnimalName", newAnimal.getAnimalName());
-        addAnimal.Parameters.AddWithValue("@AnimalType", ddlAddType.SelectedValue);
-        addAnimal.Parameters.AddWithValue("@Status", ddlAddStatus.SelectedValue);
-        addAnimal.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
-        addAnimal.Parameters.AddWithValue("@LastUpdatedBy", "Staff");
+        addAnimal.Parameters.AddWithValue("@AnimalType", newAnimal.getAnimalType());
+        addAnimal.Parameters.AddWithValue("@Status", newAnimal.getStatus());
+        addAnimal.Parameters.AddWithValue("@LastUpdated", newAnimal.getLastUpdated());
+        addAnimal.Parameters.AddWithValue("@LastUpdatedBy", newAnimal.getLastUpdatedBy());
         addAnimal.ExecuteNonQuery();
 
 
