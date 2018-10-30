@@ -14,7 +14,7 @@
             </div>
 
             <div class="col-md-4 col-lg-4  col-sm-4 col-xs-4 d-flex justify-content-center ProgramTitle">
-                <a class="AnimalLi nav-link" href="Reptile.aspx">Reptiles</a>
+                <a class="AnimalLi nav-link" href="Reptiles.aspx">Reptiles</a>
 
             </div>
 
@@ -218,9 +218,9 @@
 
                     <div id="Bird1-1Edit" class=" AnimalIcons AnimalPopUp float-right">
                         <div class=" thumbnail AnimalInfoDiv">
-                            <img src="Images/Wildlife-Pics/babyboy.jpg" alt="">
+                            <img src="Images/Bo.jpg" class="animalImg" alt="">
                             <div class="caption">
-                                <h4>Buddy</h4>
+                                <h4>Bo</h4>
                             </div>
                         </div>
                     </div>
@@ -260,7 +260,7 @@
                         </div>
 
                         <div class="col-md-2">
-                            <button class="btn btn-primary LoginButton FormButton" type="submit">Delete</button>
+                           <%-- <button class="btn btn-primary LoginButton FormButton" type="submit">Delete</button>--%>
                         </div>
 
                     </div>

@@ -402,7 +402,7 @@
                         </div>
 
                         <div class="col-md-2">
-                            <button class="btn btn-primary LoginButton FormButton" type="submit">Delete</button>
+                           <%-- <button class="btn btn-primary LoginButton FormButton" type="submit">Delete</button>--%>
                         </div>
 
                     </div>
