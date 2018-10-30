@@ -13,8 +13,15 @@ public partial class Birds : System.Web.UI.Page
 {
 
     System.Data.SqlClient.SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
+    public static Int32 id;
     protected void Page_Load(object sender, EventArgs e)
     {
+
+
+
+
+
+
 
     }
 
@@ -31,7 +38,7 @@ public partial class Birds : System.Web.UI.Page
 
             string btn = ((ImageButton)sender).ID;
             string btnID = btn.ToString();
-            Int32 id = Convert.ToInt32(btnID.Substring(3));
+            id = Convert.ToInt32(btnID.Substring(3));
 
 
             getAnimal.Parameters.AddWithValue("@AnimalID", id);
@@ -46,17 +53,26 @@ public partial class Birds : System.Web.UI.Page
                     if (tempStatus == true)
                     {
                         txtStatus.Text = "Active";
+                        ddlEditStatus.SelectedIndex = 0;
                     }
                     else
                     {
                         txtStatus.Text = "Deactive";
+                        ddlEditStatus.SelectedIndex = 1;
                     }
                     txtType.Text = reader.GetString(1);
 
                     txtName.Text = reader.GetString(2);
                     txtSpecies.Text = reader.GetString(3);
                     txtSciName.Text = reader.GetString(4);
-                    //Animal currentAnimal = new Animal(id, reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(1));
+                   // Animal currentAnimal = new Animal(id, reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(1));
+
+                    txtEditName.Text = txtName.Text;
+                    txtEditSciName.Text = txtSciName.Text;
+                    txtEditSpecies.Text = txtSpecies.Text;
+                    ddlEditType.SelectedValue = txtType.Text;
+
+
 
                 }
 
@@ -105,49 +121,55 @@ public partial class Birds : System.Web.UI.Page
 
     }
 
-    //protected void btnEdit_Click(object sender, EventArgs e)
-    //{
-    //    //Animals pageAnimal = new Animals(txtSpecies.Text, txtScientificName.Text, txtName.Text, txtType.Text, DateTime.Today, "Muzo");
-    //    sc.Open();
-    //    String aID = Request.QueryString["field1"];
-    //    //SqlCommand animal_Id = new SqlCommand("SELECT AnimalID from Animal", sc);
-    //    //int selectPerson = Convert.ToInt32(animal_Id.ExecuteScalar());
-
-    //    string myQuery = "SELECT [Species], [ScientificName], [AnimalName], [AnimalType] FROM [WildlifeCenter].[dbo].[Animal] WHERE [AnimalID] = @AnimalID";
-    //    SqlCommand myCommand = new SqlCommand(myQuery, sc);
-    //    myCommand.Parameters.AddWithValue("@AnimalID", aID);
-    //    try
-    //    {
-
-    //        SqlDataReader myReader = myCommand.ExecuteReader();
-    //        while (myReader.Read())
-    //        {
-    //            //animalID = int.Parse(myReader["AnimalID"].ToString());
-    //            animalID = Convert.ToInt32(aID);
-    //            txtSpecies.Text = myReader.GetString(0);
-    //            txtScientificName.Text = myReader.GetString(1);
-    //            EditName.Text = myReader.GetString(2);
-    //            txtType.Text = myReader.GetString(3);
-
-    //        }
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        Response.Redirect("Error.aspx", true);
-    //        throw ex;
-    //    }
-
-    //    finally
-    //    {
-    //        sc.Close();
-    //    }
-
-    //}
 
 
 
+    protected void btnUpdate_Click(object sender, EventArgs e)
+    {
+
+    Animals newAnimal = new Animals( id,
+        txtAddSpecies.Text, 
+        txtAddSciName.Text, 
+        txtAddName.Text, 
+        ddlAddType.SelectedValue.ToString(),
+        Convert.ToChar(ddlAddStatus.SelectedValue));
 
 
+        string myQuery = "UPDATE [WildlifeCenter].[dbo].[Animal] SET [Species] = @Species,[ScientificName] = @ScientificName, [AnimalName] = @AnimalName, [AnimalType] = @AnimalType, [Status] = @Status WHERE AnimalID = @AnimalID";
+
+
+
+        try
+        {
+            sc.Open();
+
+        SqlCommand myCommand = new SqlCommand(myQuery, sc);
+        myCommand.Parameters.AddWithValue("@AnimalID", id);
+        myCommand.Parameters.AddWithValue("@Species", txtEditSpecies.Text);
+        myCommand.Parameters.AddWithValue("@ScientificName", txtEditSciName.Text);
+        myCommand.Parameters.AddWithValue("@AnimalName", txtEditName.Text);
+        myCommand.Parameters.AddWithValue("@AnimalType", ddlEditType.SelectedValue);
+        myCommand.Parameters.AddWithValue("@Status", ddlEditStatus.SelectedValue);
+        myCommand.ExecuteNonQuery();
+        }
+        catch (Exception E)
+        {
+
+        }
+        finally
+        {
+            sc.Close();
+        }
+
+
+    }
 
 
 }
+
+
+
+
+
+
+

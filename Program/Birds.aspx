@@ -260,15 +260,15 @@
 
                         <div class=" col-md-8">
                             <h4>Status: </h4>
-                            <asp:TextBox ID="txtStatus" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                            <asp:TextBox ID="txtStatus" runat="server" CssClass="form-control" AutoCompleteType="Disabled" ReadOnly="true"></asp:TextBox>
                             <h4>Type: </h4>
-                            <asp:TextBox ID="txtType" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                            <asp:TextBox ID="txtType" runat="server" CssClass="form-control" AutoCompleteType="Disabled" ReadOnly="true"></asp:TextBox>
                             <h4>Name: </h4>
-                            <asp:TextBox ID="txtName" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                            <asp:TextBox ID="txtName" runat="server" CssClass="form-control" AutoCompleteType="Disabled" ReadOnly="true"></asp:TextBox>
                             <h4>Species: </h4>
-                            <asp:TextBox ID="txtSpecies" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                            <asp:TextBox ID="txtSpecies" runat="server" CssClass="form-control" AutoCompleteType="Disabled" ReadOnly="true"></asp:TextBox>
                             <h4>Scientific Name: </h4>
-                            <asp:TextBox ID="txtSciName" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                            <asp:TextBox ID="txtSciName" runat="server" CssClass="form-control" AutoCompleteType="Disabled" ReadOnly="true"></asp:TextBox>
 
 
                         </div>
@@ -310,22 +310,22 @@
 
                         <div class=" col-md-8">
                             <h4>Animal Status: </h4>
-                            <asp:DropDownList ID="ddlAddStatus" runat="server" CssClass="form-control-plaintext attributeDropDown">
+                            <asp:DropDownList ID="ddlAddStatus" runat="server" CssClass="form-control-plaintext attributeDropDown" AutoCompleteType="Disabled">
                                 <asp:ListItem Value="1">Active</asp:ListItem>
                                 <asp:ListItem Value="0">Deactive</asp:ListItem>
                             </asp:DropDownList>
                             <h4>Type: </h4>
-                            <asp:DropDownList ID="ddlAddType" runat="server" CssClass="form-control-plaintext attributeDropDown">
+                            <asp:DropDownList ID="ddlAddType" runat="server" CssClass="form-control-plaintext attributeDropDown" AutoCompleteType="Disabled">
                                 <asp:ListItem>Bird</asp:ListItem>
                                 <asp:ListItem>Mammal</asp:ListItem>
                                 <asp:ListItem>Reptile</asp:ListItem>
                             </asp:DropDownList>
                             <h4>Name: </h4>
-                            <asp:TextBox ID="txtAddName" runat="server" CssClass="form-control" ReadOnly="False"></asp:TextBox>
+                            <asp:TextBox ID="txtAddName" runat="server" CssClass="form-control" AutoCompleteType="Disabled" ReadOnly="False"></asp:TextBox>
                             <h4>Species: </h4>
-                            <asp:TextBox ID="txtAddSpecies" runat="server" CssClass="form-control" ReadOnly="False"></asp:TextBox>
+                            <asp:TextBox ID="txtAddSpecies" runat="server" CssClass="form-control" AutoCompleteType="Disabled" ReadOnly="False"></asp:TextBox>
                             <h4>Scientific Name: </h4>
-                            <asp:TextBox ID="txtAddSciName" runat="server" CssClass="form-control" ReadOnly="False"></asp:TextBox>
+                            <asp:TextBox ID="txtAddSciName" runat="server" CssClass="form-control" AutoCompleteType="Disabled" ReadOnly="False"></asp:TextBox>
                             <br>
                             <label for="exampleInputFile">Add Picture</label>
                             <input type="file" id="exampleInputFile">
@@ -367,30 +367,26 @@
                     </button>
                 </div>
                 <div class="modal-body p-4" id="resultEdit">
-
-
-
-
                     <div class="row  ">
 
                         <div class=" col-md-8">
                             <h4>Animal Status: </h4>
-                            <asp:DropDownList ID="ddlEditStatus" runat="server" CssClass="form-control">
+                            <asp:DropDownList ID="ddlEditStatus" runat="server" CssClass="form-control-plaintext attributeDropDown" AutoCompleteType="Disabled">
                                 <asp:ListItem Value="1">Active</asp:ListItem>
                                 <asp:ListItem Value="0">Deactive</asp:ListItem>
                             </asp:DropDownList>
                             <h4>Type: </h4>
-                            <asp:DropDownList ID="ddlEditType" runat="server" CssClass="form-control">
+                            <asp:DropDownList ID="ddlEditType" runat="server" CssClass="form-control-plaintext attributeDropDown" AutoCompleteType="Disabled">
                                 <asp:ListItem>Bird</asp:ListItem>
                                 <asp:ListItem>Mammal</asp:ListItem>
                                 <asp:ListItem>Reptile</asp:ListItem>
                             </asp:DropDownList>
                             <h4>Name: </h4>
-                            <asp:TextBox ID="txtEditName" runat="server" class="form-control" ReadOnly="false"></asp:TextBox>
+                            <asp:TextBox ID="txtEditName" runat="server" class="form-control" AutoCompleteType="Disabled" ReadOnly="false"></asp:TextBox>
                             <h4>Species: </h4>
-                            <asp:TextBox ID="txtEditSpecies" runat="server" class="form-control" ReadOnly="false"></asp:TextBox>
+                            <asp:TextBox ID="txtEditSpecies" runat="server" class="form-control" AutoCompleteType="Disabled" ReadOnly="false"></asp:TextBox>
                             <h4>Scientific Name: </h4>
-                            <asp:TextBox ID="txtEditSciName" runat="server" class="form-control" ReadOnly="false"></asp:TextBox>
+                            <asp:TextBox ID="txtEditSciName" runat="server" class="form-control" AutoCompleteType="Disabled" ReadOnly="false"></asp:TextBox>
                         </div>
                         <!-- End  Description -->
 
@@ -402,11 +398,11 @@
                     <div class="row">
 
                         <div class="col-md-2">
-                            <button data-toggle="modal" data-target="#myModal" data-dismiss="modal" class="btn btn-primary LoginButton FormButton" type="submit">Update</button>
+                            <asp:Button ID="btnUpdate" runat="server" Text="Update" Class="btn btn-primary LoginButton FormButton" UseSubmitBehavior="false" OnClick="btnUpdate_Click"></asp:Button>
                         </div>
 
                         <div class="col-md-2">
-                            <button class="btn btn-primary LoginButton FormButton" type="submit">Delete</button>
+                           <%-- <button class="btn btn-primary LoginButton FormButton" type="submit">Delete</button>--%>
                         </div>
 
                     </div>
