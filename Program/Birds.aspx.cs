@@ -65,7 +65,7 @@ public partial class Birds : System.Web.UI.Page
                     txtName.Text = reader.GetString(2);
                     txtSpecies.Text = reader.GetString(3);
                     txtSciName.Text = reader.GetString(4);
-                    Animal currentAnimal = new Animal(id, reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(1));
+                   // Animal currentAnimal = new Animal(id, reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(1));
 
                     txtEditName.Text = txtName.Text;
                     txtEditSciName.Text = txtSciName.Text;
@@ -139,9 +139,9 @@ public partial class Birds : System.Web.UI.Page
 
 
 
-        //try
-        //{
-        sc.Open();
+        try
+        {
+            sc.Open();
 
         SqlCommand myCommand = new SqlCommand(myQuery, sc);
         myCommand.Parameters.AddWithValue("@AnimalID", id);
@@ -151,15 +151,15 @@ public partial class Birds : System.Web.UI.Page
         myCommand.Parameters.AddWithValue("@AnimalType", ddlEditType.SelectedValue);
         myCommand.Parameters.AddWithValue("@Status", ddlEditStatus.SelectedValue);
         myCommand.ExecuteNonQuery();
-        //}
-        //catch (Exception E)
-        //{
+        }
+        catch (Exception E)
+        {
 
-        //}
-        //finally
-        //{
-        sc.Close();
-        //}
+        }
+        finally
+        {
+            sc.Close();
+        }
 
 
     }

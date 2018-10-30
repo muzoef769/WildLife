@@ -289,12 +289,12 @@
 
                         <div class=" col-md-8">
                             <h4>Animal Status: </h4>
-                            <asp:DropDownList ID="ddlEditStatus" runat="server" CssClass="form-control">
+                            <asp:DropDownList ID="ddlEditStatus" runat="server" CssClass="form-control-plaintext attributeDropDown">
                                 <asp:ListItem Value="1">Active</asp:ListItem>
                                 <asp:ListItem Value="0">Deactive</asp:ListItem>
                             </asp:DropDownList>
                             <h4>Type: </h4>
-                            <asp:DropDownList ID="ddlEditType" runat="server" CssClass="form-control">
+                            <asp:DropDownList ID="ddlEditType" runat="server" CssClass="form-control-plaintext attributeDropDown">
                                 <asp:ListItem>Bird</asp:ListItem>
                                 <asp:ListItem>Mammal</asp:ListItem>
                                 <asp:ListItem>Reptile</asp:ListItem>
@@ -319,7 +319,7 @@
                     <div class="row">
 
                         <div class="col-md-2">
-                            <button data-toggle="modal" data-target="#myModal" data-dismiss="modal" class="btn btn-primary LoginButton FormButton" type="submit">Update</button>
+                           <asp:Button ID="btnUpdate" runat="server" Text="Update" Class="btn btn-primary LoginButton FormButton" UseSubmitBehavior="false" OnClick="btnUpdate_Click"></asp:Button>
                         </div>
 
                         <div class="col-md-2">
