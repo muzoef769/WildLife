@@ -230,12 +230,25 @@ public partial class Animal : System.Web.UI.Page
         GridView2.DataSource = dt;
         GridView2.DataBind();
 
+        string programInfo = "SELECT Animal.AnimalID, Animal.AnimalName, Program.ProgramName, Program.ProgramType, Program.ProgramCost, NewProgram.DateCompleted FROM Animal INNER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID INNER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID INNER JOIN Program ON NewProgram.ProgramID = Program.ProgramID WHERE AssignAnimal.AnimalID = @AnimalID";
+
+
+
+        SqlCommand cmd2 = sc.CreateCommand();
+        cmd2.CommandType = CommandType.Text;
+        cmd2.CommandText = programInfo;
+        cmd2.Parameters.AddWithValue("@AnimalID", id);
+        SqlDataAdapter da2 = new SqlDataAdapter(cmd2);
+        DataTable dt2 = new DataTable();
+        da2.Fill(dt2);
+        GridView3.DataSource = dt2;
+        GridView3.DataBind();
 
 
 
 
         GridView2.Visible = true;
-
+        GridView3.Visible = true;
 
 
 
