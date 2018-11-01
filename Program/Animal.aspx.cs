@@ -208,8 +208,8 @@ public partial class Animal : System.Web.UI.Page
     {
 
 
-        string AnimalProgram = "SELECT Animal.AnimalID, Animal.AnimalName, SUM(NewProgram.TotalKids) AS TotalKids, SUM(NewProgram.TotalAdults) AS TotalAdults, SUM(NewProgram.TotalPeople) AS TotalPeople, COUNT(NewProgram.ProgramID) AS 'Total Programs' " +
-            "FROM AssignAnimal INNER JOIN  NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID INNER JOIN  Animal ON AssignAnimal.AnimalID = Animal.AnimalID INNER JOIN  Program ON NewProgram.ProgramID = Program.ProgramID WHERE AssignAnimal.AnimalID = @AnimalID GROUP BY Animal.AnimalID, Animal.AnimalName";
+        string AnimalProgram = "SELECT Animal.AnimalName, SUM(NewProgram.TotalKids) AS TotalKids, SUM(NewProgram.TotalAdults) AS TotalAdults, SUM(NewProgram.TotalPeople) AS TotalPeople, COUNT(NewProgram.ProgramID) AS 'Total Programs' " +
+            "FROM AssignAnimal INNER JOIN  NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID INNER JOIN  Animal ON AssignAnimal.AnimalID = Animal.AnimalID INNER JOIN  Program ON NewProgram.ProgramID = Program.ProgramID WHERE AssignAnimal.AnimalID = @AnimalID GROUP BY Animal.AnimalName";
 
 
 
@@ -230,7 +230,7 @@ public partial class Animal : System.Web.UI.Page
         GridView2.DataSource = dt;
         GridView2.DataBind();
 
-        string programInfo = "SELECT Animal.AnimalID, Animal.AnimalName, Program.ProgramName, Program.ProgramType, Program.ProgramCost, NewProgram.DateCompleted FROM Animal INNER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID INNER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID INNER JOIN Program ON NewProgram.ProgramID = Program.ProgramID WHERE AssignAnimal.AnimalID = @AnimalID";
+        string programInfo = "SELECT Animal.AnimalName, Program.ProgramName, Program.ProgramType, Program.ProgramCost, NewProgram.DateCompleted FROM Animal INNER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID INNER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID INNER JOIN Program ON NewProgram.ProgramID = Program.ProgramID WHERE AssignAnimal.AnimalID = @AnimalID";
 
 
 

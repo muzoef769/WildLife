@@ -21,7 +21,7 @@
                 <AlternatingRowStyle BackColor="#999999" BorderColor="#336600" />
                 <Columns>
                     <asp:CommandField ShowEditButton="True" ShowSelectButton="True" />
-                    <asp:TemplateField HeaderText="AnimalID" InsertVisible="False" SortExpression="AnimalID">
+                    <asp:TemplateField HeaderText="AnimalID" InsertVisible="False" SortExpression="AnimalID" Visible="false">
                         <EditItemTemplate>
                             <asp:Label ID="Label1" runat="server" Text='<%# Eval("AnimalID") %>'></asp:Label>
                         </EditItemTemplate>

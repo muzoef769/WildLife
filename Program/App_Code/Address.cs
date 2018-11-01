@@ -10,35 +10,119 @@ public class Address
 {
     //Attributes
     private int addressID;
-    private string streetName;
-    private string city;
-    private string county;
-    private string country;
-    private string zipCode;
-    private string addressType;
+    private string streetName, city, county, country, state, zipCode;
+    private string type;
     private DateTime lastUpdated;
     private string lastUpdatedBy;
 
-    public Address(int addressID, string streetName, string city, string county, string country, string zipCode, string addressType, DateTime lastUpdated, string lastUpdatedBy)
+    //Address constructor - OG constructor Will made
+    //public Address(int addressID, string streetName, string city, string county, string zipCode, DateTime lastUpdated, string lastUpdatedBy)
+    //{
+    //    setAddressID(addressID);
+    //    setStreetName(streetName);
+    //    setCity(city);
+    //    setCounty(county);
+    //    setZipCode(zipCode);
+    //    setLastUpdated(lastUpdated);
+    //    setLastUpdatedBy(lastUpdatedBy);
+    //}
+
+    public Address(string streetName, string state, string city, string county, string country, string zipCode, string type, DateTime lastUpdated, string lastUpdatedBy)
     {
-        this.addressID = addressID;
-        this.streetName = streetName;
-        this.city = city;
-        this.county = county;
-        this.country = country;
-        this.zipCode = zipCode;
-        this.addressType = addressType;
-        this.lastUpdated = lastUpdated;
-        this.lastUpdatedBy = lastUpdatedBy;
+        setStreetName(streetName);
+        setState(state);
+        setCity(city);
+        setCounty(county);
+        setCountry(country);
+        setZipCode(zipCode);
+        setAddressType(type);
+        setLastUpdated(lastUpdated);
+        setLastUpdatedBy(lastUpdatedBy);
     }
 
-    public int AddressID { get => addressID; set => addressID = value; }
-    public string StreetName { get => streetName; set => streetName = value; }
-    public string City { get => city; set => city = value; }
-    public string County { get => county; set => county = value; }
-    public string Country { get => country; set => country = value; }
-    public string ZipCode { get => zipCode; set => zipCode = value; }
-    public string AddressType { get => addressType; set => addressType = value; }
-    public DateTime LastUpdated { get => lastUpdated; set => lastUpdated = value; }
-    public string LastUpdatedBy { get => lastUpdatedBy; set => lastUpdatedBy = value; }
+    //Getters
+    public int getAddressID()
+    {
+        return this.addressID;
+    }
+    public string getStreetName()
+    {
+        return this.streetName;
+    }
+
+    public string getState()
+    {
+        return this.state;
+    }
+    public string getCity()
+    {
+        return this.city;
+    }
+    public string getCounty()
+    {
+        return this.county;
+    }
+    public string getCountry()
+    {
+        return this.country;
+    }
+    public string getZipCode()
+    {
+        return this.zipCode;
+    }
+    public string getAddressType()
+    {
+        return this.type;
+    }
+    public DateTime getLastUpdated()
+    {
+        return this.lastUpdated;
+    }
+    public string getLastUpdatedBy()
+    {
+        return this.lastUpdatedBy;
+    }
+
+    //Setters
+    public void setAddressID(int x)
+    {
+        this.addressID = x;
+    }
+    public void setStreetName(string x)
+    {
+        this.streetName = x;
+    }
+
+    public void setState(string x)
+    {
+        this.state = x;
+    }
+    public void setCity(string x)
+    {
+        this.city = x;
+    }
+    public void setCounty(string x)
+    {
+        this.county = x;
+    }
+    public void setCountry(string x)
+    {
+        this.country = x;
+    }
+    public void setZipCode(string x)
+    {
+        this.zipCode = x;
+    }
+    public void setAddressType(string x)
+    {
+        this.type = x;
+    }
+    public void setLastUpdated(DateTime x)
+    {
+        this.lastUpdated = x;
+    }
+    public void setLastUpdatedBy(string x)
+    {
+        this.lastUpdatedBy = x;
+    }
 }
