@@ -230,7 +230,7 @@ public partial class Animal : System.Web.UI.Page
         GridView2.DataSource = dt;
         GridView2.DataBind();
 
-        string programInfo = "SELECT Animal.AnimalName, Program.ProgramName, Program.ProgramType, Program.ProgramCost, NewProgram.DateCompleted FROM Animal INNER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID INNER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID INNER JOIN Program ON NewProgram.ProgramID = Program.ProgramID WHERE AssignAnimal.AnimalID = @AnimalID";
+        string programInfo = "SELECT Animal.AnimalName, Program.ProgramName, Program.ProgramType, format(Program.ProgramCost,'C','en-us') as [Cost], Convert(CHAR(10),[NewProgram].[DateCompleted],101) as [Date] FROM Animal INNER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID INNER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID INNER JOIN Program ON NewProgram.ProgramID = Program.ProgramID WHERE AssignAnimal.AnimalID = @AnimalID";
 
 
 
@@ -243,7 +243,6 @@ public partial class Animal : System.Web.UI.Page
         da2.Fill(dt2);
         GridView3.DataSource = dt2;
         GridView3.DataBind();
-
 
 
 

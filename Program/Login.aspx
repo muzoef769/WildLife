@@ -100,6 +100,7 @@
                                                 <label for="firstName">First name</label>
                                                 <%--                     <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus runat="server">--%>
                                                 <asp:textbox id="txtFirstName" class="form-control" placeholder="First name" required="required" runat="server"></asp:textbox>
+                                                <asp:RequiredFieldValidator ID="firstNameValidate" runat="server" ErrorMessage="[Required]" ControlToValidate="txtFirstName" ValidationGroup="btnRegister"></asp:RequiredFieldValidator>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -107,7 +108,7 @@
                                                 <label for="lastName">Last name</label>
                                                 <%--                     <input type="text" id="lastName" class="form-control" placeholder="Last name" required="required" runat="server">--%>
                                                 <asp:textbox id="txtLastName" class="form-control" placeholder="Last name" required="required" runat="server"></asp:textbox>
-
+                                                <asp:RequiredFieldValidator ID="lastNameValidate" runat="server" ErrorMessage="[Required]" ControlToValidate="txtLastName" ValidationGroup="btnRegister"></asp:RequiredFieldValidator>
                                             </div>
                                         </div>
                                     </div>
@@ -117,7 +118,7 @@
                                         <label for="AddEmail">Username</label>
                                         <%--                <input type="email" id="AddEmail" class="form-control" placeholder="Email address" required="required" runat="server">--%>
                                         <asp:textbox id="txtNewUsername" class="form-control" placeholder="Username" required="required" runat="server"></asp:textbox>
-
+                                        <asp:RequiredFieldValidator ID="userNameValidate" runat="server" ErrorMessage="[Required]" ViewStateMode="Enabled" ControlToValidate="txtNewUsername" ValidationGroup="btnRegister"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -127,7 +128,7 @@
                                                 <label for="addPassword">Password</label>
                                                 <%--                    <input type="password" id="addPassword" class="form-control" placeholder="Password" required="required" runat="server">--%>
                                                 <asp:textbox id="txtNewPassword" class="form-control" textmode="Password" placeholder="Password" required="required" runat="server"></asp:textbox>
-
+                                                <asp:RequiredFieldValidator ID="passwordValidate" runat="server" ErrorMessage="[Required]" ViewStateMode="Inherit" ControlToValidate="txtNewPassword" ValidationGroup="btnRegister"></asp:RequiredFieldValidator>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -135,7 +136,7 @@
                                                 <label for="confirmPassword">Confirm password</label>
                                                 <%--                     <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password" required="required" runat="server">--%>
                                                 <asp:textbox id="txtConfirmPassword" class="form-control " textmode="Password" placeholder="Password" required="required" runat="server"></asp:textbox>
-
+                                                <asp:RequiredFieldValidator ID="confirmPasswordValidate" runat="server" ErrorMessage="[Required]" ControlToValidate="txtCOnfirmPassword" ValidationGroup="btnRegister"></asp:RequiredFieldValidator>
                                                 <br>
                                             </div>
                                         </div>
