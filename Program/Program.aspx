@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Program" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Program.aspx.cs" Inherits="Program" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
-<div class="main">
+    <div class="main">
 
 <div class="row">
 
@@ -13,7 +13,7 @@
 	  <h1 id="ProgramMonth" class=" ProgramCardTitle d-flex justify-content-center "> April</h1>
 	  <h4 class=" ProgramCardTitle Underline d-flex justify-content-center "> Off-Site</h4>
 	 
-    <div class="d-flex justify-content-center "> <button data-toggle="modal" data-target="#AddProgramModal" class="btn btn-primary LoginButton" type="button">Add Program</button> <br /></div>
+    <div class="d-flex justify-content-center "> <button onclick= "AddProgram.aspx" id ="btnAddProgram" class="btn btn-primary LoginButton" type="button">Add Program</button> <br /></div>
    
 
   
@@ -44,6 +44,7 @@
                 <td class="ShortOrgName">JMU</td>
                 <td class="ShortEd">Raina</td>
                 <td class="ShortDT">4/2/2018 3:00</td>
+                
            
             </tr>
            
@@ -62,6 +63,7 @@
   <div class="row">
   <a href="#" data-toggle="modal" data-target="#ProgramModal">
   <div class="col-md-12"><h5 class="ProgramCardTitle float-left " > Wild Winter Worlds</h5></div></a>
+      
 </div>
  
  <div class="row">
@@ -81,7 +83,7 @@
             <tr>
                
                 <td class="ShortStatus">Pending</td>
-                <td class="ShortOrgName">JMU</td>
+                <td class="ShortOrgName">JMU</td> 
                 <td class="ShortEd">Raina, Alex</td>
                 <td class="ShortDT">4/3/2018 3:00</td>
            
@@ -265,9 +267,22 @@
                   
 	    <div class=" col-md-6">
 	    <h4> Program:</h4>
-        <asp:DropDownList ID="drpProgramList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle"></asp:DropDownList>
+         <asp:DropDownList ID="drpProgramList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle" DataSourceID="SqlDataSource1" DataTextField="ProgramName" DataValueField="ProgramID" AppendDataBoundItems="True" >
+            <asp:ListItem Text="Select a Program Name"></asp:ListItem>
+             </asp:DropDownList> 
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT [ProgramID], [ProgramName] FROM [Program]"></asp:SqlDataSource>
 	    <h4> Type:</h4>
-            <asp:TextBox ID="txtType" runat="server" CssClass="form-control" Placeholder="Add Type"></asp:TextBox>
+            <asp:DropDownList ID="drpProgramType" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle" DataSourceID="SqlDataSource2" DataTextField="LocationType" DataValueField="ProgramID" AppendDataBoundItems="True">
+                <asp:ListItem Text="Select a Program Type"></asp:ListItem>
+            </asp:DropDownList>
+            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand= "SELECT DISTINCT Live.LocationType, Max(Live.ProgramID) as ProgramID
+                        FROM Program INNER JOIN
+                         Live ON Program.ProgramID = Live.ProgramID INNER JOIN
+                         NewProgram ON Program.ProgramID = NewProgram.ProgramID
+                         WHERE (Program.ProgramType = 'Live') AND (Live.LocationType <> ' ') GROUP BY Live.LocationType">
+
+            </asp:SqlDataSource>
+            
 	    <h4> Date/Time:</h4>
             <asp:TextBox ID="txtDate" Cssclass="form-control" runat="server" Placeholder="Add Date/Time"></asp:TextBox>
 	    <h4> Number of Kids:</h4>
@@ -279,75 +294,43 @@
 	    <h4> Mileage:</h4>
             <asp:TextBox ID="txtMileage" Cssclass="form-control" runat="server" Placeholder="Add Mileage"></asp:TextBox>
 	    
-	    <br>
-	     <h4 class="Animal"> Birds:</h4> <br/>
+</div>
 <div class="container">
   <div class="row">
-       <div class="col-lg-12">
-     <div class="button-group">
-        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Choose Birds <span class="caret"></span></button>
-<ul class="dropdown-menu">
-  <li><a href="#" class="small DropdownAnimal" data-value="option1" tabIndex="-1"><input type="checkbox"/>&nbsp;Buddy</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option2" tabIndex="-1"><input type="checkbox"/>&nbsp;Verlon</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option3" tabIndex="-1"><input type="checkbox"/>&nbsp;Edie</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option4" tabIndex="-1"><input type="checkbox"/>&nbsp;Maggie</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option5" tabIndex="-1"><input type="checkbox"/>&nbsp;Grayson</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option1" tabIndex="-1"><input type="checkbox"/>&nbsp;Keeya</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option2" tabIndex="-1"><input type="checkbox"/>&nbsp;Ruby</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option3" tabIndex="-1"><input type="checkbox"/>&nbsp;Rosalie</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option4" tabIndex="-1"><input type="checkbox"/>&nbsp;Athena</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option5" tabIndex="-1"><input type="checkbox"/>&nbsp;Gus</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option1" tabIndex="-1"><input type="checkbox"/>&nbsp;Papa G'Ho</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option2" tabIndex="-1"><input type="checkbox"/>&nbsp;Quin</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option3" tabIndex="-1"><input type="checkbox"/>&nbsp;Alex</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option4" tabIndex="-1"><input type="checkbox"/>&nbsp;Buttercup</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option5" tabIndex="-1"><input type="checkbox"/>&nbsp;Jaz</a></li>
-  
-</ul>
-  </div>
+       <div class="col-3">
+           <h4 class="Animal"> Birds:</h4> 
+     <div class="border"style="OVERFLOW-Y:scroll; WIDTH:100px; HEIGHT:200px">
+<asp:CheckBoxList ID="CheckBoxList1" runat="server" DataSourceID="SqlDataSource4" DataTextField="AnimalName" DataValueField="AnimalID"></asp:CheckBoxList>
 </div>
-  </div>
+      <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT AnimalName, AnimalID FROM Animal Where AnimalType = 'Bird'"></asp:SqlDataSource>
 </div>
-	     
-	     <br>
-	     <h4 class="Animal"> Reptiles:</h4> 
-	     <br>
-	     <div class="container">
-  <div class="row">
-       <div class="col-lg-12">
-     <div class="button-group">
-        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Choose Reptiles <span class="caret"></span></button>
-<ul class="dropdown-menu">
-  <li><a href="#" class="small DropdownAnimal" data-value="option1" tabIndex="-1"><input type="checkbox"/>&nbsp;Malcom</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option2" tabIndex="-1"><input type="checkbox"/>&nbsp;Albus</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option3" tabIndex="-1"><input type="checkbox"/>&nbsp;Severus</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option4" tabIndex="-1"><input type="checkbox"/>&nbsp;Oscar</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option5" tabIndex="-1"><input type="checkbox"/>&nbsp;Emma</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option1" tabIndex="-1"><input type="checkbox"/>&nbsp;Wilson</a></li>
-</ul>
-  </div>
+
+
+<div class="col-6">
+    <h4 class="Animal"> Reptiles:</h4> 
+     <div class="border"style="OVERFLOW-Y:scroll; WIDTH:100px; HEIGHT:200px">
+<asp:CheckBoxList ID="CheckBoxList2" runat="server" DataSourceID="SqlDataSource5" DataTextField="AnimalName" DataValueField="AnimalID"></asp:CheckBoxList>
 </div>
-  </div>
+      <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT AnimalName, AnimalID FROM Animal Where AnimalType = 'Reptile'"></asp:SqlDataSource>
 </div>
-	     
-	     <br>
-	     <h4 class="Animal"> Mammals:</h4> 
-	     <br>
-	     <div class="container">
-  <div class="row">
-       <div class="col-lg-12">
-     <div class="button-group">
-        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Choose Mammals <span class="caret"></span></button>
-<ul class="dropdown-menu">
-  <li><a href="#" class="small DropdownAnimal" data-value="option1" tabIndex="-1"><input type="checkbox"/>&nbsp;Bo</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option2" tabIndex="-1"><input type="checkbox"/>&nbsp;Posie</a></li>
-  <li><a href="#" class="small DropdownAnimal" data-value="option2" tabIndex="-1"><input type="checkbox"/>&nbsp;Willow</a></li>
+
+<div class="col-9">
+    <h4 class="Animal"> Mammals:</h4> 
+     <div class="border"style="OVERFLOW-Y:scroll; WIDTH:100px; HEIGHT:200px">
+<asp:CheckBoxList ID="CheckBoxList3" runat="server" DataSourceID="SqlDataSource6" DataTextField="AnimalName" DataValueField="AnimalID"></asp:CheckBoxList>
+</div>
+      <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT AnimalName, AnimalID FROM Animal Where AnimalType = 'Mammal'"></asp:SqlDataSource>
+</div>
+</div>
 
   
-</ul>
-  </div>
+
+	    
+       
 </div>
-  </div>
+  
+
+	     
 </div>
     
     <div class="row">
@@ -361,8 +344,18 @@
 			
 			 <div class=" col-md-6 ">
 	    <h4> Organization:</h4>
-                 <asp:DropDownList ID="drpOrganizationList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle"></asp:DropDownList>
-                 <asp:Button ID="AddOrganization" runat="server" CssClass="btn btn-primary LoginButton" UseSubmitBehavior="false" CauseValidation="true" Text="Add Organization" OnClick="btnAddOrganization"/>
+                 <asp:DropDownList ID="drpOrganizationList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle" AppendDataBoundItems="True" DataSourceID="SqlDataSource3" DataTextField="OrganizationName" DataValueField="OrganizationID" OnSelectedIndexChanged="drpOrganizationList_IndexChanged" AutoPostBack="true">
+                     <asp:ListItem Text="Select an Organization"></asp:ListItem>
+                 </asp:DropDownList>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT OrganizationName, OrganizationID FROM Organization"></asp:SqlDataSource>
+                 
+                 <asp:Button ID="AddOrganization" runat="server" CssClass="btn btn-primary LoginButton" UseSubmitBehavior="false" CauseValidation="true" Text="Add Organization" />
+                 
+                 <asp:DropDownList ID="drpContact" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle" AppendDataBoundItems="True" OnSelectedIndexChanged="drpContact_SelectedIndexChanged" AutoPostBack="True">
+                     <asp:ListItem Text="Select a Contact"></asp:ListItem>
+                 </asp:DropDownList>
+
+
 	    <h4> Contact:</h4>
                  <asp:TextBox ID="txtContact" Cssclass="form-control" runat="server" Placeholder="Add Contact"></asp:TextBox>
 	    <h4> Email:</h4>
@@ -406,7 +399,6 @@
             </div>
         </div>
     </div>
-</div>
 
 
 <div class="modal" id="ProgramModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -516,5 +508,13 @@
 
 
 </div>
+
+<script type="text/javascript">
+    document.getElementById("btnAddProgram").onclick = function () {
+        location.href = "AddProgram.aspx"
+    };
+</script>
+
+
 </asp:Content>
 

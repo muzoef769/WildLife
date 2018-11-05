@@ -10,55 +10,94 @@ using System.Data;
 
 public partial class Program : System.Web.UI.Page
 {
-    
+    public static int programID;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        DataTable programList = new DataTable();
-        DataTable organzationList = new DataTable();
-        using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+
+        if (!Page.IsPostBack)
         {
-            try
-            {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT ProgramName, ProgramID FROM Program", connection);
-                SqlDataAdapter adapter1 = new SqlDataAdapter("SELECT OrganizationName, OrganizationID FROM Organization", connection);
-                adapter.Fill(programList);
-                adapter1.Fill(organzationList);
+            DataTable programList = new DataTable();
+            DataTable organzationList = new DataTable();
+            //DataTable typeList = new DataTable();
 
-                drpOrganizationList.DataSource = organzationList;
-                drpOrganizationList.DataTextField = "OrganizationName";
-                drpOrganizationList.DataValueField = "OrganizationID";
-                drpOrganizationList.DataBind();
+            //drpProgramType.Items.Insert(0, new ListItem("Select a Program Type", "NA"));
 
-                drpProgramList.DataSource = programList;
-                drpProgramList.DataTextField = "ProgramName";
-                drpProgramList.DataValueField = "ProgramID";
-                drpProgramList.DataBind();
-            }
-            catch (Exception ex)
+
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
             {
-                lblErrorMessage.Text = "Did not fill DropdownList!";
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT ProgramName, ProgramID FROM Program", connection);
+                    //SqlDataAdapter adapter1 = new SqlDataAdapter("SELECT OrganizationName, OrganizationID FROM Organization", connection);
+                    //SqlDataAdapter adapter2 = new SqlDataAdapter("SELECT DISTINCT Live.LocationType FROM Program INNER JOIN Live ON Program.ProgramID = Live.ProgramID INNER JOIN NewProgram ON Program.ProgramID = NewProgram.ProgramID WHERE ProgramType = 'Live' AND LocationType != ' '", connection);
+                    adapter.Fill(programList);
+                    //adapter1.Fill(organzationList);
+                    //adapter2.Fill(typeList);
+
+                    //drpOrganizationList.DataSource = organzationList;
+                    //drpOrganizationList.DataTextField = "OrganizationName";
+                    //drpOrganizationList.DataValueField = "OrganizationID";
+                    //drpOrganizationList.DataBind();
+
+                    //drpProgramList.DataSource = programList;
+                    //drpProgramList.DataTextField = "ProgramName";
+                    //drpProgramList.DataValueField = "ProgramID";
+                    //drpProgramList.DataBind();
+
+                    //drpProgramType.DataSource = typeList;
+                    //drpProgramType.DataTextField = "ProgramType";
+                    //drpProgramType.DataValueField = "ProgramID";
+                    //drpProgramType.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    lblErrorMessage.Text = "Did not fill DropdownList!";
+                }
+                //using (SqlConnection aConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+                //{
+                //    try
+                //    {
+
+                //        SqlDataAdapter adapter2 = new SqlDataAdapter("SELECT DISTINCT Live.LocationType FROM Program INNER JOIN Live ON Program.ProgramID = Live.ProgramID INNER JOIN NewProgram ON Program.ProgramID = NewProgram.ProgramID WHERE ProgramType = 'Live' AND LocationType != ' '", aConnection);
+                //        adapter2.Fill(typeList);
+
+                //        drpProgramType.DataSource = typeList;
+                //        drpProgramType.DataTextField = "ProgramType";
+                //        drpProgramType.DataValueField = "ProgramID";
+                //        drpProgramType.DataBind();
+                //    }
+                //    catch (Exception E)
+                //    {
+
+                //    }
+                //}
             }
         }
     }
     protected void btnSubmit_Program(object sender, EventArgs e)
     {
-        //Programs newPrograms = new Programs(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
-        //    Int32.Parse(txtAdults.Text) + Int32.Parse(txtKids.Text), Int32.Parse(txtMileageAmount.Text),
-        //    DateTime.Parse(txtMileage.Text), DateTime.Parse(txtDate.Text), "Age is 20",
-        //    "Status", "Speial Needs", DateTime.Now, "Muzo");
-        //Programs program1 = new Programs(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
-        //    Int32.Parse(txtAdults.Text) + Int32.Parse(txtKids.Text), 45, DateTime.Now, DateTime.Now, "34",
-        //    "Status", "Special needs", DateTime.Now, "Fernando");
 
         using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
         {
-            //Programs program1 = new Programs(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
-            //Int32.Parse(txtAdults.Text) + Int32.Parse(txtKids.Text), 45, DateTime.Now, DateTime.Now, "34",
-            //"Status", "Special needs", DateTime.Now, "Fernando", 78);
 
-            Programs program1 = new Programs(20, 20, 40, 100, DateTime.Now, DateTime.Now, "20", "Status", "SpecialNeeds", DateTime.Now, "Muzo", 29); 
+            try
+            {
+                connection.Open();
+                String getProgramID = "SELECT ProgramID FROM Program WHERE ProgramName = @ProgramName";
+                SqlCommand getIDCommand = new SqlCommand(getProgramID, connection);
+                getIDCommand.Parameters.AddWithValue("@ProgramName", drpProgramList.SelectedValue);
+                programID = getIDCommand.ExecuteNonQuery();
+                connection.Close();
+            }
+            catch (Exception E)
+            {
 
-            string insertIntoNewProgram = "INSERT INTO NewProgram([TotalKids], [TotalAdults]," + 
+            }
+
+            NewPrograms newProgram = new NewPrograms(Int32.Parse(txtKids.Text), Int32.Parse(txtKids.Text), Int32.Parse(txtProgramTotal.Text), "Second Grade", Int32.Parse(txtMileage.Text), "Completed", "Allergies", DateTime.Now, DateTime.Now, programID, DateTime.Now, "Raina");
+
+            string insertIntoNewProgram = "INSERT INTO NewProgram([TotalKids], [TotalAdults]," +
                 "[TotalPeople], [AgeLevel], [TotalMileage], [NewProgramStatus], [DateCreated]," +
                 "[DateCompleted], [MiscNotes], [ProgramID], [LastUpdated], [LastUpdatedBy]) VALUES (" +
                 "@kid, @adult, @totalPeople, @age, @mileage, @status, @created, @complete," +
@@ -66,45 +105,103 @@ public partial class Program : System.Web.UI.Page
             connection.Open();
             using (SqlCommand command = new SqlCommand(insertIntoNewProgram, connection))
             {
-                command.Parameters.AddWithValue("@kid", program1.NumKids);
-                command.Parameters.AddWithValue("@adult", program1.NumAdults);
-                command.Parameters.AddWithValue("@totalpeople", program1.TotalPeople);
-                command.Parameters.AddWithValue("@age", program1.AgeLevel);
-                command.Parameters.AddWithValue("@mileage", program1.TotalMileage);
-                command.Parameters.AddWithValue("@status", program1.Status);
-                command.Parameters.AddWithValue("@created", program1.DateCreated);
-                command.Parameters.AddWithValue("@complete", program1.DateCompleted);
-                command.Parameters.AddWithValue("@miscNotes", program1.MiscNotes);
-                command.Parameters.AddWithValue("@programid", program1.ProgramID2);
-                command.Parameters.AddWithValue("@LU", program1.LastUpdated1);
-                command.Parameters.AddWithValue("@LUB", program1.LastUpdatedBy1);
+                command.Parameters.AddWithValue("@kid", newProgram.getNumKids());
+                command.Parameters.AddWithValue("@adult", newProgram.getNumAdults());
+                command.Parameters.AddWithValue("@totalpeople", newProgram.getTotalPeople());
+                command.Parameters.AddWithValue("@age", newProgram.getAgeLevel());
+                command.Parameters.AddWithValue("@mileage", newProgram.getTotalMileage());
+                command.Parameters.AddWithValue("@status", newProgram.getProgramStatus());
+                command.Parameters.AddWithValue("@created", newProgram.getDateCreated());
+                command.Parameters.AddWithValue("@complete", newProgram.getDateCompleted());
+                command.Parameters.AddWithValue("@miscNotes", newProgram.getMiscNotes());
+                command.Parameters.AddWithValue("@programid", newProgram.getProgramID());
+                command.Parameters.AddWithValue("@LU", newProgram.getLastUpdated());
+                command.Parameters.AddWithValue("@LUB", newProgram.getLastUpdatedBy());
 
                 command.ExecuteNonQuery();
                 lblErrorMessage.Text = "Entry is in database";
             }
         }
     }
-    protected void btnAddOrganization(object sender, EventArgs e)
+    //protected void btnAddOrganization(object sender, EventArgs e)
+    //{
+    //    lblErrorMessage.Text = "Organization Added!";
+
+    //    using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+    //    {
+    //        Organization organization = new Organization(1, 1, drpOrganizationList.SelectedItem.Text, DateTime.Now, "Muzo");
+
+    //        string insertIntoOrganization = "INSERT INTO Organization (OrganizationName, AddressID, ContactID, LastUpdated, LastUpdatedBy) VALUES (" +
+    //            "@OrgName, @AddressID, @ContactID, @LB, @LUB)";
+    //        connection.Open();
+    //        using (SqlCommand command = new SqlCommand(insertIntoOrganization, connection))
+    //        {
+    //            command.Parameters.AddWithValue("@OrgName", organization.OrgName);
+    //            command.Parameters.AddWithValue("@AddressID", organization.AddressID);
+    //            command.Parameters.AddWithValue("@ContactID", organization.ContactID);
+    //            command.Parameters.AddWithValue("@LB", organization.LastUpdated);
+    //            command.Parameters.AddWithValue("@LUB", organization.LastUpdatedBy);
+
+    //            command.ExecuteNonQuery();
+    //            lblErrorMessage.Text = "Organization Added!";
+    //        }
+    //    }
+    //}
+
+    protected void drpOrganizationList_IndexChanged(object sender, EventArgs e)
     {
-        lblErrorMessage.Text = "Organization Added!";
-
-        using(SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+        DataTable contactList = new DataTable();
+        using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
         {
-            Organization organization = new Organization(1, 1, drpOrganizationList.SelectedItem.Text, DateTime.Now, "Muzo");
-
-            string insertIntoOrganization = "INSERT INTO Organization (OrganizationName, AddressID, ContactID, LastUpdated, LastUpdatedBy) VALUES (" +
-                "@OrgName, @AddressID, @ContactID, @LB, @LUB)";
             connection.Open();
-            using (SqlCommand command = new SqlCommand(insertIntoOrganization, connection))
-            {
-                command.Parameters.AddWithValue("@OrgName", organization.OrgName);
-                command.Parameters.AddWithValue("@AddressID", organization.AddressID);
-                command.Parameters.AddWithValue("@ContactID", organization.ContactID);
-                command.Parameters.AddWithValue("@LB", organization.LastUpdated);
-                command.Parameters.AddWithValue("@LUB", organization.LastUpdatedBy);
+            SqlDataAdapter adapter = new SqlDataAdapter("Select ContactID, CONCAT(FirstName,' ',LastName) as Name from Contact Where OrganizationID =" + drpOrganizationList.SelectedValue, connection);
 
-                command.ExecuteNonQuery();
-                lblErrorMessage.Text = "Organization Added!";
+            adapter.Fill(contactList);
+
+            drpContact.DataSource = contactList;
+            drpContact.DataTextField = "Name";
+            drpContact.DataValueField = "ContactID";
+            drpContact.DataBind();
+
+
+
+        }
+
+    }
+
+
+    protected void drpContact_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+        {
+
+            string retrieveContact = "Select FirstName, LastName, Email, PrimaryPhoneNumber, SecondaryPhoneNumber from Contact where ContactID = @contactID";
+
+
+            using (SqlCommand command = new SqlCommand(retrieveContact, connection))
+            {
+                connection.Open();
+
+                command.Parameters.AddWithValue("@ContactID", drpContact.SelectedValue);
+                SqlDataReader reader = command.ExecuteReader();
+
+                // if the username exists, process will stop
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        String name = reader.GetString(0) + " " + reader.GetString(1);
+                        txtContact.Text = name;
+                        txtEmail.Text = reader.GetString(2);
+                        txtPrimaryNumber.Text = reader.GetString(3);
+                        txtSecondaryNumber.Text = reader.GetString(4);
+
+
+
+                    }
+                }
+                connection.Close();
+
             }
         }
     }
