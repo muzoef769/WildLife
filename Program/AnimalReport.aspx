@@ -17,10 +17,10 @@
                                     to generate a report.
                                 </p>
                                 <asp:Label ID="lblStartDate" runat="server" Text=" Start Date: "></asp:Label>
-                                <asp:TextBox ID="txtStartDate" runat="server" PlaceHolder="Enter Start Date" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtStartDate" runat="server" Cssclass="form-control" TextMode="Date"></asp:TextBox>
                                 <br />
                                 <asp:Label ID="lblEndDate" runat="server" Text="End Date: "></asp:Label>
-                                <asp:TextBox ID="txtEndDate" runat="server" PlaceHolder="Enter End Date" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="TextBox1" runat="server" Cssclass="form-control" TextMode="Date"></asp:TextBox>
 
                                 <asp:Button ID="btnSearchByDate" runat="server"
                                     CssClass="btn btn-success"
@@ -109,14 +109,18 @@
                     <div class="col-md-6">
                         <div class="card mx-auto AnimalReportCard">
                             <div class="card-body">
-                                <asp:GridView ID="grdViewReport" runat="server"
-                                    AllowPaging="true"
-                                    AutoGenerateColumns="false"
-                                    OnPageIndexChanging="OnPaging">
-                                    <Columns>
-                                        <asp:BoundField DataField="AnimalName" HeaderText="Animal Name" />
-                                    </Columns>
+                                <asp:GridView ID="grdViewReport" 
+                                    runat="server">
                                 </asp:GridView>
+                                <br />
+                                <br />
+                                <asp:Button ID="btnExportToExcel"
+                                    runat="server"
+                                    Text="Export To Excel"
+                                    CssClass="btn btn-success"
+                                    UseSubmitBehavior="false"
+                                    CauseValidation="true"
+                                    OnClick="ExportToExcel"/>
                             </div>
                         </div>
                     </div>
