@@ -8,7 +8,7 @@
 
                     <%--START of SEARH BY DATE--%>
 
-                    <div class="col-md-6">
+                 <div class="col-lg-6 col-md- 6 col-s-12 col-xl-4">
                         <div class="card mx-auto AnimalReportCard">
                             <div class="card-body">
                                 <h5 class="card-title">Search by Date</h5>
@@ -21,7 +21,7 @@
                                 <br />
                                 <asp:Label ID="lblEndDate" runat="server" Text="End Date: "></asp:Label>
                                 <asp:TextBox ID="TextBox1" runat="server" Cssclass="form-control" TextMode="Date"></asp:TextBox>
-
+                                <br />
                                 <asp:Button ID="btnSearchByDate" runat="server"
                                     CssClass="btn btn-success"
                                     UseSubmitBehavior="false"
@@ -37,7 +37,7 @@
 
                     <%--START OF MONTHLY ANIMAL REPORT--%>
 
-                    <div class="col-md-6">
+                     <div class="col-lg-6 col-md- 6 col-s-12 col-xl-4">
                         <div class="card mx-auto AnimalReportCard">
                             <div class="card-body">
                                 <h5 class="card-title">Monthly Animal Report</h5>
@@ -60,6 +60,8 @@
                                     <asp:ListItem>November</asp:ListItem>
                                     <asp:ListItem>December</asp:ListItem>
                                 </asp:DropDownList>
+                                <br />
+                                <br />
                                 <asp:Button ID="btnGenerateMonthReport" runat="server"
                                     CssClass="btn btn-success"
                                     UseSubmitBehavior="false"
@@ -74,7 +76,7 @@
 
                     <%--START OF ANNUAL ANIMAL REPORT--%>
 
-                    <div class="col-md-6">
+                       <div class="col-lg-6 col-md- 6 col-s-12 col-xl-4">
                         <div class="card mx-auto AnimalReportCard">
                             <div class="card-body">
                                 <h5 class="card-title">Annual Animal Report</h5>
@@ -88,6 +90,8 @@
                                     <asp:ListItem>2016</asp:ListItem>
                                     <asp:ListItem>2017</asp:ListItem>
                                 </asp:DropDownList>
+                                <br />
+                                <br />
                                 <asp:Button ID="btnGenerateAnnualReport" runat="server"
                                     CssClass="btn btn-success"
                                     UseSubmitBehavior="false"

@@ -13,7 +13,7 @@ public partial class Home : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        lblCurrentMonth.Text = DateTime.Today.ToString("MM/dd/yyyy");
+        //lblCurrentMonth.Text = DateTime.Today.ToString("MM/dd/yyyy");
 
         System.Data.SqlClient.SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
 
