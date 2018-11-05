@@ -117,6 +117,8 @@ body {
     text-align: center;
     vertical-align: middle;
     font-family: 'Raleway', sans-serif !important;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
 }
 
 .SpeciesCard {
@@ -762,3 +764,29 @@ WelcomeInfoDiv {
 
 
 /*End OF .AnimalReportContainer*/
+
+
+.PayButton {
+    margin-right: 3px;
+    !important;
+    opacity: 100 !important;
+    background-color: darkgreen;
+    border: 0px;
+    border-color: #099708;
+    font-family: 'Raleway', sans-serif !important;
+    margin-bottom: 5px;
+    margin-right: 2px;
+}
+
+    .PayButton:hover {
+        background-color: green;
+        opacity: 100;
+    }
+
+    .fixed-bottom{margin-top:40px;}
+
+table-responsive {
+    overflow-x: auto;
+    height: 100px;
+    display: block;
+}

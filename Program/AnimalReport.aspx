@@ -39,7 +39,7 @@
 
                      <div class="col-lg-6 col-md- 6 col-s-12 col-xl-4">
                         <div class="card mx-auto AnimalReportCard">
-                            <div class="card-body">
+                            <div class="card-body ">
                                 <h5 class="card-title">Monthly Animal Report</h5>
                                 <p>
                                     Monthly Animal Report displays all birds, mammals,
@@ -85,7 +85,7 @@
                             and reptiles that participated in a program for
                             the selected year.
                                 </p>
-                                <asp:DropDownList ID="drpYearList" runat="server" CssClass="form-control-sm">
+                                <asp:DropDownList ID="drpYearList" runat="server" CssClass="form-control-sm ">
                                     <asp:ListItem>2015</asp:ListItem>
                                     <asp:ListItem>2016</asp:ListItem>
                                     <asp:ListItem>2017</asp:ListItem>
@@ -110,14 +110,13 @@
         <div class="row">
             <div class="container-fluid AnimalReportContainer">
                 <div class="row justify-content-center">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="card mx-auto AnimalReportCard">
                             <div class="card-body">
                                 <asp:GridView ID="grdViewReport" 
                                     runat="server">
                                 </asp:GridView>
-                                <br />
-                                <br />
+                                
                                 <asp:Button ID="btnExportToExcel"
                                     runat="server"
                                     Text="Export To Excel"
