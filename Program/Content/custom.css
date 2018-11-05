@@ -643,3 +643,96 @@ WelcomeInfoDiv {
     border-radius: 10px;
     background-color: white;
 }
+
+
+/*START OF .AnimalReportCard*/
+.AnimalReportCard {
+    border-style: none;
+    border-color: inherit;
+    border-width: 2px;
+    opacity: .75;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    display: block;
+    height: auto;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Raleway', sans-serif !important;
+}
+/*END OF .AnimalReportCard*/
+
+
+/*START OF .AnimalReportContainer*/
+@media only screen and (max-width: 2700px) {
+
+    .AnimalReportContainer {
+        padding-left: 22%;
+        padding-right: 25%;
+        padding-top: 10%;
+    }
+}
+
+@media only screen and (max-width: 2200px) {
+
+    .AnimalReportContainer {
+        padding-left: 22%;
+        padding-right: 25%;
+        padding-top: 10%;
+    }
+}
+
+@media only screen and (max-width: 1800px) {
+
+    .AnimalReportContainer {
+        padding-left: 25%;
+        padding-right: 15%;
+        padding-top: 10%;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+
+    .AnimalReportContainer {
+        padding-left: 30%;
+        padding-right: 15%;
+        padding-top: 10%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+
+    .AnimalReportContainer {
+        padding-left: 30%;
+        padding-right: 15%;
+        padding-top: 10%;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+
+    .AnimalReportContainer {
+        padding-left: 30%;
+        padding-right: 5%;
+        padding-top: 10%;
+    }
+}
+
+@media only screen and (max-width: 200px) {
+
+    .AnimalReportContainer {
+        padding-left: 30%;
+        padding-right: 2%;
+        padding-top: 10%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+
+    .AnimalReportContainer {
+        padding-left: 30%;
+        padding-right: 15%;
+        padding-top: 10%;
+    }
+}
+
+/*End OF .AnimalReportContainer*/
