@@ -6,7 +6,7 @@
         
 
 
-            <div class="container-fluid ProgramContainer">
+            <div class="container-fluid PaymentContainer">
 
                 <div class="card mx-auto ProgramCard" style="opacity: .8;">
                     <div class="card-body">
@@ -17,31 +17,30 @@
                                     <h1 id="payTitle" class=" ProgramCardTitle mx-auto d-flex justify-content-center ">Payment Records</h1>
                                    </div>
                                 </div>
-                                 <div class="row">
-                                <div class="col-md-3"><asp:Button class="btn btn-primary PayButton" ID="btnJan" runat="server" Text="January" OnClick="btnJan_Click" /></div>
-                                <div class="col-md-3"><asp:Button class="btn btn-primary PayButton" ID="btnFeb" runat="server" Text="February" OnClick="btnFeb_Click" /></div>
-                                <div class="col-md-3"><asp:Button class="btn btn-primary PayButton" ID="btnMar" runat="server" Text="March" OnClick="btnMar_Click" /></div>
-                                       <div class="col-md-3"><asp:Button class="btn btn-primary PayButton" ID="btnApr" runat="server" Text="April" OnClick="btnApr_Click" /></div>
-                                </div>
-                                 <div class="row">
-                              
-                                <div class="col-md-3"> <asp:Button class="btn btn-primary PayButton" ID="btnMay" runat="server" Text="May" OnClick="btnMay_Click" /></div>
-                                <div class="col-md-3">  <asp:Button class="btn btn-primary PayButton" ID="btnJun" runat="server" Text="June" OnClick="btnJun_Click" /></div>
-                                          <div class="col-md-3"><asp:Button class="btn btn-primary PayButton" ID="btnJul" runat="server" Text="July" OnClick="btnJul_Click" /></div>
-                                     
+                                 <div class="row mx-auto d-flex justify-content-center text-center">
+                                <div class="col-4"><asp:Button class="btn btn-primary PayButton" ID="btnJan" runat="server" Text="January" OnClick="btnJan_Click" /></div>
+                                <div class="col-4"><asp:Button class="btn btn-primary PayButton" ID="btnFeb" runat="server" Text="February" OnClick="btnFeb_Click" /></div>
+                                <div class="col-4" ><asp:Button class="btn btn-primary PayButton" ID="btnMar" runat="server" Text="March" OnClick="btnMar_Click" /></div>
                                 
-                          
+                                </div>
+                                    <div class="row mx-auto d-flex justify-content-center text-center">
+                              <div class="col-4"><asp:Button class="btn btn-primary PayButton" ID="btnApr" runat="server" Text="April" OnClick="btnApr_Click" /></div>
+                                <div class="col-4"> <asp:Button class="btn btn-primary PayButton" ID="btnMay" runat="server" Text="May" OnClick="btnMay_Click" /></div>
+                                <div class="col-4">  <asp:Button class="btn btn-primary PayButton" ID="btnJun" runat="server" Text="June" OnClick="btnJun_Click" /></div>
                                
-                                     <div class="col-md-3"> <asp:Button class="btn btn-primary PayButton" ID="btnAug" runat="server" Text="August" OnClick="btnAug_Click" /></div>
+                                </div>
+
+                                <div class="row mx-auto d-flex justify-content-center text-center">
+                                 <div class="col-4"><asp:Button class="btn btn-primary PayButton" ID="btnJul" runat="server" Text="July" OnClick="btnJul_Click" /></div>
+                                <div class="col-4"> <asp:Button class="btn btn-primary PayButton" ID="btnAug" runat="server" Text="August" OnClick="btnAug_Click" /></div>
+                                <div class="col-4">  <asp:Button class="btn btn-primary PayButton" ID="btnSep" runat="server" Text="September" OnClick="btnSep_Click" /></div>
+                               
+
                                  </div>
-                            <div class="row">
-                                     <div class="col-md-3">  <asp:Button class="btn btn-primary PayButton" ID="btnSep" runat="server" Text="September" OnClick="btnSep_Click" /></div>
-
-                                   
-                                <div class="col-md-3"> <asp:Button class="btn btn-primary PayButton" ID="btnOct" runat="server" Text="October" OnClick="btnOct_Click" /></div>
-                                <div class="col-md-3"> <asp:Button class="btn btn-primary PayButton" ID="btnNov" runat="server" Text="November" OnClick="btnNov_Click" /></div>
-                                <div class="col-md-3">  <asp:Button class="btn btn-primary PayButton" ID="btnDec" runat="server" Text="December" OnClick="btnDec_Click" /></div>
-
+                                <div class="row mx-auto d-flex justify-content-center text-center">
+                                <div class="col-4"> <asp:Button class="btn btn-primary PayButton" ID="btnOct" runat="server" Text="October" OnClick="btnOct_Click" /></div>
+                                <div class="col-4"> <asp:Button class="btn btn-primary PayButton" ID="btnNov" runat="server" Text="November" OnClick="btnNov_Click" /></div>
+                                <div class="col-4">  <asp:Button class="btn btn-primary PayButton" ID="btnDec" runat="server" Text="December" OnClick="btnDec_Click" /></div>
                                  </div>
                             <div id="monthButtons" class="ProgramShort d-flex justify-content-center">
                                 
@@ -62,11 +61,12 @@
                        
                                    <div class="row">
                                   <div id="monthGrids"  class="col-md-12">
-                                <h3 id="monTitle" class=" ProgramCardTitle d-flex justify-content-center table-responsive" style="margin-top: 15px;">Monthly View</h3>
+                                <h3 id="monTitle" class="  ProgramCardTitle d-flex justify-content-center table-responsive" style="margin-top: 15px;">Monthly View</h3>
                                       </div>
-                                       <div class="row">
-                                           <div class="col-md-12 table-responsive">
-                                <div id="month" class="ProgramShort mx-auto d-flex justify-content-center  table table-borderless table-striped table-condensed">
+                                       </div>
+                                       <div class="row table-responsive">
+                                           <div class="col-md-9 PayTable mx-auto d-flex justify-content-center  table table-borderless table-striped table-condensed " >
+                                <div id="month"style="overflow-x:auto;">
                                     <asp:GridView ID="monthGrid" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" EnableSortingAndPagingCallbacks="true" AllowPaging="True" AllowSorting="True">
                                         <AlternatingRowStyle BackColor="#CCCCFF" BorderColor="Black" BorderStyle="None" />
                                         <Columns>
@@ -77,12 +77,16 @@
                                             <asp:BoundField DataField="TotalCost" HeaderText="Amount Due" SortExpression="TotalCost" />
 
                                         </Columns>
+
+
                                     </asp:GridView>
-                                    </div>
-                                           </div>
-                                     <div class="row">
-                                           <div class="col-md-12 table-responsive">
-                                    <asp:GridView ID="GridView1" runat="server" class="ProgramShort d-flex justify-content-center table table-borderless table-striped table-condensed" AutoGenerateColumns="False" DataSourceID="SqlDataSource3" EnableSortingAndPagingCallbacks="true" AllowPaging="True" AllowSorting="True">
+                                     </div>   
+                                </div>
+                                            
+                                 
+                                           
+                                           <div class="col-md-3 PayTable mx-auto d-flex justify-content-center  table table-borderless table-striped table-condensed " >
+                                    <asp:GridView ID="GridView1" class="mx-auto d-flex justify-content-center table-b" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource3" EnableSortingAndPagingCallbacks="true" AllowPaging="True" AllowSorting="True">
                                         <AlternatingRowStyle BackColor="#CCCCFF" BorderColor="Black" BorderStyle="None" />
                                         <Columns>
                                             <asp:BoundField DataField="TotalAmount" HeaderText="Total Amount" SortExpression="TotalAmount" />
@@ -102,12 +106,13 @@
                                     <br />
                                    <%-- <asp:Button ID="Button2" runat="server" CssClass=" PayButton" Text="Export To Excel" OnClick="Button2_Click" />--%>
                                 </div>   
-                                </div>
-                                        </div>
-                                           </div>
+                               
+                      </div>
+                                    </div>   
+                                     
                          <div class="row">
                                 <div class="col-md-12">
-                                <button ID="Button2" Class=" btn btn-primary PayButton" runat="server" OnClick="Button2_Click" > Export To Excel</button>
+                                <button ID="Button2" Class=" btn btn-primary PayButton2" runat="server" OnClick="Button2_Click" > Export To Excel</button>
                                     </div>
                               </div>
                          <div class="row">
@@ -115,9 +120,9 @@
                                 <h3 id="annTitle" class=" ProgramCardTitle mx-auto d-flex justify-content-center table-responsive" style="margin-top: 15px;">Annual View</h3>
                                </div>
                               </div>
-                        <div class="row">
-                                <div class="col-md-12 table-responsive">
-                                    <div id="ann" class="ProgramShort d-flex justify-content-center table table-borderless table-striped table-condensed">
+                        <div class="row table-responsive">
+                                 <div class="col-md-12 PayTable mx-auto d-flex justify-content-center  table table-borderless table-striped table-condensed " >
+                                    <div id="ann"  style="overflow-x:auto;">
                                     <asp:GridView ID="annualGrid" runat="Server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" EnableSortingAndPagingCallbacks="true" AllowPaging="True" AllowSorting="True">
                                         <AlternatingRowStyle BackColor="#CCCCFF" BorderColor="Black" BorderStyle="None" />
                                         <Columns>
@@ -136,12 +141,11 @@
                                 </div>
                                     </div>
                             </div>
-                                <button ID="Button1" Class=" btn btn-primary PayButton" runat="server" OnClick="Button1_Click" > Export To Excel</button>
+                                <button ID="Button1" Class=" btn btn-primary PayButton2" runat="server" OnClick="Button1_Click" > Export To Excel</button>
                             </div>
                               </div>
-                          </div>
-                    </div>
-                            
-                  
+                        
+    
+               </div>    
 </asp:Content>
 
