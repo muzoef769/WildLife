@@ -13,8 +13,9 @@ public class Contact
     private int ID;
     private string firstName, lastName;
     private string email;
-    private int primaryPhone; //added phones
-    private int secondaryPhone; //added phones
+    private string primaryPhone; //added phones
+    private string secondaryPhone; //added phones
+    private int orgID;
 
     private DateTime lastUpdated;
     private string lastUpdatedBy;
@@ -29,9 +30,8 @@ public class Contact
     //}
 
     //Constructor w/BOTH phone numbers
-    public Contact(int contactID, string firstName, string lastName, string contactEmail, int primaryPhone, int secondaryPhone, DateTime lastUpdated, string lastUpdatedBy)
+    public Contact(string firstName, string lastName, string contactEmail, string primaryPhone, string secondaryPhone, int orgID, DateTime lastUpdated, string lastUpdatedBy)
     {
-        setContactID(ID);
         setFirstName(firstName);
         setLastName(lastName);
         setContactEmail(contactEmail);
@@ -41,7 +41,7 @@ public class Contact
         setLastUpdatedBy(lastUpdatedBy);
     }
     //Constructor w/ONE phone number
-    public Contact(int contactID, string firstName, string lastName, string contactEmail, int primaryPhone, DateTime lastUpdated, string lastUpdatedBy)
+    public Contact(int ID, string firstName, string lastName, string contactEmail, string primaryPhone, string secondaryPhone, int orgID, DateTime lastUpdated, string lastUpdatedBy)
     {
         setContactID(ID);
         setFirstName(firstName);
@@ -69,13 +69,17 @@ public class Contact
     {
         return this.email;
     }
-    public int getPrimaryNumber()
+    public string getPrimaryNumber()
     {
         return this.primaryPhone;
     }
-    public int getSecondaryNumber()
+    public string getSecondaryNumber()
     {
         return this.secondaryPhone;
+    }
+    public int getOrgID()
+    {
+        return this.orgID;
     }
     public DateTime getLastUpdated()
     {
@@ -103,13 +107,17 @@ public class Contact
     {
         this.email = x;
     }
-    public void setPrimaryPhone(int x)
+    public void setPrimaryPhone(string x)
     {
         this.primaryPhone = x;
     }
-    public void setSecondaryPhone(int x)
+    public void setSecondaryPhone(string x)
     {
         this.secondaryPhone = x;
+    }
+    public void setOrgID(int x)
+    {
+        this.orgID = x;
     }
     public void setLastUpdated(DateTime x)
     {

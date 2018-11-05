@@ -13,6 +13,7 @@ public partial class AddOrganization : System.Web.UI.Page
 {
 
     public int addressID;
+    public int orgID;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -43,7 +44,6 @@ public partial class AddOrganization : System.Web.UI.Page
 
         using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
         {
-
             string addressInsert = "INSERT INTO ADDRESS (Street, City, State, County, Country, ZipCode, AddressType, LastUpdated, LastUpdatedBy) VALUES (" +
                 "@Street, @City, @State, @County, @Country, @ZipCode, @AddressType, @LastUpdated, @LastUpdatedBy)";
             connection.Open();
@@ -64,11 +64,9 @@ public partial class AddOrganization : System.Web.UI.Page
             }
 
             string getAddressID = "SELECT AddressID FROM Address WHERE AddressID = (SELECT MAX(AddressID) FROM Address)";
-
             using (SqlCommand command = new SqlCommand(getAddressID, connection))
             {
                 addressID = Convert.ToInt32(command.ExecuteScalar());
-
             }
 
             Organization newOrganization = new Organization(
@@ -78,7 +76,6 @@ public partial class AddOrganization : System.Web.UI.Page
                   DateTime.Now,
                   ""
                   );
-
 
             string organizationInsert = "INSERT INTO ORGANIZATION (OrganizationName, AddressID, LastUpdated, LastUpdatedBy) VALUES (@OrgName, @AddressID, @LastUpdated, @LastUpdatedBy)";
 
@@ -90,10 +87,41 @@ public partial class AddOrganization : System.Web.UI.Page
                 command.Parameters.AddWithValue("@LastUpdatedBy", newOrganization.LastUpdatedBy);
 
                 command.ExecuteNonQuery();
-
-
             }
 
+            //Grabbing the associated OrganizationID from the Organization table
+            string getOrgID = "SELECT OrganizationID FROM Organization WHERE OrganizationID = (SELECT MAX(OrganizationID) FROM Organization)";
+            using (SqlCommand command = new SqlCommand(getOrgID, connection))
+            {
+                orgID = Convert.ToInt32(command.ExecuteNonQuery());
+            }
+
+            Contact newContact = new Contact(
+                txtFirstName.Text,
+                txtLastName.Text,
+                txtEmail.Text,
+                txtPrimaryPhone.Text,
+                txtSecondaryPhone.Text,
+                orgID,
+                DateTime.Now,
+                "");
+
+            string newContactInsert = "INSERT INTO CONTACT (FirstName, LastName, Email, PrimaryPhoneNumber, SecondaryPhoneNumber, OrganizationID, LastUpdated, LastUpdatedBy) VALUES (@fName, @lName, @email, @primary, @secondary, @orgID, @lastUpdated, @lastUpdatedBy)";
+
+
+            using (SqlCommand command = new SqlCommand(newContactInsert, connection))
+            {
+                command.Parameters.AddWithValue("@fName", newContact.getFirstName());
+                command.Parameters.AddWithValue("@lName", newContact.getLastName());
+                command.Parameters.AddWithValue("@email", newContact.getEmailName());
+                command.Parameters.AddWithValue("@primary", newContact.getPrimaryNumber());
+                command.Parameters.AddWithValue("@secondary", newContact.getSecondaryNumber());
+                command.Parameters.AddWithValue("@orgID", newContact.getOrgID());
+                command.Parameters.AddWithValue("@lastUpdated", newContact.getLastUpdated());
+                command.Parameters.AddWithValue("@lastUpdatedBy", newContact.getLastUpdatedBy());
+
+                command.ExecuteNonQuery();
+            }
         }
 
     }

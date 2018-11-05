@@ -6,17 +6,16 @@ using System.Web;
 /// <summary>
 /// Summary description for NewProgram
 /// </summary>
-public class NewProgram
+public class NewPrograms
 {
     private int newProgramID, programID, numKids, numAdults, totalPeople, totalMileage;
     private DateTime dateCreated, dateCompleted;
     private string ageLevel, status, miscNotes;
     private DateTime lastUpdated;
     private string lastUpdatedBy;
-    public NewProgram(int newProgramID, int kids, int adults, int people, string ageLevel, int mileage, string status, string notes, DateTime dateCreated, DateTime dateCompleted, int programID, DateTime lastUpdated, string lastUpdatedBy)
+    public NewPrograms(int kids, int adults, int people, string ageLevel, int mileage, string status, string notes, DateTime dateCreated, DateTime dateCompleted, int programID, DateTime lastUpdated, string lastUpdatedBy)
     {
 
-        setNewProgramID(newProgramID);
         setNumKids(kids);
         setNumAdults(adults);
         setTotalPeople(people);

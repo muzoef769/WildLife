@@ -1,17 +1,22 @@
-﻿
+﻿    
 <%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="AddOrganization.aspx.cs" Inherits="AddOrganization" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 
-    <div class="container-fluid ProgramContainer">
+  <div class="container-fluid ProgramContainer">
 
 <div class="card mx-auto  ProgramCard">
   <div class="card-body">
        <div class="justify-content-center "> 
       <h3>Add an Organization
       </h3>
+      <h5>Organization Name
+      </h5>
 	  <asp:Label ID="lblOrgName" runat="server" Text="Organization Name: "> </asp:Label><asp:TextBox ID="txtOrgName" runat="server" ></asp:TextBox>
       <br />
+    <hr />
+     <h5>Organization Address
+      </h5>
       <asp:Label ID="lblStreet" runat="server" Text="Street Name: "></asp:Label><asp:TextBox ID="txtStreet" runat="server"></asp:TextBox>
        <br />
         <asp:Label ID="lblCountry" runat="server" Text="Country: "></asp:Label><asp:DropDownList ID="drpCountry" runat="server">
@@ -78,9 +83,24 @@
       <asp:Label ID="lblCounty" runat="server" Text="County: "></asp:Label><asp:Textbox ID="txtCounty" runat="server"></asp:Textbox>
        <br />
       <asp:Label ID="lblZipCode" runat="server" Text="Zip Code: "></asp:Label><asp:TextBox ID="txtZipCode" runat="server"></asp:TextBox>
+                 <br />
+    <hr />
+        <h5> Contact Information
+      </h5>
+            <asp:Label ID="lblFirstName" runat="server" Text="First Name:  "></asp:Label><asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
+       <br />
+      <asp:Label ID="lblLastName" runat="server" Text="Last Name: "></asp:Label><asp:Textbox ID="txtLastName" runat="server"></asp:Textbox>
+       <br />
+      <asp:Label ID="lblEmail" runat="server" Text="Email: "></asp:Label><asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+           <br />
+           <asp:Label ID="lblPrimaryPhone" runat="server" Text="Primary Phone: "></asp:Label><asp:Textbox ID="txtPrimaryPhone" runat="server"></asp:Textbox>
+       <br />
+      <asp:Label ID="lblSecondaryPhone" runat="server" Text="Secondary Phone: "></asp:Label><asp:TextBox ID="txtSecondaryPhone" runat="server"></asp:TextBox>
+                            <br />
+    <hr />
            <br />
         <asp:Button ID="btnAddOrganization" runat="server" Text="Add Organization" OnClick="btnAddOrganization_Click" />
-        <asp:Button ID="btnReturn" runat="server" Text="Return" href="Organization.aspx" OnClick="btnReturn_Click" />
+        <asp:Button ID="btnReturn" runat="server" Text="Return" href="Window.history.back()" OnClick="btnReturn_Click" />
        
 </div>
 </div>
