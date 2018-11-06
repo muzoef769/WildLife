@@ -17,7 +17,7 @@
            <br/>
            <br/>
            <div class ="table-responsive">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"  DataKeyNames="AnimalID" Class ="table-responsive-md" DataSourceID="AnimalSQL" BackColor="White" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"  DataKeyNames="AnimalID" Class ="table-responsive-md" DataSourceID="AnimalSQL" BackColor="White" HorizontalAlign="Left"  OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                 <AlternatingRowStyle BackColor="#999999" BorderColor="#336600" />
                 <Columns>
                     <asp:CommandField ShowEditButton="True" ShowSelectButton="True" />
@@ -71,15 +71,25 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-    </div>
+    
+           
+            <asp:GridView ID="GridView2" runat="server" Visible="False" HorizontalAlign="Center"  BackColor="White">
+                <AlternatingRowStyle BackColor="#999999" BorderColor="#336600" />
+    </asp:GridView>
+               <br />
+               <br />
+           <asp:GridView ID="GridView3" runat="server" Visible="False" HorizontalAlign="Center"  BackColor="White">
+               <AlternatingRowStyle BackColor="#999999" BorderColor="#336600" />
+           </asp:GridView>
+           
+           </div>
                <br/>
            <br/>
            <br/>
     
     
 
-    <asp:GridView ID="GridView2" runat="server" Visible="False" BackColor="White">
-    </asp:GridView>
+   
 
 
 
@@ -124,7 +134,7 @@
                 </UpdateParameters>
             </asp:SqlDataSource>
 
-    <asp:GridView ID="GridView3" runat="server" Visible="False" BackColor="White"></asp:GridView>
+    
 
 
 
