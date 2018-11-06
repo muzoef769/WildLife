@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Animal" Language="C#" MasterPageFile="~/site.master" AutoEventWireup="true" CodeFile="Animal.aspx.cs" Inherits="Animal" %>
+﻿<%@ Page Title="Animal" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Animal.aspx.cs" Inherits="Animal" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
 
@@ -16,8 +16,8 @@
            <br/>
            <br/>
            <br/>
-     
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="AnimalID" Class ="col-md-12 " DataSourceID="AnimalSQL" BackColor="White" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+           <div class ="table-responsive">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"  DataKeyNames="AnimalID" Class ="table-responsive-md" DataSourceID="AnimalSQL" BackColor="White" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                 <AlternatingRowStyle BackColor="#999999" BorderColor="#336600" />
                 <Columns>
                     <asp:CommandField ShowEditButton="True" ShowSelectButton="True" />
@@ -71,7 +71,8 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-    <br/>
+    </div>
+               <br/>
            <br/>
            <br/>
     

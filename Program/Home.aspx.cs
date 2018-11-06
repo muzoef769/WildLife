@@ -11,6 +11,9 @@ using System.Web.UI.WebControls;
 
 public partial class Home : System.Web.UI.Page
 {
+    System.Data.SqlClient.SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
         //lblCurrentMonth.Text = DateTime.Today.ToString("MM/dd/yyyy");
@@ -59,4 +62,62 @@ public partial class Home : System.Web.UI.Page
     {
         Response.Redirect("NewUser.aspx", false);
     }
+
+
+
+    protected void btnAddModal_Click(object sender, EventArgs e)
+    {
+
+
+        Animals newAnimal = new Animals(
+           "GG",
+           "JackRicci",
+           txtAddName.Text,
+           ddlAddType.SelectedValue.ToString(),
+          Convert.ToChar(ddlAddStatus.SelectedValue),
+           DateTime.Today,
+           "Staff"
+
+
+
+           );
+
+
+        string creatAnimal = "Insert into [dbo].[Animal] values (@Species, @ScientificName, @AnimalName, @AnimalType, @Status, @LastUpdated, @LastUpdatedBy)";
+        SqlCommand addAnimal = new SqlCommand(creatAnimal, sc);
+        sc.Open();
+        addAnimal.Parameters.AddWithValue("@Species", newAnimal.getSpecies());
+        addAnimal.Parameters.AddWithValue("@ScientificName", newAnimal.getScientificName());
+        addAnimal.Parameters.AddWithValue("@AnimalName", newAnimal.getAnimalName());
+        addAnimal.Parameters.AddWithValue("@AnimalType", newAnimal.getAnimalType());
+        addAnimal.Parameters.AddWithValue("@Status", newAnimal.getStatus());
+        addAnimal.Parameters.AddWithValue("@LastUpdated", newAnimal.getLastUpdated());
+        addAnimal.Parameters.AddWithValue("@LastUpdatedBy", newAnimal.getLastUpdatedBy());
+        addAnimal.ExecuteNonQuery();
+
+        txtAddName.Text = " ";
+
+        
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
