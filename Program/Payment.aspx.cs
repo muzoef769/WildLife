@@ -44,7 +44,7 @@ public partial class Payment : System.Web.UI.Page
     //        Label invNum = outInvGrid.Rows[e.RowIndex].FindControl("invNum") as Label;
 
     //        string query = "Update dbo.Invoice set InvoiceStatus = '" + ddl.Text + "' where InvoiceNumber='" + invNum.Text + "'";
-            
+
     //        using (SqlCommand command = new SqlCommand(query, connection))
     //        {
     //            connection.Open();
@@ -60,4 +60,19 @@ public partial class Payment : System.Web.UI.Page
 
     //    }
     //}
+
+    protected void gridRefresh_Click(object sender, EventArgs e)
+    {
+        outstandingSource.EnableCaching = false;
+        outInvGrid.DataBind();
+        outstandingSource.EnableCaching = true;
+
+        paidSource.EnableCaching = false;
+        paidGrid.DataBind();
+        paidSource.EnableCaching = true;
+
+        programSource.EnableCaching = false;
+        allInvGrid.DataBind();
+        programSource.EnableCaching = true;
+    }
 }
