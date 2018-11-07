@@ -11,23 +11,15 @@ using System.Web;
 public class Contact
 {
     private int ID;
-    private string firstName, lastName;
+    private string firstName;
+    private string lastName;
     private string email;
-    private string primaryPhone; //added phones
-    private string secondaryPhone; //added phones
+    private string primaryPhone;
+    private string secondaryPhone;
     private int orgID;
 
     private DateTime lastUpdated;
     private string lastUpdatedBy;
-    //Teacher constructor - OG constructor Will made
-    //public Contact(int teacherID, string teacherName, string teacherEmail, DateTime lastUpdated, string lastUpdatedBy)
-    //{
-    //    setTeacherID(teacherID);
-    //    setTeacherName(teacherName);
-    //    setTeacherEmail(teacherEmail);
-    //    setLastUpdated(lastUpdated);
-    //    setLastUpdatedBy(lastUpdatedBy);
-    //}
 
     //Constructor w/BOTH phone numbers
     public Contact(string firstName, string lastName, string contactEmail, string primaryPhone, string secondaryPhone, int orgID, DateTime lastUpdated, string lastUpdatedBy)
