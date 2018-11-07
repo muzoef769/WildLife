@@ -9,7 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows;
 
-public partial class Login : System.Web.UI.Page
+public partial class Default : System.Web.UI.Page
 {
     System.Data.SqlClient.SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
    // SqlConnection myConnection = new SqlConnection("server=localhost;database=WildlifeCenter;Trusted_Connection=True");
