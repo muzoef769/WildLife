@@ -8,48 +8,44 @@ using System.Web;
 /// </summary>
 public class Programs
 {
-    private int numKids;
-    private int numAdults;
-    private int totalPeople;
-    private int totalMileage;
-    private DateTime dateCreated;
-    private DateTime dateCompleted;
-    private string ageLevel;
-    private string status;
-    private string miscNotes;
-    private DateTime LastUpdated;
     private int ProgramID;
+    private string ProgramName;
+    private string ProgramType;
+    private int ProgramCost;
+    private int Capacity;
+    private DateTime LastUpdated;
     private string LastUpdatedBy;
 
-    public Programs(int numKids,
-        int numAdults, int totalPeople, int totalMileage,DateTime dateCreated,
-        DateTime dateCompleted, string ageLevel, string status, string miscNotes,
-        DateTime lastUpdated, string lastUpdatedBy, int programID)
+    public Programs(string programName,string programType,
+        int programCost, int capacity,
+        DateTime lastUpdated, string lastUpdatedBy)
     {
-        this.numKids = numKids;
-        this.numAdults = numAdults;
-        this.totalPeople = totalPeople;
-        this.totalMileage = totalMileage;
-        this.dateCreated = dateCreated;
-        this.dateCompleted = dateCompleted;
-        this.ageLevel = ageLevel;
-        this.status = status;
-        this.miscNotes = miscNotes;
+        ProgramName = programName;
+        ProgramType = programType;
+        ProgramCost = programCost;
+        Capacity = capacity;
         LastUpdated = lastUpdated;
         LastUpdatedBy = lastUpdatedBy;
-        this.ProgramID = programID;
     }
 
-    public int NumKids { get => numKids; set => numKids = value; }
-    public int NumAdults { get => numAdults; set => numAdults = value; }
-    public int TotalPeople { get => totalPeople; set => totalPeople = value; }
-    public int TotalMileage { get => totalMileage; set => totalMileage = value; }
-    public DateTime DateCreated { get => dateCreated; set => dateCreated = value; }
-    public DateTime DateCompleted { get => dateCompleted; set => dateCompleted = value; }
-    public string AgeLevel { get => ageLevel; set => ageLevel = value; }
-    public string Status { get => status; set => status = value; }
-    public string MiscNotes { get => miscNotes; set => miscNotes = value; }
+    public Programs(int programID, string programName,
+        string programType, int programCost,int capacity,
+        DateTime lastUpdated, string lastUpdatedBy)
+    {
+        ProgramID = programID;
+        ProgramName = programName;
+        ProgramType = programType;
+        ProgramCost = programCost;
+        Capacity = capacity;
+        LastUpdated = lastUpdated;
+        LastUpdatedBy = lastUpdatedBy;
+    }
+
+    public int ProgramID1 { get => ProgramID; set => ProgramID = value; }
+    public string ProgramName1 { get => ProgramName; set => ProgramName = value; }
+    public string ProgramType1 { get => ProgramType; set => ProgramType = value; }
+    public int ProgramCost1 { get => ProgramCost; set => ProgramCost = value; }
+    public int Capacity1 { get => Capacity; set => Capacity = value; }
     public DateTime LastUpdated1 { get => LastUpdated; set => LastUpdated = value; }
     public string LastUpdatedBy1 { get => LastUpdatedBy; set => LastUpdatedBy = value; }
-    public int ProgramID2 { get => ProgramID; set => ProgramID = value; }
 }

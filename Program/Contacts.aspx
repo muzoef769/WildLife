@@ -34,8 +34,7 @@
                                     UseSubmitBehavior="false"
                                     CauseValidation="true"
                                     Text="Submit Contact"
-                                    OnClick="submitContact"
-                                    data-toggle=""/>
+                                    OnClick="submitContact"/>
                             </div>
                         </div>
                     </div>
