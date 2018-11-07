@@ -4,8 +4,6 @@
     <div class="main">
 
 
-
-
         <div class="container-fluid PaymentContainer">
 
             <div class="card mx-auto ProgramCard" style="opacity: .8;">
@@ -71,10 +69,10 @@
                                     <AlternatingRowStyle BackColor="#CCCCFF" BorderColor="Black" BorderStyle="None" />
                                     <Columns>
                                         <asp:BoundField DataField="DateCreated" HeaderText="Date Created" SortExpression="DateCreated" />
-                                        <asp:BoundField DataField="InvoiceID" HeaderText="Invoice #" SortExpression="InvoiceID" />
+                                        <asp:BoundField DataField="InvoiceNumber" HeaderText="Invoice #" SortExpression="InvoiceNumber" />
                                         <asp:BoundField DataField="OrganizationName" HeaderText="Organization" SortExpression="OrganizationName" />
                                         <asp:BoundField DataField="PaymentType" HeaderText="Payment Type" SortExpression="PaymentType" />
-                                        <asp:BoundField DataField="TotalCost" HeaderText="Amount Due" SortExpression="TotalCost" />
+                                        <asp:BoundField DataField="TotalCost" DataFormatString="${0:###,###,###.00}" HeaderText="Amount" SortExpression="TotalCost" />
 
                                     </Columns>
 
@@ -89,11 +87,11 @@
                             <asp:GridView ID="GridView1" class="mx-auto d-flex justify-content-center table-b" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource3" EnableSortingAndPagingCallbacks="true" AllowPaging="True" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="#CCCCFF" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
-                                    <asp:BoundField DataField="TotalAmount" HeaderText="Total Amount" SortExpression="TotalAmount" />
+                                    <asp:BoundField DataField="TotalAmount" DataFormatString="${0:###,###,###.00}" HeaderText="Total Amount" SortExpression="TotalAmount" />
                                 </Columns>
                             </asp:GridView>
 
-                            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT p.[InvoiceID], FORMAT(DateCreated, 'yyyy-MM-dd') as 'DateCreated', o.[OrganizationName], p.[PaymentType], i.[TotalCost] FROM [Payment] p inner join [Organization] o on p.OrganizationID = o.OrganizationID inner join [Invoice] i on i.InvoiceID = p.InvoiceID WHERE MONTH(i.[DateCreated]) = @month ORDER BY [InvoiceID] ">
+                            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT i.[InvoiceNumber], FORMAT(DateCreated, 'yyyy-MM-dd') as 'DateCreated', o.[OrganizationName], p.[PaymentType], i.[TotalCost] FROM [Payment] p inner join [Organization] o on p.OrganizationID = o.OrganizationID inner join [Invoice] i on i.InvoiceID = p.InvoiceID WHERE MONTH(i.[DateCreated]) = @month ORDER BY DateCreated ">
                                 <SelectParameters>
                                     <asp:Parameter DefaultValue="1" Name="month" Type="Int32" />
                                 </SelectParameters>
@@ -112,7 +110,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <button id="Button2" class=" btn btn-primary PayButton2" runat="server" onclick="Button2_Click">Export To Excel</button>
+                        <asp:Button id="Button2" class=" btn btn-primary PayButton2" Text="Export To Excel" runat="server" onclick="Button2_Click"></asp:Button>
                     </div>
                 </div>
                 <div class="row">
@@ -127,20 +125,20 @@
                                 <AlternatingRowStyle BackColor="#CCCCFF" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="DateCreated" HeaderText="Date Created" SortExpression="DateCreated" />
-                                    <asp:BoundField DataField="InvoiceID" HeaderText="Invoice #" SortExpression="InvoiceID" />
+                                    <asp:BoundField DataField="InvoiceNumber" HeaderText="Invoice #" SortExpression="InvoiceNumber" />
                                     <asp:BoundField DataField="OrganizationName" HeaderText="Organization" SortExpression="OrganizationName" />
                                     <asp:BoundField DataField="PaymentType" HeaderText="Payment Type" SortExpression="PaymentType" />
-                                    <asp:BoundField DataField="TotalCost" HeaderText="Amount Due" SortExpression="TotalCost" />
+                                    <asp:BoundField DataField="TotalCost" DataFormatString="${0:###,###,###.00}" HeaderText="Amount" SortExpression="TotalCost" />
                                 </Columns>
                             </asp:GridView>
                             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>"
-                                SelectCommand="SELECT p.[InvoiceID], FORMAT(DateCreated, 'yyyy-MM-dd') as 'DateCreated', o.[OrganizationName], p.[PaymentType], i.[TotalCost] FROM [Payment] p inner join [Organization] o on p.OrganizationID = o.OrganizationID inner join [Invoice] i on i.InvoiceID = p.InvoiceID ORDER BY [InvoiceID] "></asp:SqlDataSource>
+                                SelectCommand="SELECT i.[InvoiceNumber], FORMAT(DateCreated, 'yyyy-MM-dd') as 'DateCreated', o.[OrganizationName], p.[PaymentType], i.[TotalCost] FROM [Payment] p inner join [Organization] o on p.OrganizationID = o.OrganizationID inner join [Invoice] i on i.InvoiceID = p.InvoiceID ORDER BY DateCreated "></asp:SqlDataSource>
 
                             <%-- <asp:Button ID="Button1"  CssClass=" PayButton" runat="server" Text="Export To Excel" OnClick="Button1_Click" />--%>
                         </div>
                     </div>
                 </div>
-                <button id="Button1" class=" btn btn-primary PayButton2" runat="server" onclick="Button1_Click">Export To Excel</button>
+                <asp:Button id="Button1" class=" btn btn-primary PayButton2" runat="server" Text="Export To Excel" onclick="Button1_Click"></asp:Button>
             </div>
         </div>
 
@@ -153,14 +151,14 @@
             <asp:GridView ID="invoiceGrid" runat="server" AutoGenerateColumns="False" AutoGenerateDeleteButton="True" AutoGenerateEditButton="True" DataSourceID="SqlDataSource4" ValidateRequestMode="Disabled">
                 <Columns>
                     <asp:BoundField DataField="DateCreated" HeaderText="Date Created" SortExpression="DateCreated" />
-                    <asp:BoundField DataField="InvoiceID" HeaderText="Invoice #" SortExpression="InvoiceID" />
+                    <asp:BoundField DataField="InvoiceNumber" HeaderText="Invoice #" SortExpression="InvoiceNumber" />
                     <asp:BoundField DataField="OrganizationName" HeaderText="Organization" SortExpression="OrganizationName" />
                     <asp:BoundField DataField="PaymentType" HeaderText="Payment Type" SortExpression="PaymentType" />
-                    <asp:BoundField DataField="TotalCost" HeaderText="Amount Due" SortExpression="TotalCost" />
+                    <asp:BoundField DataField="TotalCost" HeaderText="Amount" DataFormatString="${0:###,###,###.00}" SortExpression="TotalCost" />
                 </Columns>
             </asp:GridView>
             <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>"
-                SelectCommand="SELECT p.[InvoiceID], FORMAT(DateCreated, 'yyyy-MM-dd') as 'DateCreated', o.[OrganizationName], p.[PaymentType], i.[TotalCost] FROM [Payment] p inner join [Organization] o on p.OrganizationID = o.OrganizationID inner join [Invoice] i on i.InvoiceID = @invoice ORDER BY [InvoiceID]">
+                SelectCommand="SELECT i.[InvoiceNumber], FORMAT(DateCreated, 'yyyy-MM-dd') as 'DateCreated', o.[OrganizationName], p.[PaymentType], i.[TotalCost] FROM [Payment] p inner join [Organization] o on p.OrganizationID = o.OrganizationID inner join [Invoice] i on i.InvoiceID = @invoice ORDER BY DateCreated">
 
                 <SelectParameters>
                     <asp:ControlParameter ControlID="searchBox" Name="invoice" PropertyName="Text" Type="String" />
