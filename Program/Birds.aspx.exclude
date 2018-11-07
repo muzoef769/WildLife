@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Birds" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Birds.aspx.cs" Inherits="Birds" %>
+﻿<%--<%--<%--<%@ Page Title="Birds" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Birds.aspx.cs" Inherits="Birds" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <div class="container-fluid">
@@ -351,7 +351,7 @@
                 </div>
                 <div class="modal-footer">
                     <%--                    <button type="button" data-toggle="modal" data-target="#EditModal" class="btn btn-secondary" data-dismiss="modal">Edit</button>--%>
-                </div>
+               <%-- </div>
             </div>
         </div>
     </div>
@@ -415,4 +415,4 @@
         </div>
     </div>
 </asp:Content>
-
+--%>--%>--%>--%>

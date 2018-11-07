@@ -7,11 +7,12 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows;
 
 public partial class Login : System.Web.UI.Page
 {
-
-    SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
+    System.Data.SqlClient.SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
+   // SqlConnection myConnection = new SqlConnection("server=localhost;database=WildlifeCenter;Trusted_Connection=True");
     //NEED TO EDIT THIS CODE WHEN ON AWS
 
     protected void Page_Load(object sender, EventArgs e)
@@ -33,7 +34,7 @@ public partial class Login : System.Web.UI.Page
         //connect to database to retrieve stored password string
         try
         {
-            
+            SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
 
 
             //lblStatus.Text = "Database Connection Successful";
@@ -110,6 +111,15 @@ public partial class Login : System.Web.UI.Page
     }
     protected void btnRegister_Click(object sender, EventArgs e)
     {
+
+        //Validate Form is completely filled out before entering into DB
+
+        //if ((string.IsNullOrEmpty(txtFirstName.Text)) || (string.IsNullOrEmpty(txtLastName.Text) || (string.IsNullOrEmpty(txtNewUsername.Text))))
+        //{
+
+        //}
+
+
         User newUser = new User(
            txtNewUsername.Text,
            txtFirstName.Text,
@@ -119,12 +129,12 @@ public partial class Login : System.Web.UI.Page
             txtNewUsername.Text
             );
         String myQuery = "INSERT INTO [WildlifeCenter].[dbo].[User] (FirstName, LastName, Username, UserType, LastUpdated, LastUpdatedBy) VALUES (@firstName, @lastName, @userName, @userType, @lastUpdated, @lastUpdatedBy)";
-       
+
         try
         {
-            sc.Open();
+            myConnection.Open();
 
-            SqlCommand myCommand = new SqlCommand(myQuery, sc);
+            SqlCommand myCommand = new SqlCommand(myQuery, myConnection);
             myCommand.Parameters.AddWithValue("@userName", newUser.getUserName());
             myCommand.Parameters.AddWithValue("@firstName", newUser.getFirstName());
             myCommand.Parameters.AddWithValue("@lastName", newUser.getLastName());
@@ -138,38 +148,37 @@ public partial class Login : System.Web.UI.Page
         }
         catch (Exception E)
         {
-            txtNewUsername.Text = E.ToString();
+
         }
         finally
         {
-            sc.Close();
+            myConnection.Close();
         }
         try
         {
-          
+
             //myConnection.Open();
 
             //String myQuery2 = "SELECT MAX([UserID]) FROM [WildlifeCenter].[dbo].[User]";
             //SqlCommand myCommand2 = new SqlCommand(myQuery2, myConnection);
             //myCommand2.ExecuteNonQuery();
-            
 
-            sc.Close();
+
+            myConnection.Close();
 
             Password newPassword = new Password(
                 newUser.getUserID(),
                 txtNewUsername.Text,
-                "PBKDF2"
-                );
+                "PBKDF2");
 
             String myQuery3 = "INSERT INTO [WildlifeCenter].[dbo].[Password] (UserId, Username, PasswordHash) VALUES ((SELECT MAX([UserID]) FROM [WildlifeCenter].[dbo].[User]), @Username, @PasswordHash)";
 
-            sc.Open();
+            myConnection.Open();
 
-            SqlCommand myCommand3 = new SqlCommand(myQuery3, sc);
+            SqlCommand myCommand3 = new SqlCommand(myQuery3, myConnection);
             //myCommand3.Parameters.AddWithValue("@UserID", newPassword.getUserID());
             myCommand3.Parameters.AddWithValue("@Username", newPassword.getUserName());
-            myCommand3.Parameters.AddWithValue("@PasswordHash", PasswordHash.HashPassword(txtNewPassword.Text));
+            myCommand3.Parameters.AddWithValue("@PasswordHash", PasswordHash.HashPassword(txtNewPassword.Value));
 
 
             myCommand3.ExecuteNonQuery();
@@ -180,7 +189,7 @@ public partial class Login : System.Web.UI.Page
         }
         finally
         {
-            sc.Close();
+            myConnection.Close();
         }
 
 

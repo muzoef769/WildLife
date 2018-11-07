@@ -1,10 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="AddAnimal.aspx.cs" Inherits="AddAnimal" %>
+﻿<%--<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="AddAnimal.aspx.cs" Inherits="AddAnimal" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
 
      <%--<h1 class ="text-dark text-center" style="font:50px arial">Wildlife Center</h1>--%>
-    <div class="container jumbotron w-50 bg-white shadow"">
+   <%-- <div class="container jumbotron w-50 bg-white shadow"">
          <div class=" offset-2">
         <br />
              <asp:Label ID="Label1" runat="server" Text="Animal Status:  "></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="DropDownList1" runat="server">
@@ -64,4 +64,4 @@
 
 
 </asp:Content>
-
+--%>--%>

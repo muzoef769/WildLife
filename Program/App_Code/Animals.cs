@@ -17,14 +17,14 @@ public class Animals
     private string AnimalType; //This value will either be 'B' for bird, 'M' for Mammal, or 'R' for Reptile ------- changed to string
     //private DateTime dateAdded;   removed dateAdded
     //private int age               removed age
-    private char Status;
+    private string Status;
     //added species, scientificname to match DB
     private DateTime LastUpdated;
     private string LastUpdatedBy;
     Animals[] animalArray = new Animals[4];
 
 
-    public Animals(string species, string scientificName, string AnimalName, string AnimalType, char Status, DateTime lastUpdated, string lastUpdatedBy)
+    public Animals(string species, string scientificName, string AnimalName, string AnimalType, string Status, DateTime lastUpdated, string lastUpdatedBy)
     {
         
         
@@ -37,7 +37,7 @@ public class Animals
         setLastUpdatedBy(lastUpdatedBy);
     }
 
-    public Animals(int ID, string name, string species, string scientificName, string type, char status)
+    public Animals(int ID, string name, string species, string scientificName, string type, string status)
     {
         setAnimalID(ID);
         setAnimalName(name);
@@ -126,11 +126,11 @@ public class Animals
     {
         this.LastUpdatedBy = x;
     }
-    public char getStatus()
+    public string getStatus()
     {
         return this.Status;
     }
-    public void setStatus(char status)
+    public void setStatus(string status)
     {
         this.Status = status;
     }

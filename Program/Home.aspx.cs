@@ -74,7 +74,7 @@ public partial class Home : System.Web.UI.Page
            "JackRicci",
            txtAddName.Text,
            ddlAddType.SelectedValue.ToString(),
-          Convert.ToChar(ddlAddStatus.SelectedValue),
+          ddlAddStatus.SelectedValue,
            DateTime.Today,
            "Staff"
 

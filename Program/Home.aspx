@@ -66,7 +66,7 @@
     </div>
 
 
-     <div class="modal" id="AddModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal" id="AddModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-full" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -84,8 +84,9 @@
                         <div class=" col-md-8">
                             <h4>Animal Status: </h4>
                             <asp:DropDownList ID="ddlAddStatus" runat="server" CssClass="form-control-plaintext attributeDropDown" AutoCompleteType="Disabled">
-                                <asp:ListItem Value="1">Active</asp:ListItem>
-                                <asp:ListItem Value="0">Deactive</asp:ListItem>
+                                <asp:ListItem>Active</asp:ListItem>
+                                <asp:ListItem>Inactive</asp:ListItem>
+                                <asp:ListItem>Temporarily Inactive</asp:ListItem>
                             </asp:DropDownList>
                             <h4>Type: </h4>
                             <asp:DropDownList ID="ddlAddType" runat="server" CssClass="form-control-plaintext attributeDropDown" AutoCompleteType="Disabled">
@@ -97,9 +98,7 @@
                             <asp:TextBox ID="txtAddName" runat="server" CssClass="form-control" AutoCompleteType="Disabled" ReadOnly="False"></asp:TextBox>
                             
                             <br>
-                            <label for="exampleInputFile">Add Picture</label>
-                            <input type="file" id="exampleInputFile">
-                            <p class="help-block">Choose Picture of animal</p>
+                            
                         </div>
                         <!-- End  Description -->
 

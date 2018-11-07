@@ -16,8 +16,8 @@
            <br/>
            <br/>
            <br/>
-           <div class ="table-responsive">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"  DataKeyNames="AnimalID" Class ="table-responsive-md" DataSourceID="AnimalSQL" BackColor="White" HorizontalAlign="Left"  OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+          <div class ="table-responsive">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"  DataKeyNames="AnimalID" Class ="table-responsive-md" DataSourceID="AnimalSQL" BackColor="White" HorizontalAlign="Left"  OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowSorting="True">
                 <AlternatingRowStyle BackColor="#999999" BorderColor="#336600" />
                 <Columns>
                     <asp:CommandField ShowEditButton="True" ShowSelectButton="True" />
@@ -47,10 +47,14 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Status" SortExpression="Status">
                         <EditItemTemplate>
-                            <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("Status") %>' />
+                            <asp:DropDownList ID="DropDownList1" runat="server" SelectedValue='<%# Bind ("Status") %>' >
+                                <asp:ListItem>Active</asp:ListItem>
+                                <asp:ListItem>Inactive</asp:ListItem>
+                                <asp:ListItem>Temporarily Inactive</asp:ListItem>
+                            </asp:DropDownList>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("Status") %>' Enabled="false" />
+                           <asp:Label ID="lblStatus" runat="server" Text='<%# Bind("Status") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="LastUpdated" SortExpression="LastUpdated">
@@ -88,13 +92,7 @@
            <br/>
     
     
-
-   
-
-
-
-
-            <asp:SqlDataSource 
+    <asp:SqlDataSource 
                 ID="AnimalSQL" 
                 runat="server" 
                 ConflictDetection="CompareAllValues" 
@@ -108,35 +106,33 @@
                     <asp:Parameter Name="original_AnimalID" Type="Int32" />
                     <asp:Parameter Name="original_AnimalName" Type="String" />
                     <asp:Parameter Name="original_AnimalType" Type="String" />
-                    <asp:Parameter Name="original_Status" Type="Boolean" />
+                    <asp:Parameter Name="original_Status" Type="String" />
                     <asp:Parameter DbType="Date" Name="original_LastUpdated" />
                     <asp:Parameter Name="original_LastUpdatedBy" Type="String" />
                 </DeleteParameters>
                 <InsertParameters>
                     <asp:Parameter Name="AnimalName" Type="String" />
                     <asp:Parameter Name="AnimalType" Type="String" />
-                    <asp:Parameter Name="Status" Type="Boolean" />
+                    <asp:Parameter Name="Status" Type="String" />
                     <asp:Parameter DbType="Date" Name="LastUpdated" />
                     <asp:Parameter Name="LastUpdatedBy" Type="String" />
                 </InsertParameters>
                 <UpdateParameters>
                     <asp:Parameter Name="AnimalName" Type="String" />
                     <asp:Parameter Name="AnimalType" Type="String" />
-                    <asp:Parameter Name="Status" Type="Boolean" />
+                    <asp:Parameter Name="Status" Type="String" />
                     <asp:Parameter DbType="Date" Name="LastUpdated" />
                     <asp:Parameter Name="LastUpdatedBy" Type="String" />
                     <asp:Parameter Name="original_AnimalID" Type="Int32" />
                     <asp:Parameter Name="original_AnimalName" Type="String" />
                     <asp:Parameter Name="original_AnimalType" Type="String" />
-                    <asp:Parameter Name="original_Status" Type="Boolean" />
+                    <asp:Parameter Name="original_Status" Type="String" />
                     <asp:Parameter DbType="Date" Name="original_LastUpdated" />
                     <asp:Parameter Name="original_LastUpdatedBy" Type="String" />
                 </UpdateParameters>
             </asp:SqlDataSource>
 
-    
-
-
+   
 
 
 
@@ -160,8 +156,9 @@
                         <div class=" col-md-8">
                             <h4>Animal Status: </h4>
                             <asp:DropDownList ID="ddlAddStatus" runat="server" CssClass="form-control-plaintext attributeDropDown" AutoCompleteType="Disabled">
-                                <asp:ListItem Value="1">Active</asp:ListItem>
-                                <asp:ListItem Value="0">Deactive</asp:ListItem>
+                                <asp:ListItem>Active</asp:ListItem>
+                                <asp:ListItem>Inactive</asp:ListItem>
+                                <asp:ListItem>Temporarily Inactive</asp:ListItem>
                             </asp:DropDownList>
                             <h4>Type: </h4>
                             <asp:DropDownList ID="ddlAddType" runat="server" CssClass="form-control-plaintext attributeDropDown" AutoCompleteType="Disabled">
@@ -173,9 +170,7 @@
                             <asp:TextBox ID="txtAddName" runat="server" CssClass="form-control" AutoCompleteType="Disabled" ReadOnly="False"></asp:TextBox>
                             
                             <br>
-                            <label for="exampleInputFile">Add Picture</label>
-                            <input type="file" id="exampleInputFile">
-                            <p class="help-block">Choose Picture of animal</p>
+                            
                         </div>
                         <!-- End  Description -->
 
