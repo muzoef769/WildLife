@@ -7,19 +7,35 @@
 
             <div class="card mx-auto ProgramCard" style="opacity: .8;">
                 <div class="card-body">
-                    <div class="row">
-                        <asp:Button ID="gridRefresh" class="btn btn-warning btn-lg" runat="server" Text="Refresh Tables" onclick="gridRefresh_Click"/>
+                    <div class="row mr-auto">
+                        <asp:Button ID="gridRefresh" class="btn btn-refresh btn-lg" runat="server" Text="Refresh Tables" onclick="gridRefresh_Click"/>
+                        
                     </div>
-                    <div class="row">
+                    <br />
+                  <%--  <div class="row">
                         <div id="outInvGrids" class="col-md-12">
                             <h3 id="outPayTitle" class="  ProgramCardTitle d-flex justify-content-center table-responsive" style="margin-top: 15px;">Outstanding Invoices</h3>
                         </div>
-                    </div>
-                    <div class="row table-responsive">
-                        <div class="col-md-9 PayTable mx-auto d-flex justify-content-center  table table-borderless table-striped table-condensed ">
-                            <div id="outInvoices" style="overflow-x: auto;">
-                                <asp:GridView ID="outInvGrid" runat="server" DataKeyNames="InvoiceID" EnableSortingAndPagingCallbacks="false" AutoGenerateEditButton="True" AutoGenerateColumns="False" DataSourceID="outstandingSource" AllowPaging="True" AllowSorting="True" >
-                                    <AlternatingRowStyle BackColor="#CCCCFF" BorderColor="Black" BorderStyle="None" />
+                    </div>--%>
+
+
+                    <div class="accordion" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Outstanding Invoices
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+           <div class="col-12 PayTable mx-auto d-flex justify-content-center table-responsive-md table table-condensed table-bordered table-hover">
+        <div id="outInvoices" style="overflow-x: auto;">
+            <br />
+                                <asp:GridView ID="outInvGrid"  HeaderStyle-ForeColor="black" runat="server" DataKeyNames="InvoiceID" EnableSortingAndPagingCallbacks="false" AutoGenerateEditButton="True" AutoGenerateColumns="False" DataSourceID="outstandingSource" AllowPaging="True" AllowSorting="True" >
+                                   
                                     <Columns>
                                         <asp:BoundField DataField="InvoiceID" HeaderText="InvoiceID" SortExpression="InvoiceID" ReadOnly="true" Visible="False" />
                                         <asp:BoundField DataField="InvoiceNumber" HeaderText="Invoice #" SortExpression="InvoiceNumber" ReadOnly="true" />
@@ -55,22 +71,32 @@
                                     </UpdateParameters>
 
                                 </asp:SqlDataSource>
-                            </div>
-                        </div>
-                    </div>
+                     <br />
                     <button id="Button1" class=" btn btn-primary PayButton2" runat="server">Export To Excel</button>
+            <br />
+            <br />
 
-
-                    <div class="row">
-                        <div id="paidInvGrids" class="col-md-12">
-                            <h3 id="paidTitle" class="  ProgramCardTitle d-flex justify-content-center table-responsive" style="margin-top: 15px;">Fulfilled Invoices</h3>
+      </div></div>       </div>
                         </div>
-                    </div>
-                    <div class="row table-responsive">
-                        <div class="col-md-9 PayTable mx-auto d-flex justify-content-center  table table-borderless table-striped table-condensed ">
+                    
+          </div>
+  
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Fulfilled Invoices
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+      <div class="col-md-12 PayTable mx-auto d-flex justify-content-center  table-responsive-md table table-condensed table-bordered table-hover ">
                             <div id="paidInvoices" style="overflow-x: auto;">
-                                <asp:GridView ID="paidGrid" runat="server" DataKeyNames="InvoiceID" AutoGenerateEditButton="True" AutoGenerateColumns="False" DataSourceID="paidSource" AllowPaging="True" AllowSorting="True">
-                                    <AlternatingRowStyle BackColor="#CCCCFF" BorderColor="Black" BorderStyle="None" />
+            <br />
+
+                                <asp:GridView ID="paidGrid" runat="server"  HeaderStyle-ForeColor="black" DataKeyNames="InvoiceID" AutoGenerateEditButton="True" AutoGenerateColumns="False" DataSourceID="paidSource" AllowPaging="True" AllowSorting="True">
+                                  
                                     <Columns>
                                         <asp:BoundField DataField="InvoiceID" HeaderText="InvoiceID" SortExpression="InvoiceID" ReadOnly="true" Visible="False" />
                                         <asp:BoundField DataField="InvoiceNumber" HeaderText="Invoice #" SortExpression="InvoiceNumber" ReadOnly="true" />
@@ -105,24 +131,34 @@
                                         <asp:Parameter Name="InvoiceID" Type="String" />
                                     </UpdateParameters>
                                 </asp:SqlDataSource>
-                            </div>
-                        </div>
-                    </div>
+            <br />
+                            
                     <button id="Button2" class=" btn btn-primary PayButton2" runat="server">Export To Excel</button>
+            <br />
+            <br />
 
-
-
-
-                    <div class="row">
-                        <div id="allPayGrids" class="col-md-12">
-                            <h3 id="allPayTitle" class="  ProgramCardTitle d-flex justify-content-center table-responsive" style="margin-top: 15px;">All Invoices</h3>
+</div>
                         </div>
                     </div>
-                    <div class="row table-responsive">
-                        <div class="col-md-9 PayTable mx-auto d-flex justify-content-center  table table-borderless table-striped table-condensed ">
+
+      </div>     
+      </div>
+   
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+         All Invoices
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+       <div class="col-md-12 PayTable mx-auto d-flex justify-content-center table-responsive-md table table-condensed table-bordered table-hover ">
                             <div id="allInvoices" style="overflow-x: auto;">
-                                <asp:GridView ID="allInvGrid" runat="server" DataKeyNames="InvoiceID" AutoGenerateEditButton="True" AutoGenerateColumns="False" DataSourceID="programSource" AllowPaging="True" AllowSorting="True">
-                                    <AlternatingRowStyle BackColor="#CCCCFF" BorderColor="Black" BorderStyle="None" />
+                                <br />
+                                <asp:GridView ID="allInvGrid" runat="server"  HeaderStyle-ForeColor="black" DataKeyNames="InvoiceID" AutoGenerateEditButton="True" AutoGenerateColumns="False" DataSourceID="programSource" AllowPaging="True" AllowSorting="True">
+                                   
                                     <Columns>
                                         <asp:BoundField DataField="InvoiceID" HeaderText="InvoiceID" SortExpression="InvoiceID" ReadOnly="true" Visible="False" />
                                         <asp:BoundField DataField="InvoiceNumber" HeaderText="Invoice #" SortExpression="InvoiceNumber" ReadOnly="true" />
@@ -157,14 +193,47 @@
                                     </UpdateParameters>
 
                                 </asp:SqlDataSource>
-                            </div>
+                          
+            <br />
+                    
+                    <button id="Button3" class=" btn btn-primary PayButton2" runat="server">Export To Excel</button> 
+            <br />
+            <br />
+
+        </div>
+             </div>
+                        </div>
+
+    </div>
+    </div>
+  </div>
+
+
+
+
+<%--                    <div class="row table-responsive">
+                        <div class="col-md-9 PayTable mx-auto d-flex justify-content-center  table table-borderless table-striped table-condensed ">
+                           </div> 
+
+                    <div class="row">
+                        <div id="paidInvGrids" class="col-md-12">
+                            <h3 id="paidTitle" class="  ProgramCardTitle d-flex justify-content-center table-responsive" style="margin-top: 15px;">Fulfilled Invoices</h3>
                         </div>
                     </div>
-                    <button id="Button3" class=" btn btn-primary PayButton2" runat="server">Export To Excel</button>
+                    <div class="row table-responsive">
+                        
+
+                    <div class="row">
+                        <div id="allPayGrids" class="col-md-12">
+                            <h3 id="allPayTitle" class="  ProgramCardTitle d-flex justify-content-center table-responsive" style="margin-top: 15px;">All Invoices</h3>
+                        </div>
+                    </div>
+                    <div class="row table-responsive">
+                       
                 </div>
             </div>
-        </div>
-    </div>
+        </div>--%>
+   
     </div>
 </asp:Content>
 

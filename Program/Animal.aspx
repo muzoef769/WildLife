@@ -10,15 +10,29 @@
     <br/>
            <br/>
            <br/>
-           <div id="AddAnimalButton" class="col-md-12">
+     <div class="row">
+       <div class="col-md-6 mx-auto text-center">
+
+                   <h1 class="CardTitle">View Animal Info</h1>
+                </div>
+    </div>
+
+    <div class="row">
+        <br/>
+       <div id="AddAnimalButton" class="col-lg-2 col-md-4 col-s-4 mx-auto">
                     <a class="btn btn-primary d-flex  mx-auto justify-content-center btn-AddAnimal" href="#" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a>
                 </div>
+    </div>
+           
            <br/>
-           <br/>
-           <br/>
-          <div class ="table-responsive">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"  DataKeyNames="AnimalID" Class ="table-responsive-md" DataSourceID="AnimalSQL" BackColor="White" HorizontalAlign="Left"  OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowSorting="True">
-                <AlternatingRowStyle BackColor="#999999" BorderColor="#336600" />
+     
+          <div class ="table-responsive ">
+              <div class="row mx-auto ">
+                  <div class="col-xl-7 col-lg-12 col-md-12 col-s-12 ">
+                      <asp:GridView ID="GridView1" runat="server"  HeaderStyle-ForeColor="black" ItemStyle-ForeColor="black" AutoGenerateColumns="False"  DataKeyNames="AnimalID"
+                          Class =" table-responsive-md table table-condensed table-bordered table-hover AnimalCard" DataSourceID="AnimalSQL" BackColor="White" HorizontalAlign="Left"  
+                          OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowSorting="True">
+                
                 <Columns>
                     <asp:CommandField ShowEditButton="True" ShowSelectButton="True" />
                     <asp:TemplateField HeaderText="AnimalID" InsertVisible="False" SortExpression="AnimalID" Visible="false">
@@ -75,17 +89,21 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+                  </div>
+             
+            
     
-           
-            <asp:GridView ID="GridView2" runat="server" Visible="False" HorizontalAlign="Center"  BackColor="White">
-                <AlternatingRowStyle BackColor="#999999" BorderColor="#336600" />
+            <div class="col-xl-5 col-lg-12  col-md-12 col-s-12 ">
+            <asp:GridView ID="GridView2" runat="server" Visible="False" HorizontalAlign="Center"  Class ="table-responsive-md AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
+    
     </asp:GridView>
                <br />
                <br />
-           <asp:GridView ID="GridView3" runat="server" Visible="False" HorizontalAlign="Center"  BackColor="White">
-               <AlternatingRowStyle BackColor="#999999" BorderColor="#336600" />
+           <asp:GridView ID="GridView3" runat="server" Visible="False" HorizontalAlign="Center"  Class ="table-responsive-md AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
+              
            </asp:GridView>
-           
+                </div>
+            </div>
            </div>
                <br/>
            <br/>
@@ -137,10 +155,9 @@
 
 
 
-
-    <div class="modal" id="AddModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-full" role="document">
-            <div class="modal-content">
+    <div class="modal"  id="AddModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Add Animal</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -155,13 +172,13 @@
 
                         <div class=" col-md-8">
                             <h4>Animal Status: </h4>
-                            <asp:DropDownList ID="ddlAddStatus" runat="server" CssClass="form-control-plaintext attributeDropDown" AutoCompleteType="Disabled">
+                            <asp:DropDownList ID="ddlAddStatus" runat="server" CssClass="form-control-plaintext attributeDropDown" BorderStyle="solid" AutoCompleteType="Disabled">
                                 <asp:ListItem>Active</asp:ListItem>
                                 <asp:ListItem>Inactive</asp:ListItem>
                                 <asp:ListItem>Temporarily Inactive</asp:ListItem>
                             </asp:DropDownList>
                             <h4>Type: </h4>
-                            <asp:DropDownList ID="ddlAddType" runat="server" CssClass="form-control-plaintext attributeDropDown" AutoCompleteType="Disabled">
+                            <asp:DropDownList ID="ddlAddType" runat="server" CssClass="form-control-plaintext attributeDropDown" BorderStyle="solid"  AutoCompleteType="Disabled">
                                 <asp:ListItem>Bird</asp:ListItem>
                                 <asp:ListItem>Mammal</asp:ListItem>
                                 <asp:ListItem>Reptile</asp:ListItem>
@@ -194,9 +211,17 @@
                     <%--                    <button type="button" data-toggle="modal" data-target="#EditModal" class="btn btn-secondary" data-dismiss="modal">Edit</button>--%>
                 </div>
             </div>
-        </div>
-    </div>
+  </div>
+</div>
 
+
+
+
+
+
+
+
+    
 
 
 
