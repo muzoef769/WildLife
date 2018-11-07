@@ -5,7 +5,6 @@
         <div class="row">
             <div class="container-fluid AnimalReportContainer">
                 <div class="row">
-
                     <div class="col-lg-6 col-md- 6 col-s-12 col-xl-4">
                         <div class="card-mx-auto AnimalReportCard">
                             <div class="card-body">
@@ -35,13 +34,17 @@
                                     UseSubmitBehavior="false"
                                     CauseValidation="true"
                                     Text="Submit Contact"
-                                    OnClick="submitContact"/>
+                                    OnClick="submitContact"
+                                    data-toggle=""/>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <%--ADD POP UP MODAL--%>
+
     </div>
 </asp:Content>
 
