@@ -2,8 +2,17 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <div class="main">
-        <div class="row">
+
+        
             <div class=" container-fluid AnimalReportContainer">
+
+                <div class="row">
+       <div class="col-md-6 mx-auto text-center">
+
+                   <h1 class="CardTitle">View Animal Info</h1>
+                </div>
+    </div>
+
                 <div class="row">
 
                     <%--START of SEARH BY DATE--%>
@@ -127,7 +136,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        
     </div>
     <%--END OF ANNUAL ANIMAL REPORT CARD--%>
 </asp:Content>
