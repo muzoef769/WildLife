@@ -16,11 +16,9 @@
                                     Search by date and which animal(s) you would like
                                     to generate a report.
                                 </p>
-                                <asp:Label ID="lblStartDate" runat="server" Text=" Start Date: "></asp:Label>
                                 <asp:TextBox ID="txtStartDate" runat="server" Cssclass="form-control" TextMode="Date"></asp:TextBox>
                                 <br />
-                                <asp:Label ID="lblEndDate" runat="server" Text="End Date: "></asp:Label>
-                                <asp:TextBox ID="TextBox1" runat="server" Cssclass="form-control" TextMode="Date"></asp:TextBox>
+
                                 <br />
                                 <asp:Button ID="btnSearchByDate" runat="server"
                                     CssClass="btn btn-success"
