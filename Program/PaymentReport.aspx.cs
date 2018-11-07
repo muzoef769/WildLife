@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class PaymentRecords : System.Web.UI.Page
+public partial class PaymentReport : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -148,5 +151,42 @@ public partial class PaymentRecords : System.Web.UI.Page
     protected void Button2_Click(object sender, EventArgs e)
     {
         ExportToExcel(monthGrid);
+    }
+
+    protected void invoiceSearch_Click(object sender, EventArgs e)
+    {
+        using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+        {
+            string query = "SELECT p.[InvoiceID], FORMAT(DateCreated, 'yyyy-MM-dd') as 'DateCreated', o.[OrganizationName], p.[PaymentType], i.[TotalCost] FROM [Payment] p inner join [Organization] o on p.OrganizationID = o.OrganizationID inner join [Invoice] i on i.InvoiceID = @invoice ORDER BY [InvoiceID]";
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            { 
+                    string search = searchBox.Text;
+
+                    command.Parameters.AddWithValue("@search", "%" + search + "%");
+
+                    SqlDataAdapter da = new SqlDataAdapter(command);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        //GridView2.DataSource = ds;
+                        invoiceGrid.DataBind();
+                    }
+                    else
+                    {
+                        ds.Tables[0].Rows.Add(ds.Tables[0].NewRow());
+                        //GridView2.DataSource = ds;
+                        //GridView2.DataBind();
+                        int columncount = invoiceGrid.Rows[0].Cells.Count;
+                        invoiceGrid.Rows[0].Cells.Clear();
+                        invoiceGrid.Rows[0].Cells.Add(new TableCell());
+                        invoiceGrid.Rows[0].Cells[0].ColumnSpan = columncount;
+                        invoiceGrid.Rows[0].Cells[0].Text = "No Records Found";
+                    }
+            }
+        }
+
+            
     }
 }
