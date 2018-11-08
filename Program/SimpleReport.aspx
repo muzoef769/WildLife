@@ -7,7 +7,9 @@
 
                 <div class="card mx-auto  ProgramCard" style="opacity: 0.8;">
                     <div id="ann" class="card-body">
-                        <h1 id="annTitle" class=" ProgramCardTitle d-flex justify-content-center ">Annual Report</h1>
+                     <div class="row table-responsive">
+                         <div class="col-md-12 table">
+                               <%-- <h1 id="annTitle" class=" ProgramCardTitle d-flex justify-content-center ">Annual Report</h1>
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
 
@@ -45,7 +47,272 @@
 
                         </div>
                         <hr />
-                        <h1 id="monTitle" class=" ProgramCardTitle d-flex justify-content-center">Monthly Report</h1>
+                        <h1 id="monTitle" class=" ProgramCardTitle d-flex justify-content-center">Monthly Report</h1>--%>
+                         <asp:GridView ID="offsiteGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source6" GridLines="Both" AllowSorting="True">
+                                <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
+                                <Columns>
+                                    <asp:BoundField DataField="LocationType" HeaderText="Program Totals" SortExpression="LocationType" />
+                                    <asp:BoundField DataField="January" HeaderText="January" SortExpression="January" />
+                                    <asp:BoundField DataField="February" HeaderText="February" SortExpression="February" />
+                                    <asp:BoundField DataField="March" HeaderText="March" SortExpression="March" />
+                                    <asp:BoundField DataField="April" HeaderText="April" SortExpression="April" />
+                                    <asp:BoundField DataField="May" HeaderText="May" SortExpression="May" />
+                                    <asp:BoundField DataField="June" HeaderText="June" SortExpression="June" />
+                                    <asp:BoundField DataField="July" HeaderText="July" SortExpression="July" />
+                                    <asp:BoundField DataField="August" HeaderText="August" SortExpression="August" />
+                                    <asp:BoundField DataField="September" HeaderText="September" SortExpression="September" />
+                                    <asp:BoundField DataField="October" HeaderText="October" SortExpression="October" />
+                                    <asp:BoundField DataField="November" HeaderText="November" SortExpression="November" />
+                                    <asp:BoundField DataField="December" HeaderText="December" SortExpression="December" />
+                                </Columns>
+                            </asp:GridView>     
+                       <asp:SqlDataSource ID="source6" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT LocationType,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '1' and LocationType = 'Offsite') January, 
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '2' and LocationType = 'Offsite') February,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '3' and LocationType = 'Offsite') March,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '4' and LocationType = 'Offsite') April,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '5' and LocationType = 'Offsite') May,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '6' and LocationType = 'Offsite') June,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '7' and LocationType = 'Offsite') July,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '8' and LocationType = 'Offsite') August,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '9' and LocationType = 'Offsite') September,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '10' and LocationType = 'Offsite') October,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '11' and LocationType = 'Offsite') November,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '12' and LocationType = 'Offsite') December
+                            from NewProgram where LocationType = 'Offsite' group by LocationType" >
+
+                       </asp:SqlDataSource>
+                        <asp:GridView ID="onlineGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source5" GridLines="Both" AllowSorting="True" ShowHeader="False">
+                                <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
+                                <Columns>
+                                    <asp:BoundField DataField="LocationType" HeaderText="Type" SortExpression="LocationType" />
+                                    <asp:BoundField DataField="January" HeaderText="January" SortExpression="January" />
+                                    <asp:BoundField DataField="February" HeaderText="February" SortExpression="February" />
+                                    <asp:BoundField DataField="March" HeaderText="March" SortExpression="March" />
+                                    <asp:BoundField DataField="April" HeaderText="April" SortExpression="April" />
+                                    <asp:BoundField DataField="May" HeaderText="May" SortExpression="May" />
+                                    <asp:BoundField DataField="June" HeaderText="June" SortExpression="June" />
+                                    <asp:BoundField DataField="July" HeaderText="July" SortExpression="July" />
+                                    <asp:BoundField DataField="August" HeaderText="August" SortExpression="August" />
+                                    <asp:BoundField DataField="September" HeaderText="September" SortExpression="September" />
+                                    <asp:BoundField DataField="October" HeaderText="October" SortExpression="October" />
+                                    <asp:BoundField DataField="November" HeaderText="November" SortExpression="November" />
+                                    <asp:BoundField DataField="December" HeaderText="December" SortExpression="December" />
+                                </Columns>
+                            </asp:GridView>
+                       <asp:SqlDataSource ID="source5" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT LocationType,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '1' and LocationType = 'Online') January, 
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '2' and LocationType = 'Online') February,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '3' and LocationType = 'Online') March,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '4' and LocationType = 'Online') April,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '5' and LocationType = 'Online') May,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '6' and LocationType = 'Online') June,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '7' and LocationType = 'Online') July,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '8' and LocationType = 'Online') August,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '9' and LocationType = 'Online') September,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '10' and LocationType = 'Online') October,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '11' and LocationType = 'Online') November,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '12' and LocationType = 'Online') December,
+                            (select count(LocationType) from NewProgram where LocationType='Online') '2018 Total'
+                            from NewProgram where LocationType = 'Online' group by LocationType" >
+
+                       </asp:SqlDataSource>
+                        <asp:GridView ID="onsiteGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source4" GridLines="Both" AllowSorting="True" ShowHeader="False">
+                                <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
+                                <Columns>
+                                    <asp:BoundField DataField="LocationType" HeaderText="Type" SortExpression="LocationType" />
+                                    <asp:BoundField DataField="January" HeaderText="January" SortExpression="January" />
+                                    <asp:BoundField DataField="February" HeaderText="February" SortExpression="February" />
+                                    <asp:BoundField DataField="March" HeaderText="March" SortExpression="March" />
+                                    <asp:BoundField DataField="April" HeaderText="April" SortExpression="April" />
+                                    <asp:BoundField DataField="May" HeaderText="May" SortExpression="May" />
+                                    <asp:BoundField DataField="June" HeaderText="June" SortExpression="June" />
+                                    <asp:BoundField DataField="July" HeaderText="July" SortExpression="July" />
+                                    <asp:BoundField DataField="August" HeaderText="August" SortExpression="August" />
+                                    <asp:BoundField DataField="September" HeaderText="September" SortExpression="September" />
+                                    <asp:BoundField DataField="October" HeaderText="October" SortExpression="October" />
+                                    <asp:BoundField DataField="November" HeaderText="November" SortExpression="November" />
+                                    <asp:BoundField DataField="December" HeaderText="December" SortExpression="December" />
+                                </Columns>
+                            </asp:GridView>
+                       <asp:SqlDataSource ID="source4" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT LocationType,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '1' and LocationType = 'Onsite') January, 
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '2' and LocationType = 'Onsite') February,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '3' and LocationType = 'Onsite') March,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '4' and LocationType = 'Onsite') April,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '5' and LocationType = 'Onsite') May,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '6' and LocationType = 'Onsite') June,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '7' and LocationType = 'Onsite') July,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '8' and LocationType = 'Onsite') August,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '9' and LocationType = 'Onsite') September,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '10' and LocationType = 'Onsite') October,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '11' and LocationType = 'Onsite') November,
+                            (select count(LocationType) from NewProgram where Month(DateCompleted) = '12' and LocationType = 'Onsite') December,
+                            (select count(LocationType) from NewProgram where LocationType='Onsite') '2018 Total'
+                            from NewProgram where LocationType = 'Onsite' group by LocationType" >
+
+                       </asp:SqlDataSource>
+                        <asp:GridView ID="totProgramsGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source7" AllowSorting="True" ShowHeader="False">
+                                <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
+                                <Columns>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            Total Programs
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="January" HeaderText="January" SortExpression="January" />
+                                    <asp:BoundField DataField="February" HeaderText="February" SortExpression="February" />
+                                    <asp:BoundField DataField="March" HeaderText="March" SortExpression="March" />
+                                    <asp:BoundField DataField="April" HeaderText="April" SortExpression="April" />
+                                    <asp:BoundField DataField="May" HeaderText="May" SortExpression="May" />
+                                    <asp:BoundField DataField="June" HeaderText="June" SortExpression="June" />
+                                    <asp:BoundField DataField="July" HeaderText="July" SortExpression="July" />
+                                    <asp:BoundField DataField="August" HeaderText="August" SortExpression="August" />
+                                    <asp:BoundField DataField="September" HeaderText="September" SortExpression="September" />
+                                    <asp:BoundField DataField="October" HeaderText="October" SortExpression="October" />
+                                    <asp:BoundField DataField="November" HeaderText="November" SortExpression="November" />
+                                    <asp:BoundField DataField="December" HeaderText="December" SortExpression="December" />
+                                </Columns>
+                            </asp:GridView>
+                       <asp:SqlDataSource ID="source7" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT 
+                                (select count(LocationType) from NewProgram where Month(DateCompleted) = '1') January, 
+                                (select count(LocationType) from NewProgram where Month(DateCompleted) = '2') February,
+                                (select count(LocationType) from NewProgram where Month(DateCompleted) = '3') March,
+                                (select count(LocationType) from NewProgram where Month(DateCompleted) = '4') April,
+                                (select count(LocationType) from NewProgram where Month(DateCompleted) = '5') May,
+                                (select count(LocationType) from NewProgram where Month(DateCompleted) = '6') June,
+                                (select count(LocationType) from NewProgram where Month(DateCompleted) = '7') July,
+                                (select count(LocationType) from NewProgram where Month(DateCompleted) = '8') August,
+                                (select count(LocationType) from NewProgram where Month(DateCompleted) = '9') September,
+                                (select count(LocationType) from NewProgram where Month(DateCompleted) = '10') October,
+                                (select count(LocationType) from NewProgram where Month(DateCompleted) = '11') November,
+                                (select count(LocationType) from NewProgram where Month(DateCompleted) = '12') December,
+                                (select count(LocationType) from NewProgram) '2018 Total'
+                                from NewProgram where LocationType = 'Online' group by LocationType" >
+
+                       </asp:SqlDataSource>
+                        <asp:GridView ID="totAdultsGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source3" AllowSorting="True" ShowHeader="false">
+                                <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
+                                <Columns>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            Adults
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="January" HeaderText="January" SortExpression="January" />
+                                    <asp:BoundField DataField="February" HeaderText="February" SortExpression="February" />
+                                    <asp:BoundField DataField="March" HeaderText="March" SortExpression="March" />
+                                    <asp:BoundField DataField="April" HeaderText="April" SortExpression="April" />
+                                    <asp:BoundField DataField="May" HeaderText="May" SortExpression="May" />
+                                    <asp:BoundField DataField="June" HeaderText="June" SortExpression="June" />
+                                    <asp:BoundField DataField="July" HeaderText="July" SortExpression="July" />
+                                    <asp:BoundField DataField="August" HeaderText="August" SortExpression="August" />
+                                    <asp:BoundField DataField="September" HeaderText="September" SortExpression="September" />
+                                    <asp:BoundField DataField="October" HeaderText="October" SortExpression="October" />
+                                    <asp:BoundField DataField="November" HeaderText="November" SortExpression="November" />
+                                    <asp:BoundField DataField="December" HeaderText="December" SortExpression="December" />
+                                </Columns>
+                            </asp:GridView>
+                       <asp:SqlDataSource ID="source3" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT
+                            (select isnull(sum(TotalAdults), 0) from NewProgram where Month(DateCompleted) = '1') January, 
+                            (select isnull(sum(TotalAdults), 0) from NewProgram where Month(DateCompleted) = '2') February,
+                            (select isnull(sum(TotalAdults), 0) from NewProgram where Month(DateCompleted) = '3') March,
+                            (select isnull(sum(TotalAdults), 0) from NewProgram where Month(DateCompleted) = '4') April,
+                            (select isnull(sum(TotalAdults), 0) from NewProgram where Month(DateCompleted) = '5') May,
+                            (select isnull(sum(TotalAdults), 0) from NewProgram where Month(DateCompleted) = '6') June,
+                            (select isnull(sum(TotalAdults), 0) from NewProgram where Month(DateCompleted) = '7') July,
+                            (select isnull(sum(TotalAdults), 0) from NewProgram where Month(DateCompleted) = '8') August,
+                            (select isnull(sum(TotalAdults), 0) from NewProgram where Month(DateCompleted) = '9') September,
+                            (select isnull(sum(TotalAdults), 0) from NewProgram where Month(DateCompleted) = '10') October,
+                            (select isnull(sum(TotalAdults), 0) from NewProgram where Month(DateCompleted) = '11') November,
+                            (select isnull(sum(TotalAdults), 0) from NewProgram where Month(DateCompleted) = '12') December,
+                            (select isnull(sum(TotalAdults), 0) from NewProgram) '2018 Total'
+                            from NewProgram where LocationType='Online' group by LocationType " >
+
+                       </asp:SqlDataSource>
+                        <asp:GridView ID="totKidsGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source2" AllowSorting="True" ShowHeader="False">
+                                <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
+                                <Columns>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            Kids
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="January" HeaderText="January" SortExpression="January" />
+                                    <asp:BoundField DataField="February" HeaderText="February" SortExpression="February" />
+                                    <asp:BoundField DataField="March" HeaderText="March" SortExpression="March" />
+                                    <asp:BoundField DataField="April" HeaderText="April" SortExpression="April" />
+                                    <asp:BoundField DataField="May" HeaderText="May" SortExpression="May" />
+                                    <asp:BoundField DataField="June" HeaderText="June" SortExpression="June" />
+                                    <asp:BoundField DataField="July" HeaderText="July" SortExpression="July" />
+                                    <asp:BoundField DataField="August" HeaderText="August" SortExpression="August" />
+                                    <asp:BoundField DataField="September" HeaderText="September" SortExpression="September" />
+                                    <asp:BoundField DataField="October" HeaderText="October" SortExpression="October" />
+                                    <asp:BoundField DataField="November" HeaderText="November" SortExpression="November" />
+                                    <asp:BoundField DataField="December" HeaderText="December" SortExpression="December" />
+                                </Columns>
+                            </asp:GridView>
+                       <asp:SqlDataSource ID="source2" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT
+                            (select isnull(sum(TotalKids), 0) from NewProgram where Month(DateCompleted) = '1') January, 
+                            (select isnull(sum(TotalKids), 0) from NewProgram where Month(DateCompleted) = '2') February,
+                            (select isnull(sum(TotalKids), 0) from NewProgram where Month(DateCompleted) = '3') March,
+                            (select isnull(sum(TotalKids), 0) from NewProgram where Month(DateCompleted) = '4') April,
+                            (select isnull(sum(TotalKids), 0) from NewProgram where Month(DateCompleted) = '5') May,
+                            (select isnull(sum(TotalKids), 0) from NewProgram where Month(DateCompleted) = '6') June,
+                            (select isnull(sum(TotalKids), 0) from NewProgram where Month(DateCompleted) = '7') July,
+                            (select isnull(sum(TotalKids), 0) from NewProgram where Month(DateCompleted) = '8') August,
+                            (select isnull(sum(TotalKids), 0) from NewProgram where Month(DateCompleted) = '9') September,
+                            (select isnull(sum(TotalKids), 0) from NewProgram where Month(DateCompleted) = '10') October,
+                            (select isnull(sum(TotalKids), 0) from NewProgram where Month(DateCompleted) = '11') November,
+                            (select isnull(sum(TotalKids), 0) from NewProgram where Month(DateCompleted) = '12') December,
+                            (select isnull(sum(TotalKids), 0) from NewProgram) '2018 Total'
+                            from NewProgram where LocationType='Online' group by LocationType " >
+
+                       </asp:SqlDataSource>
+                        <asp:GridView ID="totPeopleGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source1" AllowSorting="True" ShowHeader="false">
+                            <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
+                            <Columns>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            Total People
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="January" HeaderText="January" SortExpression="January" />
+                                    <asp:BoundField DataField="February" HeaderText="February" SortExpression="February" />
+                                    <asp:BoundField DataField="March" HeaderText="March" SortExpression="March" />
+                                    <asp:BoundField DataField="April" HeaderText="April" SortExpression="April" />
+                                    <asp:BoundField DataField="May" HeaderText="May" SortExpression="May" />
+                                    <asp:BoundField DataField="June" HeaderText="June" SortExpression="June" />
+                                    <asp:BoundField DataField="July" HeaderText="July" SortExpression="July" />
+                                    <asp:BoundField DataField="August" HeaderText="August" SortExpression="August" />
+                                    <asp:BoundField DataField="September" HeaderText="September" SortExpression="September" />
+                                    <asp:BoundField DataField="October" HeaderText="October" SortExpression="October" />
+                                    <asp:BoundField DataField="November" HeaderText="November" SortExpression="November" />
+                                    <asp:BoundField DataField="December" HeaderText="December" SortExpression="December" />
+                                </Columns>
+                            </asp:GridView>
+                       <asp:SqlDataSource ID="source1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT
+                            (select isnull(sum(TotalPeople), 0) from NewProgram where Month(DateCompleted) = '1') January, 
+                            (select isnull(sum(TotalPeople), 0) from NewProgram where Month(DateCompleted) = '2') February,
+                            (select isnull(sum(TotalPeople), 0) from NewProgram where Month(DateCompleted) = '3') March,
+                            (select isnull(sum(TotalPeople), 0) from NewProgram where Month(DateCompleted) = '4') April,
+                            (select isnull(sum(TotalPeople), 0) from NewProgram where Month(DateCompleted) = '5') May,
+                            (select isnull(sum(TotalPeople), 0) from NewProgram where Month(DateCompleted) = '6') June,
+                            (select isnull(sum(TotalPeople), 0) from NewProgram where Month(DateCompleted) = '7') July,
+                            (select isnull(sum(TotalPeople), 0) from NewProgram where Month(DateCompleted) = '8') August,
+                            (select isnull(sum(TotalPeople), 0) from NewProgram where Month(DateCompleted) = '9') September,
+                            (select isnull(sum(TotalPeople), 0) from NewProgram where Month(DateCompleted) = '10') October,
+                            (select isnull(sum(TotalPeople), 0) from NewProgram where Month(DateCompleted) = '11') November,
+                            (select isnull(sum(TotalPeople), 0) from NewProgram where Month(DateCompleted) = '12') December,
+                            (select isnull(sum(TotalPeople), 0) from NewProgram) '2018 Total'
+                            from NewProgram where LocationType='Online' group by LocationType" >
+
+                       </asp:SqlDataSource>
+
+                         </div>
+                     </div>
+                        
+                      
                     </div>
                     <div id="jan" class="card-body" style="display: none;">
                         <h1 id="janTitle" class=" ProgramCardTitle d-flex justify-content-center ">January</h1>
