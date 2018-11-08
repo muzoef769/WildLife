@@ -27,9 +27,36 @@
     <br />
 
     <div class="table-responsive ">
-         <div class="row mx-auto d-flex justify-content-center ">
-      
-            <div class="col-xl-6 col-lg-12  col-md-12 col-s-12 ">
+        <div class="row mx-auto ">
+            <div class="col-xl-7 col-lg-12 col-md-12 col-s-12 ">
+                <asp:GridView ID="GridView1" runat="server" HeaderStyle-ForeColor="black" ItemStyle-ForeColor="black" AutoGenerateColumns="False" DataKeyNames="AnimalID"
+                    Class=" table-responsive-md table table-condensed table-bordered table-hover AnimalCard" DataSourceID="AnimalSQL" BackColor="White" HorizontalAlign="Left"
+                    OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowSorting="True" Width="800px" Height="600px">
+
+                    <AlternatingRowStyle BackColor="#CCFFCC" />
+
+                    <Columns>
+                        <asp:BoundField DataField="AnimalID" HeaderText="AnimalID" InsertVisible="False" ReadOnly="True" SortExpression="AnimalID" Visible="False" />
+                        <asp:BoundField DataField="AnimalName" HeaderText="AnimalName" SortExpression="AnimalName" />
+                        <asp:BoundField DataField="AnimalType" HeaderText="AnimalType" SortExpression="AnimalType" />
+                        <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
+                        <asp:BoundField DataField="Image" HeaderText="Image" SortExpression="Image" InsertVisible="False" Visible="False" />
+                        <asp:BoundField DataField="TotalKids" HeaderText="TotalKids" ReadOnly="True" SortExpression="TotalKids" />
+                        <asp:BoundField DataField="TotalAdults" HeaderText="TotalAdults" ReadOnly="True" SortExpression="TotalAdults" />
+                        <asp:BoundField DataField="TotalPeople" HeaderText="TotalPeople" ReadOnly="True" SortExpression="TotalPeople" />
+                        <asp:BoundField DataField="TotalPrograms" HeaderText="TotalPrograms" SortExpression="TotalPrograms" ReadOnly="True" />
+                        <asp:BoundField DataField="LastUpdatedBy" HeaderText="LastUpdatedBy" SortExpression="LastUpdatedBy" />
+                        <asp:ImageField DataImageUrlField="Image" ControlStyle-Height="100" ControlStyle-Width="100">
+                        </asp:ImageField>
+                    </Columns>
+
+<HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
+                </asp:GridView>
+            </div>
+
+
+
+            <div class="col-xl-5 col-lg-12  col-md-12 col-s-12 ">
                 <asp:GridView ID="GridView2" runat="server" Visible="False" HorizontalAlign="Center" Class="table-responsive-md AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
                 </asp:GridView>
                 <br />
@@ -38,71 +65,6 @@
                 </asp:GridView>
             </div>
         </div>
-
-         <div class="row mx-auto d-flex justify-content-center ">
-            <div class="col-xl-10 col-lg-12 col-md-12 col-s-12 ">
-                <asp:GridView ID="GridView1" runat="server" HeaderStyle-ForeColor="black" ItemStyle-ForeColor="black" AutoGenerateColumns="False" DataKeyNames="AnimalID"
-                    Class=" table-responsive-md table table-condensed table-bordered table-hover AnimalCard" DataSourceID="AnimalSQL" BackColor="White" HorizontalAlign="Left"
-                    OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowSorting="True">
-
-                    <Columns>
-                        <asp:CommandField ShowEditButton="True" ShowSelectButton="True" />
-                        <asp:TemplateField HeaderText="AnimalID" InsertVisible="False" SortExpression="AnimalID" Visible="false">
-                            <EditItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("AnimalID") %>'></asp:Label>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("AnimalID") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="AnimalName" SortExpression="AnimalName">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("AnimalName") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("AnimalName") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="AnimalType" SortExpression="AnimalType">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("AnimalType") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("AnimalType") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Status" SortExpression="Status">
-                            <EditItemTemplate>
-                                <asp:DropDownList ID="DropDownList1" runat="server" SelectedValue='<%# Bind ("Status") %>'>
-                                    <asp:ListItem>Active</asp:ListItem>
-                                    <asp:ListItem>Inactive</asp:ListItem>
-                                    <asp:ListItem>Temporarily Inactive</asp:ListItem>
-                                </asp:DropDownList>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="lblStatus" runat="server" Text='<%# Bind("Status") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="LastUpdated" SortExpression="LastUpdated">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("LastUpdated") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label4" runat="server" Text='<%# Bind("LastUpdated") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="LastUpdatedBy" SortExpression="LastUpdatedBy">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("LastUpdatedBy") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label5" runat="server" Text='<%# Bind("LastUpdatedBy") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
-            </div>
-              </div>
     </div>
     <br />
     <br />
@@ -113,11 +75,11 @@
         ID="AnimalSQL"
         runat="server"
         ConflictDetection="CompareAllValues"
-        ConnectionString="<%$ ConnectionStrings:connString %>"
+        ConnectionString="<%$ ConnectionStrings:WildlifeCenterConnectionString %>"
         DeleteCommand="DELETE FROM [Animal] WHERE [AnimalID] = @original_AnimalID AND [AnimalName] = @original_AnimalName AND [AnimalType] = @original_AnimalType AND [Status] = @original_Status AND [LastUpdated] = @original_LastUpdated AND [LastUpdatedBy] = @original_LastUpdatedBy"
         InsertCommand="INSERT INTO [Animal] ([AnimalName], [AnimalType], [Status], [LastUpdated], [LastUpdatedBy]) VALUES (@AnimalName, @AnimalType, @Status, @LastUpdated, @LastUpdatedBy)"
         OldValuesParameterFormatString="original_{0}"
-        SelectCommand="SELECT [AnimalID], [AnimalName], [AnimalType], [Status], Convert(CHAR(10),[LastUpdated],101) as [LastUpdated], [LastUpdatedBy] FROM [Animal]"
+        SelectCommand="SELECT Animal.AnimalID, Animal.AnimalName, Animal.AnimalType, Animal.Status, Animal.LastUpdatedBy, Animal.Image, SUM(ISNULL(NewProgram.TotalKids, '0')) AS TotalKids, SUM(ISNULL(NewProgram.TotalAdults, '0')) AS TotalAdults, SUM(ISNULL(NewProgram.TotalPeople, '0')) AS TotalPeople, COUNT(AssignAnimal.AssignAnimalID) AS TotalPrograms FROM Animal LEFT OUTER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID LEFT OUTER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID GROUP BY Animal.AnimalID, Animal.AnimalName, Animal.AnimalType, Animal.Status, Animal.LastUpdatedBy, Animal.Image"
         UpdateCommand="UPDATE [Animal] SET [AnimalName] = @AnimalName, [AnimalType] = @AnimalType, [Status] = @Status, [LastUpdated] = @LastUpdated, [LastUpdatedBy] = @LastUpdatedBy WHERE [AnimalID] = @original_AnimalID AND [AnimalName] = @original_AnimalName AND [AnimalType] = @original_AnimalType AND [Status] = @original_Status AND [LastUpdated] = @original_LastUpdated AND [LastUpdatedBy] = @original_LastUpdatedBy">
         <DeleteParameters>
             <asp:Parameter Name="original_AnimalID" Type="Int32" />

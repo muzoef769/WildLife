@@ -373,20 +373,20 @@ public partial class AddProgram : System.Web.UI.Page
     {
         programID = Convert.ToInt32(drpOrganizationList.SelectedValue); /*Grab ProgramID*/
 
-        if (txtMileage.Visible)
+        if (txtMileage.Visible ==true)
         {
             NewProgram newProgram = new NewProgram(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
                 /* people*/ 50, drpAgeLevel.SelectedValue, /*mileage*/ Int32.Parse(txtMileage.Text), "Completed",
-                /*time*/DateTime.Now, Convert.ToDateTime(datepicker.Value), drpLocationTypeList.SelectedValue,
-                txtMiscNotes.Value, programID, /*addressID*/10, DateTime.Now, "Raina");
+                /*time*/DateTime.Now, Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
+                 programID, /*addressID*/10, DateTime.Now, "Raina");
             NewProgram.programList.Add(newProgram);
         }
-        else
+        else if (txtMileage.Visible ==false) 
         {
             NewProgram newProgram = new NewProgram(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
                 /* people*/ 50, drpAgeLevel.SelectedValue, /*mileage*/ 0, "Completed",
-                /*time*/DateTime.Now, Convert.ToDateTime(datepicker.Value), drpLocationTypeList.SelectedValue,
-                txtMiscNotes.Value, programID, /*addressID*/10, DateTime.Now, "Raina");
+                /*time*/DateTime.Now, Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
+                 programID, /*addressID*/10, DateTime.Now, "Raina");
             NewProgram.programList.Add(newProgram);
         }
 
