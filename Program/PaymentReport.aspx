@@ -93,9 +93,9 @@
                     <div class="row table-responsive">
                         <div class="col-md-12 PayTable mx-auto d-flex justify-content-center table table-condensed table-bordered table-hover ">
                             <div id="month" style="overflow-x: auto;">
-                                <asp:GridView ID="monthGrid" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" EnableSortingAndPagingCallbacks="true" AllowPaging="True" AllowSorting="True">
+                                <asp:GridView ID="monthGrid" runat="server" HeaderStyle-ForeColor="black"  AutoGenerateColumns="False" DataSourceID="SqlDataSource2" EnableSortingAndPagingCallbacks="true" AllowPaging="True" AllowSorting="True">
                                     <AlternatingRowStyle BackColor="#CCCCFF" BorderColor="Black" BorderStyle="None" />
-                                    <Columns>
+                                    <Columns >
                                         <asp:BoundField DataField="DateCreated" HeaderText="Date Created" SortExpression="DateCreated" />
                                         <asp:BoundField DataField="InvoiceNumber" HeaderText="Invoice #" SortExpression="InvoiceNumber" />
                                         <asp:BoundField DataField="OrganizationName" HeaderText="Organization" SortExpression="OrganizationName" />
@@ -112,14 +112,14 @@
 
 
                         <div class="col-md-3 PayTable mx-auto d-flex justify-content-center table table-condensed table-bordered table-hover ">
-                            <asp:GridView ID="GridView1" class="mx-auto d-flex justify-content-center table-b" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource3" EnableSortingAndPagingCallbacks="true" AllowPaging="True" AllowSorting="True">
+                            <asp:GridView ID="GridView1" class="mx-auto d-flex justify-content-center table-b" runat="server"  HeaderStyle-ForeColor="black" AutoGenerateColumns="False" DataSourceID="SqlDataSource3" EnableSortingAndPagingCallbacks="true" AllowPaging="True" AllowSorting="True">
                                 <AlternatingRowStyle BackColor="#CCCCFF" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="TotalAmount" DataFormatString="${0:###,###,###.00}" HeaderText="Total Amount" SortExpression="TotalAmount" />
                                 </Columns>
                             </asp:GridView>
 
-                            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT i.[InvoiceNumber], FORMAT(DateCreated, 'yyyy-MM-dd') as 'DateCreated', o.[OrganizationName], p.[PaymentType], i.[TotalCost] FROM [Payment] p inner join [Organization] o on p.OrganizationID = o.OrganizationID inner join [Invoice] i on i.InvoiceID = p.InvoiceID WHERE MONTH(i.[DateCreated]) = @month ORDER BY DateCreated ">
+                            <asp:SqlDataSource ID="SqlDataSource2" runat="server"  ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT i.[InvoiceNumber], FORMAT(DateCreated, 'yyyy-MM-dd') as 'DateCreated', o.[OrganizationName], p.[PaymentType], i.[TotalCost] FROM [Payment] p inner join [Organization] o on p.OrganizationID = o.OrganizationID inner join [Invoice] i on i.InvoiceID = p.InvoiceID WHERE MONTH(i.[DateCreated]) = @month ORDER BY DateCreated ">
                                 <SelectParameters>
                                     <asp:Parameter DefaultValue="1" Name="month" Type="Int32" />
                                 </SelectParameters>
@@ -149,7 +149,7 @@
                 <div class="row table-responsive">
                     <div class="col-md-12 PayTable mx-auto d-flex justify-content-center table table-condensed table-bordered table-hover ">
                         <div id="ann" style="overflow-x: auto;">
-                            <asp:GridView ID="annualGrid" runat="Server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" EnableSortingAndPagingCallbacks="true" AllowPaging="True" AllowSorting="True">
+                            <asp:GridView ID="annualGrid" runat="Server" HeaderStyle-ForeColor="black" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" EnableSortingAndPagingCallbacks="true" AllowPaging="True" AllowSorting="True">
                                 
                                 <Columns>
                                     <asp:BoundField DataField="DateCreated" HeaderText="Date Created" SortExpression="DateCreated" />
