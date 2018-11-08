@@ -3,8 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
 
     <asp:ScriptManager runat="server"></asp:ScriptManager>
+
+    <%--Beginning container--%>
+
     <div class="AnimalReportContainer">
-        <div class="ProgramReportCard   ">
+        <div class="ProgramReportCard">
             <div class="row">
                 <div class="col-md-12 mx-auto d-flex justify-content-center">
                     <h1 class="heading-primary">Add Program</h1>
@@ -14,9 +17,7 @@
             <div class="row">
                 <div class="col-md-12 mx-auto d-flex justify-content-center Spacing">
                     <a href="#" id="btnAddOrg" class=" btn btn-primary LoginButton" runat="server" onclick="btnAddOrg_Click">Add Organization</a>
-
                 </div>
-
             </div>
 
 
@@ -30,7 +31,7 @@
 
                 </div>
                 <div class="col-md-3 mx-auto d-flex justify-content-center">
-                    <asp:DropDownList ID="drpOrganizationList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle" AppendDataBoundItems="True" DataSourceID="SqlDataSource3" DataTextField="OrganizationName" DataValueField="OrganizationID" OnSelectedIndexChanged="drpOrganizationList_IndexChanged" AutoPostBack="true">
+                    <asp:DropDownList ID="drpOrganizationList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle" AppendDataBoundItems="True" DataSourceID="SqlDataSource3" DataTextField="OrganizationName" DataValueField="OrganizationID" OnSelectedIndexChanged="DrpOrganizationList_IndexChanged" AutoPostBack="true">
                         <asp:ListItem Text="Select an Organization"></asp:ListItem>
                     </asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT OrganizationName, OrganizationID FROM Organization"></asp:SqlDataSource>
@@ -56,19 +57,17 @@
 
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div class="card-body">
-
-
                             <div class="row">
                                 <div class="col-md-4 mx-auto ">
 
-                                    <asp:DropDownList ID="drpProgramList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle" DataSourceID="SqlDataSource1" DataTextField="ProgramName" DataValueField="ProgramID" AppendDataBoundItems="True" OnSelectedIndexChanged="drpProgramList_SelectedIndexChanged" AutoPostBack="true">
+                                    <asp:DropDownList ID="drpProgramList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle" DataSourceID="SqlDataSource1" DataTextField="ProgramName" DataValueField="ProgramID" AppendDataBoundItems="True" OnSelectedIndexChanged="DrpProgramList_SelectedIndexChanged" AutoPostBack="true">
                                         <asp:ListItem Text="Select a Program Name"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                                 <div class="col-md-4 mx-auto ">
                                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT [ProgramID], [ProgramName] FROM [Program]"></asp:SqlDataSource>
 
-                                    <asp:DropDownList ID="drpLocationTypeList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle" AutoPostBack ="true" >
+                                    <asp:DropDownList ID="drpLocationTypeList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle" AutoPostBack="true">
                                         <asp:ListItem Text="Select a Location Type"></asp:ListItem>
                                         <asp:ListItem Value="Onsite" Text="Onsite"></asp:ListItem>
                                         <asp:ListItem Value="Offsite" Text="Offsite"></asp:ListItem>
@@ -80,22 +79,22 @@
                                     <br />
                                     <input runat="server" clientidmode="Static" type="date" id="datepicker">
                                 </div>
-
                             </div>
-
-
-
-
-                            <%--                    <asp:SqlDataSource ID="dsLocationType" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT DISTINCT [ProgramID], [ProgramType] FROM [Program]"></asp:SqlDataSource>--%>
-
-
                             <div class="row">
                                 <div class="col-md-4 mx-auto  Spacing">
 
                                     <asp:TextBox ID="txtKids" runat="server" Placeholder="Number of Kids"></asp:TextBox>
 
                                 </div>
+            
+                                            <div class="col-md-4">
+                                                <label for="txtMileage" class="label-style">Mileage</label>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <asp:TextBox ID="txtMileage" runat="server" Placeholder ="Enter Mileage"></asp:TextBox>
+                                            </div>
 
+                                        
                                 <div class="col-md-4 mx-auto  Spacing">
 
                                     <asp:TextBox ID="txtAdults" runat="server" Placeholder="Number of Adults"></asp:TextBox>
@@ -136,12 +135,6 @@
                                     </asp:DropDownList>
                                 </div>
 
-
-
-
-
-
-
                                 <div class="col-md-8 mx-auto Spacing">
                                     <h4>Notes</h4>
                                     <textarea id="txtMiscNotes" runat="server" cols="20" rows="2"></textarea>
@@ -156,7 +149,7 @@
                                             <asp:CheckBoxList ID="CheckBoxList2" runat="server" DataSourceID="SqlDataSource4" DataTextField="AnimalName" DataValueField="AnimalID"></asp:CheckBoxList>
                                         </div>
                                         <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT AnimalName, AnimalID FROM Animal Where AnimalType = 'Bird'"></asp:SqlDataSource>
-                                        <asp:Button ID="btnAllBirds" runat="server" Text="Select All" OnClick="btnAllBirds_Click" />
+                                        <asp:Button ID="btnAllBirds" runat="server" Text="Select All" OnClick="BtnAllBirds_Click" />
                                     </div>
 
 
@@ -166,7 +159,7 @@
                                             <asp:CheckBoxList ID="CheckBoxList3" runat="server" DataSourceID="SqlDataSource5" DataTextField="AnimalName" DataValueField="AnimalID"></asp:CheckBoxList>
                                         </div>
                                         <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT AnimalName, AnimalID FROM Animal Where AnimalType = 'Reptile'"></asp:SqlDataSource>
-                                        <asp:Button ID="btnAllReptiles" runat="server" Text="Select All" OnClick="btnAllReptiles_Click" />
+                                        <asp:Button ID="btnAllReptiles" runat="server" Text="Select All" OnClick="BtnAllReptiles_Click" />
                                     </div>
 
                                     <div class="col-4">
@@ -176,25 +169,20 @@
                                         </div>
                                         <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT AnimalName, AnimalID FROM Animal Where AnimalType = 'Mammal'"></asp:SqlDataSource>
                                         <div style="text-align: center">
-                                            <asp:Button ID="btnAllMammals" runat="server" Text="Select All" OnClick="btnAllMammals_Click" />
+                                            <asp:Button ID="btnAllMammals" runat="server" Text="Select All" OnClick="BtnAllMammals_Click" />
                                         </div>
-
-
-                                        <asp:Button ID="btnAddProgram" runat="server" Text="Add Another Program" OnClick="btnAddProgram_Click" />
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <div class="col-4 wrapper text-center">
+                                        <asp:Button ID="Button2" runat="server" Text="Add Another Program" OnClick="BtnAddProgram_Click" />
                                     </div>
                                 </div>
-
-
-
-
-
                             </div>
-
-
-
                         </div>
                     </div>
                 </div>
+
                 <div class="card">
                     <div class="card-header" id="headingTwo">
                         <h5 class="mb-0">
@@ -207,7 +195,7 @@
                             <div class="container-fluid" style="padding-top: 20px;">
                                 <asp:UpdatePanel runat="server" ID="clientPanel">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="drpContact" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle" OnSelectedIndexChanged="drpContact_SelectedIndexChanged" AutoPostBack="True">
+                                        <asp:DropDownList ID="drpContact" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle" OnSelectedIndexChanged="DrpContact_SelectedIndexChanged" AutoPostBack="True">
                                             <asp:ListItem Text="Select a Contact"></asp:ListItem>
                                         </asp:DropDownList>
                                     </ContentTemplate>
@@ -220,102 +208,57 @@
 
 
 
-                                 <asp:UpdatePanel runat="server" ID="UpdatePanel2" UpdateMode="Always">
+                                <asp:UpdatePanel runat="server" ID="UpdatePanel2" UpdateMode="Always">
                                     <ContentTemplate>
-                                <div class="main-container">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="txtFirstName" class="label-style">First Name</label>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
+                                        <div class="main-container">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label for="txtFirstName" class="label-style">First Name</label>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
 
-                                        </div>
+                                                </div>
 
-                                    </div>
+                                            </div>
 
 
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="txtLastName" class="label-style">Last Name</label>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <asp:TextBox ID="txtLastName" runat="server"></asp:TextBox>
-                                        </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label for="txtLastName" class="label-style">Last Name</label>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <asp:TextBox ID="txtLastName" runat="server"></asp:TextBox>
+                                                </div>
 
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="txtEmail" class="label-style">Email Address</label>
-                                        </div>
-                                        <div class="form-group  col-md-6">
-                                            <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
-                                        </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label for="txtEmail" class="label-style">Email Address</label>
+                                                </div>
+                                                <div class="form-group  col-md-6">
+                                                    <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+                                                </div>
 
-                                    </div>
-                                    <%--<div class="row">
-                                        <div class="col-xs-4">
-                                            <label for="txtAddress" class="label-style">Address</label>
-                                        </div>
-                                        <div class="form-group col-lg-4">
-                                            <asp:TextBox ID="txtAddress" runat="server"></asp:TextBox>
-                                        </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label for="txtPrimaryNumber" class="label-style">Primary Phone </label>
+                                                </div>
+                                                <div class="form-group  col-md-6">
+                                                    <asp:TextBox ID="txtPrimaryNumber" runat="server"></asp:TextBox>
+                                                </div>
 
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-4">
-                                            <label for="Country" class="label-style">Country</label>
-                                        </div>
-                                        <div class="form-group col-lg-4">
-                                            <asp:TextBox ID="txtCountry" runat="server"></asp:TextBox>
-                                        </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label for="txtSecondaryNumber" class="label-style">Secondary Phone </label>
+                                                </div>
+                                                <div class="form-group  col-md-6">
+                                                    <asp:TextBox ID="txtSecondaryNumber" runat="server"></asp:TextBox>
+                                                </div>
 
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-4">
-                                            <label for="txtCity" class="label-style">City</label>
-                                        </div>
-                                        <div class="form-group col-lg-4">
-                                            <asp:TextBox ID="txtCity" runat="server"></asp:TextBox>
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-4">
-                                            <label for="txtState" class="label-style">State/Province</label>
-                                        </div>
-                                        <div class="form-group col-lg-4">
-                                            <asp:TextBox ID="txtState" runat="server"></asp:TextBox>
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-4">
-                                            <label for="txtZip" class="label-style">Zip/Postal</label>
-                                        </div>
-                                        <div class="form-group col-lg-4">
-                                            <asp:TextBox ID="txtZip" runat="server"></asp:TextBox>
-                                        </div>
-
-                                    </div>--%>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="txtPrimaryNumber" class="label-style">Primary Phone </label>
-                                        </div>
-                                        <div class="form-group  col-md-6">
-                                            <asp:TextBox ID="txtPrimaryNumber" runat="server"></asp:TextBox>
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="txtSecondaryNumber" class="label-style">Secondary Phone </label>
-                                        </div>
-                                        <div class="form-group  col-md-6">
-                                            <asp:TextBox ID="txtSecondaryNumber" runat="server"></asp:TextBox>
-                                        </div>
-
-                                    </div>
+                                            </div>
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="drpContact" EventName="SelectedIndexChanged" />
@@ -323,115 +266,81 @@
                                     </Triggers>
 
                                 </asp:UpdatePanel>
-                                    <div class="button-container">
-                                    </div>
-
+                                <div class="button-container">
                                 </div>
 
                             </div>
+
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Billing Information
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <div class="container-fluid" style="padding-top: 20px;">
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Billing Information
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="container-fluid" style="padding-top: 20px;">
 
-                                <asp:UpdatePanel runat="server" ID="UpdatePanel1" UpdateMode="Conditional">
-                                    <ContentTemplate>
-                                        <div class="main-container">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <label for="txtFirstName" class="label-style">Program Base Cost</label>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-
-                                                </div>
-
+                            <asp:UpdatePanel runat="server" ID="UpdatePanel1" UpdateMode="Conditional">
+                                <ContentTemplate>
+                                    <div class="main-container">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="txtProgramCost" class="label-style">Program Base Cost</label>
                                             </div>
-
-
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <label for="txtLastName" class="label-style">Mileage</label>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                                                </div>
-
+                                            <div class="form-group col-md-6">
+                                                <asp:TextBox ID="txtProgramCost" runat="server"></asp:TextBox>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <label for="txtEmail" class="label-style">Total Cost</label>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-                                                </div>
-
-                                            </div>
-
-                                            <%--<div class="row">
-                                        <div class="col-xs-4">
-                                            <label for="txtPrimaryNumber" class="label-style">Invoice Number</label>
                                         </div>
-                                        <div class="form-group col-lg-4">
-                                            <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+
+                                        
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="txtTotalCost" class="label-style">Total Cost</label>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <asp:TextBox ID="txtTotalCost" runat="server"></asp:TextBox>
+                                            </div>
                                         </div>
+                                    </div>
+
+                                    <div class="button-container">
+                                    </div>
 
                                     </div>
-                                    <div class="row">
-                                        <div class="col-xs-4">
-                                            <label for="txtSecondaryNumber" class="label-style">Secondary Phone Number</label>
-                                        </div>
-                                        <div class="form-group col-lg-4">
-                                            <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
-                                        </div>--%>
-                                        </div>
+                                </ContentTemplate>
+                                <Triggers>
+                                    <asp:AsyncPostBackTrigger ControlID="drpContact" />
 
-                                        <div class="button-container">
-                                        </div>
+                                </Triggers>
 
-                                        </div>
-                                    </ContentTemplate>
-                                    <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="drpContact" />
-
-                                    </Triggers>
-
-                                </asp:UpdatePanel>
-                            </div>
+                            </asp:UpdatePanel>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 mx-auto d-flex justify-content-center Spacing">
-                        <a href="#" id="A1" class=" btn btn-primary LoginButton" runat="server" onclick="Submit_Click">Submit</a>
-                        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
-                    </div>
-
                 </div>
             </div>
 
-
-
-
-
-            <!-- end accordion -->
-
-
-
-
+            <div class="row">
+                <div class="col-md-12 mx-auto d-flex justify-content-center Spacing">
+                    <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-success" OnClick="SubmitProgram"/>
+                </div>
+            </div>
         </div>
 
+        <!-- end accordion -->
+
+
+
+
     </div>
+
     <!-- end container -->
 
 

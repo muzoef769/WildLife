@@ -17,7 +17,9 @@ public class NewProgram
     private string ageLevel, status, miscNotes, locationType;
     private DateTime lastUpdated;
     private string lastUpdatedBy;
-    public NewProgram(int kids, int adults, int people, string ageLevel, int mileage, string status, DateTime timeSlot, DateTime dateCompleted, string notes, string locationType, int programID, int addressID, DateTime lastUpdated, string lastUpdatedBy)
+    public NewProgram(int kids, int adults, int people, string ageLevel, int mileage, string status,
+        DateTime timeSlot, DateTime dateCompleted, string notes, string locationType, int programID,
+        int addressID, DateTime lastUpdated, string lastUpdatedBy)
     {
 
         setNumKids(kids);
@@ -25,27 +27,6 @@ public class NewProgram
         setTotalPeople(people);
         setAgeLevel(ageLevel);
         setMileage(mileage);
-        setProgramStatus(status);
-        setTimeSlot(timeSlot);
-        setDateCompleted(dateCompleted);
-        setMiscNotes(notes);
-        setLocationType(locationType);
-
-
-        setProgramID(programID);
-        setAddressID(addressID);
-        setLastUpdated(lastUpdated);
-        setLastUpdatedBy(lastUpdatedBy);
-    }
-
-    public NewProgram(int kids, int adults, int people, string ageLevel, string status, DateTime timeSlot, DateTime dateCompleted, string notes, string locationType, int programID, int addressID, DateTime lastUpdated, string lastUpdatedBy)
-    {
-
-        setNumKids(kids);
-        setNumAdults(adults);
-        setTotalPeople(people);
-        setAgeLevel(ageLevel);
-
         setProgramStatus(status);
         setTimeSlot(timeSlot);
         setDateCompleted(dateCompleted);
@@ -92,18 +73,7 @@ public class NewProgram
     {
         return this.miscNotes;
     }
-    //public int getAssignEmployeeID()
-    //{
-    //    return this.assignEmployeeID;
-    //}
-    //public int getAssignAnimalID()
-    //{
-    //    return this.assignAnimalID;
-    //}
-    //public int getInvoiceID()
-    //{
-    //    return this.invoiceID;
-    //}
+
     public string getLocationType()
     {
         return this.locationType;
@@ -177,18 +147,7 @@ public class NewProgram
     {
         this.status = x;
     }
-    //public void setAssignEmployeeID(int x)
-    //{
-    //    this.assignEmployeeID = x;
-    //}
-    //public void setAssignAnimalID(int x)
-    //{
-    //    this.assignAnimalID = x;
-    //}
-    //public void setInvoiceID(int x)
-    //{
-    //    this.invoiceID = x;
-    //}
+
     public void setTimeSlot(DateTime x)
     {
         this.timeSlot = x;
