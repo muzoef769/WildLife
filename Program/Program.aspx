@@ -4,22 +4,49 @@
     <br />
     <br />
     <br />
+    <script>$("button").click(function(){
+  var columns_container = $(".dynamic-columns");
+  if (!columns_container.hasClass("expanded")) {
+    $(".dynamic-columns .col:first").removeClass("col-xs-2");
+    $(".dynamic-columns .col:first").addClass("col-xs-1");
+    
+    $(".dynamic-columns .col:last-child").removeClass("col-xs-8");
+    $(".dynamic-columns .col:last-child").addClass("col-xs-9");
+    columns_container.toggleClass("expanded");
+  }
+  else {
+    $(".dynamic-columns .col:first").removeClass("col-xs-1");
+    $(".dynamic-columns .col:first").addClass("col-xs-2");
+    
+    $(".dynamic-columns .col:last-child").removeClass("col-xs-9");
+    $(".dynamic-columns .col:last-child").addClass("col-xs-8");
+    columns_container.toggleClass("expanded");
+  }
+});</script>
+
+
     <div class="row">
         <div class="col-md-6 mx-auto text-center">
-            <h1>View Program Info</h1>
+            <h1 class="CardTitle">View Program Info</h1>
         </div>
     </div>
 
+
     <div class="row">
         <br />
-        <asp:Button ID="btnAddProgram"
+        <div id="AddAnimalButton" class="col-lg-2 col-md-4 col-s-4 mx-auto">
+             <asp:Button ID="btnAddProgram"
             runat="server"
-            CssClass="btn btn-success"
+            CssClass="btn btn-primary d-flex  mx-auto justify-content-center btn-AddAnimal"
             UseSubmitBehavior="false"
             CauseValidation="true"
             Text="Add Program"
             OnClick="redirectProgram" />
+        </div>
     </div>
+
+
+    
 
     <br />
 

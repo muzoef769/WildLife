@@ -6,14 +6,20 @@ using System.Web;
 /// <summary>
 /// Summary description for NewProgram
 /// </summary>
-public class NewPrograms
+public class NewProgram
 {
-    private int newProgramID, programID, numKids, numAdults, totalPeople, totalMileage;
-    private DateTime dateCreated, dateCompleted;
-    private string ageLevel, status, miscNotes;
+    public static double baseCost = 0;
+    public static List<NewProgram> programList = new List<NewProgram>();
+    public static int btnCount = 0;
+
+    private int newProgramID, programID, addressID, numKids, numAdults, totalPeople, totalMileage;
+    private DateTime timeSlot, dateCompleted;
+    private string ageLevel, status, miscNotes, locationType;
     private DateTime lastUpdated;
     private string lastUpdatedBy;
-    public NewPrograms(int kids, int adults, int people, string ageLevel, int mileage, string status, string notes, DateTime dateCreated, DateTime dateCompleted, int programID, DateTime lastUpdated, string lastUpdatedBy)
+    public NewProgram(int kids, int adults, int people, string ageLevel, int mileage, string status,
+        DateTime timeSlot, DateTime dateCompleted, string notes, string locationType, int programID,
+        int addressID, DateTime lastUpdated, string lastUpdatedBy)
     {
 
         setNumKids(kids);
@@ -21,14 +27,19 @@ public class NewPrograms
         setTotalPeople(people);
         setAgeLevel(ageLevel);
         setMileage(mileage);
-        setMiscNotes(notes);
-        setDateCreated(dateCreated);
-        setDateCompleted(dateCompleted);
         setProgramStatus(status);
+        setTimeSlot(timeSlot);
+        setDateCompleted(dateCompleted);
+        setMiscNotes(notes);
+        setLocationType(locationType);
+
+
         setProgramID(programID);
+        setAddressID(addressID);
         setLastUpdated(lastUpdated);
         setLastUpdatedBy(lastUpdatedBy);
     }
+
     //Getters
     public int getNewProgramID()
     {
@@ -62,21 +73,14 @@ public class NewPrograms
     {
         return this.miscNotes;
     }
-    //public int getAssignEmployeeID()
-    //{
-    //    return this.assignEmployeeID;
-    //}
-    //public int getAssignAnimalID()
-    //{
-    //    return this.assignAnimalID;
-    //}
-    //public int getInvoiceID()
-    //{
-    //    return this.invoiceID;
-    //}
-    public DateTime getDateCreated()
+
+    public string getLocationType()
     {
-        return this.dateCreated;
+        return this.locationType;
+    }
+    public DateTime getTimeSlot()
+    {
+        return this.timeSlot;
     }
     public DateTime getDateCompleted()
     {
@@ -85,6 +89,10 @@ public class NewPrograms
     public string getProgramStatus()
     {
         return this.status;
+    }
+    public int getAddressID()
+    {
+        return this.addressID;
     }
     public DateTime getLastUpdated()
     {
@@ -107,6 +115,10 @@ public class NewPrograms
     {
         this.numKids = x;
     }
+    public void setAddressID(int x)
+    {
+        this.addressID = x;
+    }
     public void setNumAdults(int x)
     {
         this.numAdults = x;
@@ -127,25 +139,18 @@ public class NewPrograms
     {
         this.miscNotes = x;
     }
+    public void setLocationType(string x)
+    {
+        this.locationType = x;
+    }
     public void setProgramStatus(string x)
     {
         this.status = x;
     }
-    //public void setAssignEmployeeID(int x)
-    //{
-    //    this.assignEmployeeID = x;
-    //}
-    //public void setAssignAnimalID(int x)
-    //{
-    //    this.assignAnimalID = x;
-    //}
-    //public void setInvoiceID(int x)
-    //{
-    //    this.invoiceID = x;
-    //}
-    public void setDateCreated(DateTime x)
+
+    public void setTimeSlot(DateTime x)
     {
-        this.dateCreated = x;
+        this.timeSlot = x;
     }
     public void setDateCompleted(DateTime x)
     {

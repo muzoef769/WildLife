@@ -334,7 +334,8 @@ body {
 .modal {
     min-width: 100%;
     margin: 0;
-  
+  background-color:whitesmoke !important;
+  opacity:.75 !important;
     padding-top: 5%;
     font-family: 'Raleway', sans-serif !important;
 }
@@ -845,7 +846,7 @@ table-responsive {
 
 .PayTable {
     width: 100%;
-    padding-left: -30% !important;
+    
 }
 
 .table-responsive {

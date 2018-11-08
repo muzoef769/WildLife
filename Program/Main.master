@@ -88,12 +88,12 @@
             <%--<h3 class="display-3 text-center mt-md-2"><%:Page.Title %></h3>--%>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <footer class="fixed-bottom">
-                <p class="text-white-50">&copy; <%: DateTime.Now.Year %> - The Wildlife Center of Virginia. All Rights Reserved.</p>
-            </footer>
+           
         </div>
             
     </form>
-
+     <footer >
+                <p class="text-white-50">&copy; <%: DateTime.Now.Year %> - The Wildlife Center of Virginia. All Rights Reserved.</p>
+            </footer>
 </body>
 </html>
