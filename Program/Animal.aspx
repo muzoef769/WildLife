@@ -27,8 +27,20 @@
     <br />
 
     <div class="table-responsive ">
-        <div class="row mx-auto ">
-            <div class="col-xl-7 col-lg-12 col-md-12 col-s-12 ">
+         <div class="row mx-auto d-flex justify-content-center ">
+      
+            <div class="col-xl-6 col-lg-12  col-md-12 col-s-12 ">
+                <asp:GridView ID="GridView2" runat="server" Visible="False" HorizontalAlign="Center" Class="table-responsive-md AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
+                </asp:GridView>
+                <br />
+                <br />
+                <asp:GridView ID="GridView3" runat="server" Visible="False" HorizontalAlign="Center" Class="table-responsive-md AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
+                </asp:GridView>
+            </div>
+        </div>
+
+         <div class="row mx-auto d-flex justify-content-center ">
+            <div class="col-xl-10 col-lg-12 col-md-12 col-s-12 ">
                 <asp:GridView ID="GridView1" runat="server" HeaderStyle-ForeColor="black" ItemStyle-ForeColor="black" AutoGenerateColumns="False" DataKeyNames="AnimalID"
                     Class=" table-responsive-md table table-condensed table-bordered table-hover AnimalCard" DataSourceID="AnimalSQL" BackColor="White" HorizontalAlign="Left"
                     OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowSorting="True">
@@ -90,18 +102,7 @@
                     </Columns>
                 </asp:GridView>
             </div>
-
-
-
-            <div class="col-xl-5 col-lg-12  col-md-12 col-s-12 ">
-                <asp:GridView ID="GridView2" runat="server" Visible="False" HorizontalAlign="Center" Class="table-responsive-md AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
-                </asp:GridView>
-                <br />
-                <br />
-                <asp:GridView ID="GridView3" runat="server" Visible="False" HorizontalAlign="Center" Class="table-responsive-md AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
-                </asp:GridView>
-            </div>
-        </div>
+              </div>
     </div>
     <br />
     <br />
