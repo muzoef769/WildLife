@@ -7,6 +7,7 @@
 
                 <div class="card mx-auto  ProgramCard" style="opacity: 0.8;">
                     <div id="ann" class="card-body">
+                        <h1 class="ProgramCardTitle d-flex justify-content-center">Program Totals</h1>
                      <div class="row table-responsive">
                          <div class="col-md-12 table">
                                <%-- <h1 id="annTitle" class=" ProgramCardTitle d-flex justify-content-center ">Annual Report</h1>
@@ -314,7 +315,7 @@
                         
                       
                     </div>
-                    <div id="jan" class="card-body" style="display: none;">
+                    <%--<div id="jan" class="card-body" style="display: none;">
                         <h1 id="janTitle" class=" ProgramCardTitle d-flex justify-content-center ">January</h1>
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
@@ -866,7 +867,7 @@
                             <asp:SqlDataSource ID="SqlDataSource44" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT ProgramType, count(ProgramType) as 'Number of Programs' FROM dbo.Program p join dbo.NewProgram np on p.ProgramID = np.ProgramID WHERE MONTH(np.DateCompleted) = '12' Group by ProgramType"></asp:SqlDataSource>
                         </div>
 
-                    </div>
+                    </div>--%>
                     <hr />
                     <div id="animalReport" class="card-body">
                         <h1 id="aniTitle" class=" ProgramCardTitle d-flex justify-content-center">Annual Animal Statistics</h1>
@@ -874,9 +875,9 @@
                             <asp:GridView ID="animalGrid" runat="server" AllowSorting="True" EnableSortingAndPagingCallbacks="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource48" ForeColor ="#000000">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
-                                    <asp:BoundField DataField="AnimalName" HeaderText="AnimalName" SortExpression="AnimalName" />
+                                    <asp:BoundField DataField="AnimalName" HeaderText="Animal Name" SortExpression="AnimalName" />
                                     <asp:BoundField DataField="Programs" HeaderText="Programs" ReadOnly="True" SortExpression="Programs" />
-                                    <asp:BoundField DataField="TotalPeople" HeaderText="TotalPeople" SortExpression="TotalPeople" />
+                                    <asp:BoundField DataField="TotalPeople" HeaderText="Total People" SortExpression="TotalPeople" />
                                 </Columns>
                             </asp:GridView>
                             <asp:SqlDataSource ID="SqlDataSource48" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT a.AnimalName, count(aa.AnimalID) as Programs, np.TotalPeople 
@@ -888,7 +889,7 @@
                 </div>
             </div>
         </div>
-        <ul class="container MonthNav">
+        <%--<ul class="container MonthNav">
             <h3><u>Month</u></h3>
             <li class="MonthLi" id="janBtn">January</li>
 
@@ -916,7 +917,7 @@
 
 
 
-        </ul>
+        </ul>--%>
 
 
 
