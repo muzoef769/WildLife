@@ -208,8 +208,8 @@ public partial class Animal : System.Web.UI.Page
     {
 
 
-        string AnimalProgram = "SELECT Animal.AnimalName, SUM(NewProgram.TotalKids) AS TotalKids, SUM(NewProgram.TotalAdults) AS TotalAdults, SUM(NewProgram.TotalPeople) AS TotalPeople, COUNT(NewProgram.ProgramID) AS 'Total Programs' " +
-            "FROM AssignAnimal INNER JOIN  NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID INNER JOIN  Animal ON AssignAnimal.AnimalID = Animal.AnimalID INNER JOIN  Program ON NewProgram.ProgramID = Program.ProgramID WHERE AssignAnimal.AnimalID = @AnimalID GROUP BY Animal.AnimalName";
+        //string AnimalProgram = "SELECT Animal.AnimalName, SUM(NewProgram.TotalKids) AS TotalKids, SUM(NewProgram.TotalAdults) AS TotalAdults, SUM(NewProgram.TotalPeople) AS TotalPeople, COUNT(NewProgram.ProgramID) AS 'Total Programs' " +
+        //    "FROM AssignAnimal INNER JOIN  NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID INNER JOIN  Animal ON AssignAnimal.AnimalID = Animal.AnimalID INNER JOIN  Program ON NewProgram.ProgramID = Program.ProgramID WHERE AssignAnimal.AnimalID = @AnimalID GROUP BY Animal.AnimalName";
 
 
 
@@ -220,15 +220,15 @@ public partial class Animal : System.Web.UI.Page
 
 
 
-        SqlCommand cmd = sc.CreateCommand();
-        cmd.CommandType = CommandType.Text;
-        cmd.CommandText = AnimalProgram;
-        cmd.Parameters.AddWithValue("@AnimalID", id);
-        SqlDataAdapter da = new SqlDataAdapter(cmd);
-        DataTable dt = new DataTable();
-        da.Fill(dt);
-        GridView2.DataSource = dt;
-        GridView2.DataBind();
+        //SqlCommand cmd = sc.CreateCommand();
+        //cmd.CommandType = CommandType.Text;
+        //cmd.CommandText = AnimalProgram;
+        //cmd.Parameters.AddWithValue("@AnimalID", id);
+        //SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //DataTable dt = new DataTable();
+        //da.Fill(dt);
+        //GridView2.DataSource = dt;
+        //GridView2.DataBind();
 
         string programInfo = "SELECT Animal.AnimalName, Program.ProgramName, Program.ProgramType, format(Program.ProgramCost,'C','en-us') as [Cost], Convert(CHAR(10),[NewProgram].[DateCompleted],101) as [Date] FROM Animal INNER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID INNER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID INNER JOIN Program ON NewProgram.ProgramID = Program.ProgramID WHERE AssignAnimal.AnimalID = @AnimalID";
 
@@ -246,7 +246,7 @@ public partial class Animal : System.Web.UI.Page
 
 
 
-        GridView2.Visible = true;
+        //GridView2.Visible = true;
         GridView3.Visible = true;
 
 

@@ -54,18 +54,18 @@
                             the selected month.
                                 </p>
                                 <asp:DropDownList ID="drpMonthList" runat="server" CssClass="form-control-sm">
-                                    <asp:ListItem>January</asp:ListItem>
-                                    <asp:ListItem>February</asp:ListItem>
-                                    <asp:ListItem>March</asp:ListItem>
-                                    <asp:ListItem>April</asp:ListItem>
-                                    <asp:ListItem>May</asp:ListItem>
-                                    <asp:ListItem>June</asp:ListItem>
-                                    <asp:ListItem>July</asp:ListItem>
-                                    <asp:ListItem>August</asp:ListItem>
-                                    <asp:ListItem>September</asp:ListItem>
-                                    <asp:ListItem>October</asp:ListItem>
-                                    <asp:ListItem>November</asp:ListItem>
-                                    <asp:ListItem>December</asp:ListItem>
+                                    <asp:ListItem Value="1">January</asp:ListItem>
+                                    <asp:ListItem Value="2">February</asp:ListItem>
+                                    <asp:ListItem Value="3">March</asp:ListItem>
+                                    <asp:ListItem Value="4">April</asp:ListItem>
+                                    <asp:ListItem Value="5">May</asp:ListItem>
+                                    <asp:ListItem Value="6">June</asp:ListItem>
+                                    <asp:ListItem Value="7">July</asp:ListItem>
+                                    <asp:ListItem Value="8">August</asp:ListItem>
+                                    <asp:ListItem Value="9">September</asp:ListItem>
+                                    <asp:ListItem Value="10">October</asp:ListItem>
+                                    <asp:ListItem Value="11">November</asp:ListItem>
+                                    <asp:ListItem Value="12">December</asp:ListItem>
                                 </asp:DropDownList>
                                 <br />
                                 <br />
@@ -96,6 +96,7 @@
                                     <asp:ListItem>2015</asp:ListItem>
                                     <asp:ListItem>2016</asp:ListItem>
                                     <asp:ListItem>2017</asp:ListItem>
+                                    <asp:ListItem>2018</asp:ListItem>
                                 </asp:DropDownList>
                                 <br />
                                 <br />
@@ -117,7 +118,7 @@
         <div class="row">
             <div class="container-fluid AnimalReportContainer">
                 <div class="row justify-content-center">
-                    <div class="col-md-3">
+                    <div class="col-md-12">
                         <div class="card mx-auto AnimalReportCard">
                             <div class="card-body">
                                 <asp:GridView ID="grdViewReport" 

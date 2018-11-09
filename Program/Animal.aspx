@@ -27,7 +27,29 @@
     <br />
 
     <div class="table-responsive ">
-        <div class="row mx-auto ">
+        <div class="row mx-auto d-flex justify-content-center ">
+      
+            <div class="col-xl-6 col-lg-12  col-md-12 col-s-12 ">
+               <%-- <asp:GridView ID="GridView2" runat="server" Visible="False" HorizontalAlign="Center" Class="table-responsive-md AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
+                </asp:GridView>--%>
+                <br />
+                <br />
+                <asp:GridView ID="GridView3" runat="server" Visible="False" HorizontalAlign="Center" Class="table-responsive-md AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
+                </asp:GridView>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div class="row mx-auto d-flex justify-content-center ">
             <div class="col-xl-7 col-lg-12 col-md-12 col-s-12 ">
                 <asp:GridView ID="GridView1" runat="server" HeaderStyle-ForeColor="black" ItemStyle-ForeColor="black" AutoGenerateColumns="False" DataKeyNames="AnimalID"
                     Class=" table-responsive-md table table-condensed table-bordered table-hover AnimalCard" DataSourceID="AnimalSQL" BackColor="White" HorizontalAlign="Left"
@@ -36,6 +58,7 @@
                     <AlternatingRowStyle BackColor="#CCFFCC" />
 
                     <Columns>
+                        <asp:CommandField ShowSelectButton="True" />
                         <asp:BoundField DataField="AnimalID" HeaderText="AnimalID" InsertVisible="False" ReadOnly="True" SortExpression="AnimalID" Visible="False" />
                         <asp:BoundField DataField="AnimalName" HeaderText="AnimalName" SortExpression="AnimalName" />
                         <asp:BoundField DataField="AnimalType" HeaderText="AnimalType" SortExpression="AnimalType" />
@@ -47,6 +70,7 @@
                         <asp:BoundField DataField="TotalPrograms" HeaderText="TotalPrograms" SortExpression="TotalPrograms" ReadOnly="True" />
                         <asp:BoundField DataField="LastUpdatedBy" HeaderText="LastUpdatedBy" SortExpression="LastUpdatedBy" />
                         <asp:ImageField DataImageUrlField="Image" ControlStyle-Height="100" ControlStyle-Width="100">
+<ControlStyle Height="100px" Width="100px"></ControlStyle>
                         </asp:ImageField>
                     </Columns>
 
@@ -56,14 +80,7 @@
 
 
 
-            <div class="col-xl-5 col-lg-12  col-md-12 col-s-12 ">
-                <asp:GridView ID="GridView2" runat="server" Visible="False" HorizontalAlign="Center" Class="table-responsive-md AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
-                </asp:GridView>
-                <br />
-                <br />
-                <asp:GridView ID="GridView3" runat="server" Visible="False" HorizontalAlign="Center" Class="table-responsive-md AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
-                </asp:GridView>
-            </div>
+            
         </div>
     </div>
     <br />

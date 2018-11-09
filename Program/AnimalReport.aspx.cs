@@ -12,6 +12,7 @@ using System.IO;
 
 public partial class AnimalReport : System.Web.UI.Page
 {
+    static int Month;
     protected void Page_Load(object sender, EventArgs e)
     {
     }
@@ -20,7 +21,7 @@ public partial class AnimalReport : System.Web.UI.Page
         using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
         {
             connection.Open();
-            string sql = "SELECT AnimalName, AnimalID FROM Animal";
+            string sql = "SELECT Animal.AnimalName, Animal.AnimalType, Animal.Status, SUM(ISNULL(NewProgram.TotalKids, '0')) AS TotalKids, SUM(ISNULL(NewProgram.TotalAdults, '0')) AS TotalAdults, SUM(ISNULL(NewProgram.TotalPeople, '0')) AS TotalPeople, COUNT(AssignAnimal.AssignAnimalID) AS TotalPrograms, Animal.LastUpdatedBy FROM Animal LEFT OUTER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID LEFT OUTER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID GROUP BY Animal.AnimalName, Animal.AnimalType, Animal.Status, Animal.LastUpdatedBy";
             using(SqlDataAdapter sda = new SqlDataAdapter(sql, connection))
             {
                 DataSet data = new DataSet();
@@ -57,10 +58,46 @@ public partial class AnimalReport : System.Web.UI.Page
     }
     protected void generateAnnualReport(object sender, EventArgs e)
     {
+        using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+        {
+            connection.Open();
+            string sql = "SELECT Animal.AnimalName, Animal.AnimalType, Animal.Status, SUM(ISNULL(NewProgram.TotalKids, '0')) AS TotalKids, SUM(ISNULL(NewProgram.TotalAdults, '0')) AS TotalAdults, SUM(ISNULL(NewProgram.TotalPeople, '0')) AS TotalPeople, COUNT(AssignAnimal.AssignAnimalID) AS TotalPrograms, Animal.LastUpdatedBy FROM Animal LEFT OUTER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID LEFT OUTER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID WHERE YEAR(NewProgram.DateCompleted) = " + drpYearList.SelectedValue + "GROUP BY Animal.AnimalName, Animal.AnimalType, Animal.Status, Animal.LastUpdatedBy;";
+            using (SqlDataAdapter sda = new SqlDataAdapter(sql, connection))
+            {
+                DataSet data = new DataSet();
+                sda.Fill(data);
+                this.grdViewReport.DataSource = data;
+                grdViewReport.DataBind();
+            }
+        }
+
+
+
+
+
+
+
 
     }
     protected void generateMonthReport(object sender, EventArgs e)
     {
+        
+
+        using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+        {
+            connection.Open();
+            string sql = "SELECT Animal.AnimalName, Animal.AnimalType, Animal.Status, SUM(ISNULL(NewProgram.TotalKids, '0')) AS TotalKids, SUM(ISNULL(NewProgram.TotalAdults, '0')) AS TotalAdults, SUM(ISNULL(NewProgram.TotalPeople, '0')) AS TotalPeople, COUNT(AssignAnimal.AssignAnimalID) AS TotalPrograms, Animal.LastUpdatedBy FROM Animal LEFT OUTER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID LEFT OUTER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID WHERE MONTH(NewProgram.DateCompleted) = " + drpMonthList.SelectedValue + "GROUP BY Animal.AnimalName, Animal.AnimalType, Animal.Status, Animal.LastUpdatedBy;";
+            using (SqlDataAdapter sda = new SqlDataAdapter(sql, connection))
+            {
+                DataSet data = new DataSet();
+                sda.Fill(data);
+                this.grdViewReport.DataSource = data;
+                grdViewReport.DataBind();
+            }
+        }
+
+
+
 
     }
 }
