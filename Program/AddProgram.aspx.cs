@@ -236,7 +236,7 @@ public partial class AddProgram : System.Web.UI.Page
                "[DateCompleted], [LocationType], [MiscNotes], [ProgramID], [AddressID],[LastUpdated], [LastUpdatedBy]) VALUES (" +
                "@kid, @adult, @totalPeople, @age, @mileage, @status, @time, @complete," +
                "@location, @miscNotes, @programid, @addressid, @LU, @LUB)";
-                
+
                 using (SqlCommand command = new SqlCommand(insertIntoNewProgram, connection))
                 {
                     command.Parameters.AddWithValue("@kid", NewProgram.programList[j].getNumKids());
@@ -373,22 +373,30 @@ public partial class AddProgram : System.Web.UI.Page
     {
         programID = Convert.ToInt32(drpOrganizationList.SelectedValue); /*Grab ProgramID*/
 
-        if (txtMileage.Visible ==true)
-        {
-            NewProgram newProgram = new NewProgram(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
-                /* people*/ 50, drpAgeLevel.SelectedValue, /*mileage*/ Int32.Parse(txtMileage.Text), "Completed",
-                /*time*/DateTime.Now, Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
-                 programID, /*addressID*/10, DateTime.Now, "Raina");
-            NewProgram.programList.Add(newProgram);
-        }
-        else if (txtMileage.Visible ==false) 
-        {
-            NewProgram newProgram = new NewProgram(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
-                /* people*/ 50, drpAgeLevel.SelectedValue, /*mileage*/ 0, "Completed",
-                /*time*/DateTime.Now, Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
-                 programID, /*addressID*/10, DateTime.Now, "Raina");
-            NewProgram.programList.Add(newProgram);
-        }
+        //if (txtMileage.Visible == true)
+        //{
+        //    NewProgram newProgram = new NewProgram(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
+        //        /* people*/ 50, drpAgeLevel.SelectedValue, /*mileage*/ Int32.Parse(txtMileage.Text), "Completed",
+        //        /*time*/DateTime.Now, Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
+        //         programID, /*addressID*/10, DateTime.Now, "Raina");
+        //    NewProgram.programList.Add(newProgram);
+        //}
+        //else if (txtMileage.Visible == false)
+        //{
+        //    NewProgram newProgram = new NewProgram(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
+        //        /* people*/ 50, drpAgeLevel.SelectedValue, /*mileage*/ 0, "Completed",
+        //        /*time*/DateTime.Now, Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
+        //         programID, /*addressID*/10, DateTime.Now, "Raina");
+        //    NewProgram.programList.Add(newProgram);
+        //}
+
+        NewProgram newProgram = new NewProgram(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
+               /* people*/ 50, drpAgeLevel.SelectedValue, "Completed",
+               /*time*/DateTime.Now, Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
+                programID, /*addressID*/10, DateTime.Now, "Raina");
+        NewProgram.programList.Add(newProgram);
+
+
 
         double totalCost;
         NewProgram.btnCount += 1;
@@ -399,11 +407,27 @@ public partial class AddProgram : System.Web.UI.Page
         drpLocationTypeList.SelectedValue = null;
         drpProgramList.SelectedValue = null;
         NewProgram.baseCost = 250 + (160 * (NewProgram.programList.Count - 1));
+        txtBaseCost.Text = NewProgram.baseCost.ToString();
 
         //Assigning to textboxes for testing
         //totalCost = NewProgram.baseCost + (Convert.ToDouble(txtMileage.Text) * .57);
-        txtProgramCost.Text = NewProgram.baseCost.ToString();
-        txtMileage.Text = NewProgram.programList.Count.ToString();
+        ////txtProgramCost.Text = NewProgram.baseCost.ToString();
+        //txtMileage.Text = NewProgram.programList.Count.ToString();
         //txtTotalCost.Text = totalCost.ToString();()
+
+
+    }
+
+    protected void drpLocationTypeList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        string locationType = drpLocationTypeList.SelectedValue;
+        if (locationType == "Onsite" || locationType == "Online")
+        {
+            programLoc.Visible = false;
+        }
+        else
+        {
+            programLoc.Visible = true;
+        }
     }
 }

@@ -67,7 +67,7 @@
                                 <div class="col-md-4 mx-auto ">
                                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT [ProgramID], [ProgramName] FROM [Program]"></asp:SqlDataSource>
 
-                                    <asp:DropDownList ID="drpLocationTypeList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle" AutoPostBack="true">
+                                    <asp:DropDownList ID="drpLocationTypeList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle" AutoPostBack="true" OnSelectedIndexChanged="drpLocationTypeList_SelectedIndexChanged">
                                         <asp:ListItem Text="Select a Location Type"></asp:ListItem>
                                         <asp:ListItem Value="Onsite" Text="Onsite"></asp:ListItem>
                                         <asp:ListItem Value="Offsite" Text="Offsite"></asp:ListItem>
@@ -87,12 +87,7 @@
 
                                 </div>
             
-                                            <div class="col-md-4">
-                                                <label for="txtMileage" class="label-style">Mileage</label>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <asp:TextBox ID="txtMileage" runat="server" Placeholder ="Enter Mileage"></asp:TextBox>
-                                            </div>
+                                           
 
                                         
                                 <div class="col-md-4 mx-auto  Spacing">
@@ -175,7 +170,7 @@
                                     <br />
                                     <br />
                                     <div class="col-4 wrapper text-center">
-                                        <asp:Button ID="Button2" runat="server" Text="Add Another Program" OnClick="BtnAddProgram_Click" />
+                                        <asp:Button ID="Button2" runat="server" Text="Add Program" OnClick="BtnAddProgram_Click" />
                                     </div>
                                 </div>
                             </div>
@@ -275,11 +270,11 @@
                     </div>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" id ="programLoc" runat ="server">
                 <div class="card-header" id="headingThree">
                     <h5 class="mb-0">
                         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Billing Information
+                            Program Location
                         </button>
                     </h5>
                 </div>
@@ -292,24 +287,54 @@
                                     <div class="main-container">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label for="txtProgramCost" class="label-style">Program Base Cost</label>
+                                                <label for="txtStreet" class="label-style">Street</label>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <asp:TextBox ID="txtProgramCost" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="txtStreet" runat="server" placeholder ="Street"></asp:TextBox>
                                             </div>
                                         </div>
-
-                                        
 
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label for="txtTotalCost" class="label-style">Total Cost</label>
+                                                <label for="txtCity" class="label-style">City</label>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <asp:TextBox ID="txtTotalCost" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="txtCity" runat="server" placeholder ="City"></asp:TextBox>
                                             </div>
                                         </div>
-                                    </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="txtState" class="label-style">State</label>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <asp:TextBox ID="txtState" runat="server" placeholder ="State"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="txtZipCode" class="label-style">Zip Code</label>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <asp:TextBox ID="txtZipCode" runat="server" placeholder ="Zip Code"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                         <div class="col-md-4">
+                                                <label for="txtMileage" class="label-style">Mileage</label>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <asp:TextBox ID="txtMileage" runat="server" Placeholder ="Enter Mileage"></asp:TextBox>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                <label for="txtBaseCost" class="label-style">BaseCost</label>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <asp:TextBox ID="txtBaseCost" runat="server" Placeholder ="Base Cost" ReadOnly ="true"></asp:TextBox>
+                                            </div>
+                                            </div>
 
                                     <div class="button-container">
                                     </div>

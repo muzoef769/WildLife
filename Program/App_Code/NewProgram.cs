@@ -40,6 +40,30 @@ public class NewProgram
         setLastUpdatedBy(lastUpdatedBy);
     }
 
+    public NewProgram(int kids, int adults, int people, string ageLevel,string status,
+       DateTime timeSlot, DateTime dateCompleted, string notes, string locationType, int programID,
+       int addressID, DateTime lastUpdated, string lastUpdatedBy)
+    {
+
+        setNumKids(kids);
+        setNumAdults(adults);
+        setTotalPeople(people);
+        setAgeLevel(ageLevel);
+        setProgramStatus(status);
+        setTimeSlot(timeSlot);
+        setDateCompleted(dateCompleted);
+        setMiscNotes(notes);
+        setLocationType(locationType);
+        setProgramID(programID);
+        setAddressID(addressID);
+        setLastUpdated(lastUpdated);
+        setLastUpdatedBy(lastUpdatedBy);
+    }
+
+
+
+
+
     //Getters
     public int getNewProgramID()
     {
