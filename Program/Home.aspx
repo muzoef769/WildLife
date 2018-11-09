@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Home" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
+
+    
     <div class="row">
         <div class="container-fluid WelcomeContainer">
 
@@ -16,11 +18,11 @@
 
                     <div class="row">
                          <div class="col-md-6 mx-auto d-flex justify-content-center">
-                             <div id="AddAnimalButton" class="col-md-12">
-                    <a class="btn btn-primary d-flex  mx-auto justify-content-center btn-AddAnimal" href="#" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a>
+                             <div id="AddAnimalButton" class=" ml-2">
+                    <a class="btn btn-primary d-flex  mx-auto btn-block justify-content-center btn-AddAnimal" href="#" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a>
                 </div>
-                            <div id="AddOrganizationButton" class="col-md-12">
-                    <a class="btn btn-primary d-flex  mx-auto justify-content-center btn-AddAnimal" href="AddOrganization.aspx" role="button">Add Organization</a>
+                            <div id="AddOrganizationButton" class=" ml-4 ">
+                    <a class="btn btn-primary d-flex  mx-auto btn-block justify-content-center btn-AddAnimal" href="AddOrganization.aspx" role="button">Add Organization</a>
                 </div>
                              
                              
@@ -38,11 +40,11 @@
                         
                     <div class="row">
                       <div class="col-md-6 mx-auto d-flex justify-content-center">
-                            <div id="AddProgramButton" class="col-md-12">
-                    <a class="btn btn-primary d-flex  mx-auto justify-content-center btn-AddAnimal" href="AddProgram.aspx" role="button">Add Program</a>
+                            <div id="AddProgramButton" class=" ml-2">
+                    <a class="btn btn-primary d-flex  mx-auto btn-block justify-content-center btn-AddAnimal" href="AddProgram.aspx" role="button">Add Program</a>
                 </div>
-                         <div id="ViewProgramButton" class="col-md-12">
-                    <a class="btn btn-primary d-flex  mx-auto justify-content-center btn-AddAnimal" href="Program.aspx" role="button">View Programs</a>
+                         <div id="ViewProgramButton" class=" ml-4">
+                    <a class="btn btn-primary d-flex  mx-auto btn-block justify-content-center btn-AddAnimal" href="Program.aspx" role="button">View Programs</a>
                 </div>   
                              
        

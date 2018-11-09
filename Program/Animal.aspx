@@ -11,22 +11,22 @@
     <br />
     <br />
     <div class="row">
-        <div class="col-md-6 mx-auto text-center">
+        <div class="col-md-6 mx-auto text-center J">
 
-            <h1 class="CardTitle">View Animal Info</h1>
+            <h1 class="OpenCardTitle d-flex mx-auto text-center justify-content-center">View Animal Info</h1>
         </div>
     </div>
 
     <div class="row">
         <br />
-        <div id="AddAnimalButton" class="col-lg-2 col-md-4 col-s-4 mx-auto">
-            <a class="btn btn-primary d-flex  mx-auto justify-content-center btn-AddAnimal" href="#" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a>
+        <div id="AddAnimalButton" class="col-lg-2 col-md-4 col-s-4  d-flex  mx-auto justify-content-center">
+            <a class="btn btn-primary btn-AddAnimal" href="#" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a>
         </div>
     </div>
 
     <br />
 
-    <div class="table-responsive ">
+    
         <div class="row mx-auto d-flex justify-content-center ">
       
             <div class="col-xl-6 col-lg-12  col-md-12 col-s-12 ">
@@ -49,13 +49,13 @@
         
         
         
-        <div class="row mx-auto d-flex justify-content-center ">
+        <div class="row mx-auto d-flex justify-content-center table-responsive ">
             <div class="col-xl-7 col-lg-12 col-md-12 col-s-12 ">
                 <asp:GridView ID="GridView1" runat="server" HeaderStyle-ForeColor="black" ItemStyle-ForeColor="black" AutoGenerateColumns="False" DataKeyNames="AnimalID"
                     Class=" table-responsive-md table table-condensed table-bordered table-hover AnimalCard" DataSourceID="AnimalSQL" BackColor="White" HorizontalAlign="Left"
-                    OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowSorting="True" Width="800px" Height="600px">
+                    OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowSorting="True">
 
-                    <AlternatingRowStyle BackColor="#CCFFCC" />
+                   
 
                     <Columns>
                         <asp:CommandField ShowSelectButton="True" />
@@ -69,12 +69,12 @@
                         <asp:BoundField DataField="TotalPeople" HeaderText="TotalPeople" ReadOnly="True" SortExpression="TotalPeople" />
                         <asp:BoundField DataField="TotalPrograms" HeaderText="TotalPrograms" SortExpression="TotalPrograms" ReadOnly="True" />
                         <asp:BoundField DataField="LastUpdatedBy" HeaderText="LastUpdatedBy" SortExpression="LastUpdatedBy" />
-                        <asp:ImageField DataImageUrlField="Image" ControlStyle-Height="100" ControlStyle-Width="100">
+                        <asp:ImageField DataImageUrlField="Image" ItemStyle-Width="50%" ItemStyle-Wrap="false">
 <ControlStyle Height="100px" Width="100px"></ControlStyle>
                         </asp:ImageField>
                     </Columns>
 
-<HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
+<HeaderStyle ForeColor="White" BackColor="#777678"></HeaderStyle>
                 </asp:GridView>
             </div>
 
@@ -82,7 +82,7 @@
 
             
         </div>
-    </div>
+  
     <br />
     <br />
     <br />

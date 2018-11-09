@@ -27,17 +27,17 @@
 
     <div class="row">
         <div class="col-md-6 mx-auto text-center">
-            <h1 class="CardTitle">View Program Info</h1>
+            <h1 class="OpenCardTitle">View Program Info</h1>
         </div>
     </div>
 
 
     <div class="row">
         <br />
-        <div id="AddAnimalButton" class="col-lg-2 col-md-4 col-s-4 mx-auto">
+        <div id="AddAnimalButton" class="col-lg-2 col-md-4 col-s-4  d-flex  mx-auto justify-content-center">
              <asp:Button ID="btnAddProgram"
             runat="server"
-            CssClass="btn btn-primary d-flex  mx-auto justify-content-center btn-AddAnimal"
+            CssClass="btn btn-primary  btn-AddAnimal"
             UseSubmitBehavior="false"
             CauseValidation="true"
             Text="Add Program"
@@ -51,8 +51,9 @@
     <br />
 
     <div class="table-responsive">
-        <div class="row mx-auto">
-            <div class="col-xl-7 col-lg-12 col-md-12 col-s-12">
+            
+        <div class="row mx-auto d-flex justify-content-center ">
+            <div class="col-xl-7 col-lg-12 col-md-12 col-s-12 ">
                 <asp:GridView ID="GridView1" runat="server"
                     HeaderStyle-ForeColor="black"
                     ItemStyle-ForeColor="black" AutoGenerateColumns="False"
@@ -127,7 +128,7 @@
                         </asp:TemplateField>
 
                     </Columns>
-
+                    <HeaderStyle ForeColor="White" BackColor="#777678"></HeaderStyle>
                 </asp:GridView>
 
                 <asp:SqlDataSource

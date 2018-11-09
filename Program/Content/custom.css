@@ -38,7 +38,7 @@ body {
 
 
 body {
-    background-image: url("../Images/UrlBg.jpg");
+    background-image: url("../Images/KBBG.jpg");
     background-color: #c3dbf5; /* Used if the image is unavailable */
     height: auto; /* You must set a specified height */
     background-position: center; /* Center the image */
@@ -88,7 +88,7 @@ body {
 }
 
 .LoginCard {
-    opacity: .83;
+    opacity: .92;
     background-color: black;
     border-radius: 15px;
     border: 2px;
@@ -100,7 +100,7 @@ body {
 }
 
 .WelcomeCard {
-    opacity: .83;
+    opacity: .92 !important;
     background-color: black;
     border-radius: 15px;
     border: 2px;
@@ -113,7 +113,7 @@ body {
     border-style: none;
     border-color: inherit;
     border-width: 2px;
-    opacity: .75;
+    opacity: .92 !important;
     background-color: whitesmoke;
     border-radius: 15px;
     display: block;
@@ -127,7 +127,7 @@ body {
 }
 
 .SpeciesCard {
-    opacity: .7;
+    opacity: .92 !important;
     background-color: whitesmoke;
     border-radius: 15px;
     border: 2px;
@@ -223,8 +223,8 @@ body {
 
 
 .WelcomeContainer {
-    padding-left: 25%;
-    padding-right: 25%;
+    padding-left: 40% ;
+    padding-right: 40% ;
     padding-top: 10%;
     font-family: 'Raleway', sans-serif !important;
 }
@@ -263,6 +263,12 @@ body {
 
 .CardTitle {
     color: white;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+.OpenCardTitle {
+    color: Black;
     font-family: 'Raleway', sans-serif;
 }
 
@@ -335,7 +341,7 @@ body {
     min-width: 100%;
     margin: 0;
   background-color:whitesmoke !important;
-  opacity:.75 !important;
+  opacity:.92 !important;
     padding-top: 5%;
     font-family: 'Raleway', sans-serif !important;
 }
@@ -561,9 +567,10 @@ a.ProgramCaption {
     background-color: darkgreen;
     border: 0px;
     align-content: center;
-    width: 100%;
+    width: 140px !important;
     font-family: 'Raleway', sans-serif !important;
     margin-bottom:5px;
+    margin-right:15px !important;
 }
 
     .btn-AddAnimal:hover {
@@ -695,7 +702,7 @@ WelcomeInfoDiv {
     border-style: none;
     border-color: inherit;
     border-width: 2px;
-    opacity: .75;
+    opacity: .92 !important;
     background-color: whitesmoke;
     border-radius: 15px;
     display: block;
@@ -711,7 +718,7 @@ WelcomeInfoDiv {
     border-style: none;
     border-color: inherit;
     border-width: 2px;
-    opacity: .75;
+    opacity: .92 !important;
     background-color: whitesmoke;
     border-radius: 15px;
     display: block;
@@ -859,7 +866,7 @@ table-responsive {
     .PaymentContainer {
         padding-left: 22%;
         padding-right: 25%;
-        padding-top: 10%;
+        padding-top: 100px !important;
     }
 }
 
@@ -868,7 +875,7 @@ table-responsive {
     .PaymentContainer {
         padding-left: 22%;
         padding-right: 25%;
-        padding-top: 10%;
+        padding-top: 100px !important;
     }
 }
 
@@ -877,7 +884,7 @@ table-responsive {
     .PaymentContainer {
         padding-left: 15%;
         padding-right: 15%;
-        padding-top: 10%;
+        padding-top: 100px !important;
     }
 }
 
@@ -886,7 +893,7 @@ table-responsive {
     .PaymentContainer {
         padding-left: 10%;
         padding-right: 10%;
-        padding-top: 10%;
+        padding-top: 100px !important;
     }
 }
 
@@ -895,7 +902,7 @@ table-responsive {
     .PaymentContainer {
         padding-left: 30%;
         padding-right: 15%;
-        padding-top: 10%;
+        padding-top: 100px !important;
     }
 }
 
@@ -904,7 +911,7 @@ table-responsive {
     .PaymentContainer {
         padding-left: 30%;
         padding-right: 5%;
-        padding-top: 10%;
+        padding-top: 100px !important;
     }
 }
 
@@ -913,7 +920,7 @@ table-responsive {
     .PaymentContainer {
         padding-left: 5%;
         padding-right: 5%;
-        padding-top: 10%;
+        padding-top: 20%;
     }
 }
 
@@ -922,7 +929,7 @@ table-responsive {
     .PaymentContainer {
         padding-left: 5%;
         padding-right: 5%;
-        padding-top: 10%;
+        padding-top: 20%;
     }
 }
 
@@ -1252,20 +1259,21 @@ table-responsive {
 .AnimalCard {
     border-style: none;
     border-color: inherit;
-    
-    opacity: .75;
+    opacity: .92 !important;
     background-color: whitesmoke;
     /*border-radius: 15px;*/
-    
     height: auto;
     text-align: center;
     vertical-align: middle;
     font-family: 'Raleway', sans-serif !important;
     padding-bottom: 10px;
     margin-bottom: 40px;
-    padding-left:20px;
-    
+    padding-left: 20px;
     padding-top: 20px;
-    
 }
 
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #85AD89;
+}
+
+a.MonthTable:hover{ background-color:whitesmoke;}

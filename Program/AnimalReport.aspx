@@ -9,7 +9,7 @@
                 <div class="row">
        <div class="col-md-6 mx-auto text-center">
 
-                   <h1 class="CardTitle">View Animal Info</h1>
+                   <h1 class="OpenCardTitle">View Animal Info</h1>
                 </div>
     </div>
 
@@ -118,7 +118,7 @@
         <div class="row">
             <div class="container-fluid AnimalReportContainer">
                 <div class="row justify-content-center">
-                    <div class="col-md-12">
+                    <div class="col-md-3">
                         <div class="card mx-auto AnimalReportCard">
                             <div class="card-body">
                                 <asp:GridView ID="grdViewReport" 
