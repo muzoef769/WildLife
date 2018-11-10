@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
@@ -13,53 +14,8 @@ public partial class Payment : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+
     }
-
-    //protected void ShowData()
-    //{
-    //    using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
-    //    {
-    //        dt = new DataTable();
-
-    //        string select = "";
-    //        using (adapt = new SqlDataAdapter(select, connection))
-    //        {
-    //            adapt.Fill(dt);
-    //            if (dt.Rows.Count > 0)
-    //            {
-    //                outInvGrid.DataSource = dt;
-    //                outInvGrid.DataBind();
-    //            }
-    //        }
-    //    }
-    //}
-
-    //protected void GridView1_RowUpdating(object sender, System.Web.UI.WebControls.GridViewUpdateEventArgs e)
-    //{
-    //    using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
-    //    {
-    //        //Finding the controls from Gridview for the row which is going to update  
-    //        DropDownList ddl = outInvGrid.Rows[e.RowIndex].FindControl("dropdownlist1") as DropDownList;
-    //        Label invNum = outInvGrid.Rows[e.RowIndex].FindControl("invNum") as Label;
-
-    //        string query = "Update dbo.Invoice set InvoiceStatus = '" + ddl.Text + "' where InvoiceNumber='" + invNum.Text + "'";
-
-    //        using (SqlCommand command = new SqlCommand(query, connection))
-    //        {
-    //            connection.Open();
-    //            //updating the record  
-    //            command.ExecuteNonQuery();
-
-    //            //Setting the EditIndex property to -1 to cancel the Edit mode in Gridview  
-    //            outInvGrid.EditIndex = -1;
-    //            //Call ShowData method for displaying updated data  
-    //            /ShowData();
-    //            connection.Close();
-    //        }
-
-    //    }
-    //}
 
     protected void gridRefresh_Click(object sender, EventArgs e)
     {
@@ -74,5 +30,75 @@ public partial class Payment : System.Web.UI.Page
         programSource.EnableCaching = false;
         allInvGrid.DataBind();
         programSource.EnableCaching = true;
+    }
+
+    public override void VerifyRenderingInServerForm(Control control)
+    {
+        /* Verifies that the control is rendered */
+    }
+
+    protected void ExportToExcel(GridView grid)
+    {
+        Response.Clear();
+        Response.Buffer = true;
+        Response.ClearContent();
+        Response.ClearHeaders();
+        Response.Charset = "";
+        string FileName = "Vithal" + DateTime.Now + ".xls";
+        StringWriter strwritter = new StringWriter();
+        HtmlTextWriter htmltextwrtter = new HtmlTextWriter(strwritter);
+        Response.Cache.SetCacheability(HttpCacheability.NoCache);
+        Response.ContentType = "application/vnd.ms-excel";
+        Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName);
+        grid.GridLines = GridLines.Both;
+        grid.HeaderStyle.Font.Bold = true;
+        grid.RenderControl(htmltextwrtter);
+        Response.Write(strwritter.ToString());
+        Response.End();
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        // Hides the first column in the grid (zero-based index)
+        outInvGrid.HeaderRow.Cells[0].Visible = false;
+
+        // Loop through the rows and hide the cell in the first column
+        for (int i = 0; i < outInvGrid.Rows.Count; i++)
+        {
+            GridViewRow row = outInvGrid.Rows[i];
+            row.Cells[0].Visible = false;
+        }
+
+        ExportToExcel(outInvGrid);
+    }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        // Hides the first column in the grid (zero-based index)
+        paidGrid.HeaderRow.Cells[0].Visible = false;
+
+        // Loop through the rows and hide the cell in the first column
+        for (int i = 0; i < paidGrid.Rows.Count; i++)
+        {
+            GridViewRow row = paidGrid.Rows[i];
+            row.Cells[0].Visible = false;
+        }
+
+        ExportToExcel(paidGrid);
+    }
+
+    protected void Button3_Click(object sender, EventArgs e)
+    {
+        // Hides the first column in the grid (zero-based index)
+        allInvGrid.HeaderRow.Cells[0].Visible = false;
+
+        // Loop through the rows and hide the cell in the first column
+        for (int i = 0; i < allInvGrid.Rows.Count; i++)
+        {
+            GridViewRow row = allInvGrid.Rows[i];
+            row.Cells[0].Visible = false;
+        }
+
+        ExportToExcel(allInvGrid);
     }
 }
