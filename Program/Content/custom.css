@@ -38,7 +38,7 @@ body {
 
 
 body {
-    background-image: url("../Images/KBBG.jpg");
+    background-image: url("../Images/WoodBG.jpg");
     background-color: #c3dbf5; /* Used if the image is unavailable */
     height: auto; /* You must set a specified height */
     background-position: center; /* Center the image */
@@ -83,9 +83,6 @@ body {
             color: #f1f1f1;
         }
 
-::-webkit-scrollbar {
-    display: none;
-}
 
 .LoginCard {
     opacity: .92;
@@ -341,7 +338,7 @@ body {
     min-width: 100%;
     margin: 0;
   background-color:whitesmoke !important;
-  opacity:.92 !important;
+
     padding-top: 5%;
     font-family: 'Raleway', sans-serif !important;
 }
@@ -1277,3 +1274,96 @@ table-responsive {
 }
 
 a.MonthTable:hover{ background-color:whitesmoke;}
+
+.ContainerProgram{background-color: whitesmoke;}
+}
+
+.modal-backdrop {
+    opacity: 0.8 !important;
+}
+
+.modal-content{background-color:darkgrey;}
+
+
+@media only screen and (max-width: 2700px) {
+
+    .SimpleContainer {
+        padding-left: 22%;
+        padding-right: 20%;
+        padding-top: 10%;
+    }
+}
+
+@media only screen and (max-width: 2200px) {
+
+    .SimpleContainer {
+        padding-left: 18%;
+        padding-right: 13%;
+        padding-top: 10%;
+    }
+}
+
+@media only screen and (max-width: 1800px) {
+
+    .SimpleContainer {
+        padding-left: 13%;
+        padding-right: 10%;
+        padding-top: 10%;
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+
+    .SimpleContainer {
+        padding-left: 5%;
+        padding-right: 7%;
+        padding-top: 10%;
+    }
+
+    @media only screen and (max-width: 1200px) {
+
+        .SimpleContainer {
+            padding-left: 5%;
+            padding-right: 7%;
+            padding-top: 10%;
+        }
+
+        @media only screen and (max-width: 800px) {
+
+            .SimpleContainer {
+                padding-left: 18%;
+                padding-right: 13%;
+                padding-top: 10%;
+            }
+        }
+
+        @media only screen and (max-width: 300px) {
+
+            .SimpleContainer {
+                padding-left: 18%;
+                padding-right: 13%;
+                padding-top: 10%;
+            }
+        }
+
+        @media only screen and (max-width: 200px) {
+
+            .SimpleContainer {
+                padding-left: 6%;
+                padding-right: 5%;
+                padding-top: 10%;
+            }
+        }
+
+        @media only screen and (max-width: 800px) {
+
+            .SimpleContainer {
+                padding-left: 6%;
+                padding-right: 5%;
+                padding-top: 10%;
+            }
+        }
+
+        .NotActive{background-color:lightgray !important;
+
+        }

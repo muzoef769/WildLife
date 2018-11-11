@@ -50,6 +50,24 @@
 
     <br />
 
+    <div class="">
+  <div class="row mx-auto d-flex justify-content-center  ">
+      <ul class="nav nav-tabs col-xl-7 col-lg-12 col-md-12 col-s-12 " id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#Online" role="tab" aria-controls="home" aria-selected="true">Online</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link NotActive" id="profile-tab" data-toggle="tab" href="#OnSite" role="tab" aria-controls="profile" aria-selected="false">OnSite</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link NotActive" id="contact-tab" data-toggle="tab" href="#OffSite" role="tab" aria-controls="contact" aria-selected="false">OffSite</a>
+  </li>
+</ul>
+  
+      </div>
+  <div class="tab-content">
+   
+    <div id="Online"  class="tab-pane fade show active">
     <div class="table-responsive">
             
         <div class="row mx-auto d-flex justify-content-center ">
@@ -178,5 +196,19 @@
             </div>
         </div>
     </div>
+    </div>
+    <div id="OnSite" class="tab-pane fade">
+      <h3>Menu 2</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="OffSite" class="tab-pane fade">
+      <h3>Menu 3</h3>
+      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+  </div>
+</div>
+
+
+    
 </asp:Content>
 
