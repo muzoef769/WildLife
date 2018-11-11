@@ -138,6 +138,7 @@ public partial class AddProgram : System.Web.UI.Page
             drpLocationTypeList.Items.Add(("Online"));
             drpLocationTypeList.SelectedValue = "Online";
             txtMileage.Visible = false;
+            programLoc.Visible = false;
         }
         else
         {
@@ -147,8 +148,13 @@ public partial class AddProgram : System.Web.UI.Page
             txtMileage.Visible = true;
         }
 
+        if (value == "13" || value == "14" || value == "15" || value == "16" || value == "17" || value == "18")
+        {
+            drpLocationTypeList.SelectedValue = "Offsite";
+            drpLocationTypeList.Enabled = false;
+        }
 
-        if (value == "1" || value == "2" || value == "3" || value == "4" || value == "5" || value == "6" || value == "7" || value == "8" || value == "9" || value == "10" || value == "11" || value == "12" || value == "13" || value == "14" || value == "15" || value == "16" || value == "17" || value == "18")
+        if (value == "1" || value == "2" || value == "3" || value == "4" || value == "5" || value == "6" || value == "7" || value == "8" || value == "9" || value == "10" || value == "11" || value == "12")
         {
 
             drpLocationTypeList.Items.Remove(drpLocationTypeList.Items.FindByValue("Online"));
@@ -228,7 +234,70 @@ public partial class AddProgram : System.Web.UI.Page
 
         using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
         {
+
             connection.Open();
+            Address address = new Address(txtStreet.Text, txtState.Text, txtCity.Text, txtCounty.Text, txtCountry.Text, txtZipCode.Text, "Program Location", DateTime.Today, "Raina");
+            int newAddressID;
+
+            if (drpLocationTypeList.SelectedValue == "Onsite")
+            {
+                string insertIntoAddress = "Insert into Address([Street], [City], [State], [County], [Country], [ZipCode], [AddressType], [LastUpdated], [LastUpdatedBy]) VALUES (" +
+                "@street, @city, @state, @county, @country, @zipCode, @addressType, @LU, @LUB)";
+                using (SqlCommand command = new SqlCommand(insertIntoAddress, connection))
+                {
+                    command.Parameters.AddWithValue("@street", "1800 S Delphine Ave");
+                    command.Parameters.AddWithValue("@city", "Waynesboro");
+                    command.Parameters.AddWithValue("@state", "Virginia");
+                    command.Parameters.AddWithValue("@county", "Waynesboro");
+                    command.Parameters.AddWithValue("@country", "USA");
+                    command.Parameters.AddWithValue("@zipCode", "22980");
+                    command.Parameters.AddWithValue("@addressType", "Program");
+                    command.Parameters.AddWithValue("@LU", address.getLastUpdated());
+                    command.Parameters.AddWithValue("@LUB", address.getLastUpdatedBy());
+                    command.ExecuteNonQuery();
+                }
+
+
+                string findAddressID = "Select AddressID from Address where AddressID = (Select Max(AddressID) from Address)";
+                using (SqlCommand command = new SqlCommand(findAddressID, connection))
+                {
+
+                    newAddressID = Convert.ToInt32(command.ExecuteScalar());
+
+                }
+            }
+            else
+            {
+                string insertIntoAddress = "Insert into Address([Street], [City], [State], [County], [Country], [ZipCode], [AddressType], [LastUpdated], [LastUpdatedBy]) VALUES (" +
+                    "@street, @city, @state, @county, @country, @zipCode, @addressType, @LU, @LUB)";
+                using (SqlCommand command = new SqlCommand(insertIntoAddress, connection))
+                {
+                    command.Parameters.AddWithValue("@street", address.getStreetName());
+                    command.Parameters.AddWithValue("@city", address.getCity());
+                    command.Parameters.AddWithValue("@state", address.getState());
+                    command.Parameters.AddWithValue("@county", address.getCounty());
+                    command.Parameters.AddWithValue("@country", address.getCounty());
+                    command.Parameters.AddWithValue("@zipCode", address.getZipCode());
+                    command.Parameters.AddWithValue("@addressType", address.getAddressType());
+                    command.Parameters.AddWithValue("@LU", address.getLastUpdated());
+                    command.Parameters.AddWithValue("@LUB", address.getLastUpdatedBy());
+                    command.ExecuteNonQuery();
+                }
+
+
+                string findAddressID = "Select AddressID from Address where AddressID = (Select Max(AddressID) from Address)";
+                using (SqlCommand command = new SqlCommand(findAddressID, connection))
+                {
+
+                    newAddressID = Convert.ToInt32(command.ExecuteScalar());
+
+                }
+
+
+
+
+            }
+
             for (int j = 0; j < NewProgram.programList.Count; j++)
             {
                 string insertIntoNewProgram = "INSERT INTO NewProgram([TotalKids], [TotalAdults]," +
@@ -250,7 +319,7 @@ public partial class AddProgram : System.Web.UI.Page
                     command.Parameters.AddWithValue("@location", NewProgram.programList[j].getLocationType());
                     command.Parameters.AddWithValue("@miscNotes", NewProgram.programList[j].getMiscNotes());
                     command.Parameters.AddWithValue("@programid", NewProgram.programList[j].getProgramID());
-                    command.Parameters.AddWithValue("@addressid", NewProgram.programList[j].getAddressID());
+                    command.Parameters.AddWithValue("@addressid", newAddressID);
                     command.Parameters.AddWithValue("@LU", NewProgram.programList[j].getLastUpdated());
                     command.Parameters.AddWithValue("@LUB", NewProgram.programList[j].getLastUpdatedBy());
 
@@ -367,11 +436,15 @@ public partial class AddProgram : System.Web.UI.Page
             connection.Close();
         }
         NewProgram.programList.Clear();
+        NewProgram.btnCount = 0;
     }
 
     protected void BtnAddProgram_Click(object sender, EventArgs e)
     {
+        NewProgram.btnCount++;
         programID = Convert.ToInt32(drpOrganizationList.SelectedValue); /*Grab ProgramID*/
+
+
 
         //if (txtMileage.Visible == true)
         //{
@@ -391,9 +464,11 @@ public partial class AddProgram : System.Web.UI.Page
         //}
 
         NewProgram newProgram = new NewProgram(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
-               /* people*/ 50, drpAgeLevel.SelectedValue, "Completed",
-               /*time*/DateTime.Now, Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
-                programID, /*addressID*/10, DateTime.Now, "Raina");
+                50, drpAgeLevel.SelectedValue, "Completed", Convert.ToDateTime(programTime.Text),
+                Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
+                programID, DateTime.Now, "Raina");
+
+
         NewProgram.programList.Add(newProgram);
 
 
@@ -414,6 +489,16 @@ public partial class AddProgram : System.Web.UI.Page
         ////txtProgramCost.Text = NewProgram.baseCost.ToString();
         //txtMileage.Text = NewProgram.programList.Count.ToString();
         //txtTotalCost.Text = totalCost.ToString();()
+
+
+
+        string location = NewProgram.programList[0].getLocationType();
+        if (location == "Offsite" && NewProgram.btnCount >= 1)
+        {
+            datepicker.Visible = false;
+            drpOrganizationList.Enabled = false;
+        }
+
 
 
     }

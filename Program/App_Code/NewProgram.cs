@@ -40,9 +40,9 @@ public class NewProgram
         setLastUpdatedBy(lastUpdatedBy);
     }
 
-    public NewProgram(int kids, int adults, int people, string ageLevel,string status,
+    public NewProgram(int kids, int adults, int people, string ageLevel, string status,
        DateTime timeSlot, DateTime dateCompleted, string notes, string locationType, int programID,
-       int addressID, DateTime lastUpdated, string lastUpdatedBy)
+       DateTime lastUpdated, string lastUpdatedBy)
     {
 
         setNumKids(kids);
@@ -55,7 +55,7 @@ public class NewProgram
         setMiscNotes(notes);
         setLocationType(locationType);
         setProgramID(programID);
-        setAddressID(addressID);
+
         setLastUpdated(lastUpdated);
         setLastUpdatedBy(lastUpdatedBy);
     }
