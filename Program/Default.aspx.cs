@@ -8,12 +8,14 @@ using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows;
+using System.Web.SessionState;
 
 public partial class Default : System.Web.UI.Page
 {
     System.Data.SqlClient.SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
-   // SqlConnection myConnection = new SqlConnection("server=localhost;database=WildlifeCenter;Trusted_Connection=True");
+    // SqlConnection myConnection = new SqlConnection("server=localhost;database=WildlifeCenter;Trusted_Connection=True");
     //NEED TO EDIT THIS CODE WHEN ON AWS
+    public String userType;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -31,68 +33,115 @@ public partial class Default : System.Web.UI.Page
 
     protected void btnLogin_Click(object sender, EventArgs e)
     {
-        //connect to database to retrieve stored password string
-        try
+        //try
+        //{
+        //    //connect to database to retrieve stored password string
+
+        //    myConnection.Open();
+        //    System.Data.SqlClient.SqlCommand getUserType = new System.Data.SqlClient.SqlCommand();
+        //    getUserType.Connection = myConnection;
+
+        //    getUserType.CommandText = "SELECT UserType from [dbo].[User] where Username = @Username";
+        //    getUserType.Parameters.AddWithValue("@Username", txtUsername.Text);
+        //    SqlDataReader typeReader = getUserType.ExecuteReader();
+        //    //userType = Convert.ToString(getUserType.ExecuteScalar());
+
+        //    while (typeReader.Read())
+        //    {
+        //        Session["UserType"] = typeReader["UserType"].ToString();
+        //    }
+        //}
+        //catch (Exception E)
+        //{
+
+        //}
+        //finally
+        //{
+        //    myConnection.Close();
+        //}
+
+        //try
+        //{
+        SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
+
+        sc.Open();
+        System.Data.SqlClient.SqlCommand findPass = new System.Data.SqlClient.SqlCommand();
+        findPass.Connection = sc;
+        // SELECT PASSWORD STRING WHERE THE ENTERED USERNAME MATCHES
+        findPass.CommandText = "select PasswordHash from [dbo].[Password] where Username = @Username";
+        findPass.Parameters.Add(new SqlParameter("@Username", txtUsername.Text));
+
+        SqlDataReader reader = findPass.ExecuteReader(); // create a reader
+
+        System.Data.SqlClient.SqlCommand getUserType = new System.Data.SqlClient.SqlCommand();
+        getUserType.Connection = sc;
+
+        //getUserType.CommandText = "SELECT UserType from [dbo].[User] where Username = @Username";
+        //getUserType.Parameters.AddWithValue("@Username", txtUsername.Text);
+
+        //Session["UserType"] = getUserType.ExecuteScalar().ToString();
+        //SqlDataReader typeReader = getUserType.ExecuteReader();
+        //userType = Convert.ToString(getUserType.ExecuteScalar());
+
+        //while (typeReader.Read())
+        //{
+        //    Session["UserType"] = typeReader["UserType"].ToString();
+        //}
+
+        //if ((string)Session["UserType"] == "Volunteer")
+        //{
+        if (reader.HasRows) // if the username exists, it will continue
         {
-            SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
 
 
-            //lblStatus.Text = "Database Connection Successful";
-
-            sc.Open();
-            System.Data.SqlClient.SqlCommand findPass = new System.Data.SqlClient.SqlCommand();
-            findPass.Connection = sc;
-            // SELECT PASSWORD STRING WHERE THE ENTERED USERNAME MATCHES
-            findPass.CommandText = "select PasswordHash from [dbo].[Password] where Username = @Username";
-            findPass.Parameters.Add(new SqlParameter("@Username", txtUsername.Text));
-
-            SqlDataReader reader = findPass.ExecuteReader(); // create a reader
-
-            if (reader.HasRows) // if the username exists, it will continue
+            while (reader.Read()) // this will read the single record that matches the entered username
             {
-                while (reader.Read()) // this will read the single record that matches the entered username
+                string storedHash = reader["PasswordHash"].ToString(); // store the database password into this variable
+
+                if (PasswordHash.ValidatePassword(txtPassword.Text, storedHash)) // if the entered password matches what is stored, it will show success
                 {
-                    string storedHash = reader["PasswordHash"].ToString(); // store the database password into this variable
+                    // Clear Fields
+                    lblStatus.ForeColor = Color.White;
+                    lblStatus.Text = "Success!";
+                    lblStatus.Visible = true;
+                    btnLogin.Enabled = false;
 
-                    if (PasswordHash.ValidatePassword(txtPassword.Text, storedHash)) // if the entered password matches what is stored, it will show success
-                    {
-                        // Clear Fields
-                        lblStatus.ForeColor = Color.White;
-                        lblStatus.Text = "Success!";
-                        lblStatus.Visible = true;
-                        btnLogin.Enabled = false;
+                    txtUsername.Enabled = false;
+                    txtPassword.Enabled = false;
+                    Session["Username"] = txtUsername.Text;
 
-                        txtUsername.Enabled = false;
-                        txtPassword.Enabled = false;
-                        Session["Username"] = txtUsername.Text;
-
-                        Response.Redirect("Home.aspx", false);
-
-                    }
-                    else
-                    {
-                        lblStatus.ForeColor = Color.White;
-                        lblStatus.Text = "Password is wrong.";
-                        lblStatus.Visible = true;
-                    }
+                }
+                else
+                {
+                    lblStatus.ForeColor = Color.White;
+                    lblStatus.Text = "Password is wrong.";
+                    lblStatus.Visible = true;
                 }
             }
-            // if the username doesn't exist, it will show failure
-            else
+
+        }
+        reader.Close();
+        getUserType.Connection = sc;
+
+        getUserType.CommandText = "SELECT UserType from [dbo].[User] where Username = @Username and UserType = @UserType";
+        getUserType.Parameters.AddWithValue("@Username", txtUsername.Text);
+        getUserType.Parameters.AddWithValue("UserType", "Volunteer");
+
+        SqlDataReader typeReader = getUserType.ExecuteReader();
+
+        if (typeReader.HasRows)
+        {
+            while (typeReader.Read())
             {
-                lblStatus.ForeColor = Color.White;
-                lblStatus.Text = "Username does not exist.";
-                lblStatus.Visible = true;
+                Response.Redirect("VolunteerHome.aspx", false);
             }
 
-            sc.Close();
         }
-        catch
+        else
         {
-            lblStatus.Text = "Database Error.";
-            lblStatus.Visible = true;
-
+            Response.Redirect("Home.aspx", false);
         }
+
     }
 
     protected void lnkCreate_Click(object sender, EventArgs e)

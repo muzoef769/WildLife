@@ -1,5 +1,4 @@
-﻿    
-<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="AddOrganization.aspx.cs" Inherits="AddOrganization" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/VolunteerMasterPage.master" AutoEventWireup="true" CodeFile="VolunteerAddOrganization.aspx.cs" Inherits="VolunteerAddOrganization" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 
@@ -172,7 +171,8 @@
                        </div>
                <br />
                    <div class="col-md-6 text-center mx-auto">
-             <button id="btnReturn" type="button" class="btn btn-login btn-AddAnimal" onclick="javascript:history.go(-1)">Return</button>
+<%--             <asp:Button ID="btnReturn" runat="server" Text="Return"  Style="color:white;" Cssclass=" btn btn-login btn-AddAnimal" OnClick="btnReturn_Click" />--%>
+                       <button id="btnReturn" type="button" value="Return" class="btn btn-login btn-AddAnimal" onclick="javascript:history.go(-1)">Return</button>
                 </div>
                 
                   
@@ -183,6 +183,10 @@
 </div>
 </div>
 </div>
-
+<%--      <script>
+function goBack() {
+    window.history.back(-1);
+}
+</script>--%>
 </asp:Content>
 

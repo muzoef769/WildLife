@@ -146,8 +146,8 @@
                                 
               </div>
                 <asp:RadioButtonList ID="rdoPosition" runat="server">
-            <asp:ListItem>  Volunteer </asp:ListItem>
-            <asp:ListItem>  Staff </asp:ListItem>
+            <asp:ListItem>Volunteer</asp:ListItem>
+            <asp:ListItem>Staff</asp:ListItem>
                 </asp:RadioButtonList>
                   
           </div>
