@@ -3,12 +3,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <div class="main">
         <div class="row">
-            <div class="container-fluid ProgramContainer">
-                <div class="card mx-auto  ProgramCard" style="opacity: 0.8;">
+            <div class="container-fluid SimpleContainer">
+                <div class="card ProgramCard" style="opacity: 0.9;">
                     <div id="ann" class="card-body">
-                        <h1 class="ProgramCardTitle d-flex justify-content-center">Program Totals</h1>
+                        <h1 class="ProgramCardTitle ">Program Totals</h1>
                         <div class="row table-responsive">
-                            <div class="col-md-12 table">
+                            <div class="col-md-12  table  table-bordered table-hover AnimalCard " style="min-width:120% !important ;">
                                 <%-- <h1 id="annTitle" class=" ProgramCardTitle d-flex justify-content-center ">Annual Report</h1>
                         <h4 class=" ProgramCardTitle Underline d-flex justify-content-center ">Attendance</h4>
                         <div class="ProgramShort d-flex justify-content-center">
@@ -48,23 +48,23 @@
                         </div>
                         <hr />
                         <h1 id="monTitle" class=" ProgramCardTitle d-flex justify-content-center">Monthly Report</h1>--%>
-                                <asp:GridView ID="offsiteGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source6" GridLines="Both">
+                                <asp:GridView ID="offsiteGrid" HeaderStyle-ForeColor="black" runat="server" AutoGenerateColumns="False" DataSourceID="source6" GridLines="Both" Width="1200px">
                                     <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
-                                    <Columns>
-                                        <asp:BoundField HeaderStyle-Width="150px" DataField="LocationType" HeaderText="Program Totals" SortExpression="LocationType" />
-                                        <asp:BoundField DataField="January" HeaderText="Jan" SortExpression="January" />
-                                        <asp:BoundField DataField="February" HeaderText="Feb" SortExpression="February" />
-                                        <asp:BoundField DataField="March" HeaderText="Mar" SortExpression="March" />
-                                        <asp:BoundField DataField="April" HeaderText="Apr" SortExpression="April" />
-                                        <asp:BoundField DataField="May" HeaderText="May" SortExpression="May" />
-                                        <asp:BoundField DataField="June" HeaderText="Jun" SortExpression="June" />
-                                        <asp:BoundField DataField="July" HeaderText="Jul" SortExpression="July" />
-                                        <asp:BoundField DataField="August" HeaderText="Aug" SortExpression="August" />
-                                        <asp:BoundField DataField="September" HeaderText="Sep" SortExpression="September" />
-                                        <asp:BoundField DataField="October" HeaderText="Oct" SortExpression="October" />
-                                        <asp:BoundField DataField="November" HeaderText="Nov" SortExpression="November" />
-                                        <asp:BoundField DataField="December" HeaderText="Dec" SortExpression="December" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" />
+                                    <Columns >
+                                        <asp:BoundField HeaderStyle-Width="200px" DataField="LocationType" HeaderText="Program Totals" SortExpression="LocationType" />
+                                        <asp:BoundField DataField="January" ItemStyle-Width="75px" HeaderText="Jan" SortExpression="January" />
+                                        <asp:BoundField DataField="February" ItemStyle-Width="75px" HeaderText="Feb" SortExpression="February" />
+                                        <asp:BoundField DataField="March" ItemStyle-Width="75px" HeaderText="Mar" SortExpression="March" />
+                                        <asp:BoundField DataField="April" ItemStyle-Width="75px" HeaderText="Apr" SortExpression="April" />
+                                        <asp:BoundField DataField="May" ItemStyle-Width="75px" HeaderText="May" SortExpression="May" />
+                                        <asp:BoundField DataField="June" ItemStyle-Width="75px" HeaderText="Jun" SortExpression="June" />
+                                        <asp:BoundField DataField="July" ItemStyle-Width="75px" HeaderText="Jul" SortExpression="July" />
+                                        <asp:BoundField DataField="August" ItemStyle-Width="75px" HeaderText="Aug" SortExpression="August" />
+                                        <asp:BoundField DataField="September" ItemStyle-Width="75px" HeaderText="Sep" SortExpression="September" />
+                                        <asp:BoundField DataField="October" ItemStyle-Width="75px"  HeaderText="Oct" SortExpression="October" />
+                                        <asp:BoundField DataField="November" ItemStyle-Width="75px" HeaderText="Nov" SortExpression="November" />
+                                        <asp:BoundField DataField="December" ItemStyle-Width="75px" HeaderText="Dec" SortExpression="December" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="100px" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" />
                                     </Columns>
                                 </asp:GridView>
                                 <asp:SqlDataSource ID="source6" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT LocationType,
@@ -82,23 +82,23 @@
                             (select count(LocationType) from NewProgram where Month(DateCompleted) = '12' and LocationType = 'Offsite') December,
                             (select count(LocationType) from NewProgram where LocationType='Offsite') '2018 Total'
                             from NewProgram where LocationType = 'Offsite' group by LocationType"></asp:SqlDataSource>
-                                <asp:GridView ID="onlineGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source5" GridLines="Both" ShowHeader="False">
+                                <asp:GridView ID="onlineGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source5" GridLines="Both"  Width="1200px" ShowHeader="False">
                                     <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                     <Columns>
-                                        <asp:BoundField ItemStyle-Width="150px" DataField="LocationType" HeaderText="Type" SortExpression="LocationType" />
-                                        <asp:BoundField DataField="January" HeaderText="January" SortExpression="January" />
-                                        <asp:BoundField DataField="February" HeaderText="February" SortExpression="February" />
-                                        <asp:BoundField DataField="March" HeaderText="March" SortExpression="March" />
-                                        <asp:BoundField DataField="April" HeaderText="April" SortExpression="April" />
-                                        <asp:BoundField DataField="May" HeaderText="May" SortExpression="May" />
-                                        <asp:BoundField DataField="June" HeaderText="June" SortExpression="June" />
-                                        <asp:BoundField DataField="July" HeaderText="July" SortExpression="July" />
-                                        <asp:BoundField DataField="August" HeaderText="August" SortExpression="August" />
-                                        <asp:BoundField DataField="September" HeaderText="September" SortExpression="September" />
-                                        <asp:BoundField DataField="October" HeaderText="October" SortExpression="October" />
-                                        <asp:BoundField DataField="November" HeaderText="November" SortExpression="November" />
-                                        <asp:BoundField DataField="December" HeaderText="December" SortExpression="December" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" />
+                                        <asp:BoundField ItemStyle-Width="200px" DataField="LocationType" HeaderText="Type" SortExpression="LocationType" />
+                                        <asp:BoundField DataField="January" ItemStyle-Width="75px" HeaderText="January" SortExpression="January" />
+                                        <asp:BoundField DataField="February"  ItemStyle-Width="75px" HeaderText="February" SortExpression="February" />
+                                        <asp:BoundField DataField="March" ItemStyle-Width="75px" HeaderText="March" SortExpression="March" />
+                                        <asp:BoundField DataField="April" ItemStyle-Width="75px" HeaderText="April" SortExpression="April" />
+                                        <asp:BoundField DataField="May" ItemStyle-Width="75px" HeaderText="May" SortExpression="May" />
+                                        <asp:BoundField DataField="June" ItemStyle-Width="75px" HeaderText="June" SortExpression="June" />
+                                        <asp:BoundField DataField="July" ItemStyle-Width="75px" HeaderText="July" SortExpression="July" />
+                                        <asp:BoundField DataField="August" ItemStyle-Width="75px" HeaderText="August" SortExpression="August" />
+                                        <asp:BoundField DataField="September" ItemStyle-Width="75px" HeaderText="September" SortExpression="September" />
+                                        <asp:BoundField DataField="October" ItemStyle-Width="75px" HeaderText="October" SortExpression="October" />
+                                        <asp:BoundField DataField="November" ItemStyle-Width="75px" HeaderText="November" SortExpression="November" />
+                                        <asp:BoundField DataField="December" ItemStyle-Width="75px"  HeaderText="December" SortExpression="December" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="100px" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" />
                                     </Columns>
                                 </asp:GridView>
                                 <asp:SqlDataSource ID="source5" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT LocationType,
@@ -116,23 +116,23 @@
                             (select count(LocationType) from NewProgram where Month(DateCompleted) = '12' and LocationType = 'Online') December,
                             (select count(LocationType) from NewProgram where LocationType='Online') '2018 Total'
                             from NewProgram where LocationType = 'Online' group by LocationType"></asp:SqlDataSource>
-                                <asp:GridView ID="onsiteGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source4" GridLines="Both" ShowHeader="False">
+                                <asp:GridView ID="onsiteGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source4"  Width="1200px" GridLines="Both" ShowHeader="False">
                                     <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                     <Columns>
-                                        <asp:BoundField ItemStyle-Width="150px" DataField="LocationType" HeaderText="Type" SortExpression="LocationType" />
-                                        <asp:BoundField DataField="January" HeaderText="January" SortExpression="January" />
-                                        <asp:BoundField DataField="February" HeaderText="February" SortExpression="February" />
-                                        <asp:BoundField DataField="March" HeaderText="March" SortExpression="March" />
-                                        <asp:BoundField DataField="April" HeaderText="April" SortExpression="April" />
-                                        <asp:BoundField DataField="May" HeaderText="May" SortExpression="May" />
-                                        <asp:BoundField DataField="June" HeaderText="June" SortExpression="June" />
-                                        <asp:BoundField DataField="July" HeaderText="July" SortExpression="July" />
-                                        <asp:BoundField DataField="August" HeaderText="August" SortExpression="August" />
-                                        <asp:BoundField DataField="September" HeaderText="September" SortExpression="September" />
-                                        <asp:BoundField DataField="October" HeaderText="October" SortExpression="October" />
-                                        <asp:BoundField DataField="November" HeaderText="November" SortExpression="November" />
-                                        <asp:BoundField DataField="December" HeaderText="December" SortExpression="December" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" />
+                                        <asp:BoundField ItemStyle-Width="200px" DataField="LocationType" HeaderText="Type" SortExpression="LocationType" />
+                                        <asp:BoundField DataField="January" ItemStyle-Width="75px" HeaderText="January" SortExpression="January" />
+                                        <asp:BoundField DataField="February" ItemStyle-Width="75px" HeaderText="February" SortExpression="February" />
+                                        <asp:BoundField DataField="March" ItemStyle-Width="75px" HeaderText="March" SortExpression="March" />
+                                        <asp:BoundField DataField="April" ItemStyle-Width="75px" HeaderText="April" SortExpression="April" />
+                                        <asp:BoundField DataField="May" ItemStyle-Width="75px" HeaderText="May" SortExpression="May" />
+                                        <asp:BoundField DataField="June" ItemStyle-Width="75px"  HeaderText="June" SortExpression="June" />
+                                        <asp:BoundField DataField="July" ItemStyle-Width="75px"  HeaderText="July" SortExpression="July" />
+                                        <asp:BoundField DataField="August" ItemStyle-Width="75px" HeaderText="August" SortExpression="August" />
+                                        <asp:BoundField DataField="September" ItemStyle-Width="75px" HeaderText="September" SortExpression="September" />
+                                        <asp:BoundField DataField="October" ItemStyle-Width="75px" HeaderText="October" SortExpression="October" />
+                                        <asp:BoundField DataField="November" ItemStyle-Width="75px" HeaderText="November" SortExpression="November" />
+                                        <asp:BoundField DataField="December" ItemStyle-Width="75px" HeaderText="December" SortExpression="December" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="100px" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" />
                                     </Columns>
                                 </asp:GridView>
                                 <asp:SqlDataSource ID="source4" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT LocationType,
@@ -150,27 +150,27 @@
                             (select count(LocationType) from NewProgram where Month(DateCompleted) = '12' and LocationType = 'Onsite') December,
                             (select count(LocationType) from NewProgram where LocationType='Onsite') '2018 Total'
                             from NewProgram where LocationType = 'Onsite' group by LocationType"></asp:SqlDataSource>
-                                <asp:GridView ID="totProgramsGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source7" ShowHeader="False">
+                                <asp:GridView ID="totProgramsGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source7" Width="1200px"  ShowHeader="False">
                                     <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                     <Columns>
-                                        <asp:TemplateField ItemStyle-Font-Bold="true" ItemStyle-Width="150px">
+                                        <asp:TemplateField ItemStyle-Font-Bold="true" ItemStyle-Width="200px">
                                             <ItemTemplate>
                                                 Total Programs
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="January" HeaderText="January" SortExpression="January" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="February" HeaderText="February" SortExpression="February" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="March" HeaderText="March" SortExpression="March" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="April" HeaderText="April" SortExpression="April" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="May" HeaderText="May" SortExpression="May" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="June" HeaderText="June" SortExpression="June" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="July" HeaderText="July" SortExpression="July" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="August" HeaderText="August" SortExpression="August" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="September" HeaderText="September" SortExpression="September" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="October" HeaderText="October" SortExpression="October" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="November" HeaderText="November" SortExpression="November" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="December" HeaderText="December" SortExpression="December" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="January" HeaderText="January" SortExpression="January" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="February" HeaderText="February" SortExpression="February" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="March" HeaderText="March" SortExpression="March" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="April" HeaderText="April" SortExpression="April" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="May" HeaderText="May" SortExpression="May" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="June" HeaderText="June" SortExpression="June" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="July" HeaderText="July" SortExpression="July" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="August" HeaderText="August" SortExpression="August" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="September" HeaderText="September" SortExpression="September" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="October" HeaderText="October" SortExpression="October" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="November" HeaderText="November" SortExpression="November" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="December" HeaderText="December" SortExpression="December" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="100px" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" />
                                     </Columns>
                                 </asp:GridView>
                                 <asp:SqlDataSource ID="source7" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT 
@@ -188,27 +188,27 @@
                                 (select count(LocationType) from NewProgram where Month(DateCompleted) = '12') December,
                                 (select count(LocationType) from NewProgram) '2018 Total'
                                 from NewProgram where LocationType = 'Online' group by LocationType"></asp:SqlDataSource>
-                                <asp:GridView ID="totKidsGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source2" ShowHeader="False">
+                                <asp:GridView ID="totKidsGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source2"  Width="1200px" ShowHeader="False">
                                     <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                     <Columns>
-                                        <asp:TemplateField ItemStyle-Width="150px">
+                                        <asp:TemplateField ItemStyle-Width="200px">
                                             <ItemTemplate>
                                                 Children
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:BoundField DataField="January" HeaderText="January" SortExpression="January" />
-                                        <asp:BoundField DataField="February" HeaderText="February" SortExpression="February" />
-                                        <asp:BoundField DataField="March" HeaderText="March" SortExpression="March" />
-                                        <asp:BoundField DataField="April" HeaderText="April" SortExpression="April" />
-                                        <asp:BoundField DataField="May" HeaderText="May" SortExpression="May" />
-                                        <asp:BoundField DataField="June" HeaderText="June" SortExpression="June" />
-                                        <asp:BoundField DataField="July" HeaderText="July" SortExpression="July" />
-                                        <asp:BoundField DataField="August" HeaderText="August" SortExpression="August" />
-                                        <asp:BoundField DataField="September" HeaderText="September" SortExpression="September" />
-                                        <asp:BoundField DataField="October" HeaderText="October" SortExpression="October" />
-                                        <asp:BoundField DataField="November" HeaderText="November" SortExpression="November" />
-                                        <asp:BoundField DataField="December" HeaderText="December" SortExpression="December" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" />
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="January" HeaderText="January" SortExpression="January" ControlStyle-Width="75px" />
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="February" HeaderText="February" SortExpression="February" ControlStyle-Width="75px" />
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="March" HeaderText="March" SortExpression="March" ControlStyle-Width="75px" />
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="April" HeaderText="April" SortExpression="April"  ControlStyle-Width="75px"/>
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="May" HeaderText="May" SortExpression="May"  ControlStyle-Width="75px"/>
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="June" HeaderText="June" SortExpression="June"  ControlStyle-Width="75px"/>
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="July" HeaderText="July" SortExpression="July"  ControlStyle-Width="75px"/>
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="August" HeaderText="August" SortExpression="August"  ControlStyle-Width="75px"/>
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="September" HeaderText="September" SortExpression="September" ControlStyle-Width="75px" />
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="October" HeaderText="October" SortExpression="October"  ControlStyle-Width="75px"/>
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="November" HeaderText="November" SortExpression="November"  ControlStyle-Width="75px"/>
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="December" HeaderText="December" SortExpression="December"  ControlStyle-Width="75px"/>
+                                        <asp:BoundField ItemStyle-Width="100px" ItemStyle-Font-Bold="true" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" ControlStyle-Width="100px" />
                                     </Columns>
                                 </asp:GridView>
                                 <asp:SqlDataSource ID="source2" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT
@@ -226,27 +226,27 @@
                             (select isnull(sum(TotalKids), 0) from NewProgram where Month(DateCompleted) = '12') December,
                             (select isnull(sum(TotalKids), 0) from NewProgram) '2018 Total'
                             from NewProgram where LocationType='Online' group by LocationType  "></asp:SqlDataSource>
-                                <asp:GridView ID="totAdultsGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source3" ShowHeader="false">
+                                <asp:GridView ID="totAdultsGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source3"  Width="1200px" ShowHeader="false">
                                     <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                     <Columns>
-                                        <asp:TemplateField ItemStyle-Width="150px">
+                                        <asp:TemplateField ItemStyle-Width="200px">
                                             <ItemTemplate>
                                                 Adults
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:BoundField DataField="January" HeaderText="January" SortExpression="January" />
-                                        <asp:BoundField DataField="February" HeaderText="February" SortExpression="February" />
-                                        <asp:BoundField DataField="March" HeaderText="March" SortExpression="March" />
-                                        <asp:BoundField DataField="April" HeaderText="April" SortExpression="April" />
-                                        <asp:BoundField DataField="May" HeaderText="May" SortExpression="May" />
-                                        <asp:BoundField DataField="June" HeaderText="June" SortExpression="June" />
-                                        <asp:BoundField DataField="July" HeaderText="July" SortExpression="July" />
-                                        <asp:BoundField DataField="August" HeaderText="August" SortExpression="August" />
-                                        <asp:BoundField DataField="September" HeaderText="September" SortExpression="September" />
-                                        <asp:BoundField DataField="October" HeaderText="October" SortExpression="October" />
-                                        <asp:BoundField DataField="November" HeaderText="November" SortExpression="November" />
-                                        <asp:BoundField DataField="December" HeaderText="December" SortExpression="December" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" />
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="January" HeaderText="January" SortExpression="January" />
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="February" HeaderText="February" SortExpression="February" />
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="March" HeaderText="March" SortExpression="March" />
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="April" HeaderText="April" SortExpression="April" />
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="May" HeaderText="May" SortExpression="May" />
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="June" HeaderText="June" SortExpression="June" />
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="July" HeaderText="July" SortExpression="July" />
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="August" HeaderText="August" SortExpression="August" />
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="September" HeaderText="September" SortExpression="September" />
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="October" HeaderText="October" SortExpression="October" />
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="November" HeaderText="November" SortExpression="November" />
+                                        <asp:BoundField ItemStyle-Width="75px" DataField="December" HeaderText="December" SortExpression="December" />
+                                        <asp:BoundField ItemStyle-Width="100px" ItemStyle-Font-Bold="true" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" />
                                     </Columns>
                                 </asp:GridView>
                                 <asp:SqlDataSource ID="source3" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT
@@ -264,27 +264,27 @@
                             (select isnull(sum(TotalAdults), 0) from NewProgram where Month(DateCompleted) = '12') December,
                             (select isnull(sum(TotalAdults), 0) from NewProgram) '2018 Total'
                             from NewProgram where LocationType='Online' group by LocationType "></asp:SqlDataSource>
-                                <asp:GridView ID="totPeopleGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source1" ShowHeader="false">
+                                <asp:GridView ID="totPeopleGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source1"  Width="1200px" ShowHeader="false">
                                     <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                     <Columns>
-                                        <asp:TemplateField ItemStyle-Font-Bold="true" ItemStyle-Width="150px">
+                                        <asp:TemplateField ItemStyle-Font-Bold="true" ItemStyle-Width="200px">
                                             <ItemTemplate>
                                                 Total People
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="January" HeaderText="January" SortExpression="January" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="February" HeaderText="February" SortExpression="February" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="March" HeaderText="March" SortExpression="March" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="April" HeaderText="April" SortExpression="April" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="May" HeaderText="May" SortExpression="May" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="June" HeaderText="June" SortExpression="June" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="July" HeaderText="July" SortExpression="July" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="August" HeaderText="August" SortExpression="August" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="September" HeaderText="September" SortExpression="September" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="October" HeaderText="October" SortExpression="October" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="November" HeaderText="November" SortExpression="November" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="December" HeaderText="December" SortExpression="December" />
-                                        <asp:BoundField ItemStyle-Font-Bold="true" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="January" HeaderText="January" SortExpression="January" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="February" HeaderText="February" SortExpression="February" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="March" HeaderText="March" SortExpression="March" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="April" HeaderText="April" SortExpression="April" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="May" HeaderText="May" SortExpression="May" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="June" HeaderText="June" SortExpression="June" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="July" HeaderText="July" SortExpression="July" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="August" HeaderText="August" SortExpression="August" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="September" HeaderText="September" SortExpression="September" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="October" HeaderText="October" SortExpression="October" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="November" HeaderText="November" SortExpression="November" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="December" HeaderText="December" SortExpression="December" />
+                                        <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="100px" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" />
                                     </Columns>
                                 </asp:GridView>
                                 <asp:SqlDataSource ID="source1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT
@@ -869,8 +869,9 @@
                     <hr />
                     <div id="animalReport" class="card-body">
                         <h1 id="aniTitle" class=" ProgramCardTitle d-flex justify-content-center">Annual Animal Totals</h1>
-                        <div class="ProgramShort d-flex justify-content-center">
-                            <asp:GridView ID="animalGrid" runat="server" EnableSortingAndPagingCallbacks="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource48" ForeColor="#000000">
+                         <div class="row table-responsive  ">
+                            <div class="col-md-12  mx-auto   table-bordered table-hover AnimalCard " >
+                            <asp:GridView ID="animalGrid" HeaderStyle-ForeColor="black" runat="server" EnableSortingAndPagingCallbacks="True" AutoGenerateColumns="False" width="100%" DataSourceID="SqlDataSource48" ForeColor="#000000">
                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                 <Columns>
                                     <asp:BoundField DataField="AnimalName" HeaderText="Animal Name" SortExpression="AnimalName" />
@@ -882,7 +883,7 @@
                         FROM dbo.NewProgram np inner join dbo.AssignAnimal aa on np.NewProgramID = aa.NewProgramID right join dbo.Animal a on aa.AnimalID = a.AnimalID
                         GROUP BY a.AnimalName, np.TotalPeople"></asp:SqlDataSource>
                         </div>
-                    </div>
+                    </div></div>
                     <div class="row">
                         <div class="col-md-12">
                             <asp:Button ID="Button1" class=" btn btn-primary PayButton2" Text="Export To Excel" runat="server" OnClick="Button1_Click"></asp:Button>
@@ -890,7 +891,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        
         <%--<ul class="container MonthNav">
             <h3><u>Month</u></h3>
             <li class="MonthLi" id="janBtn">January</li>
