@@ -87,16 +87,5 @@ public partial class Program : System.Web.UI.Page
         da3.Fill(dt3);
         GridView2.DataSource = dt3;
         GridView2.DataBind();
-
-
-
-
-
-
-
-
-
-
-
     }
 }
