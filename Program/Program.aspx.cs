@@ -17,23 +17,11 @@ public partial class Program : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        if (!IsPostBack)
-        {
-
-
-
-
-        }
-
-
     }
     protected void redirectProgram(object sender, EventArgs e)
     {
         Response.Redirect("AddProgram.aspx");
     }
-
-
-
 
     protected void GridView1_RowDataBound1(object sender, GridViewRowEventArgs e)
     {
@@ -62,19 +50,7 @@ public partial class Program : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
         id = Convert.ToInt32(GridView1.SelectedValue.ToString());
 
-       // string programInfo = "SELECT Program.ProgramName, Program.ProgramType, format(Program.ProgramCost,'C','en-us') as [Cost], Convert(CHAR(10),[NewProgram].[DateCompleted],101) as [Date], NewProgram.TotalKids, NewProgram.TotalAdults, NewProgram.TotalPeople FROM Animal INNER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID INNER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID INNER JOIN Program ON NewProgram.ProgramID = Program.ProgramID WHERE NewProgram.NewProgramID = @NewProgramID";
-
         string AnimalList = " SELECT Animal.AnimalName, Animal.AnimalType FROM Animal INNER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID WHERE AssignAnimal.NewProgramID = @NewProgramID";
-
-        //SqlCommand cmd2 = sc.CreateCommand();
-        //cmd2.CommandType = CommandType.Text;
-        //cmd2.CommandText = programInfo;
-        //cmd2.Parameters.AddWithValue("@NewProgramID", id);
-        //SqlDataAdapter da2 = new SqlDataAdapter(cmd2);
-        //DataTable dt2 = new DataTable();
-        //da2.Fill(dt2);
-        //GridView3.DataSource = dt2;
-        //GridView3.DataBind();
 
 
 

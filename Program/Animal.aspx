@@ -30,7 +30,7 @@
 
     <br />
 
-    <div class="table-responsive ">
+    <div class="table-responsive  d-flex justify-content-center ">
         <div class="row mx-auto d-flex justify-content-center ">
       
             <div class="col-xl-6 col-lg-12  col-md-12 col-s-12 ">
@@ -52,11 +52,11 @@
         
         
         
-        <div class="row mx-auto d-flex justify-content-center ">
-            <div class="col-xl-7 col-lg-12 col-md-12 col-s-12 ">
+        <div class="row mx-auto ">
+            <div class="col-xl-8 col-lg-12 col-md-12 col-s-12 ">
                 <asp:GridView ID="GridView1" runat="server" HeaderStyle-ForeColor="black" ItemStyle-ForeColor="black" AutoGenerateColumns="False" DataKeyNames="AnimalID"
                     Class=" table-responsive-md table table-condensed table-bordered table-hover AnimalCard" DataSourceID="AnimalSQL" BackColor="White" HorizontalAlign="Left"
-                    OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowSorting="True" Width="800px" Height="600px" OnRowDataBound="GridView1_RowDataBound1">
+                    OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowSorting="True" Width="900px" Height="600px" OnRowDataBound="GridView1_RowDataBound1">
 
                     <AlternatingRowStyle BackColor="#CCFFCC" />
 
@@ -71,8 +71,8 @@
                         <asp:BoundField DataField="TotalPeople" HeaderText="TotalPeople" ReadOnly="True" SortExpression="TotalPeople" />
                         <asp:BoundField DataField="TotalPrograms" HeaderText="TotalPrograms" SortExpression="TotalPrograms" ReadOnly="True" />
                         <asp:BoundField DataField="LastUpdatedBy" HeaderText="LastUpdatedBy" SortExpression="LastUpdatedBy" />
-                        <asp:ImageField DataImageUrlField="Image" ControlStyle-Height="100" ControlStyle-Width="100">
-<ControlStyle Height="100px" Width="100px"></ControlStyle>
+                        <asp:ImageField DataImageUrlField="Image" >
+<ControlStyle Height="50px" Width="50px"></ControlStyle>
                         </asp:ImageField>
                     </Columns>
 

@@ -74,12 +74,12 @@
 
                                 <Columns>
 
-                                    <asp:BoundField DataField="ProgramName" HeaderText="ProgramName" SortExpression="ProgramName" />
-                                    <asp:BoundField DataField="ProgramCost" HeaderText="ProgramCost" SortExpression="ProgramCost" />
-                                    <asp:BoundField DataField="ProgramType" HeaderText="ProgramType" SortExpression="ProgramType" />
-                                    <asp:BoundField DataField="LocationType" HeaderText="LocationType" SortExpression="LocationType" />
-                                    <asp:BoundField DataField="TotalPeople" HeaderText="TotalPeople" SortExpression="TotalPeople" />
-                                    <asp:BoundField DataField="DateCompleted" HeaderText="DateCompleted" SortExpression="DateCompleted" />
+                                    <asp:BoundField DataField="ProgramName" HeaderText="Program Name" SortExpression="ProgramName" />
+                                    <asp:BoundField DataField="ProgramCost" HeaderText="Program Cost" SortExpression="ProgramCost" />
+                                    <asp:BoundField DataField="ProgramType" HeaderText="Program Type" SortExpression="ProgramType" />
+                                    <asp:BoundField DataField="LocationType" HeaderText="Location" SortExpression="LocationType" />
+                                    <asp:BoundField DataField="TotalPeople" HeaderText="Total People" SortExpression="TotalPeople" />
+                                    <asp:BoundField DataField="DateCompleted" HeaderText="Date Completed" SortExpression="DateCompleted" />
 
                                     <asp:BoundField DataField="NewProgramID" HeaderText="NewProgramID" InsertVisible="False" ReadOnly="True" SortExpression="NewProgramID" Visible="false" />
 
@@ -146,12 +146,12 @@
 
                                 <Columns>
 
-                                    <asp:BoundField DataField="ProgramName" HeaderText="ProgramName" SortExpression="ProgramName" />
-                                    <asp:BoundField DataField="ProgramCost" HeaderText="ProgramCost" SortExpression="ProgramCost" />
-                                    <asp:BoundField DataField="ProgramType" HeaderText="ProgramType" SortExpression="ProgramType" />
-                                    <asp:BoundField DataField="LocationType" HeaderText="LocationType" SortExpression="LocationType" />
-                                    <asp:BoundField DataField="TotalPeople" HeaderText="TotalPeople" SortExpression="TotalPeople" />
-                                    <asp:BoundField DataField="DateCompleted" HeaderText="DateCompleted" SortExpression="DateCompleted" />
+                                    <asp:BoundField DataField="ProgramName" HeaderText="Program Name" SortExpression="ProgramName" />
+                                    <asp:BoundField DataField="ProgramCost" HeaderText="Program Cost" SortExpression="ProgramCost" />
+                                    <asp:BoundField DataField="ProgramType" HeaderText="Program Type" SortExpression="ProgramType" />
+                                    <asp:BoundField DataField="LocationType" HeaderText="Location" SortExpression="LocationType" />
+                                    <asp:BoundField DataField="TotalPeople" HeaderText="Total People" SortExpression="TotalPeople" />
+                                    <asp:BoundField DataField="DateCompleted" HeaderText="Date Completed" SortExpression="DateCompleted" />
 
                                     <asp:BoundField DataField="NewProgramID" HeaderText="NewProgramID" InsertVisible="False" ReadOnly="True" SortExpression="NewProgramID" Visible="false" />
 
@@ -219,12 +219,12 @@
 
                                 <Columns>
 
-                                    <asp:BoundField DataField="ProgramName" HeaderText="ProgramName" SortExpression="ProgramName" />
-                                    <asp:BoundField DataField="ProgramCost" HeaderText="ProgramCost" SortExpression="ProgramCost" />
-                                    <asp:BoundField DataField="ProgramType" HeaderText="ProgramType" SortExpression="ProgramType" />
-                                    <asp:BoundField DataField="LocationType" HeaderText="LocationType" SortExpression="LocationType" />
-                                    <asp:BoundField DataField="TotalPeople" HeaderText="TotalPeople" SortExpression="TotalPeople" />
-                                    <asp:BoundField DataField="DateCompleted" HeaderText="DateCompleted" SortExpression="DateCompleted" />
+                                    <asp:BoundField DataField="ProgramName" HeaderText="Program Name" SortExpression="ProgramName" />
+                                    <asp:BoundField DataField="ProgramCost" HeaderText="Program Cost" SortExpression="ProgramCost" />
+                                    <asp:BoundField DataField="ProgramType" HeaderText="Program Type" SortExpression="ProgramType" />
+                                    <asp:BoundField DataField="LocationType" HeaderText="Location" SortExpression="LocationType" />
+                                    <asp:BoundField DataField="TotalPeople" HeaderText="Total People" SortExpression="TotalPeople" />
+                                    <asp:BoundField DataField="DateCompleted" HeaderText="Date Completed" SortExpression="DateCompleted" />
 
                                     <asp:BoundField DataField="NewProgramID" HeaderText="NewProgramID" InsertVisible="False" ReadOnly="True" SortExpression="NewProgramID" Visible="false" />
 

@@ -5,7 +5,7 @@
       <br />
     <br />
     <br />
-      <h1 id="ProgramMonth" class=" ProgramCardTitle d-flex justify-content-center "> Organizations</h1>
+      <h1 id="ProgramMonth" class=" ProgramCardTitle mx-auto d-flex justify-content-center "> Organizations</h1>
 	<div class="row">
         <div class="col-4 mx-auto">
             <div class="d-flex justify-content-center "> 
@@ -18,8 +18,9 @@
 		</div>
     
         <br />
-         <div class="row mx-auto d-flex justify-content-center table-responsive ">
-            <div class="col-xl-7 col-lg-12 col-md-12 col-s-12 ">
+ <div class="table-responsive">
+                    <div class="row mx-auto d-flex justify-content-center">
+                        <div class="col-xl-7 col-lg-12 col-md-12 col-s-12">
               <asp:GridView ID="grdOrganizations"    HeaderStyle-ForeColor="black" Class ="table-responsive-md table table-condensed table-bordered table-hover AnimalCard" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowSorting="True" >
     <Columns>
         <asp:BoundField DataField="OrganizationName"  HeaderText="Organization Name" SortExpression="OrganizationName" />
@@ -34,7 +35,7 @@
         </asp:GridView>
           </div>
       </div>
-
+           </div>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT Organization.OrganizationName, Address.Street, Address.State, Address.County, (Contact.FirstName + ' '+  Contact.LastName) AS Name, Contact.Email, Contact.PrimaryPhoneNumber
 FROM            Address INNER JOIN
                          Organization ON Address.AddressID = Organization.AddressID INNER JOIN
