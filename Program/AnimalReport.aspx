@@ -20,12 +20,11 @@
                  <div class="col-lg-6 col-md- 6 col-s-12 col-xl-4">
                         <div class="card mx-auto AnimalReportCard">
                             <div class="card-body">
-                                <h5 class="card-title">Search by Date</h5>
+                                <h5 class="card-title">General Animal Report</h5>
                                 <p>
-                                    Search by date and which animal(s) you would like
-                                    to generate a report.
+                                    Detailed report of all animals and their associated information
                                 </p>
-                                <asp:TextBox ID="txtStartDate" runat="server" Cssclass="form-control" TextMode="Date"></asp:TextBox>
+                               <%-- <asp:TextBox ID="txtStartDate" runat="server" Cssclass="form-control" TextMode="Date"></asp:TextBox>--%>
                                 <br />
 
                                 <br />
@@ -41,6 +40,41 @@
 
 
                     <%--END of SEARH BY DATE--%>
+                     <div class="col-lg-6 col-md- 6 col-s-12 col-xl-4">
+                        <div class="card mx-auto AnimalReportCard">
+                            <div class="card-body">
+                                <h5 class="card-title">Animal Type Report</h5>
+                                <p>
+                                    Detailed report of all animals by Animal Type
+                                </p>
+                                
+                                <br />
+                                <asp:DropDownList ID="drpAnimalTypeReport" runat="server" CssClass="form-control-sm ">
+                                    <asp:ListItem>Bird</asp:ListItem>
+                                    <asp:ListItem>Mammal</asp:ListItem>
+                                    <asp:ListItem>Reptile</asp:ListItem>
+                                </asp:DropDownList>
+                                <br />
+                                <br />
+                                
+                                <asp:Button ID="Button1" runat="server"
+                                    CssClass="btn btn-success"
+                                    UseSubmitBehavior="false"
+                                    CauseValidation="true"
+                                    Text="Generate Report"
+                                    OnClick="AnimalType" />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
 
                     <%--START OF MONTHLY ANIMAL REPORT--%>
 
