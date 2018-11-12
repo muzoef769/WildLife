@@ -18,8 +18,9 @@
 
 
 
-
-        <div class="row mx-auto d-flex justify-content-center table-responsive ">
+        <div class="d-flex justify-content-center table-responsive ">
+            
+        <div class="row mx-auto">
             <div class="col-xl-7 col-lg-12 col-md-12 col-s-12 ">
                 <table id="monthlyReports" class="table">
                     <thead>
@@ -56,6 +57,7 @@
                 </table>
 
             </div>
+        </div>
         </div>
         <div>
 
