@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Program.aspx.cs" Inherits="Program" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Program.aspx.cs" Inherits="Program" EnableEventValidation = "false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <br />
@@ -73,77 +73,21 @@
         <div class="row mx-auto d-flex justify-content-center ">
             <div class="col-xl-7 col-lg-12 col-md-12 col-s-12 ">
                 <asp:GridView ID="GridView1" runat="server"
-                    HeaderStyle-ForeColor="black"
-                    ItemStyle-ForeColor="black" AutoGenerateColumns="False"
-                    DataKeyNames="ProgramID" CssClass=" table-responsive-md table table-condensed table-bordered table-hover AnimalCard"
+                    HeaderStyle-ForeColor="black" DataKeyNames="NewProgramID"
+                    ItemStyle-ForeColor="black" AutoGenerateColumns="False" CssClass=" table-responsive-md table table-condensed table-bordered table-hover AnimalCard"
                     DataSourceID="ProgramSQL" BackColor="White" HorizontalAlign="Left"
-                    AllowSorting="True">
+                    AllowSorting="True" OnRowDataBound="GridView1_RowDataBound1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
 
                     <Columns>
-                        <asp:CommandField ShowEditButton="True" ShowSelectButton="True" />
 
-                        <asp:TemplateField HeaderText="ProgramID" InsertVisible="False" SortExpression="ProgramID" Visible="false">
-                            <EditItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("ProgramID") %>'></asp:Label>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("ProgramID") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
+                        <asp:BoundField DataField="ProgramName" HeaderText="ProgramName" SortExpression="ProgramName" />
+                        <asp:BoundField DataField="ProgramCost" HeaderText="ProgramCost" SortExpression="ProgramCost" />
+                        <asp:BoundField DataField="ProgramType" HeaderText="ProgramType" SortExpression="ProgramType" />
+                        <asp:BoundField DataField="LocationType" HeaderText="LocationType" SortExpression="LocationType" />
+                        <asp:BoundField DataField="TotalPeople" HeaderText="TotalPeople" SortExpression="TotalPeople" />
+                        <asp:BoundField DataField="DateCompleted" HeaderText="DateCompleted" SortExpression="DateCompleted" />
 
-                        <asp:TemplateField HeaderText="Program Name" SortExpression="ProgramName">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("ProgramName") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("ProgramName") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-
-                        <asp:TemplateField HeaderText="Program Type" SortExpression="ProgramType">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("ProgramType") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("ProgramType") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-
-                        <asp:TemplateField HeaderText="Program Cost" SortExpression="ProgramCost">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("ProgramCost") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("ProgramCost") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-
-                        <asp:TemplateField HeaderText="Capacity" SortExpression="Capacity">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Capacity") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("Capacity") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-
-                        <asp:TemplateField HeaderText="Last Updated" SortExpression="LastUpdated">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("LastUpdated") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("LastUpdated") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-
-                        <asp:TemplateField HeaderText="Last Updated By" SortExpression="LastUpdatedBy">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("LastUpdatedBy") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("LastUpdatedBy") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
+                        <asp:BoundField DataField="NewProgramID" HeaderText="NewProgramID" InsertVisible="False" ReadOnly="True" SortExpression="NewProgramID" Visible="false" />
 
                     </Columns>
                     <HeaderStyle ForeColor="White" BackColor="#777678"></HeaderStyle>
@@ -157,20 +101,20 @@
                     DeleteCommand="DELETE FROM [Program] WHERE [ProgramID] = @original_ProgramID AND [ProgramName] = @original_ProgramName AND [ProgramType] = @original_ProgramType AND [ProgramCost] = @original_ProgramCost AND [Capacity] = @orginial_Capacity AND [LastUpdated] = @original_LastUpdated AND [LastUpdatedBy] = @original_LastUpdatedBy"
                     InsertCommand="INSERT INTO [Program] ([ProgramName], [ProgramType], [ProgramCost], [Capacity], [LastUpdated], [LastUpdatedBy]) VALUES (@AnimalName, @AnimalType, @ProgramCost, @Capacity, @LastUpdated, @LastUpdatedBy)"
                     OldValuesParameterFormatString="original_{0}"
-                    SelectCommand="SELECT [ProgramID], [ProgramName], [ProgramType], [ProgramCost], [Capacity], Convert(CHAR(10),[LastUpdated],101) as [LastUpdated], [LastUpdatedBy] FROM [Program]"
+                    SelectCommand="SELECT Program.ProgramName, Program.ProgramCost, Program.ProgramType, NewProgram.LocationType, NewProgram.TotalPeople, NewProgram.DateCompleted, NewProgram.NewProgramID FROM Program INNER JOIN NewProgram ON Program.ProgramID = NewProgram.ProgramID ORDER BY NewProgram.DateCompleted DESC"
                     UpdateCommand="UPDATE [Program] SET [ProgramName] = @ProgramName1 AND [ProgramType] = @ProgramType1 AND [ProgramCost] = @ProgramCost1 AND [Capacity] = @Capacity1 AND [LastUpdated] = @LastUpdated1 AND [LastUpdatedBy] = @LastUpdatedBy1 WHERE [ProgramID] = @ProgramID2 AND [ProgramName] = @ProgramName2 AND [ProgramType] = @ProgramType2 AND [ProgramCost] = @ProgramCost2 AND [Capacity] = @Capacity2 AND [LastUpdated] = @LastUpdated2 AND [LastUpdatedBy] = @LastUpdatedBy2">
                     <DeleteParameters>
                         <asp:Parameter Name="original_ProgramID" Type="Int32" />
                         <asp:Parameter Name="original_ProgramName" Type="String" />
-                        <asp:Parameter Name="original_ProgarmType" Type="String" />
+                        <asp:Parameter Name="original_ProgramType" />
                         <asp:Parameter Name="original_ProgramCost" Type="Double" />
-                        <asp:Parameter Name="original_Capacity" Type="Int32" />
+                        <asp:Parameter Name="orginial_Capacity" />
                         <asp:Parameter Name="original_LastUpdated" DbType="Date" />
                         <asp:Parameter Name="original_LastUpdatedBy" Type="String" />
                     </DeleteParameters>
                     <InsertParameters>
-                        <asp:Parameter Name="ProgramName" Type="String" />
-                        <asp:Parameter Name="ProgramType" Type="String" />
+                        <asp:Parameter Name="AnimalName" />
+                        <asp:Parameter Name="AnimalType" />
                         <asp:Parameter Name="ProgramCost" Type="Double" />
                         <asp:Parameter Name="Capacity" Type="Int32" />
                         <asp:Parameter Name="LastUpdated" DbType="Date" />
@@ -209,6 +153,64 @@
 </div>
 
 
-    
+   
+     <div class="modal" id="ProgramDetailsModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Animals Involved</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body p-4" id="resultPrograms">
+
+
+
+                    
+                            <div class="table-responsive ">
+        <div class="row mx-auto d-flex justify-content-center ">
+      
+            <div class="col-xl-6 col-lg-12  col-md-12 col-s-12 ">
+                           <asp:GridView ID="GridView2" runat="server" Visible="True" HorizontalAlign="Center" Class="table-responsive-md AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
+                </asp:GridView>
+                        </div>
+                        
+
+            <script type="text/javascript">
+            function openModal() {
+           $('#ProgramDetailsModal').modal('show');
+              }
+         </script>
+                    </div>
+                   
+        
+
+                    </div>
+
+                </div>
+               <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                
+               
+                
+               
+               </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </asp:Content>
 
