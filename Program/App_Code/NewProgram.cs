@@ -10,6 +10,7 @@ public class NewProgram
 {
     public static double baseCost = 0;
     public static List<NewProgram> programList = new List<NewProgram>();
+    public static List<NewProgram> invoiceList = new List<NewProgram>();
     public static int btnCount = 0;
 
     private int newProgramID, programID, addressID, numKids, numAdults, totalPeople, totalMileage;
