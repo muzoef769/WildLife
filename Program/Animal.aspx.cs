@@ -151,13 +151,6 @@ public partial class Animal : System.Web.UI.Page
                     ddlEditType.Text = reader.GetString(1);
 
                     txtEditName.Text = reader.GetString(2);
-
-
-
-
-
-
-
                 }
             }
         }
