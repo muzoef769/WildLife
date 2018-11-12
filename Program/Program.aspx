@@ -25,9 +25,11 @@
         });</script>
 
 
+
+
     <div class="row">
         <div class="col-md-6 mx-auto text-center">
-            <h1 class="OpenCardTitle">View Program Info</h1>
+            <h1 class="CardTitle">View Program Info</h1>
         </div>
     </div>
 
@@ -37,7 +39,7 @@
         <div id="AddAnimalButton" class="col-lg-2 col-md-4 col-s-4  d-flex  mx-auto justify-content-center">
             <asp:Button ID="btnAddProgram"
                 runat="server"
-                CssClass="btn btn-primary  btn-AddAnimal"
+                CssClass="btn btn-success"
                 UseSubmitBehavior="false"
                 CauseValidation="true"
                 Text="Add Program"
@@ -45,17 +47,17 @@
         </div>
     </div>
     <br />
-    <div class="">
-        <div class="row mx-auto d-flex justify-content-center  ">
-            <ul class="nav nav-tabs col-xl-7 col-lg-12 col-md-12 col-s-12 " id="myTab" role="tablist">
+    <div class="" >
+        <div class="row mx-auto d-flex justify-content-center  " >
+            <ul class="nav nav-tabs col-xl-7 col-lg-12 col-md-12 col-s-12 " style=" padding-left:15px; border-bottom:none;" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#Online" role="tab" aria-controls="home" aria-selected="true">Online</a>
+                    <a style="background-color:whitesmoke; margin-right:5px; color:black;"class="nav-link active TabHover" id="home-tab" data-toggle="tab" href="#Online" role="tab" aria-controls="home" aria-selected="true">Online</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link NotActive" id="profile-tab" data-toggle="tab" href="#OnSite" role="tab" aria-controls="profile" aria-selected="false">OnSite</a>
+                    <a style="background-color:whitesmoke; margin-right:5px; color:black;" class="nav-link NotActive TabHover" id="profile-tab" data-toggle="tab" href="#OnSite" role="tab" aria-controls="profile" aria-selected="false">OnSite</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link NotActive" id="contact-tab" data-toggle="tab" href="#OffSite" role="tab" aria-controls="contact" aria-selected="false">OffSite</a>
+                    <a style="background-color:whitesmoke; margin-right:5px; color:black;" class="nav-link NotActive TabHover" id="contact-tab" data-toggle="tab" href="#OffSite" role="tab" aria-controls="contact" aria-selected="false">OffSite</a>
                 </li>
             </ul>
 
@@ -68,7 +70,7 @@
                         <div class="col-xl-7 col-lg-12 col-md-12 col-s-12 ">
                             <asp:GridView ID="GridView1" runat="server"
                                 HeaderStyle-ForeColor="black" DataKeyNames="NewProgramID"
-                                ItemStyle-ForeColor="black" AutoGenerateColumns="False" CssClass=" table-responsive-md table table-condensed table-bordered table-hover AnimalCard"
+                                ItemStyle-ForeColor="black" AutoGenerateColumns="False" CssClass="  table table-condensed table-bordered table-hover AnimalCard"
                                 DataSourceID="ProgramSQL" BackColor="White" HorizontalAlign="Left"
                                 AllowSorting="True" OnRowDataBound="GridView1_RowDataBound1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
 
@@ -84,7 +86,7 @@
                                     <asp:BoundField DataField="NewProgramID" HeaderText="NewProgramID" InsertVisible="False" ReadOnly="True" SortExpression="NewProgramID" Visible="false" />
 
                                 </Columns>
-                                <HeaderStyle ForeColor="White" BackColor="#777678"></HeaderStyle>
+                                <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
                             </asp:GridView>
 
                             <asp:SqlDataSource
@@ -140,7 +142,7 @@
                         <div class="col-xl-7 col-lg-12 col-md-12 col-s-12">
                             <asp:GridView ID="GridView3" runat="server"
                                 HeaderStyle-ForeColor="Black" DateKeyNames="NewProgramID"
-                                ItemStyle-ForeColor="black" AutoGenerateColumns="False" CssClass=" table-responsive-md table table-condensed table-bordered table-hover AnimalCard"
+                                ItemStyle-ForeColor="black" AutoGenerateColumns="False" CssClass="  table table-condensed table-bordered table-hover AnimalCard"
                                 DataSourceID="ProgramSQL1" BackColor="White" HorizontalAlign="Left"
                                 AllowSorting="True" OnRowDataBound="GridView1_RowDataBound1">
 
@@ -156,7 +158,7 @@
                                     <asp:BoundField DataField="NewProgramID" HeaderText="NewProgramID" InsertVisible="False" ReadOnly="True" SortExpression="NewProgramID" Visible="false" />
 
                                 </Columns>
-                                <HeaderStyle ForeColor="White" BackColor="#777678"></HeaderStyle>
+                              <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
                             </asp:GridView>
 
                             <asp:SqlDataSource
@@ -213,7 +215,7 @@
                         <div class="col-xl-7 col-lg-12 col-md-12 col-s-12">
                             <asp:GridView ID="GridView4" runat="server"
                                 HeaderStyle-ForeColor="Black" DateKeyNames="NewProgramID"
-                                ItemStyle-ForeColor="black" AutoGenerateColumns="False" CssClass=" table-responsive-md table table-condensed table-bordered table-hover AnimalCard"
+                                ItemStyle-ForeColor="black" AutoGenerateColumns="False" CssClass="  table table-condensed table-bordered table-hover AnimalCard"
                                 DataSourceID="ProgramSQL2" BackColor="White" HorizontalAlign="Left"
                                 AllowSorting="True" OnRowDataBound="GridView1_RowDataBound1">
 
@@ -229,7 +231,7 @@
                                     <asp:BoundField DataField="NewProgramID" HeaderText="NewProgramID" InsertVisible="False" ReadOnly="True" SortExpression="NewProgramID" Visible="false" />
 
                                 </Columns>
-                                <HeaderStyle ForeColor="White" BackColor="#777678"></HeaderStyle>
+                               <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
                             </asp:GridView>
 
                             <asp:SqlDataSource
@@ -298,7 +300,7 @@
                         <div class="row mx-auto d-flex justify-content-center ">
 
                             <div class="col-xl-6 col-lg-12  col-md-12 col-s-12 ">
-                                <asp:GridView ID="GridView2" runat="server" Visible="True" HorizontalAlign="Center" Class="table-responsive-md AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
+                                <asp:GridView ID="GridView2" runat="server" Visible="True" HorizontalAlign="Center" Class=" AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
                                 </asp:GridView>
                             </div>
 

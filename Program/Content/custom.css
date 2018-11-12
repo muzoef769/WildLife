@@ -1364,6 +1364,22 @@ a.MonthTable:hover{ background-color:whitesmoke;}
             }
         }
 
-        .NotActive{background-color:lightgray !important;
+        .NotActive {
+            background-color: lightgray !important;
+        }
 
+        .TabHover:hover {
+            background-color: #339933
+        }
+
+        .PhoneLine {
+            display: inline !important;
+        }
+
+        #tabCheckBox:checked {
+            background-color: green !important;
+        }
+
+        #tabCheckBox: {
+            background-color: green;
         }

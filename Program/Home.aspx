@@ -19,10 +19,10 @@
                     <div class="row">
                          <div class="col-md-6 mx-auto d-flex justify-content-center">
                              <div id="AddAnimalButton" class=" ml-2">
-                    <a class="btn btn-primary d-flex  mx-auto btn-block justify-content-center btn-AddAnimal" href="#" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a>
+                    <a class="btn btn-primary d-flex  mx-auto btn-block justify-content-center btn btn-success" style=" width: 140px !important;"  href="#" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a>
                 </div>
                             <div id="AddOrganizationButton" class=" ml-4 ">
-                    <a class="btn btn-primary d-flex  mx-auto btn-block justify-content-center btn-AddAnimal" href="AddOrganization.aspx" role="button">Add Organization</a>
+                    <a class="btn btn-primary d-flex  mx-auto btn-block justify-content-center btn btn-success" style=" width: 140px !important;"  href="AddOrganization.aspx" role="button">Add Organization</a>
                 </div>
                              
                              
@@ -41,10 +41,10 @@
                     <div class="row">
                       <div class="col-md-6 mx-auto d-flex justify-content-center">
                             <div id="AddProgramButton" class=" ml-2">
-                    <a class="btn btn-primary d-flex  mx-auto btn-block justify-content-center btn-AddAnimal" href="AddProgram.aspx" role="button">Add Program</a>
+                    <a class="btn btn-primary d-flex  mx-auto btn-block justify-content-center btn btn-success" style=" width: 140px !important;"  href="AddProgram.aspx" role="button">Add Program</a>
                 </div>
                          <div id="ViewProgramButton" class=" ml-4">
-                    <a class="btn btn-primary d-flex  mx-auto btn-block justify-content-center btn-AddAnimal" href="Program.aspx" role="button">View Programs</a>
+                    <a class="btn btn-primary d-flex  mx-auto btn-block justify-content-center btn btn-success" style=" width: 140px !important;" href="Program.aspx" role="button">View Programs</a>
                 </div>   
                              
        
@@ -112,7 +112,7 @@
                     <div class="row">
 
                         <div class="col-md-2">
-                            <asp:Button ID="btnAddModal" runat="server" Text="Add" Class="btn btn-primary LoginButton FormButton" UseSubmitBehavior="false" OnClick="btnAddModal_Click"></asp:Button>
+                            <asp:Button ID="btnAddModal" runat="server" Text="Add" Class="btn btn-success FormButton" UseSubmitBehavior="false" OnClick="btnAddModal_Click"></asp:Button>
                         </div>
 
 

@@ -20,21 +20,21 @@
     <div class="row">
         <br />
         <div id="AddAnimalButton" class="col-lg-2 col-md-4 col-s-4 mx-auto">
-            <a class="btn btn-primary d-flex  mx-auto justify-content-center btn-AddAnimal" href="#" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a>
+            <a class="btn btn-primary d-flex  mx-auto justify-content-center btn btn-success" href="#" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a>
         </div>
     
    
        
         <asp:SqlDataSource ID="EditAnimal" runat="server" ConnectionString="<%$ ConnectionStrings:WildlifeCenterConnectionString %>" SelectCommand="SELECT [AnimalName], [AnimalID] FROM [Animal]"></asp:SqlDataSource>
     </div>
-
     <br />
+ 
 
-    <div class="table-responsive  d-flex justify-content-center ">
+    <div class="table-responsive PaymentContainer d-flex justify-content-center " style="background-color: transparent; padding-top: 0% !important;">
         <div class="row mx-auto d-flex justify-content-center ">
       
             <div class="col-xl-6 col-lg-12  col-md-12 col-s-12 ">
-               <%-- <asp:GridView ID="GridView2" runat="server" Visible="False" HorizontalAlign="Center" Class="table-responsive-md AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
+               <%-- <asp:GridView ID="GridView2" runat="server" Visible="False" HorizontalAlign="Center" Class=" AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
                 </asp:GridView>--%>
                 <br />
                 <br />
@@ -55,10 +55,10 @@
         <div class="row mx-auto ">
             <div class="col-xl-8 col-lg-12 col-md-12 col-s-12 ">
                 <asp:GridView ID="GridView1" runat="server" HeaderStyle-ForeColor="black" ItemStyle-ForeColor="black" AutoGenerateColumns="False" DataKeyNames="AnimalID"
-                    Class=" table-responsive-md table table-condensed table-bordered table-hover AnimalCard" DataSourceID="AnimalSQL" BackColor="White" HorizontalAlign="Left"
+                    Class="  table table-condensed table-bordered table-hover AnimalCard" DataSourceID="AnimalSQL" BackColor="White" HorizontalAlign="Left"
                     OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowSorting="True" Width="900px" Height="600px" OnRowDataBound="GridView1_RowDataBound1">
 
-                    <AlternatingRowStyle BackColor="#CCFFCC" />
+                  
 
                     <Columns>
                         <asp:BoundField DataField="AnimalID" HeaderText="AnimalID" InsertVisible="False" ReadOnly="True" SortExpression="AnimalID" Visible="False" />
@@ -178,7 +178,7 @@
                     <div class="row">
 
                         <div class="col-md-2">
-                            <asp:Button ID="btnAddModal" runat="server" Text="Add" Class="btn btn-primary LoginButton FormButton" UseSubmitBehavior="false" OnClick="btnAddModal_Click"></asp:Button>
+                            <asp:Button ID="btnAddModal" runat="server" Text="Add" Class="btn btn-success FormButton" UseSubmitBehavior="false" OnClick="btnAddModal_Click"></asp:Button>
                         </div>
 
 
@@ -238,7 +238,7 @@
                     <div class="row">
 
                         <div class="col-md-2">
-                            <asp:Button ID="btnUpdate" runat="server" Text="Update" Class="btn btn-primary LoginButton FormButton" UseSubmitBehavior="false" OnClick="btnUpdate_Click"></asp:Button>
+                            <asp:Button ID="btnUpdate" runat="server" Text="Update" Class="btn btn-success FormButton" UseSubmitBehavior="false" OnClick="btnUpdate_Click"></asp:Button>
                         </div>
 
                         
@@ -284,7 +284,7 @@
                     <div class="row">
                         <br>
                     <div class="col-md-2">
-                          <button data-toggle="modal" data-target="#ProgramModal" data-dismiss="modal" class="btn btn-primary LoginButton" type="submit">View Animal Program Details</button>
+                          <button data-toggle="modal" data-target="#ProgramModal" data-dismiss="modal" class="btn btn-success" type="submit">View Animal Program Details</button>
                         </div>
                     
                     </div>
@@ -295,7 +295,7 @@
                     <div class="row">
                         
                         <div class="col-md-2">
-                            <button data-toggle="modal" data-target="#EditModal" data-dismiss="modal" class="btn btn-primary LoginButton" type="submit">Edit Animal</button>
+                            <button data-toggle="modal" data-target="#EditModal" data-dismiss="modal" class="btn btn-success" type="submit">Edit Animal</button>
                         </div>
          <script type="text/javascript">
             function openModal() {
@@ -329,7 +329,7 @@
         <div class="row mx-auto d-flex justify-content-center ">
       
             <div class="col-xl-6 col-lg-12  col-md-12 col-s-12 ">
-                            <asp:GridView ID="GridView3" runat="server" Visible="True" HorizontalAlign="Center" Class="table-responsive-md AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
+                            <asp:GridView ID="GridView3" runat="server" Visible="True" HorizontalAlign="Center" Class=" AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
                 </asp:GridView>
                         </div>
                        

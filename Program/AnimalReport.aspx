@@ -9,7 +9,7 @@
                 <div class="row">
        <div class="col-md-6 mx-auto text-center">
 
-                   <h1 class="OpenCardTitle">View Animal Info</h1>
+                   <h1 class="CardTitle">View Animal Info</h1>
                 </div>
     </div>
 
@@ -17,7 +17,7 @@
 
                     <%--START of SEARH BY DATE--%>
 
-                 <div class="col-lg-6 col-md- 6 col-s-12 col-xl-4">
+                 <div class="col-lg-6 col-md- 6 col-s-12 col-xl-6">
                         <div class="card mx-auto AnimalReportCard">
                             <div class="card-body">
                                 <h5 class="card-title">General Animal Report</h5>
@@ -40,7 +40,7 @@
 
 
                     <%--END of SEARH BY DATE--%>
-                     <div class="col-lg-6 col-md- 6 col-s-12 col-xl-4">
+                     <div class="col-lg-6 col-md- 6 col-s-12 col-xl-6">
                         <div class="card mx-auto AnimalReportCard">
                             <div class="card-body">
                                 <h5 class="card-title">Animal Type Report</h5>
@@ -78,7 +78,7 @@
 
                     <%--START OF MONTHLY ANIMAL REPORT--%>
 
-                     <div class="col-lg-6 col-md- 6 col-s-12 col-xl-4">
+                     <div class="col-lg-6 col-md- 6 col-s-12 col-xl-6">
                         <div class="card mx-auto AnimalReportCard">
                             <div class="card-body ">
                                 <h5 class="card-title">Monthly Animal Report</h5>
@@ -117,7 +117,7 @@
 
                     <%--START OF ANNUAL ANIMAL REPORT--%>
 
-                       <div class="col-lg-6 col-md- 6 col-s-12 col-xl-4">
+                       <div class="col-lg-6 col-md- 6 col-s-12 col-xl-6">
                         <div class="card mx-auto AnimalReportCard">
                             <div class="card-body">
                                 <h5 class="card-title">Annual Animal Report</h5>
@@ -149,28 +149,44 @@
 
         <%--VIEW REPORT THROUGH GRIDVIEW--%>
 
-        <div class="row">
-            <div class="container-fluid AnimalReportContainer">
-                <div class="row justify-content-center">
-                    <div class="col-md-3">
-                        <div class="card mx-auto AnimalReportCard">
-                            <div class="card-body">
-                                <asp:GridView ID="grdViewReport" 
-                                    runat="server">
+
+    <div class="card-body container-fluid d-flex justify-content-center">
+		</div>
+    
+        <br />
+        <div class="table-responsive PaymentContainer  " style="background-color: transparent; padding-top: 0% !important;">
+ <div class="row mx-auto ">
+            <div class="col-xl-8 col-lg-12 col-md-12 col-s-12 ">
+                        <div class="col-xl-7 col-lg-12 col-md-12 col-s-12">
+               <asp:GridView ID="grdViewReport" Class =" table table-condensed table-bordered table-hover AnimalCard" runat="server">
+                                    <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
                                 </asp:GridView>
-                                
-                                <asp:Button ID="btnExportToExcel"
+          </div>
+                </div>
+     </div>
+            <br />
+                <div class="row mx-auto">
+                    <div class="col-12">
+                          <asp:Button ID="btnExportToExcel"
                                     runat="server"
                                     Text="Export To Excel"
-                                    CssClass="btn btn-success"
+                                    CssClass="btn mx-auto d-flex justify-content-center btn-success"
                                     UseSubmitBehavior="false"
                                     CauseValidation="true"
                                     OnClick="ExportToExcel"/>
-                            </div>
-                        </div>
+                        <br />
+                
+               
+      </div>
+           </div> 
+
+
+     
+                               
+                            
+                       
                     </div>
-                </div>
-            </div>
+              
         
     </div>
     <%--END OF ANNUAL ANIMAL REPORT CARD--%>

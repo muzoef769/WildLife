@@ -40,8 +40,8 @@
             <div class="container-fluid SimpleContainer">
 
                 <div class="card ProgramCard" style="opacity: .9;">
-                    <div id="tab-toggle" style="background-color: lightgray;">
-                        <input id="tabCheckBox" type="checkbox" checked data-toggle="toggle" data-on="Interactive View" data-off="Simple View">
+                    <div id="tab-toggle">
+                        <input id="tabCheckBox" type="checkbox"  checked data-toggle="toggle" data-on="Interactive View" data-off="Simple View">
                     </div>
                     <div id="ann" class="card-body">
                         <div id="simpleTab" class="row table-responsive" style="width: 90%;">
@@ -51,7 +51,7 @@
                         <div id="programTotals" class="row table-responsive" style="display:none;">
                             <div class="col-md-12  table  table-bordered table-hover AnimalCard " style="min-width: 120% !important;">
                                 <asp:GridView ID="offsiteGrid" HeaderStyle-ForeColor="black" runat="server" AutoGenerateColumns="False" DataSourceID="source6" GridLines="Both" Width="1200px">
-                                    <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
+                                    <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
                                     <Columns>
                                         <asp:BoundField HeaderStyle-Width="200px" DataField="LocationType" HeaderText="Program Totals" SortExpression="LocationType" />
                                         <asp:BoundField DataField="January" ItemStyle-Width="75px" HeaderText="Jan" SortExpression="January" />
@@ -308,7 +308,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <asp:Button ID="exportMonthly" class=" btn btn-primary PayButton2" Text="Export To Excel" runat="server" OnClick="exportMonthly_Click"></asp:Button>
+                                    <asp:Button ID="exportMonthly" class=" btn btn-success" Text="Export To Excel" runat="server" OnClick="exportMonthly_Click"></asp:Button>
                                 </div>
                             </div>
                         </div>
@@ -320,8 +320,8 @@
                         <h1 id="aniTitle" class=" ProgramCardTitle d-flex justify-content-center">Annual Animal Totals</h1>
                         <div class="row table-responsive  ">
                             <div class="col-md-12  mx-auto   table-bordered table-hover AnimalCard ">
-                                <asp:GridView ID="animalGrid" HeaderStyle-ForeColor="black" runat="server" EnableSortingAndPagingCallbacks="True" AutoGenerateColumns="False" Width="100%" DataSourceID="SqlDataSource48" ForeColor="#000000">
-                                    <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
+                                <asp:GridView ID="animalGrid"  runat="server" EnableSortingAndPagingCallbacks="True" AutoGenerateColumns="False" Width="100%" DataSourceID="SqlDataSource48" >
+                                    <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
                                     <Columns>
                                         <asp:BoundField DataField="AnimalName" HeaderText="Animal Name" SortExpression="AnimalName" />
                                         <asp:BoundField DataField="Programs" HeaderText="Programs" ReadOnly="True" SortExpression="Programs" />
@@ -336,7 +336,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <asp:Button ID="Button1" class=" btn btn-primary PayButton2" Text="Export To Excel" runat="server" OnClick="Button1_Click"></asp:Button>
+                            <asp:Button ID="Button1" class=" btn btn-success" Text="Export To Excel" runat="server" OnClick="Button1_Click"></asp:Button>
                         </div>
                     </div>
                 </div>

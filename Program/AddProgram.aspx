@@ -14,23 +14,16 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-12 mx-auto d-flex justify-content-center Spacing">
-                    <a href="AddOrganization.aspx" id="btnAddOrg" class=" btn btn-primary LoginButton" runat="server" onclick="btnAddOrg_Click">Add Organization</a>
-                </div>
-            </div>
+            
 
 
              <br /> 
             <div class="row">
 
                 <div class="col-md-3 mx-auto d-flex justify-content-center">
-                </div>
-                <div class="col-md-3 mx-auto d-flex justify-content-center">
                     <h4>Organization:</h4>
-
                 </div>
-                <div class="col-md-3 mx-auto d-flex justify-content-center">
+                 <div class="col-md-3 mx-auto d-flex justify-content-center">
                     
                     <asp:DropDownList ID="drpOrganizationList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle" AppendDataBoundItems="True" DataSourceID="SqlDataSource3" DataTextField="OrganizationName" DataValueField="OrganizationID" OnSelectedIndexChanged="DrpOrganizationList_IndexChanged" AutoPostBack="true">
                        
@@ -39,6 +32,12 @@
                     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT OrganizationName, OrganizationID FROM Organization"></asp:SqlDataSource>
 
                 </div>
+                <div class="col-md-3 mx-auto d-flex justify-content-center">
+                    <a href="AddOrganization.aspx" id="btnAddOrg" class=" btn btn-success" runat="server" onclick="btnAddOrg_Click">Add Organization</a>
+               
+
+                </div>
+               
                 <div class="col-md-3 mx-auto d-flex justify-content-center">
                 </div>
             </div>
@@ -49,12 +48,12 @@
             <div class="accordion" id="accordionExample">
                 <div class="card">
                     <div class="card-header" id="headingOne">
-                        <h5 class="mb-0">
+                        <div class="d-flex justify-content-lg-start">
 
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <button class="btn " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 Program Information
                             </button>
-                        </h5>
+                      </div>  
                     </div>
 
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
@@ -234,10 +233,10 @@
 
                 <div class="card">
                     <div class="card-header" id="headingTwo">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                       <div class="d-flex justify-content-lg-start">
+                            <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                 Contact Information</button>
-                        </h5>
+                         </div>
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                         <div class="card-body">
@@ -326,11 +325,11 @@
             </div>
             <div class="card" id ="programLoc" runat ="server">
                 <div class="card-header" id="headingThree">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                   <div class="d-flex justify-content-lg-start">
+                        <button class="btn  collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             Program Location
                         </button>
-                    </h5>
+                    </div> 
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                     <div class="card-body">
@@ -423,11 +422,16 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-12 mx-auto d-flex justify-content-center Spacing">
+            <div class="row mx-auto d-flex justify-content-center">
+                <div class="col-md-3 mx-auto d-flex justify-content-center Spacing">
                     <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-success" OnClick="SubmitProgram"/>
                 </div>
+                <div class="col-md-3 text-center mx-auto Spacing">
+             <button id="btnReturn" type="button" class="btn btn-success " Style="color:white;" onclick="javascript:history.go(-1)">Return</button>
+                </div>
             </div>
+        </div>
+       </div>
         </div>
 
         <!-- end accordion -->

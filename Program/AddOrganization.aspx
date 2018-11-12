@@ -6,46 +6,81 @@
   <div class="container-fluid ContactContainer">
 
 <div class="card mx-auto  ProgramCard">
-  <div class="card-body">
-       <div class="justify-content-center "> 
-       <div class="row">
+    
+    <div class="card-body">
+
+         <br /> 
+            <div class="accordion" id="accordionExample">
+             <div class="row">
                     <div class="col-md-6 text-center mx-auto">
                 <h3 class="modal-title">Add an Organization</h3>
                 </div>
                     </div>
-       <div class="row">
+                <br />
+                <div class="row">
                     <div class="col-md-6 text-center mx-auto">
                 <h5 class="modal-title">Organization Name</h5>
                 </div>
                     </div>
-           <br />
-           <div class="row">
-                    <div class="col-md-6 text-center mx-auto">
-                <asp:TextBox ID="txtOrgName" runat="server" placeholder=" Organization Name" ></asp:TextBox>
-                </div>
+                <br />
+             <div class="row">
+                                            <div class="col-md-5">
+                                                <label for="txtOrgName" class="label-style">Organization Name</label>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <asp:TextBox ID="txtOrgName" runat="server" placeholder=" Organization Name" ></asp:TextBox>
+                                            </div>
+                                        </div>
+
+       
+                <br />
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                       <div class="d-flex justify-content-lg-start">
+                            <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                               Organization Address</button>
+                         </div>
                     </div>
-	  
-     
-    <hr />
-      <div class="row">
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                           
+                            <div class="row">
                     <div class="col-md-6 text-center mx-auto">
                 <h5 class="modal-title">Organization Address</h5>
                         <br />
                 </div>
                     </div>
 
-            <div class="row">
-                    <div class="col-md-4 text-center mx-auto">
-                <asp:TextBox ID="txtStreet" runat="server"  placeholder=" Organization Address"></asp:TextBox>
-                </div>
-                   <div class=" col-xl-4 col-lg-3 col-md-6  mx-auto">
-                <asp:DropDownList ID="drpCountry" runat="server"  >
+           <div class="row">
+               <div class="col-md-5">
+              <label for="txtStreet" class="label-style">Organization Address</label>
+             </div>
+             <div class="form-group col-md-6">
+            <asp:TextBox ID="txtStreet" runat="server"  placeholder=" Organization Address"></asp:TextBox>
+              </div>
+             </div>
+
+
+           <div class="row">
+               <div class="col-md-5">
+              <label for="dropCountry" class="label-style">Country</label>
+             </div>
+             <div class="form-group col-md-6">
+           <asp:DropDownList ID="drpCountry" runat="server"  >
             <asp:ListItem>United States</asp:ListItem>
             <asp:ListItem>Canada</asp:ListItem>                                                                            
         </asp:DropDownList>
-                </div>
-                   <div class=" col-xl-4 col-lg-3 col-md-6  mx-auto">
-               <asp:DropDownList ID="drpState" runat="server"  >
+              </div>
+             </div>
+
+
+
+           <div class="row">
+               <div class="col-md-5">
+              <label for="txtState" class="label-style">State</label>
+             </div>
+             <div class="form-group col-md-6">
+            <asp:DropDownList ID="drpState" runat="server"  >
           <asp:ListItem Value ="VA">Virginia</asp:ListItem>
 <asp:ListItem Value="AL">Alabama</asp:ListItem>
 	<asp:ListItem Value="AK">Alaska</asp:ListItem>
@@ -98,87 +133,158 @@
 	<asp:ListItem Value="WI">Wisconsin</asp:ListItem>
 	<asp:ListItem Value="WY">Wyoming</asp:ListItem>
     </asp:DropDownList>
-                </div>
-                   
-                    </div>
+              </div>
+             </div>
 
 
-             <br />
-            <div class="row">
-                   <div class=" col-xl-4 col-lg-3 col-md-6  mx-auto">
-               <asp:TextBox ID="txtCity" placeholder=" City" runat="server"></asp:TextBox>
-                </div>
-                   <div class=" col-xl-4 col-lg-3 col-md-6  mx-auto">
-               <asp:Textbox ID="txtCounty" placeholder=" County" runat="server"></asp:Textbox>
-                </div>
-                
-                   <div class=" col-xl-4 col-lg-3 col-md-6  mx-auto">
-               <asp:TextBox ID="txtZipCode" placeholder=" Zip Code" runat="server"></asp:TextBox>
-                </div>
+             <div class="row">
+               <div class="col-md-5">
+              <label for="txtCity" class="label-style">City</label>
+             </div>
+             <div class="form-group col-md-6">
+            <asp:TextBox ID="txtCity" placeholder=" City" runat="server"></asp:TextBox>
+              </div>
+             </div>
+
+             <div class="row">
+               <div class="col-md-5">
+              <label for="txtCounty" class="label-style">County</label>
+             </div>
+             <div class="form-group col-md-6">
+           <asp:Textbox ID="txtCounty" placeholder=" County" runat="server"></asp:Textbox>
+              </div>
+             </div>
+
+             <div class="row">
+               <div class="col-md-5">
+              <label for="txtZipCode" class="label-style">Zip Code</label>
+             </div>
+             <div class="form-group col-md-6">
+           <asp:TextBox ID="txtZipCode" placeholder=" Zip Code" runat="server"></asp:TextBox>
+              </div>
+             </div>
+
+                        </div>
                     </div>
-  
-  
-     
-    
-     
-   
-                 <br />
-    <hr />
-      <div class="row">
+                </div>
+            </div>
+            <div class="card" id ="programLoc" runat ="server">
+                <div class="card-header" id="headingThree">
+                   <div class="d-flex justify-content-lg-start">
+                        <button class="btn  collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Contact Information
+                        </button>
+                    </div> 
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="container-fluid" style="padding-top: 20px;">
+
+                          <div class="row">
                     <div class="col-md-6 text-center mx-auto">
                 <h5 class="modal-title">Contact information </h5>
                         <br />
                 </div>
                     </div>
 
+           <div class="row">
+               <div class="col-md-5">
+              <label for="txtFirstName" class="label-style">First Name</label>
+             </div>
+             <div class="form-group col-md-6">
+            <asp:TextBox ID="txtFirstName" placeholder=" First Name" runat="server"></asp:TextBox>
+              </div>
+             </div>
 
+           <div class="row">
+               <div class="col-md-5">
+              <label for="txtLastName" class="label-style">Last Name</label>
+             </div>
+             <div class="form-group col-md-6">
+             <asp:Textbox ID="txtLastName" placeholder=" Last Name" runat="server"></asp:Textbox>
+              </div>
+             </div>
 
-               <div class="row">
-                   <div class=" col-xl-4 col-lg-3 col-md-6  mx-auto">
-               <asp:TextBox ID="txtFirstName" placeholder=" First Namke" runat="server"></asp:TextBox>
-                         </div>
-                   <div class=" col-xl-4 col-lg-3 col-md-6  mx-auto">
-              <asp:Textbox ID="txtLastName" placeholder=" Last Name" runat="server"></asp:Textbox>
-                </div>
-                
-                    <div class=" col-xl-4 col-lg-3 col-md-6  mx-auto">
-               <asp:TextBox ID="txtEmail" placeholder=" Email" runat="server"></asp:TextBox>
-                </div>
+           <div class="row">
+               <div class="col-md-5">
+              <label for="txtEmail" class="label-style">Email</label>
+             </div>
+             <div class="form-group col-md-6">
+            <asp:TextBox ID="txtEmail" placeholder=" Email" runat="server"></asp:TextBox>
+              </div>
+             </div>
+
+           <div class="row">
+               <div class="col-md-5">
+              <label for="txtPrimaryPhone" class="label-style">Primary Phone</label>
+             </div>
+             <div class="form-group col-md-6">
+           <asp:Textbox ID="txtPrimaryPhone"  placeholder=" Primary Phone" runat="server"></asp:Textbox>
+              </div>
+             </div>
+
+           <div class="row">
+               <div class="col-md-5">
+              <label for="txtSecondaryPhone" class="label-style">Secondary Phone</label>
+             </div>
+             <div class="form-group col-md-6">
+          <asp:TextBox ID="txtSecondaryPhone" placeholder=" Secondary Phone"  runat="server"></asp:TextBox>
+              </div>
+             </div>
+                        </div>
                     </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+       <div class="justify-content-center "> 
+       
+           
+           
+	  
+       
+
+    
+
+
+
+      
+
+            
+
+   
+          
+   
+     
+
+              
 
        
-       <br />
- 
-               <div class="row">
-                   <div class=" col-xl-4 col-lg-3 col-md-6  mx-auto">
-              <asp:Textbox ID="txtPrimaryPhone"  placeholder=" Primary Phone" runat="server"></asp:Textbox>
-                       </div>
-                   <div class=" col-xl-4 col-lg-3 col-md-6  mx-auto">
-             <asp:TextBox ID="txtSecondaryPhone" placeholder=" Secondary Phone"  runat="server"></asp:TextBox>
-                </div>
-                
-                   <div class="col-md-4 col-s-0 text-center mx-auto">
-              
-                </div>
-                    </div>
-      
+    
    
-                            <br />
-    <hr />
+    
            <br />
            <div class="row">
-                   <div class="col-md-6 text-center mx-auto">
-              <asp:Button ID="btnAddOrganization" runat="server" Text="Add Organization" Style="color:white;" Cssclass=" btn btn-login btn-AddAnimal" OnClick="btnAddOrganization_Click" />
+                   <div class="col-md-6 text-center mx-auto Spacing">
+              <asp:Button ID="btnAddOrganization" runat="server" Text="Add Organization" Style="color:white;" Cssclass=" btn btn-success" OnClick="btnAddOrganization_Click" />
                        </div>
                <br />
-                   <div class="col-md-6 text-center mx-auto">
-             <button id="btnReturn" type="button" class="btn btn-login btn-AddAnimal" onclick="javascript:history.go(-1)">Return</button>
+                   <div class="col-md-6 text-center mx-auto Spacing">
+             <button id="btnReturn" type="button" class="btn btn-success" Style="color:white;" onclick="javascript:history.go(-1)">Return</button>
                 </div>
                 
                   
                     </div>
-        <%--<asp:Button ID="btnAddOrganization" runat="server" Text="Add Organization" Cssclass=" btn btn-login btn-AddAnimal" OnClick="btnAddOrganization_Click" />
-        <asp:Button ID="btnReturn" runat="server" Text="Return"  Cssclass=" btn btn-login btn-AddAnimal" OnClick="btnReturn_Click" />--%>
+        <%--<asp:Button ID="btnAddOrganization" runat="server" Text="Add Organization" Cssclass=" btn btn-login btn btn-success" OnClick="btnAddOrganization_Click" />
+        <asp:Button ID="btnReturn" runat="server" Text="Return"  Cssclass=" btn btn-login btn btn-success" OnClick="btnReturn_Click" />--%>
        
 </div>
 </div>

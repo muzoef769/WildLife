@@ -63,9 +63,9 @@
 		<div class="row">
 <%-- <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4 col-xl-4 "></div>--%>
    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4 col-xl-4 offset-2">
-       <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-primary LoginButton" OnClick="btnLogin_Click" Text="Login" CausesValidation="true" UseSubmitBehavior="false"/>
+       <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-success" OnClick="btnLogin_Click" Text="Login" CausesValidation="true" UseSubmitBehavior="false"/>
    </div>
-    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4 col-xl-4 "><a class="btn btn-primary LoginButton" data-toggle="modal" data-target="#RegisterModal" href="index.html" role="button" runat="server">Register
+    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4 col-xl-4 "><a class="btn btn-success" data-toggle="modal" data-target="#RegisterModal" href="index.html" role="button" runat="server">Register
   </a></div>
 
     
