@@ -100,4 +100,40 @@ public partial class AnimalReport : System.Web.UI.Page
 
 
     }
+
+
+    protected void AnimalType(object sender, EventArgs e)
+    {
+        using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+        {
+            connection.Open();
+            string sql = "SELECT Animal.AnimalName, Animal.AnimalType, Animal.Status, SUM(ISNULL(NewProgram.TotalKids, '0')) AS TotalKids, SUM(ISNULL(NewProgram.TotalAdults, '0')) AS TotalAdults, SUM(ISNULL(NewProgram.TotalPeople, '0')) AS TotalPeople, COUNT(AssignAnimal.AssignAnimalID) AS TotalPrograms, Animal.LastUpdatedBy FROM Animal LEFT OUTER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID LEFT OUTER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID WHERE Animal.AnimalType = '" + drpAnimalTypeReport.SelectedValue + "' GROUP BY Animal.AnimalName, Animal.AnimalType, Animal.Status, Animal.LastUpdatedBy;";
+            using (SqlDataAdapter sda = new SqlDataAdapter(sql, connection))
+            {
+                DataSet data = new DataSet();
+                sda.Fill(data);
+                this.grdViewReport.DataSource = data;
+                grdViewReport.DataBind();
+            }
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
