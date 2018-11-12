@@ -103,7 +103,7 @@ public partial class PaymentReport : System.Web.UI.Page
         Response.ClearContent();
         Response.ClearHeaders();
         Response.Charset = "";
-        string FileName = "Vithal" + DateTime.Now + ".xls";
+        string FileName = "PaymentReport" + DateTime.Now + ".xls";
         StringWriter strwritter = new StringWriter();
         HtmlTextWriter htmltextwrtter = new HtmlTextWriter(strwritter);
         Response.Cache.SetCacheability(HttpCacheability.NoCache);

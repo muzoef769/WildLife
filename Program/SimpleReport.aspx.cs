@@ -26,7 +26,8 @@ public partial class SimpleReport : System.Web.UI.Page
         DataTable dt = new DataTable();
         Response.Clear();
         Response.Buffer = true;
-        Response.AddHeader("content-disposition", "attachment;filename=GridViewExport.xls");
+        string FileName = "SimpleReport" + DateTime.Now + ".xls";
+        Response.AddHeader("content-disposition", "attachment;filename=" + FileName);
         Response.Charset = "";
         Response.ContentType = "application/vnd.ms-excel";
         using (StringWriter sw = new StringWriter())
@@ -121,12 +122,13 @@ public partial class SimpleReport : System.Web.UI.Page
         Response.ClearContent();
         Response.ClearHeaders();
         Response.Charset = "";
-        string FileName = "Vithal" + DateTime.Now + ".xls";
+        string FileName = "AnimalCounts" + DateTime.Now + ".xls";
         StringWriter strwritter = new StringWriter();
         HtmlTextWriter htmltextwrtter = new HtmlTextWriter(strwritter);
         Response.Cache.SetCacheability(HttpCacheability.NoCache);
         Response.ContentType = "application/vnd.ms-excel";
         Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName);
+        animalGrid.Width = 100;
         animalGrid.GridLines = GridLines.Both;
         animalGrid.HeaderStyle.Font.Bold = true;
         animalGrid.RenderControl(htmltextwrtter);
