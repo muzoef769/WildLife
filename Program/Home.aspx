@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class=" CardTitle WelcomeTitle d-flex justify-content-center ">Welcome</h1>
+                            <h1 class=" CardTitle WelcomeTitle d-flex justify-content-center ">Welcome, <%:Session["UserFullName"] %></h1>
                         </div>
                          </div>
 

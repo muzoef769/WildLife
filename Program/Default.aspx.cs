@@ -109,6 +109,7 @@ public partial class Default : System.Web.UI.Page
                     txtUsername.Enabled = false;
                     txtPassword.Enabled = false;
                     Session["Username"] = txtUsername.Text;
+                    Session["UserFullName"] = findFullName(txtUsername.Text);
 
                 }
                 else
@@ -245,5 +246,21 @@ public partial class Default : System.Web.UI.Page
 
 
     }
+
+    protected string findFullName(string username)
+    {
+        using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+        {
+            string query = "SELECT FirstName + ' ' + LastName as FullName FROM dbo.[User] where Username = '" + username + "'";
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                string fullName = Convert.ToString(command.ExecuteScalar());
+                return fullName;
+                
+            }
+        }
+    }
+      
 
 }
