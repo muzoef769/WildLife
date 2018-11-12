@@ -37,14 +37,14 @@ public partial class Payment : System.Web.UI.Page
         /* Verifies that the control is rendered */
     }
 
-    protected void ExportToExcel(GridView grid)
+    protected void ExportToExcel(GridView grid, string prefix)
     {
         Response.Clear();
         Response.Buffer = true;
         Response.ClearContent();
         Response.ClearHeaders();
         Response.Charset = "";
-        string FileName = "Vithal" + DateTime.Now + ".xls";
+        string FileName = prefix + "Invoices" + DateTime.Now + ".xls";
         StringWriter strwritter = new StringWriter();
         HtmlTextWriter htmltextwrtter = new HtmlTextWriter(strwritter);
         Response.Cache.SetCacheability(HttpCacheability.NoCache);
@@ -69,7 +69,7 @@ public partial class Payment : System.Web.UI.Page
             row.Cells[0].Visible = false;
         }
 
-        ExportToExcel(outInvGrid);
+        ExportToExcel(outInvGrid, "Outstanding");
     }
 
     protected void Button2_Click(object sender, EventArgs e)
@@ -84,7 +84,7 @@ public partial class Payment : System.Web.UI.Page
             row.Cells[0].Visible = false;
         }
 
-        ExportToExcel(paidGrid);
+        ExportToExcel(paidGrid, "Completed");
     }
 
     protected void Button3_Click(object sender, EventArgs e)
@@ -99,6 +99,6 @@ public partial class Payment : System.Web.UI.Page
             row.Cells[0].Visible = false;
         }
 
-        ExportToExcel(allInvGrid);
+        ExportToExcel(allInvGrid, "All");
     }
 }
