@@ -253,7 +253,7 @@ public partial class AddProgram : System.Web.UI.Page
                     command.Parameters.AddWithValue("@zipCode", "22980");
                     command.Parameters.AddWithValue("@addressType", "Program");
                     command.Parameters.AddWithValue("@LU", address.getLastUpdated());
-                    command.Parameters.AddWithValue("@LUB", address.getLastUpdatedBy());
+                    command.Parameters.AddWithValue("@LUB", Session["UserFullName"]);
                     command.ExecuteNonQuery();
                 }
 
@@ -280,7 +280,7 @@ public partial class AddProgram : System.Web.UI.Page
                     command.Parameters.AddWithValue("@zipCode", address.getZipCode());
                     command.Parameters.AddWithValue("@addressType", address.getAddressType());
                     command.Parameters.AddWithValue("@LU", address.getLastUpdated());
-                    command.Parameters.AddWithValue("@LUB", address.getLastUpdatedBy());
+                    command.Parameters.AddWithValue("@LUB", Session["UserFullName"]);
                     command.ExecuteNonQuery();
                 }
 
@@ -321,7 +321,7 @@ public partial class AddProgram : System.Web.UI.Page
                     command.Parameters.AddWithValue("@programid", NewProgram.programList[j].getProgramID());
                     command.Parameters.AddWithValue("@addressid", newAddressID);
                     command.Parameters.AddWithValue("@LU", NewProgram.programList[j].getLastUpdated());
-                    command.Parameters.AddWithValue("@LUB", NewProgram.programList[j].getLastUpdatedBy());
+                    command.Parameters.AddWithValue("@LUB", Session["UserFullName"]);
 
                     command.ExecuteNonQuery();
                 }
@@ -373,7 +373,7 @@ public partial class AddProgram : System.Web.UI.Page
                         command.Parameters.AddWithValue("@AnimalID", animal);
                         command.Parameters.AddWithValue("@NewProgramID", newProgramID);
                         command.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
-                        command.Parameters.AddWithValue("@LastUpdatedBy", "Raina"); ///Need to change this
+                        command.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"]); 
 
                         command.ExecuteNonQuery();
 
@@ -400,7 +400,7 @@ public partial class AddProgram : System.Web.UI.Page
                         command.Parameters.AddWithValue("@UserID", user);
                         command.Parameters.AddWithValue("@NewProgramID", newProgramID);
                         command.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
-                        command.Parameters.AddWithValue("@LastUpdatedBy", "Raina"); ///Need to change this
+                        command.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"]); 
 
                         command.ExecuteNonQuery();
 
@@ -424,7 +424,7 @@ public partial class AddProgram : System.Web.UI.Page
                         command.Parameters.AddWithValue("@Secondary", txtSecondaryNumber.Text);
                         command.Parameters.AddWithValue("@orgID", drpOrganizationList.SelectedValue);
                         command.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
-                        command.Parameters.AddWithValue("@LastUpdatedBy", "Raina");
+                        command.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"]);
 
                         command.ExecuteNonQuery();
 

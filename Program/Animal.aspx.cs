@@ -69,7 +69,7 @@ public partial class Animal : System.Web.UI.Page
         addAnimal.Parameters.AddWithValue("@AnimalType", newAnimal.getAnimalType());
         addAnimal.Parameters.AddWithValue("@Status", newAnimal.getStatus());
         addAnimal.Parameters.AddWithValue("@LastUpdated", newAnimal.getLastUpdated());
-        addAnimal.Parameters.AddWithValue("@LastUpdatedBy", newAnimal.getLastUpdatedBy());
+        addAnimal.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"]);
         addAnimal.ExecuteNonQuery();
 
         txtAddName.Text = " ";
@@ -202,7 +202,7 @@ public partial class Animal : System.Web.UI.Page
         myCommand.Parameters.AddWithValue("@AnimalType", newAnimal2.getAnimalType());
         myCommand.Parameters.AddWithValue("@Status", newAnimal2.getStatus());
         myCommand.Parameters.AddWithValue("@LastUpdated", newAnimal2.getLastUpdated());
-        myCommand.Parameters.AddWithValue("@LastUpdatedBy", newAnimal2.getLastUpdatedBy());
+        myCommand.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"]);
         myCommand.ExecuteNonQuery();
 
         sc.Close();

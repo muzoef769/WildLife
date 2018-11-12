@@ -49,7 +49,7 @@ public partial class Contacts : System.Web.UI.Page
                 command.Parameters.AddWithValue("PhoneNumber2", addContact.getSecondaryNumber());
                 command.Parameters.AddWithValue("@OrgID", addContact.getOrgID());
                 command.Parameters.AddWithValue("@LU", addContact.getLastUpdated());
-                command.Parameters.AddWithValue("@LUB", addContact.getLastUpdatedBy());
+                command.Parameters.AddWithValue("@LUB", Session["UserFullName"]);
             }
         }
     }

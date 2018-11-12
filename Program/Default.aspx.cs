@@ -190,7 +190,7 @@ public partial class Default : System.Web.UI.Page
             myCommand.Parameters.AddWithValue("@lastName", newUser.getLastName());
             myCommand.Parameters.AddWithValue("@userType", newUser.getUserType());
             myCommand.Parameters.AddWithValue("@lastUpdated", newUser.getLastUpdated());
-            myCommand.Parameters.AddWithValue("@lastUpdatedBy", newUser.getLastUpdatedBy());
+            myCommand.Parameters.AddWithValue("@lastUpdatedBy", Session["UserFullName"]);
 
             myCommand.ExecuteNonQuery();
 
