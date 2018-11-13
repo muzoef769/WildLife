@@ -61,7 +61,7 @@ public partial class Animal : System.Web.UI.Page
            );
 
 
-        string creatAnimal = "Insert into [dbo].[Animal] values (@Species, @ScientificName, @AnimalName, @AnimalType, @Status, @LastUpdated, @LastUpdatedBy, @Image)";
+        string creatAnimal = "Insert into [dbo].[Animal] values (@Species, @ScientificName, @AnimalName, @AnimalType, @Status, @Image, @LastUpdated, @LastUpdatedBy)";
         SqlCommand addAnimal = new SqlCommand(creatAnimal, sc);
         sc.Open();
         addAnimal.Parameters.AddWithValue("@Species", DBNull.Value);
