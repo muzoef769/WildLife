@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <script type="text/javascript">
         $(document).ready(function () {
+            $("#simpleTab").hide();
             $(function () {
                 $("#tabCheckBox").change(function () {
                     if ($(this).is(":checked")) {
@@ -50,10 +51,10 @@
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div id="tab-toggle" style="margin-top: 15px;">
                                     <label for="tabCheckBox">Interactive View</label>
-                                    <input id="tabCheckBox" type="checkbox" checked data-toggle="toggle">
+                                    <input id="tabCheckBox" type="checkbox" data-toggle="toggle">
                                 </div>
                                 <div id="ann" class="card-body">
-                                    <div id="simpleTab" class="row table-responsive" style="width: 90%;">
+                                    <div id="simpleTab" class="row table-responsive" style="width: 80%;">
                                         <div class='tableauPlaceholder' id='viz1542070211315' style='position: relative'>
                                             <noscript>
                                                 <a href='#'>
@@ -74,8 +75,8 @@
                                         </div>
                                         <script type='text/javascript'>                    var divElement = document.getElementById('viz1542070211315'); var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.width = '100%'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
                                     </div>
-                                    <h1 id="programTitle" class="ProgramCardTitle" style="display: none;">Program Totals</h1>
-                                    <div id="programTotals" class="row table-responsive" style="display: none; overflow-x: hidden;">
+                                    <h1 id="programTitle" class="ProgramCardTitle" style="">Program Totals</h1>
+                                    <div id="programTotals" class="row table-responsive" overflow-x: hidden;">
                                         <div class="col-md-12  table  table-bordered table-hover AnimalCard " style="min-width: 120% !important;">
                                             <asp:gridview id="offsiteGrid" headerstyle-forecolor="black" runat="server" autogeneratecolumns="False" datasourceid="source6" gridlines="Both" width="1200px">
                                                 <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>

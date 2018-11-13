@@ -57,7 +57,7 @@ public partial class VolunteerAddOrganization : System.Web.UI.Page
                 command.Parameters.AddWithValue("@ZipCode", newAddress.getZipCode());
                 command.Parameters.AddWithValue("@AddressType", newAddress.getAddressType());
                 command.Parameters.AddWithValue("@LastUpdated", newAddress.getLastUpdated());
-                command.Parameters.AddWithValue("@LastUpdatedBy", newAddress.getLastUpdatedBy());
+                command.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"]);
 
                 command.ExecuteNonQuery();
 
@@ -84,7 +84,7 @@ public partial class VolunteerAddOrganization : System.Web.UI.Page
                 command.Parameters.AddWithValue("@OrgName", newOrganization.OrgName);
                 command.Parameters.AddWithValue("@AddressID", newOrganization.AddressID);
                 command.Parameters.AddWithValue("@LastUpdated", newOrganization.LastUpdated);
-                command.Parameters.AddWithValue("@LastUpdatedBy", newOrganization.LastUpdatedBy);
+                command.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"]);
 
                 command.ExecuteNonQuery();
             }
@@ -118,7 +118,7 @@ public partial class VolunteerAddOrganization : System.Web.UI.Page
                 command.Parameters.AddWithValue("@secondary", newContact.getSecondaryNumber());
                 command.Parameters.AddWithValue("@orgID", newContact.getOrgID());
                 command.Parameters.AddWithValue("@lastUpdated", newContact.getLastUpdated());
-                command.Parameters.AddWithValue("@lastUpdatedBy", newContact.getLastUpdatedBy());
+                command.Parameters.AddWithValue("@lastUpdatedBy", Session["UserFullName"]);
 
                 command.ExecuteNonQuery();
             }

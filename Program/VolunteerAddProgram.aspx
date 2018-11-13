@@ -35,7 +35,7 @@
 
                 </div>
                 <div class="col-md-3 mx-auto d-flex justify-content-center">
-                    <a href="AddOrganization.aspx" id="btnAddOrg" class=" btn btn-success" runat="server" onclick="btnAddOrg_Click">Add Organization</a>
+                    <a href="VolunteerAddOrganization.aspx" id="btnAddOrg" class=" btn btn-success" runat="server" onclick="btnAddOrg_Click">Add Organization</a>
                
 
                 </div>

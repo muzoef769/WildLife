@@ -99,21 +99,28 @@ public partial class Home : System.Web.UI.Page
 
 
     }
-
+    
     protected void btnStatusUpdate_Click(object sender, EventArgs e)
     {
-        foreach (GridViewRow row in statusGridView.Rows)
+        try
         {
-            CheckBox chkStatus = (row.Cells[4].FindControl("chkStatus") as CheckBox);
-            int userIDNo = Convert.ToInt32(row.Cells[0].Text);
-            if (chkStatus.Checked)
+            foreach (GridViewRow row in statusGridView.Rows)
             {
-                updateRow(userIDNo, "Approved");
+                CheckBox chkStatus = (row.Cells[4].FindControl("chkStatus") as CheckBox);
+                int userIDNo = Convert.ToInt32(row.Cells[0].Text);
+                if (chkStatus.Checked)
+                {
+                    updateRow(userIDNo, "Approved");
+                }
+                else
+                {
+                    updateRow(userIDNo, "Not Approved");
+                }
             }
-            else
-            {
-                updateRow(userIDNo, "Not Approved");
-            }
+        }
+        catch(Exception E)
+        {
+
         }
     }
 

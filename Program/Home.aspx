@@ -87,7 +87,7 @@
                      CssClass="  table table-condensed table-bordered table-hover AnimalCard justify-content-center"
                      BackColor="White" HorizontalAlign="Center" DataKeyNames="UserID" >                       
                         <Columns>
-                            <asp:BoundField DataField="UserID" HeaderText="UserID" SortExpression="UserID" InsertVisible="False" ReadOnly="True" />
+                            <asp:BoundField DataField="UserID" HeaderText="UserID" SortExpression="UserID" Visible="False" ReadOnly="True" />
                             <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
                             <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
                             <asp:BoundField DataField="Username" HeaderText="Username" SortExpression="Username" />
