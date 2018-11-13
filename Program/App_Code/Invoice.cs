@@ -9,24 +9,19 @@ using System.Web;
 public class Invoice
 {
     //Attributes
-    private int invoiceID, newProgramID, total;
+    private int invoiceID;
+    private int newProgramID;
+    private string invoiceNumber;
+    private int total;
     private DateTime dateCreated;
     private string status;
 
     private DateTime lastUpdated;
     private string lastUpdatedBy;
 
+
     //Invoice constructor
-    public Invoice(int invoiceID, int newProgramID, int total, DateTime dateCreated, string status, DateTime lastUpdated, string lastUpdatedBy)
-    {
-        setInvoiceID(invoiceID);
-        setNewProgramID(newProgramID);
-        setTotal(total);
-        setDateCreated(dateCreated);
-        setInvoiceStatus(status);
-        setLastUpdated(lastUpdated);
-        setLastUpdatedBy(lastUpdatedBy);
-    }
+
     public Invoice(int newProgramID, int total, DateTime dateCreated, string status, DateTime lastUpdated, string lastUpdatedBy)
     {
         setNewProgramID(newProgramID);
@@ -35,6 +30,16 @@ public class Invoice
         setInvoiceStatus(status);
         setLastUpdated(lastUpdated);
         setLastUpdatedBy(lastUpdatedBy);
+    }
+
+    public Invoice(string invoiceNumber, int total, DateTime dateCreated, string status, DateTime lastUpdated, string lastUpdatedBy)
+    {
+        this.invoiceNumber = invoiceNumber;
+        this.total = total;
+        this.dateCreated = dateCreated;
+        this.status = status;
+        this.lastUpdated = lastUpdated;
+        this.lastUpdatedBy = lastUpdatedBy;
     }
 
     //Getters
@@ -66,6 +71,10 @@ public class Invoice
     {
         return this.lastUpdatedBy;
     }
+    public string getInvoiceNumber()
+    {
+        return this.invoiceNumber;
+    }
 
     //Setters
     public void setInvoiceID(int x)
@@ -95,5 +104,9 @@ public class Invoice
     public void setLastUpdatedBy(string x)
     {
         this.lastUpdatedBy = x;
+    }
+    public void setInvoiceNumber(string x)
+    {
+        this.invoiceNumber = x;
     }
 }

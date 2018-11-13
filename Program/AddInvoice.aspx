@@ -31,7 +31,7 @@
                     <asp:DropDownList ID="drpInvoiceOrganization" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="viewGridView" DataTextField="OrganizationName" DataValueField="OrganizationID"></asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:WildlifeCenterConnectionString %>" SelectCommand="SELECT [OrganizationID], [OrganizationName] FROM [Organization]"></asp:SqlDataSource>
 
-                    <asp:GridView ID="GridView5" runat="server" CssClass=" table table-condensed table-bordered table-hover AnimalCard" AutoPostBack="true">
+                    <asp:GridView ID="GridView5" runat="server" CssClass=" table table-condensed table-bordered table-hover AnimalCard" AutoPostBack="true" OnRowDataBound="GridView_RowDataBound">
                         <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
                     </asp:GridView>
 
@@ -47,7 +47,8 @@
                     Text="Add Program to Invoice"
                     CssClass="btn mx-auto d-flex justify-content-center btn-success"
                     UseSubmitBehavior="false"
-                    CauseValidation="true"/>
+                    CauseValidation="true"
+                    OnClick="AddProgram"/>
                 <br />
             </div>
         </div>
