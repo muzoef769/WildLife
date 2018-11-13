@@ -49,15 +49,15 @@
     <br />
     <div class="" >
         <div class="row mx-auto d-flex justify-content-center  " >
-            <ul class="nav nav-tabs col-xl-7 col-lg-12 col-md-12 col-s-12 " style=" padding-left:15px; border-bottom:none;" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a style="background-color:whitesmoke; margin-right:5px; color:black;"class="nav-link active TabHover" id="home-tab" data-toggle="tab" href="#Online" role="tab" aria-controls="home" aria-selected="true">Online</a>
+            <ul class="nav nav-tabs  col-xl-7 col-lg-12 col-md-12 col-s-12 " style=" padding-left:15px; border-bottom:none;" id="myTab" role="tablist">
+                <li class="nav-item ">
+                    <a style=" margin-right:5px; color:black;"class="nav-link active " id="home-tab" data-toggle="tab" href="#Online" role="tab" aria-controls="home" aria-selected="true">Online</a>
                 </li>
-                <li class="nav-item">
-                    <a style="background-color:whitesmoke; margin-right:5px; color:black;" class="nav-link NotActive TabHover" id="profile-tab" data-toggle="tab" href="#OnSite" role="tab" aria-controls="profile" aria-selected="false">OnSite</a>
+                <li class="nav-item ">
+                    <a style=" margin-right:5px; color:black;" class="nav-link " id="profile-tab" data-toggle="tab" href="#OnSite" role="tab" aria-controls="profile" aria-selected="false">OnSite</a>
                 </li>
-                <li class="nav-item">
-                    <a style="background-color:whitesmoke; margin-right:5px; color:black;" class="nav-link NotActive TabHover" id="contact-tab" data-toggle="tab" href="#OffSite" role="tab" aria-controls="contact" aria-selected="false">OffSite</a>
+                <li class="nav-item ">
+                    <a style=" margin-right:5px; color:black;" class="nav-link  " id="contact-tab" data-toggle="tab" href="#OffSite" role="tab" aria-controls="contact" aria-selected="false">OffSite</a>
                 </li>
             </ul>
 
