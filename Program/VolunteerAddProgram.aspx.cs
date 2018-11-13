@@ -466,6 +466,7 @@ public partial class VolunteerAddProgram : System.Web.UI.Page
         NewProgram newProgram = new NewProgram(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
                 50, drpAgeLevel.SelectedValue, "Completed", Convert.ToDateTime(programTime.Text),
                 Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
+
                 programID, DateTime.Now, "Raina", 0);
 
 
