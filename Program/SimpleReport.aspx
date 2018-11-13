@@ -50,16 +50,34 @@
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div id="tab-toggle" style="margin-top: 15px;">
                                     <label for="tabCheckBox">Interactive View</label>
-                                        <input id="tabCheckBox" type="checkbox" checked data-toggle="toggle">
+                                    <input id="tabCheckBox" type="checkbox" checked data-toggle="toggle">
                                 </div>
                                 <div id="ann" class="card-body">
                                     <div id="simpleTab" class="row table-responsive" style="width: 90%;">
-                                        <div class='tableauPlaceholder' id='viz1542070211315' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;CF&#47;CFB865958&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;CFB865958' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;CF&#47;CFB865958&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1542070211315');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+                                        <div class='tableauPlaceholder' id='viz1542070211315' style='position: relative'>
+                                            <noscript>
+                                                <a href='#'>
+                                                    <img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;CF&#47;CFB865958&#47;1_rss.png' style='border: none' /></a>
+                                            </noscript>
+                                            <object class='tableauViz' style='display: none;'>
+                                                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                                                <param name='embed_code_version' value='3' />
+                                                <param name='path' value='shared&#47;CFB865958' />
+                                                <param name='toolbar' value='yes' />
+                                                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;CF&#47;CFB865958&#47;1.png' />
+                                                <param name='animate_transition' value='yes' />
+                                                <param name='display_static_image' value='yes' />
+                                                <param name='display_spinner' value='yes' />
+                                                <param name='display_overlay' value='yes' />
+                                                <param name='display_count' value='yes' />
+                                            </object>
+                                        </div>
+                                        <script type='text/javascript'>                    var divElement = document.getElementById('viz1542070211315'); var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.width = '100%'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
                                     </div>
                                     <h1 id="programTitle" class="ProgramCardTitle" style="display: none;">Program Totals</h1>
                                     <div id="programTotals" class="row table-responsive" style="display: none; overflow-x: hidden;">
                                         <div class="col-md-12  table  table-bordered table-hover AnimalCard " style="min-width: 120% !important;">
-                                            <asp:GridView ID="offsiteGrid" HeaderStyle-ForeColor="black" runat="server" AutoGenerateColumns="False" DataSourceID="source6" GridLines="Both" Width="1200px">
+                                            <asp:gridview id="offsiteGrid" headerstyle-forecolor="black" runat="server" autogeneratecolumns="False" datasourceid="source6" gridlines="Both" width="1200px">
                                                 <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
                                                 <Columns>
                                                     <asp:BoundField HeaderStyle-Width="200px" DataField="LocationType" HeaderText="Program Totals" SortExpression="LocationType" />
@@ -77,8 +95,8 @@
                                                     <asp:BoundField DataField="December" ItemStyle-Width="75px" HeaderText="Dec" SortExpression="December" />
                                                     <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="100px" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" />
                                                 </Columns>
-                                            </asp:GridView>
-                                            <asp:SqlDataSource ID="source6" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT LocationType,
+                                            </asp:gridview>
+                                            <asp:sqldatasource id="source6" runat="server" connectionstring="<%$ ConnectionStrings:connString %>" selectcommand="SELECT LocationType,
                             (select count(LocationType) from NewProgram where Month(DateCompleted) = '1' and LocationType = 'Offsite') January, 
                             (select count(LocationType) from NewProgram where Month(DateCompleted) = '2' and LocationType = 'Offsite') February,
                             (select count(LocationType) from NewProgram where Month(DateCompleted) = '3' and LocationType = 'Offsite') March,
@@ -92,8 +110,8 @@
                             (select count(LocationType) from NewProgram where Month(DateCompleted) = '11' and LocationType = 'Offsite') November,
                             (select count(LocationType) from NewProgram where Month(DateCompleted) = '12' and LocationType = 'Offsite') December,
                             (select count(LocationType) from NewProgram where LocationType='Offsite') '2018 Total'
-                            from NewProgram where LocationType = 'Offsite' group by LocationType"></asp:SqlDataSource>
-                                            <asp:GridView ID="onlineGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source5" GridLines="Both" Width="1200px" ShowHeader="False">
+                            from NewProgram where LocationType = 'Offsite' group by LocationType"></asp:sqldatasource>
+                                            <asp:gridview id="onlineGrid" runat="server" autogeneratecolumns="False" datasourceid="source5" gridlines="Both" width="1200px" showheader="False">
                                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                                 <Columns>
                                                     <asp:BoundField ItemStyle-Width="200px" DataField="LocationType" HeaderText="Type" SortExpression="LocationType" />
@@ -111,8 +129,8 @@
                                                     <asp:BoundField DataField="December" ItemStyle-Width="75px" HeaderText="December" SortExpression="December" />
                                                     <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="100px" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" />
                                                 </Columns>
-                                            </asp:GridView>
-                                            <asp:SqlDataSource ID="source5" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT LocationType,
+                                            </asp:gridview>
+                                            <asp:sqldatasource id="source5" runat="server" connectionstring="<%$ ConnectionStrings:connString %>" selectcommand="SELECT LocationType,
                             (select count(LocationType) from NewProgram where Month(DateCompleted) = '1' and LocationType = 'Online') January, 
                             (select count(LocationType) from NewProgram where Month(DateCompleted) = '2' and LocationType = 'Online') February,
                             (select count(LocationType) from NewProgram where Month(DateCompleted) = '3' and LocationType = 'Online') March,
@@ -126,8 +144,8 @@
                             (select count(LocationType) from NewProgram where Month(DateCompleted) = '11' and LocationType = 'Online') November,
                             (select count(LocationType) from NewProgram where Month(DateCompleted) = '12' and LocationType = 'Online') December,
                             (select count(LocationType) from NewProgram where LocationType='Online') '2018 Total'
-                            from NewProgram where LocationType = 'Online' group by LocationType"></asp:SqlDataSource>
-                                            <asp:GridView ID="onsiteGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source4" Width="1200px" GridLines="Both" ShowHeader="False">
+                            from NewProgram where LocationType = 'Online' group by LocationType"></asp:sqldatasource>
+                                            <asp:gridview id="onsiteGrid" runat="server" autogeneratecolumns="False" datasourceid="source4" width="1200px" gridlines="Both" showheader="False">
                                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                                 <Columns>
                                                     <asp:BoundField ItemStyle-Width="200px" DataField="LocationType" HeaderText="Type" SortExpression="LocationType" />
@@ -145,8 +163,8 @@
                                                     <asp:BoundField DataField="December" ItemStyle-Width="75px" HeaderText="December" SortExpression="December" />
                                                     <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="100px" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" />
                                                 </Columns>
-                                            </asp:GridView>
-                                            <asp:SqlDataSource ID="source4" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT LocationType,
+                                            </asp:gridview>
+                                            <asp:sqldatasource id="source4" runat="server" connectionstring="<%$ ConnectionStrings:connString %>" selectcommand="SELECT LocationType,
                             (select count(LocationType) from NewProgram where Month(DateCompleted) = '1' and LocationType = 'Onsite') January, 
                             (select count(LocationType) from NewProgram where Month(DateCompleted) = '2' and LocationType = 'Onsite') February,
                             (select count(LocationType) from NewProgram where Month(DateCompleted) = '3' and LocationType = 'Onsite') March,
@@ -160,8 +178,8 @@
                             (select count(LocationType) from NewProgram where Month(DateCompleted) = '11' and LocationType = 'Onsite') November,
                             (select count(LocationType) from NewProgram where Month(DateCompleted) = '12' and LocationType = 'Onsite') December,
                             (select count(LocationType) from NewProgram where LocationType='Onsite') '2018 Total'
-                            from NewProgram where LocationType = 'Onsite' group by LocationType"></asp:SqlDataSource>
-                                            <asp:GridView ID="totProgramsGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source7" Width="1200px" ShowHeader="False">
+                            from NewProgram where LocationType = 'Onsite' group by LocationType"></asp:sqldatasource>
+                                            <asp:gridview id="totProgramsGrid" runat="server" autogeneratecolumns="False" datasourceid="source7" width="1200px" showheader="False">
                                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                                 <Columns>
                                                     <asp:TemplateField ItemStyle-Font-Bold="true" ItemStyle-Width="200px">
@@ -183,8 +201,8 @@
                                                     <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="December" HeaderText="December" SortExpression="December" />
                                                     <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="100px" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" />
                                                 </Columns>
-                                            </asp:GridView>
-                                            <asp:SqlDataSource ID="source7" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT 
+                                            </asp:gridview>
+                                            <asp:sqldatasource id="source7" runat="server" connectionstring="<%$ ConnectionStrings:connString %>" selectcommand="SELECT 
                                 (select count(LocationType) from NewProgram where Month(DateCompleted) = '1') January, 
                                 (select count(LocationType) from NewProgram where Month(DateCompleted) = '2') February,
                                 (select count(LocationType) from NewProgram where Month(DateCompleted) = '3') March,
@@ -198,8 +216,8 @@
                                 (select count(LocationType) from NewProgram where Month(DateCompleted) = '11') November,
                                 (select count(LocationType) from NewProgram where Month(DateCompleted) = '12') December,
                                 (select count(LocationType) from NewProgram) '2018 Total'
-                                from NewProgram where LocationType = 'Online' group by LocationType"></asp:SqlDataSource>
-                                            <asp:GridView ID="totKidsGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source2" Width="1200px" ShowHeader="False">
+                                from NewProgram where LocationType = 'Online' group by LocationType"></asp:sqldatasource>
+                                            <asp:gridview id="totKidsGrid" runat="server" autogeneratecolumns="False" datasourceid="source2" width="1200px" showheader="False">
                                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                                 <Columns>
                                                     <asp:TemplateField ItemStyle-Width="200px">
@@ -221,8 +239,8 @@
                                                     <asp:BoundField ItemStyle-Width="75px" DataField="December" HeaderText="December" SortExpression="December" ControlStyle-Width="75px" />
                                                     <asp:BoundField ItemStyle-Width="100px" ItemStyle-Font-Bold="true" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" ControlStyle-Width="100px" />
                                                 </Columns>
-                                            </asp:GridView>
-                                            <asp:SqlDataSource ID="source2" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT
+                                            </asp:gridview>
+                                            <asp:sqldatasource id="source2" runat="server" connectionstring="<%$ ConnectionStrings:connString %>" selectcommand="SELECT
                             (select isnull(sum(TotalKids), 0) from NewProgram where Month(DateCompleted) = '1') January, 
                             (select isnull(sum(TotalKids), 0) from NewProgram where Month(DateCompleted) = '2') February,
                             (select isnull(sum(TotalKids), 0) from NewProgram where Month(DateCompleted) = '3') March,
@@ -236,8 +254,8 @@
                             (select isnull(sum(TotalKids), 0) from NewProgram where Month(DateCompleted) = '11') November,
                             (select isnull(sum(TotalKids), 0) from NewProgram where Month(DateCompleted) = '12') December,
                             (select isnull(sum(TotalKids), 0) from NewProgram) '2018 Total'
-                            from NewProgram where LocationType='Online' group by LocationType  "></asp:SqlDataSource>
-                                            <asp:GridView ID="totAdultsGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source3" Width="1200px" ShowHeader="false">
+                            from NewProgram where LocationType='Online' group by LocationType  "></asp:sqldatasource>
+                                            <asp:gridview id="totAdultsGrid" runat="server" autogeneratecolumns="False" datasourceid="source3" width="1200px" showheader="false">
                                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                                 <Columns>
                                                     <asp:TemplateField ItemStyle-Width="200px">
@@ -259,8 +277,8 @@
                                                     <asp:BoundField ItemStyle-Width="75px" DataField="December" HeaderText="December" SortExpression="December" />
                                                     <asp:BoundField ItemStyle-Width="100px" ItemStyle-Font-Bold="true" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" />
                                                 </Columns>
-                                            </asp:GridView>
-                                            <asp:SqlDataSource ID="source3" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT
+                                            </asp:gridview>
+                                            <asp:sqldatasource id="source3" runat="server" connectionstring="<%$ ConnectionStrings:connString %>" selectcommand="SELECT
                             (select isnull(sum(TotalAdults), 0) from NewProgram where Month(DateCompleted) = '1') January, 
                             (select isnull(sum(TotalAdults), 0) from NewProgram where Month(DateCompleted) = '2') February,
                             (select isnull(sum(TotalAdults), 0) from NewProgram where Month(DateCompleted) = '3') March,
@@ -274,8 +292,8 @@
                             (select isnull(sum(TotalAdults), 0) from NewProgram where Month(DateCompleted) = '11') November,
                             (select isnull(sum(TotalAdults), 0) from NewProgram where Month(DateCompleted) = '12') December,
                             (select isnull(sum(TotalAdults), 0) from NewProgram) '2018 Total'
-                            from NewProgram where LocationType='Online' group by LocationType "></asp:SqlDataSource>
-                                            <asp:GridView ID="totPeopleGrid" runat="server" AutoGenerateColumns="False" DataSourceID="source1" Width="1200px" ShowHeader="false">
+                            from NewProgram where LocationType='Online' group by LocationType "></asp:sqldatasource>
+                                            <asp:gridview id="totPeopleGrid" runat="server" autogeneratecolumns="False" datasourceid="source1" width="1200px" showheader="false">
                                                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                                                 <Columns>
                                                     <asp:TemplateField ItemStyle-Font-Bold="true" ItemStyle-Width="200px">
@@ -297,8 +315,8 @@
                                                     <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="75px" DataField="December" HeaderText="December" SortExpression="December" />
                                                     <asp:BoundField ItemStyle-Font-Bold="true" ItemStyle-Width="100px" DataField="2018 Total" HeaderText="2018 Total" SortExpression="2018 Total" />
                                                 </Columns>
-                                            </asp:GridView>
-                                            <asp:SqlDataSource ID="source1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT
+                                            </asp:gridview>
+                                            <asp:sqldatasource id="source1" runat="server" connectionstring="<%$ ConnectionStrings:connString %>" selectcommand="SELECT
                             (select isnull(sum(TotalPeople), 0) from NewProgram where Month(DateCompleted) = '1') January, 
                             (select isnull(sum(TotalPeople), 0) from NewProgram where Month(DateCompleted) = '2') February,
                             (select isnull(sum(TotalPeople), 0) from NewProgram where Month(DateCompleted) = '3') March,
@@ -312,12 +330,12 @@
                             (select isnull(sum(TotalPeople), 0) from NewProgram where Month(DateCompleted) = '11') November,
                             (select isnull(sum(TotalPeople), 0) from NewProgram where Month(DateCompleted) = '12') December,
                             (select isnull(sum(TotalPeople), 0) from NewProgram) '2018 Total'
-                            from NewProgram where LocationType='Online' group by LocationType"></asp:SqlDataSource>
+                            from NewProgram where LocationType='Online' group by LocationType"></asp:sqldatasource>
 
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <asp:Button ID="exportMonthly" class=" btn btn-success" Text="Export To Excel" runat="server" OnClick="exportMonthly_Click"></asp:Button>
+                                                <asp:button id="exportMonthly" class=" btn btn-success" text="Export To Excel" runat="server" onclick="exportMonthly_Click"></asp:button>
                                             </div>
                                         </div>
                                     </div>
@@ -327,39 +345,39 @@
                         </div>
                         <hr />
                         <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
-                                aria-expanded="false" aria-controls="collapseTwo">
-                                Annual Animal View
-                            </button>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                            <div id="animalReport" class="card-body">
-                                <h1 id="aniTitle" class=" ProgramCardTitle d-flex justify-content-center">Annual Animal Totals</h1>
-                                <div class="row table-responsive  ">
-                                    <div class="col-md-12  mx-auto   table-bordered table-hover AnimalCard ">
-                                        <asp:GridView ID="animalGrid" runat="server" EnableSortingAndPagingCallbacks="True" AutoGenerateColumns="False" Width="100%" DataSourceID="SqlDataSource48">
+                            <div class="card-header" id="headingTwo">
+                                <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                                    aria-expanded="false" aria-controls="collapseTwo">
+                                    Annual Animal View
+                                </button>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div id="animalReport" class="card-body">
+                                    <h1 id="aniTitle" class=" ProgramCardTitle d-flex justify-content-center">Annual Animal Totals</h1>
+                                    <div class="row table-responsive  ">
+                                        <div class="col-md-12  mx-auto   table-bordered table-hover AnimalCard ">
+                                            <asp:gridview id="animalGrid" runat="server" enablesortingandpagingcallbacks="True" autogeneratecolumns="False" width="100%" datasourceid="SqlDataSource48">
                                             <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
                                             <Columns>
                                                 <asp:BoundField DataField="AnimalName" HeaderText="Animal Name" SortExpression="AnimalName" />
                                                 <asp:BoundField DataField="Programs" HeaderText="Programs" ReadOnly="True" SortExpression="Programs" />
                                                 <asp:BoundField DataField="TotalPeople" HeaderText="Total People" SortExpression="TotalPeople" />
                                             </Columns>
-                                        </asp:GridView>
-                                        <asp:SqlDataSource ID="SqlDataSource48" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT a.AnimalName, count(aa.AnimalID) as Programs, np.TotalPeople 
-                        FROM dbo.NewProgram np inner join dbo.AssignAnimal aa on np.NewProgramID = aa.NewProgramID right join dbo.Animal a on aa.AnimalID = a.AnimalID
-                        GROUP BY a.AnimalName, np.TotalPeople"></asp:SqlDataSource>
+                                        </asp:gridview>
+                                            <asp:sqldatasource id="SqlDataSource48" runat="server" connectionstring="<%$ ConnectionStrings:connString %>" selectcommand="SELECT distinct AnimalName, count(a.AnimalID) as Programs, sum(TotalPeople) as TotalPeople from Animal a inner join AssignAnimal aa on a.AnimalID = aa.AnimalID
+inner join NewProgram np on np.NewProgramID = aa.NewProgramID
+GROUP BY AnimalName"></asp:sqldatasource>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <asp:button id="Button1" class=" btn btn-success" text="Export To Excel" runat="server" onclick="Button1_Click"></asp:button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <asp:Button ID="Button1" class=" btn btn-success" Text="Export To Excel" runat="server" OnClick="Button1_Click"></asp:Button>
-                                </div>
-                            </div>
                         </div>
-                        </div>
-                     </div>
+                    </div>
                 </div>
             </div>
         </div>
