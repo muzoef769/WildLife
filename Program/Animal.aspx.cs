@@ -54,22 +54,24 @@ public partial class Animal : System.Web.UI.Page
           ddlAddStatus.SelectedValue,
            DateTime.Today,
            "Staff"
+           
 
 
 
            );
 
 
-        string creatAnimal = "Insert into [dbo].[Animal] values (@Species, @ScientificName, @AnimalName, @AnimalType, @Status, @LastUpdated, @LastUpdatedBy)";
+        string creatAnimal = "Insert into [dbo].[Animal] values (@Species, @ScientificName, @AnimalName, @AnimalType, @Status, @LastUpdated, @LastUpdatedBy, @Image)";
         SqlCommand addAnimal = new SqlCommand(creatAnimal, sc);
         sc.Open();
-        addAnimal.Parameters.AddWithValue("@Species", newAnimal.getSpecies());
-        addAnimal.Parameters.AddWithValue("@ScientificName", newAnimal.getScientificName());
+        addAnimal.Parameters.AddWithValue("@Species", DBNull.Value);
+        addAnimal.Parameters.AddWithValue("@ScientificName", DBNull.Value);
         addAnimal.Parameters.AddWithValue("@AnimalName", newAnimal.getAnimalName());
         addAnimal.Parameters.AddWithValue("@AnimalType", newAnimal.getAnimalType());
         addAnimal.Parameters.AddWithValue("@Status", newAnimal.getStatus());
         addAnimal.Parameters.AddWithValue("@LastUpdated", newAnimal.getLastUpdated());
         addAnimal.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"]);
+        addAnimal.Parameters.AddWithValue("@Image", DBNull.Value);
         addAnimal.ExecuteNonQuery();
 
         txtAddName.Text = " ";
@@ -187,7 +189,7 @@ public partial class Animal : System.Web.UI.Page
             ddlEditStatus.SelectedValue.ToString());
 
 
-        string myQuery = "UPDATE [WildlifeCenter].[dbo].[Animal] SET [Species] = @Species,[ScientificName] = @ScientificName, [AnimalName] = @AnimalName, [AnimalType] = @AnimalType, [Status] = @Status WHERE AnimalID = @AnimalID";
+        string myQuery = "UPDATE [WildlifeCenter].[dbo].[Animal] SET [Species] = @Species,[ScientificName] = @ScientificName, [AnimalName] = @AnimalName, [AnimalType] = @AnimalType, [Status] = @Status, [LastUpdatedBy] = @LastUpdatedBy WHERE AnimalID = @AnimalID";
 
 
 
@@ -196,8 +198,8 @@ public partial class Animal : System.Web.UI.Page
 
         SqlCommand myCommand = new SqlCommand(myQuery, sc);
         myCommand.Parameters.AddWithValue("@AnimalID", newAnimal2.getAnimalID());
-        myCommand.Parameters.AddWithValue("@Species", newAnimal2.getSpecies());
-        myCommand.Parameters.AddWithValue("@ScientificName", newAnimal2.getScientificName());
+        myCommand.Parameters.AddWithValue("@Species", DBNull.Value);
+        myCommand.Parameters.AddWithValue("@ScientificName", DBNull.Value);
         myCommand.Parameters.AddWithValue("@AnimalName", newAnimal2.getAnimalName());
         myCommand.Parameters.AddWithValue("@AnimalType", newAnimal2.getAnimalType());
         myCommand.Parameters.AddWithValue("@Status", newAnimal2.getStatus());

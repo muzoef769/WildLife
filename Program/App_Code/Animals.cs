@@ -22,7 +22,7 @@ public class Animals
     private DateTime LastUpdated;
     private string LastUpdatedBy;
     Animals[] animalArray = new Animals[4];
-
+    private string Image;
 
     public Animals(string species, string scientificName, string AnimalName, string AnimalType, string Status, DateTime lastUpdated, string lastUpdatedBy)
     {
@@ -36,6 +36,29 @@ public class Animals
         setLastUpdated(lastUpdated);
         setLastUpdatedBy(lastUpdatedBy);
     }
+
+    public Animals(string species, string scientificName, string AnimalName, string AnimalType, string Status, DateTime lastUpdated, string lastUpdatedBy, string Image)
+    {
+
+
+        setSpecies(species);
+        setScientificName(scientificName);
+        setAnimalName(AnimalName);
+        setAnimalType(AnimalType);
+        setStatus(Status);
+        setLastUpdated(lastUpdated);
+        setLastUpdatedBy(lastUpdatedBy);
+        setImage(Image);
+    }
+
+
+
+
+
+
+
+
+
 
     public Animals(int ID, string name, string species, string scientificName, string type, string status)
     {
@@ -134,7 +157,13 @@ public class Animals
     {
         this.Status = status;
     }
-
-
+    public void setImage(string x)
+    {
+        this.Image = x;
+    }
+    public string getImage()
+    {
+        return this.Image;
+    }
 
 }

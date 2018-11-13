@@ -312,7 +312,7 @@
     </div>
 
      <div class="modal" id="ProgramModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Program Details</h5>
@@ -326,10 +326,10 @@
 
                     
                             <div class="table-responsive ">
-        <div class="row mx-auto d-flex justify-content-center ">
+        <div class="row mx-auto d-flex">
       
             <div class="col-xl-6 col-lg-12  col-md-12 col-s-12 ">
-                            <asp:GridView ID="GridView3" runat="server" Visible="True" HorizontalAlign="Center" Class=" AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
+                            <asp:GridView ID="GridView3" runat="server" Visible="True" HorizontalAlign="Center" Class=" AnimalCard table table-bordered table-hover" BackColor="White">
                 </asp:GridView>
                         </div>
                        
