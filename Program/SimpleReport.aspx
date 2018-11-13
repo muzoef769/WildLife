@@ -328,12 +328,12 @@
                         <hr />
                         <div class="card">
                         <div class="card-header" id="headingTwo">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                            <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
                                 aria-expanded="false" aria-controls="collapseTwo">
                                 Annual Animal View
                             </button>
                         </div>
-                        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                             <div id="animalReport" class="card-body">
                                 <h1 id="aniTitle" class=" ProgramCardTitle d-flex justify-content-center">Annual Animal Totals</h1>
                                 <div class="row table-responsive  ">
