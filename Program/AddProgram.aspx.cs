@@ -11,10 +11,11 @@ using System.Data;
 public partial class AddProgram : System.Web.UI.Page
 {
     public static int programID;
-
+    double programCost;
+    public double mileageCost;
+    public double totalCost;
     protected void Page_Load(object sender, EventArgs e)
     {
-
 
     }
 
@@ -253,7 +254,7 @@ public partial class AddProgram : System.Web.UI.Page
                     command.Parameters.AddWithValue("@zipCode", "22980");
                     command.Parameters.AddWithValue("@addressType", "Program");
                     command.Parameters.AddWithValue("@LU", address.getLastUpdated());
-                    command.Parameters.AddWithValue("@LUB", Session["UserFullName"]);
+                    command.Parameters.AddWithValue("@LUB", address.getLastUpdatedBy());
                     command.ExecuteNonQuery();
                 }
 
@@ -280,7 +281,7 @@ public partial class AddProgram : System.Web.UI.Page
                     command.Parameters.AddWithValue("@zipCode", address.getZipCode());
                     command.Parameters.AddWithValue("@addressType", address.getAddressType());
                     command.Parameters.AddWithValue("@LU", address.getLastUpdated());
-                    command.Parameters.AddWithValue("@LUB", Session["UserFullName"]);
+                    command.Parameters.AddWithValue("@LUB", address.getLastUpdatedBy());
                     command.ExecuteNonQuery();
                 }
 
@@ -321,7 +322,7 @@ public partial class AddProgram : System.Web.UI.Page
                     command.Parameters.AddWithValue("@programid", NewProgram.programList[j].getProgramID());
                     command.Parameters.AddWithValue("@addressid", newAddressID);
                     command.Parameters.AddWithValue("@LU", NewProgram.programList[j].getLastUpdated());
-                    command.Parameters.AddWithValue("@LUB", Session["UserFullName"]);
+                    command.Parameters.AddWithValue("@LUB", NewProgram.programList[j].getLastUpdatedBy());
 
                     command.ExecuteNonQuery();
                 }
@@ -373,7 +374,7 @@ public partial class AddProgram : System.Web.UI.Page
                         command.Parameters.AddWithValue("@AnimalID", animal);
                         command.Parameters.AddWithValue("@NewProgramID", newProgramID);
                         command.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
-                        command.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"]); 
+                        command.Parameters.AddWithValue("@LastUpdatedBy", "Raina"); ///Need to change this
 
                         command.ExecuteNonQuery();
 
@@ -400,7 +401,7 @@ public partial class AddProgram : System.Web.UI.Page
                         command.Parameters.AddWithValue("@UserID", user);
                         command.Parameters.AddWithValue("@NewProgramID", newProgramID);
                         command.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
-                        command.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"]); 
+                        command.Parameters.AddWithValue("@LastUpdatedBy", "Raina"); ///Need to change this
 
                         command.ExecuteNonQuery();
 
@@ -424,7 +425,7 @@ public partial class AddProgram : System.Web.UI.Page
                         command.Parameters.AddWithValue("@Secondary", txtSecondaryNumber.Text);
                         command.Parameters.AddWithValue("@orgID", drpOrganizationList.SelectedValue);
                         command.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
-                        command.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"]);
+                        command.Parameters.AddWithValue("@LastUpdatedBy", "Raina");
 
                         command.ExecuteNonQuery();
 
@@ -433,15 +434,75 @@ public partial class AddProgram : System.Web.UI.Page
                 }
 
             }
+
             connection.Close();
         }
+
+        int miles;
+        if (programLoc.Visible == true)
+        {
+            miles = Convert.ToInt32(txtMileage.Text);
+            mileageCost = miles * .57;
+            lblMileageCost.Text = mileageCost.ToString();
+        }
+        else
+        {
+            miles = 0;
+        }
+
+
+        //lblSubtotalCost.Text = totalCost.ToString();
+
         NewProgram.programList.Clear();
-        NewProgram.btnCount = 0;
+
+
+
+        for (int z = 0; z < NewProgram.programList.Count; z++)
+        {
+
+            if (z == 0)
+            {
+                //    lblProgramCostOne.Text = Convert.ToString(NewProgram.programList[z].getPrgCost());
+                totalCost += 250;
+                //    programOne.Visible = true;
+                //    programTwo.Visible = false;
+                //    programThree.Visible = false;
+            }
+
+            if (z == 1)
+            {
+                //    lblProgramCostTwo.Text = Convert.ToString(NewProgram.programList[z].getPrgCost());
+                //    totalCost += NewProgram.programList[z].getPrgCost();
+                //    programTwo.Visible = true;
+                totalCost += 160;
+            }
+
+
+            if (z == 2)
+            {
+                //    lblProgramCostThree.Text = Convert.ToString(NewProgram.programList[z].getPrgCost());
+                //    totalCost += NewProgram.programList[z].getPrgCost();
+                //    programThree.Visible = true;
+                totalCost += 160;
+            }
+
+
+            //lblSubtotalCost.Text = totalCost.ToString();
+
+
+        }
+        //totalCost = totalCost + mileageCost;
+        //lblTotalCostPrice.Text = totalCost.ToString();
+        double totalReal;
+        totalReal = Convert.ToDouble(lblSubtotalCost.Text) + mileageCost;
+        lblTotalCostPrice.Text = totalReal.ToString();
+        NewProgram.programList.Clear();
+
     }
 
     protected void BtnAddProgram_Click(object sender, EventArgs e)
     {
-        NewProgram.btnCount++;
+
         programID = Convert.ToInt32(drpOrganizationList.SelectedValue); /*Grab ProgramID*/
 
 
@@ -462,19 +523,56 @@ public partial class AddProgram : System.Web.UI.Page
         //         programID, /*addressID*/10, DateTime.Now, "Raina");
         //    NewProgram.programList.Add(newProgram);
         //}
+        int totalPeople;
+        totalPeople = Convert.ToInt32(txtAdults.Text) + Convert.ToInt32(txtKids.Text);
 
+        if (drpLocationTypeList.SelectedValue == "Onsite")
+        {
+            if (totalPeople < 20)
+            {
+                programCost = 100.00;
+            }
+            else
+            {
+                programCost = totalPeople * 5.00;
+            }
+        }
+
+        else if (drpLocationTypeList.SelectedValue == "Online")
+        {
+            programCost = 0.00;
+        }
+        else if (drpLocationTypeList.SelectedValue == "Offsite")
+        {
+            if (NewProgram.btnCount == 0)
+            {
+                programCost = 250.00;
+            }
+            else
+            {
+                programCost = 160.00;
+            }
+        }
         NewProgram newProgram = new NewProgram(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
-                50, drpAgeLevel.SelectedValue, "Completed", Convert.ToDateTime(programTime.Text),
+                totalPeople, drpAgeLevel.SelectedValue, "Completed", Convert.ToDateTime(programTime.Text),
                 Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
-                programID, DateTime.Now, "Raina");
+                programID, DateTime.Now, "Raina", programCost);
 
+        //for (int l = 0; l < NewProgram.programList.Count; l++)
+        //{
+        //    if (NewProgram.programList[l].getLocationType() == "Offsite" && l==0)
+        //    {
+        //        NewProgram.programList[l].setPrgCost() = 250.00;
+        //    }
+
+        //}
 
         NewProgram.programList.Add(newProgram);
 
 
 
-        double totalCost;
-        NewProgram.btnCount += 1;
+
+
         drpAgeLevel.SelectedValue = null;
         txtAdults.Text = null;
         txtKids.Text = null;
@@ -482,7 +580,6 @@ public partial class AddProgram : System.Web.UI.Page
         drpLocationTypeList.SelectedValue = null;
         drpProgramList.SelectedValue = null;
         NewProgram.baseCost = 250 + (160 * (NewProgram.programList.Count - 1));
-        txtBaseCost.Text = NewProgram.baseCost.ToString();
 
         //Assigning to textboxes for testing
         //totalCost = NewProgram.baseCost + (Convert.ToDouble(txtMileage.Text) * .57);
@@ -493,13 +590,60 @@ public partial class AddProgram : System.Web.UI.Page
 
 
         string location = NewProgram.programList[0].getLocationType();
-        if (location == "Offsite" && NewProgram.btnCount >= 1)
+        if (location == "Offsite" && NewProgram.btnCount == 0)
         {
-            datepicker.Visible = false;
+            datepicker.Disabled = true;
+
+
             drpOrganizationList.Enabled = false;
+            drpLocationTypeList.SelectedIndex = 2;
+            drpLocationTypeList.Enabled = false;
+        }
+        //if (NewProgram.btnCount == 1)
+        //{
+        //    lblProgramCostTwo.Visible = false;
+        //    lblProgramCostThree.Visible = false;
+        //}
+        for (int z = 0; z < NewProgram.programList.Count; z++)
+        {
+
+            if (z == 0)
+            {
+                lblProgramCostOne.Text = Convert.ToString(NewProgram.programList[z].getPrgCost());
+                totalCost += NewProgram.programList[z].getPrgCost();
+                programOne.Visible = true;
+                programTwo.Visible = false;
+                programThree.Visible = false;
+            }
+
+            if (z == 1)
+            {
+                lblProgramCostTwo.Text = Convert.ToString(NewProgram.programList[z].getPrgCost());
+                totalCost += NewProgram.programList[z].getPrgCost();
+                programTwo.Visible = true;
+
+            }
+
+
+            if (z == 2)
+            {
+                lblProgramCostThree.Text = Convert.ToString(NewProgram.programList[z].getPrgCost());
+                totalCost += NewProgram.programList[z].getPrgCost();
+                programThree.Visible = true;
+            }
         }
 
 
+        lblCartTotal.Text = Convert.ToString(NewProgram.programList.Count);
+        //lblProgramCostOne.Text = NewProgram.programList
+        //lblProgramCostTwo.Text = Convert.ToString(programCost);
+        //lblProgramCostThree.Text = Convert.ToString(programCost);
+
+
+        lblSubtotalCost.Text = totalCost.ToString();
+        totalCost += mileageCost;
+        lblTotalCostPrice.Text = totalCost.ToString();
+        NewProgram.btnCount += 1;
 
     }
 
@@ -514,5 +658,11 @@ public partial class AddProgram : System.Web.UI.Page
         {
             programLoc.Visible = true;
         }
+    }
+
+    protected void Clear(object sender, EventArgs e)
+    {
+        NewProgram.programList.Clear();
+        NewProgram.btnCount = 0;
     }
 }

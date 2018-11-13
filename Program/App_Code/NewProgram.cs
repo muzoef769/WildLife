@@ -10,9 +10,8 @@ public class NewProgram
 {
     public static double baseCost = 0;
     public static List<NewProgram> programList = new List<NewProgram>();
-    public static List<NewProgram> invoiceList = new List<NewProgram>();
-    public static int btnCount = 0;
-
+    public static int btnCount;
+    private double prgCost;
     private int newProgramID, programID, addressID, numKids, numAdults, totalPeople, totalMileage;
     private DateTime timeSlot, dateCompleted;
     private string ageLevel, status, miscNotes, locationType;
@@ -43,7 +42,7 @@ public class NewProgram
 
     public NewProgram(int kids, int adults, int people, string ageLevel, string status,
        DateTime timeSlot, DateTime dateCompleted, string notes, string locationType, int programID,
-       DateTime lastUpdated, string lastUpdatedBy)
+       DateTime lastUpdated, string lastUpdatedBy, double prgCost)
     {
 
         setNumKids(kids);
@@ -56,9 +55,9 @@ public class NewProgram
         setMiscNotes(notes);
         setLocationType(locationType);
         setProgramID(programID);
-
         setLastUpdated(lastUpdated);
         setLastUpdatedBy(lastUpdatedBy);
+        setPrgCost(prgCost);
     }
 
 
@@ -66,6 +65,15 @@ public class NewProgram
 
 
     //Getters
+
+    public double getPrgCost()
+    {
+        return this.prgCost;
+    }
+    public void setPrgCost(double x)
+    {
+        this.prgCost = x;
+    }
     public int getNewProgramID()
     {
         return this.newProgramID;

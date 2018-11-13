@@ -1383,3 +1383,18 @@ a.MonthTable:hover{ background-color:whitesmoke;}
         #tabCheckBox: {
             background-color: green;
         }
+
+    }
+}
+.CartCard {
+    opacity: .92;
+    background-color: white;
+    border-radius: 15px;
+    border: 2px;
+    display: block;
+    height: auto;
+    width: 400px;
+    padding: 10px 10px 0px 10px;
+    vertical-align: middle;
+    font-family: 'Raleway', sans-serif !important;
+}

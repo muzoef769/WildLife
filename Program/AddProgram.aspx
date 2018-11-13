@@ -6,7 +6,54 @@
 
     <%--Beginning container--%>
 
-    <div class="AnimalReportContainer">
+
+    <div class="CartContainer fixed-top" style="z-index: 99;">
+        <div class="CartCard">
+            <h4>Cart 
+
+                <span class="price" style="color: black"><i class="fa fa-shopping-cart"></i><b>
+                    <asp:Label ID="lblCartTotal" runat="server" Text="0"></asp:Label></b></span>
+
+            </h4>
+            <div id ="programOne"  runat="server" visible="false">
+            <p><a href="#"><asp:Label ID ="lblProgramOne" runat="server" Text="Program One"></asp:Label></a> <span class="price">$
+                <asp:Label ID="lblProgramCostOne" runat="server" Text="70"></asp:Label></span></p>
+                </div>
+            <div id ="programTwo"  runat="server" visible="false">
+            <p><a href="#"><asp:Label ID ="lblProgramTwo" runat="server" Text="Program Two"></asp:Label></a> <span class="price">$
+                <asp:Label ID="lblProgramCostTwo" runat="server" Text="70"></asp:Label></span></p>
+                </div>
+            <div id="programThree"  runat="server" visible="false">
+            <p><a href="#"><asp:Label ID ="lblProgramThree" runat="server" Text="Program Three"></asp:Label></a> <span class="price">$
+                <asp:Label ID="lblProgramCostThree" runat="server" Text="70"></asp:Label></span></p>
+                </div>
+
+            <hr>
+            <p>
+                <asp:Label ID="lblSubtotal" runat="server" Text="Subtotal"></asp:Label>
+                <span class="price" style="color: black"><b>$
+                    <asp:Label ID="lblSubtotalCost" runat="server" Text="0"></asp:Label></b></span>
+            </p>
+
+            <p>
+                <asp:Label ID="lblMileage" runat="server" Text="Mileage Cost"></asp:Label>
+                <span class="price" style="color: black"><b>$
+                    <asp:Label ID="lblMileageCost" runat="server" Text="0"></asp:Label></b></span>
+            </p>
+            
+            <p>
+               
+                <asp:Label ID="lblTotalCost" runat="server" Text="Total Cost"></asp:Label>
+                <span class="price" style="color: black"><b>$
+                    <asp:Label ID="lblTotalCostPrice" runat="server" Text="0"></asp:Label></b></span>
+            </p>
+        </div>
+    </div>
+
+
+
+    <%--Program container--%>
+    <div class="AnimalReportContainer" style="z-index: 100;">
         <div class="ProgramReportCard">
             <div class="row">
                 <div class="col-md-12 mx-auto d-flex justify-content-center">
@@ -14,14 +61,21 @@
                 </div>
             </div>
 
-
+            <div class="row">
+                <div class="col-md-12 mx-auto d-flex justify-content-center Spacing">
+                    <a href="AddOrganization.aspx" id="btnAddOrg" class=" btn btn-primary LoginButton" runat="server" onclick="btnAddOrg_Click">Add Organization</a>
+                </div>
+            </div>
 
 
             <br />
             <div class="row">
 
                 <div class="col-md-3 mx-auto d-flex justify-content-center">
+                </div>
+                <div class="col-md-3 mx-auto d-flex justify-content-center">
                     <h4>Organization:</h4>
+
                 </div>
                 <div class="col-md-3 mx-auto d-flex justify-content-center">
 
@@ -33,12 +87,6 @@
 
                 </div>
                 <div class="col-md-3 mx-auto d-flex justify-content-center">
-                    <a href="AddOrganization.aspx" id="btnAddOrg" class=" btn btn-success" runat="server" onclick="btnAddOrg_Click">Add Organization</a>
-
-
-                </div>
-
-                <div class="col-md-3 mx-auto d-flex justify-content-center">
                 </div>
             </div>
 
@@ -48,12 +96,12 @@
             <div class="accordion" id="accordionExample">
                 <div class="card">
                     <div class="card-header" id="headingOne">
-                        <div class="d-flex justify-content-lg-start">
+                        <h5 class="mb-0">
 
-                            <button class="btn " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 Program Information
                             </button>
-                        </div>
+                        </h5>
                     </div>
 
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
@@ -233,10 +281,10 @@
 
             <div class="card">
                 <div class="card-header" id="headingTwo">
-                    <div class="d-flex justify-content-lg-start">
-                        <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             Contact Information</button>
-                    </div>
+                    </h5>
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
@@ -325,11 +373,11 @@
         </div>
         <div class="card" id="programLoc" runat="server">
             <div class="card-header" id="headingThree">
-                <div class="d-flex justify-content-lg-start">
-                    <button class="btn  collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         Program Location
                     </button>
-                </div>
+                </h5>
             </div>
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                 <div class="card-body">
@@ -397,14 +445,6 @@
                                             <asp:TextBox ID="txtMileage" runat="server" Placeholder=" Enter Mileage"></asp:TextBox>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="txtBaseCost" class="label-style">BaseCost</label>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <asp:TextBox ID="txtBaseCost" runat="server" Placeholder=" Base Cost" ReadOnly="true"></asp:TextBox>
-                                        </div>
-                                    </div>
 
                                     <div class="button-container">
                                     </div>
@@ -422,28 +462,23 @@
             </div>
         </div>
 
-        <div class="row mx-auto d-flex justify-content-center">
-            <div class="col-md-3 mx-auto d-flex justify-content-center Spacing">
+        <div class="row">
+            <div class="col-md-12 mx-auto d-flex justify-content-center Spacing">
                 <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-success" OnClick="SubmitProgram" />
-            </div>
-            <div class="col-md-3 text-center mx-auto Spacing">
-                <button id="btnReturn" type="button" class="btn btn-success " style="color: white;" onclick="javascript:history.go(-1)">Return</button>
+                <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn btn-success" OnClick="Clear" />
+
             </div>
         </div>
     </div>
-    </div>
-        </div>
 
-        <!-- end accordion -->
+    <!-- end accordion -->
 
 
 
 
-    </div>
+
 
     <!-- end container -->
-
-
 
 
 
@@ -483,6 +518,8 @@
                         break;
                 }
             };
+
+
             //function
             switchAccordion = function (e) {
                 e.preventDefault();
@@ -510,6 +547,12 @@
                 accordionToggles[i].addEventListener('click', switchAccordion, false);
             }
         })();
+
+
+        $(document).ready(function () {
+            $('#sidebar').stickyMojo({ footerID: '#footer', contentID: '#main' });
+        });
+
 
     </script>
 </asp:Content>
