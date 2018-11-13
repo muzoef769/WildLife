@@ -103,6 +103,7 @@ body {
     border: 2px;
     display: block;
     height: auto;
+    
     font-family: 'Raleway', sans-serif !important;
 }
 
@@ -221,7 +222,7 @@ body {
 
 .WelcomeContainer {
     padding-left: 30% ;
-    padding-right: 30% ;
+    padding-right: 20% ;
     padding-top: 10%;
     font-family: 'Raleway', sans-serif !important;
 }
@@ -1369,7 +1370,7 @@ a.MonthTable:hover{ background-color:whitesmoke;}
         }
 
         .TabHover:hover {
-            background-color: #339933
+            background-color: #339933 !important;
         }
 
         .PhoneLine {
@@ -1380,21 +1381,95 @@ a.MonthTable:hover{ background-color:whitesmoke;}
             background-color: green !important;
         }
 
-        #tabCheckBox: {
-            background-color: green;
+       
+
+
+        @media only screen and (max-width: 2700px) {
+
+            .AnimalSimpleContainer {
+                padding-left: 22%;
+                padding-right: 20%;
+                padding-top: 10%;
+            }
         }
 
-    }
-}
-.CartCard {
-    opacity: .92;
-    background-color: white;
-    border-radius: 15px;
-    border: 2px;
-    display: block;
-    height: auto;
-    width: 400px;
-    padding: 10px 10px 0px 10px;
-    vertical-align: middle;
-    font-family: 'Raleway', sans-serif !important;
-}
+        @media only screen and (max-width: 2200px) {
+
+            .AnimalSimpleContainer {
+                padding-left: 18%;
+                padding-right: 13%;
+                padding-top: 10%;
+            }
+        }
+
+        @media only screen and (max-width: 1800px) {
+
+            .AnimalSimpleContainer {
+                padding-left: 13%;
+                padding-right: 10%;
+                padding-top: 10%;
+            }
+        }
+
+        @media only screen and (max-width: 1600px) {
+
+            .AnimalSimpleContainer {
+                padding-left: 5%;
+                padding-right: 7%;
+                padding-top: 10%;
+            }
+
+            @media only screen and (max-width: 1200px) {
+
+                .AnimalSimpleContainer {
+                    padding-left: 5%;
+                    padding-right: 7%;
+                    padding-top: 10%;
+                }
+
+                @media only screen and (max-width: 800px) {
+
+                    .AnimalSimpleContainer {
+                        padding-left: 18%;
+                        padding-right: 13%;
+                        padding-top: 10%;
+                    }
+                }
+
+                @media only screen and (max-width: 300px) {
+
+                    .AnimalSimpleContainer {
+                        padding-left: 18%;
+                        padding-right: 13%;
+                        padding-top: 10%;
+                    }
+                }
+
+                @media only screen and (max-width: 200px) {
+
+                    .AnimalSimpleContainer {
+                        padding-left: 6%;
+                        padding-right: 5%;
+                        padding-top: 10%;
+                    }
+                }
+
+                @media only screen and (max-width: 800px) {
+
+                    .AnimalSimpleContainer {
+                        padding-left: 6%;
+                        padding-right: 5%;
+                        padding-top: 10%;
+                    }
+                }
+
+
+                .nav-tabs > li.active > a,
+                .nav-tabs > li.active > a:hover,
+                .nav-tabs > li.active > a:focus {
+                    color: #555555;
+                    cursor: default;
+                    background-color: forestgreen !important;
+                    border: 1px solid #dddddd;
+                    border-bottom-color: transparent;
+                } 
