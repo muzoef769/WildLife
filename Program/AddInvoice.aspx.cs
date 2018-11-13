@@ -11,24 +11,37 @@ using System.Web.Configuration;
 public partial class AddInvoice : System.Web.UI.Page
 {
     SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
-    public static Int32 id;
     protected void Page_Load(object sender, EventArgs e)
     {
     }
-    protected void GridView5_SelectedIndexChanged(object sender, EventArgs e)
+    protected void viewGridView(object sender, EventArgs e)
     {
-        id = Convert.ToInt32(drpInvoiceOrganization.SelectedValue);
+        int id = Int32.Parse(drpInvoiceOrganization.SelectedValue.ToString());
 
-        string sql = "SELECT NewProgram.DateCompleted, NewProgram.TimeSlot, Program.ProgramName, Program.ProgramType, Program.ProgramCost FROM NewProgram INNER JOIN Program ON NewProgram.ProgramID = Program.ProgramID INNER JOIN Address ON NewProgram.AddressID = Address.AddressID INNER JOIN Organization ON Address.AddressID = Organization.AddressID WHERE Organization.OrganizationID = @Org_ID";
+        string sql = "SELECT NewProgram.DateCompleted, NewProgram.TimeSlot, NewProgram.NewProgramStatus, Program.ProgramName, NewProgram.LastUpdatedBy FROM Address INNER JOIN Organization ON Address.AddressID = Organization.AddressID INNER JOIN NewProgram ON Address.AddressID = NewProgram.AddressID INNER JOIN Program ON NewProgram.ProgramID = Program.ProgramID WHERE (Organization.OrganizationID = CAST(@Org_ID as int))";
 
         SqlCommand command = sc.CreateCommand();
+
         command.CommandType = CommandType.Text;
-        command.CommandText = sql;
         command.Parameters.AddWithValue("@Org_ID", id);
+        command.CommandText = sql;
+
         SqlDataAdapter da = new SqlDataAdapter(command);
         DataTable dt = new DataTable();
         da.Fill(dt);
         GridView5.DataSource = dt;
         GridView5.DataBind();
+        using (SqlCommand cmd = new SqlCommand(sql))
+        {
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@Org_ID", id);
+            cmd.Connection = sc;
+            sc.Open();
+            ProgramListInvoice.DataSource = cmd.ExecuteReader();
+            ProgramListInvoice.DataTextField = "ProgramName";
+            ProgramListInvoice.DataValueField = "DateCompleted";
+            ProgramListInvoice.DataBind();
+        }
+        sc.Close();
     }
 }

@@ -70,14 +70,6 @@ public partial class AnimalReport : System.Web.UI.Page
                 grdViewReport.DataBind();
             }
         }
-
-
-
-
-
-
-
-
     }
     protected void generateMonthReport(object sender, EventArgs e)
     {
