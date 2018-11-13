@@ -27,6 +27,15 @@ public class Invoice
         setLastUpdated(lastUpdated);
         setLastUpdatedBy(lastUpdatedBy);
     }
+    public Invoice(int newProgramID, int total, DateTime dateCreated, string status, DateTime lastUpdated, string lastUpdatedBy)
+    {
+        setNewProgramID(newProgramID);
+        setTotal(total);
+        setDateCreated(dateCreated);
+        setInvoiceStatus(status);
+        setLastUpdated(lastUpdated);
+        setLastUpdatedBy(lastUpdatedBy);
+    }
 
     //Getters
     public int getInvoiceID()
