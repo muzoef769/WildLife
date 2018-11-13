@@ -19,6 +19,7 @@ public partial class Default : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        Session.Contents.RemoveAll();
         if (IsPostBack)
         {
             lblStatus.ForeColor = Color.Transparent;
@@ -27,8 +28,6 @@ public partial class Default : System.Web.UI.Page
             txtUsername.Enabled = true;
             txtPassword.Enabled = true;
         }
-
-
     }
 
     protected void btnLogin_Click(object sender, EventArgs e)
@@ -190,7 +189,7 @@ public partial class Default : System.Web.UI.Page
             myCommand.Parameters.AddWithValue("@lastName", newUser.getLastName());
             myCommand.Parameters.AddWithValue("@userType", newUser.getUserType());
             myCommand.Parameters.AddWithValue("@lastUpdated", newUser.getLastUpdated());
-            myCommand.Parameters.AddWithValue("@lastUpdatedBy", Session["UserFullName"]);
+            myCommand.Parameters.AddWithValue("@lastUpdatedBy", "");
 
             myCommand.ExecuteNonQuery();
 
