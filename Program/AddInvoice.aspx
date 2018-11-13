@@ -10,12 +10,6 @@
             <h1 class="CardTitle">View Invoice Info</h1>
         </div>
     </div>
-    <div class="row">
-        <br />
-        <div id="AddAnimalButton" class="col-lg-2 col-md-4 col-s-4 mx-auto">
-            <asp:Button ID="btnInvoice" runat="server" CssClass="btn btn-primary d-flex  mx-auto justify-content-center" Text="Add Invoice" />
-        </div>
-    </div>
 
     <div class="card-body container-fluid d-flex justify-content-center">
     </div>
@@ -31,7 +25,17 @@
                     <asp:DropDownList ID="drpInvoiceOrganization" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="viewGridView" DataTextField="OrganizationName" DataValueField="OrganizationID"></asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:WildlifeCenterConnectionString %>" SelectCommand="SELECT [OrganizationID], [OrganizationName] FROM [Organization]"></asp:SqlDataSource>
 
-                    <asp:GridView ID="GridView5" runat="server" CssClass=" table table-condensed table-bordered table-hover AnimalCard" AutoPostBack="true">
+
+                    <asp:Label ID="lblprogramList" runat="server">Select Program to Add: </asp:Label><asp:DropDownList ID="ProgramListInvoice" runat="server"></asp:DropDownList>
+
+                    <asp:Button ID="btnAddProgram2Invoice"
+                        runat="server"
+                        Text="Add Program to Invoice"
+                        CssClass="btn mx-auto d-flex justify-content-center btn-success"
+                        UseSubmitBehavior="false"
+                        CauseValidation="true" />
+
+                    <asp:GridView ID="GridView5" runat="server" CssClass=" table table-condensed table-bordered table-hover AnimalCard" AutoPostBack="true" OnSelectedIndexChanged="GridView5_SelectedIndexChanged" OnRowDataBound="GridView_RowDataBound">
                         <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
                     </asp:GridView>
 
@@ -39,17 +43,6 @@
             </div>
         </div>
         <div class="row mx-auto">
-            <div class="col-12">
-                <asp:DropDownList ID="ProgramListInvoice" runat="server"></asp:DropDownList>
-
-                <asp:Button ID="btnAddProgram2Invoice"
-                    runat="server"
-                    Text="Add Program to Invoice"
-                    CssClass="btn mx-auto d-flex justify-content-center btn-success"
-                    UseSubmitBehavior="false"
-                    CauseValidation="true"/>
-                <br />
-            </div>
         </div>
     </div>
 </asp:Content>

@@ -9,7 +9,9 @@ using System.Web;
 public class Invoice
 {
     //Attributes
-    private int invoiceID, newProgramID, total;
+    private int invoiceID;
+    private int newProgramID;
+    private int total;
     private DateTime dateCreated;
     private string status;
 
@@ -20,6 +22,15 @@ public class Invoice
     public Invoice(int invoiceID, int newProgramID, int total, DateTime dateCreated, string status, DateTime lastUpdated, string lastUpdatedBy)
     {
         setInvoiceID(invoiceID);
+        setNewProgramID(newProgramID);
+        setTotal(total);
+        setDateCreated(dateCreated);
+        setInvoiceStatus(status);
+        setLastUpdated(lastUpdated);
+        setLastUpdatedBy(lastUpdatedBy);
+    }
+    public Invoice(int newProgramID, int total, DateTime dateCreated, string status, DateTime lastUpdated, string lastUpdatedBy)
+    {
         setNewProgramID(newProgramID);
         setTotal(total);
         setDateCreated(dateCreated);
