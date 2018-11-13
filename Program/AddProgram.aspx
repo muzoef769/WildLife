@@ -7,54 +7,20 @@
     <%--Beginning container--%>
 
 
-    <div class="CartContainer fixed-top" style="z-index: 99;">
-        <div class="CartCard">
-            <h4>Cart 
-
-                <span class="price" style="color: black"><i class="fa fa-shopping-cart"></i><b>
-                    <asp:Label ID="lblCartTotal" runat="server" Text="0"></asp:Label></b></span>
-
-            </h4>
-            <div id ="programOne"  runat="server" visible="false">
-            <p><a href="#"><asp:Label ID ="lblProgramOne" runat="server" Text="Program One"></asp:Label></a> <span class="price">$
-                <asp:Label ID="lblProgramCostOne" runat="server" Text="70"></asp:Label></span></p>
-                </div>
-            <div id ="programTwo"  runat="server" visible="false">
-            <p><a href="#"><asp:Label ID ="lblProgramTwo" runat="server" Text="Program Two"></asp:Label></a> <span class="price">$
-                <asp:Label ID="lblProgramCostTwo" runat="server" Text="70"></asp:Label></span></p>
-                </div>
-            <div id="programThree"  runat="server" visible="false">
-            <p><a href="#"><asp:Label ID ="lblProgramThree" runat="server" Text="Program Three"></asp:Label></a> <span class="price">$
-                <asp:Label ID="lblProgramCostThree" runat="server" Text="70"></asp:Label></span></p>
-                </div>
-
-            <hr>
-            <p>
-                <asp:Label ID="lblSubtotal" runat="server" Text="Subtotal"></asp:Label>
-                <span class="price" style="color: black"><b>$
-                    <asp:Label ID="lblSubtotalCost" runat="server" Text="0"></asp:Label></b></span>
-            </p>
-
-            <p>
-                <asp:Label ID="lblMileage" runat="server" Text="Mileage Cost"></asp:Label>
-                <span class="price" style="color: black"><b>$
-                    <asp:Label ID="lblMileageCost" runat="server" Text="0"></asp:Label></b></span>
-            </p>
-            
-            <p>
-               
-                <asp:Label ID="lblTotalCost" runat="server" Text="Total Cost"></asp:Label>
-                <span class="price" style="color: black"><b>$
-                    <asp:Label ID="lblTotalCostPrice" runat="server" Text="0"></asp:Label></b></span>
-            </p>
-        </div>
+    <div class="CartContainer " style="z-index: 99;">
+        
     </div>
 
 
-
+    <div class="row">
     <%--Program container--%>
-    <div class="AnimalReportContainer" style="z-index: 100;">
-        <div class="ProgramReportCard">
+    <div class="SimpleContainer col-sm-12 col-xs-12 col-md-8 col-lg-8 col-xl-8" style="z-index: 100;">
+        
+        
+
+
+
+        <div class="ProgramReportCard ">
             <div class="row">
                 <div class="col-md-12 mx-auto d-flex justify-content-center">
                     <h1 class="heading-primary">Add Program</h1>
@@ -69,26 +35,23 @@
 
 
             <br />
-            <div class="row">
 
-                <div class="col-md-3 mx-auto d-flex justify-content-center">
-                </div>
-                <div class="col-md-3 mx-auto d-flex justify-content-center">
-                    <h4>Organization:</h4>
-
-                </div>
-                <div class="col-md-3 mx-auto d-flex justify-content-center">
-
+                <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="txtOrgDrp" class="label-style">Organization</label>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                
                     <asp:DropDownList ID="drpOrganizationList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle" AppendDataBoundItems="True" DataSourceID="SqlDataSource3" DataTextField="OrganizationName" DataValueField="OrganizationID" OnSelectedIndexChanged="DrpOrganizationList_IndexChanged" AutoPostBack="true">
 
                         <asp:ListItem Text="Select an Organization"></asp:ListItem>
                     </asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT OrganizationName, OrganizationID FROM Organization"></asp:SqlDataSource>
 
-                </div>
-                <div class="col-md-3 mx-auto d-flex justify-content-center">
-                </div>
-            </div>
+                                            </div>
+                                        </div>
+
+
 
 
 
@@ -257,7 +220,7 @@
 
                                 <div class="col-md-4 mx-auto Spacing">
                                     <h4>Notes</h4>
-                                    <textarea id="txtMiscNotes" runat="server" cols="30" rows="3"></textarea>
+                                    <textarea id="txtMiscNotes" runat="server" cols="20" rows="3"></textarea>
                                 </div>
 
 
@@ -371,6 +334,8 @@
                 </div>
             </div>
         </div>
+
+
         <div class="card" id="programLoc" runat="server">
             <div class="card-header" id="headingThree">
                 <h5 class="mb-0">
@@ -462,6 +427,10 @@
             </div>
         </div>
 
+
+
+
+
         <div class="row">
             <div class="col-md-12 mx-auto d-flex justify-content-center Spacing">
                 <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-success" OnClick="SubmitProgram" />
@@ -469,8 +438,53 @@
 
             </div>
         </div>
-    </div>
 
+
+    </div>
+        <div class="SimpleContainer col-sm-12 col-xs-12 col-md-8 col-lg-8 col-xl-8" style="z-index: 100;">
+        <div class="CartCard  ">
+            <h4>Cart 
+
+                <span class="price" style="color: black"><i class="fa fa-shopping-cart"></i><b>
+                    <asp:Label ID="lblCartTotal" runat="server" Text="0"></asp:Label></b></span>
+
+            </h4>
+            <div id ="programOne"  runat="server" visible="false">
+            <p><a href="#"><asp:Label ID ="lblProgramOne" runat="server" Text="Program One"></asp:Label></a> <span class="price">$
+                <asp:Label ID="lblProgramCostOne" runat="server" Text="70"></asp:Label></span></p>
+                </div>
+            <div id ="programTwo"  runat="server" visible="false">
+            <p><a href="#"><asp:Label ID ="lblProgramTwo" runat="server" Text="Program Two"></asp:Label></a> <span class="price">$
+                <asp:Label ID="lblProgramCostTwo" runat="server" Text="70"></asp:Label></span></p>
+                </div>
+            <div id="programThree"  runat="server" visible="false">
+            <p><a href="#"><asp:Label ID ="lblProgramThree" runat="server" Text="Program Three"></asp:Label></a> <span class="price">$
+                <asp:Label ID="lblProgramCostThree" runat="server" Text="70"></asp:Label></span></p>
+                </div>
+
+            <hr>
+            <p>
+                <asp:Label ID="lblSubtotal" runat="server" Text="Subtotal"></asp:Label>
+                <span class="price" style="color: black"><b>$
+                    <asp:Label ID="lblSubtotalCost" runat="server" Text="0"></asp:Label></b></span>
+            </p>
+
+            <p>
+                <asp:Label ID="lblMileage" runat="server" Text="Mileage Cost"></asp:Label>
+                <span class="price" style="color: black"><b>$
+                    <asp:Label ID="lblMileageCost" runat="server" Text="0"></asp:Label></b></span>
+            </p>
+            
+            <p>
+               
+                <asp:Label ID="lblTotalCost" runat="server" Text="Total Cost"></asp:Label>
+                <span class="price" style="color: black"><b>$
+                    <asp:Label ID="lblTotalCostPrice" runat="server" Text="0"></asp:Label></b></span>
+            </p>
+        </div>
+</div>
+
+    </div>
     <!-- end accordion -->
 
 
