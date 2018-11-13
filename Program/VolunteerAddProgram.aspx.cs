@@ -11,6 +11,10 @@ using System.Data;
 public partial class VolunteerAddProgram : System.Web.UI.Page
 {
     public static int programID;
+    double programCost;
+    public double mileageCost;
+    public double totalCost;
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -462,11 +466,40 @@ public partial class VolunteerAddProgram : System.Web.UI.Page
         //         programID, /*addressID*/10, DateTime.Now, "Raina");
         //    NewProgram.programList.Add(newProgram);
         //}
+        int totalPeople;
+        totalPeople = Convert.ToInt32(txtAdults.Text) + Convert.ToInt32(txtKids.Text);
 
+        if (drpLocationTypeList.SelectedValue == "Onsite")
+        {
+            if (totalPeople < 20)
+            {
+                programCost = 100.00;
+            }
+            else
+            {
+                programCost = totalPeople * 5.00;
+            }
+        }
+
+        else if (drpLocationTypeList.SelectedValue == "Online")
+        {
+            programCost = 0.00;
+        }
+        else if (drpLocationTypeList.SelectedValue == "Offsite")
+        {
+            if (NewProgram.btnCount == 0)
+            {
+                programCost = 250.00;
+            }
+            else
+            {
+                programCost = 160.00;
+            }
+        }
         NewProgram newProgram = new NewProgram(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
-                50, drpAgeLevel.SelectedValue, "Completed", Convert.ToDateTime(programTime.Text),
+                totalPeople, drpAgeLevel.SelectedValue, "Completed", Convert.ToDateTime(programTime.Text),
                 Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
-                programID, DateTime.Now, "Raina");
+                programID, DateTime.Now, "Raina", programCost);
 
 
         NewProgram.programList.Add(newProgram);

@@ -47,6 +47,6 @@ public partial class AddInvoice : System.Web.UI.Page
     protected void AddProgram(object sender, EventArgs e)
     {
         int invoiceID;
-        string findInvoiceID = "SELECT InvoiceID FROM Invoice WHERE InvoiceID = (SELECT MAX(InvoiceID))"
+        string findInvoiceID = "SELECT InvoiceID FROM Invoice WHERE InvoiceID = (SELECT MAX(InvoiceID))";
     }
 }
