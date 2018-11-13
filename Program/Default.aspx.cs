@@ -19,7 +19,6 @@ public partial class Default : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session.Contents.RemoveAll();
         if (IsPostBack)
         {
             lblStatus.ForeColor = Color.Transparent;
@@ -27,7 +26,10 @@ public partial class Default : System.Web.UI.Page
             btnLogin.Enabled = true;
             txtUsername.Enabled = true;
             txtPassword.Enabled = true;
+
         }
+
+
     }
 
     protected void btnLogin_Click(object sender, EventArgs e)
@@ -72,8 +74,8 @@ public partial class Default : System.Web.UI.Page
 
         SqlDataReader reader = findPass.ExecuteReader(); // create a reader
 
-        System.Data.SqlClient.SqlCommand getUserType = new System.Data.SqlClient.SqlCommand();
-        getUserType.Connection = sc;
+        System.Data.SqlClient.SqlCommand getVolunteer = new System.Data.SqlClient.SqlCommand();
+
 
         //getUserType.CommandText = "SELECT UserType from [dbo].[User] where Username = @Username";
         //getUserType.Parameters.AddWithValue("@Username", txtUsername.Text);
@@ -109,7 +111,6 @@ public partial class Default : System.Web.UI.Page
                     txtPassword.Enabled = false;
                     Session["Username"] = txtUsername.Text;
                     Session["UserFullName"] = findFullName(txtUsername.Text);
-
                 }
                 else
                 {
@@ -121,26 +122,69 @@ public partial class Default : System.Web.UI.Page
 
         }
         reader.Close();
-        getUserType.Connection = sc;
+        //Get User Type
+        getVolunteer.Connection = sc;
 
-        getUserType.CommandText = "SELECT UserType from [dbo].[User] where Username = @Username and UserType = @UserType";
-        getUserType.Parameters.AddWithValue("@Username", txtUsername.Text);
-        getUserType.Parameters.AddWithValue("UserType", "Volunteer");
+        getVolunteer.CommandText = "SELECT UserType, UserStatus from [dbo].[User] where Username = @Username and UserType = @UserType and UserStatus = @UserStatus";
+        getVolunteer.Parameters.AddWithValue("@Username", txtUsername.Text);
+        getVolunteer.Parameters.AddWithValue("UserType", "Volunteer");
+        getVolunteer.Parameters.AddWithValue("UserStatus", "Approved");
 
-        SqlDataReader typeReader = getUserType.ExecuteReader();
+        SqlDataReader volunteerReader = getVolunteer.ExecuteReader();
 
-        if (typeReader.HasRows)
+        System.Data.SqlClient.SqlCommand getStaff = new System.Data.SqlClient.SqlCommand();
+        getStaff.Connection = sc;
+
+        getStaff.CommandText = "SELECT UserType, UserStatus from [dbo].[User] where Username = @Username and UserType = @UserType";
+        getStaff.Parameters.AddWithValue("@Username", txtUsername.Text);
+        getStaff.Parameters.AddWithValue("UserType", "Staff");
+
+        SqlDataReader staffReader = getStaff.ExecuteReader();
+
+        if (volunteerReader.HasRows)
         {
-            while (typeReader.Read())
+            while (volunteerReader.Read())
             {
                 Response.Redirect("VolunteerHome.aspx", false);
             }
 
         }
+        else if (staffReader.HasRows)
+        {
+            while (staffReader.Read())
+            {
+                Response.Redirect("Home.aspx", false);
+            }
+        }
         else
         {
-            Response.Redirect("Home.aspx", false);
+            Response.Redirect("Error.aspx", false);
         }
+
+        volunteerReader.Close();
+        staffReader.Close();
+
+        //System.Data.SqlClient.SqlCommand getStaff = new System.Data.SqlClient.SqlCommand();
+        //getStaff.Connection = sc;
+
+        //getStaff.CommandText = "SELECT UserType, UserStatus from [dbo].[User] where Username = @Username and UserType = @UserType";
+        //getStaff.Parameters.AddWithValue("@Username", txtUsername.Text);
+        //getStaff.Parameters.AddWithValue("UserType", "Staff");
+
+        //SqlDataReader staffReader = getStaff.ExecuteReader();
+
+        //if (staffReader.HasRows)
+        //{
+        //    while (staffReader.Read())
+        //    {
+        //        Response.Redirect("Home.aspx", false);
+        //    }
+
+        //}
+        //else
+        //{
+        //    Response.Redirect("Error.aspx", false);
+        //}
 
     }
 
@@ -161,35 +205,31 @@ public partial class Default : System.Web.UI.Page
     protected void btnRegister_Click(object sender, EventArgs e)
     {
 
-        //Validate Form is completely filled out before entering into DB
-
-        //if ((string.IsNullOrEmpty(txtFirstName.Text)) || (string.IsNullOrEmpty(txtLastName.Text) || (string.IsNullOrEmpty(txtNewUsername.Text))))
-        //{
-
-        //}
-
 
         User newUser = new User(
            txtNewUsername.Text,
            txtFirstName.Text,
             txtLastName.Text,
             rdoPosition.SelectedValue,
+            "Not Approved",
             DateTime.Now,
             txtNewUsername.Text
             );
-        String myQuery = "INSERT INTO [WildlifeCenter].[dbo].[User] (FirstName, LastName, Username, UserType, LastUpdated, LastUpdatedBy) VALUES (@firstName, @lastName, @userName, @userType, @lastUpdated, @lastUpdatedBy)";
+
+        String myQuery = "INSERT INTO [WildlifeCenter].[dbo].[User] (FirstName, LastName, Username, UserType, UserStatus, LastUpdated, LastUpdatedBy) VALUES (@firstName, @lastName, @userName, @userType, @status, @lastUpdated, @lastUpdatedBy)";
 
         try
         {
             myConnection.Open();
 
             SqlCommand myCommand = new SqlCommand(myQuery, myConnection);
-            myCommand.Parameters.AddWithValue("@userName", newUser.getUserName());
             myCommand.Parameters.AddWithValue("@firstName", newUser.getFirstName());
             myCommand.Parameters.AddWithValue("@lastName", newUser.getLastName());
+            myCommand.Parameters.AddWithValue("@userName", newUser.getUserName());
             myCommand.Parameters.AddWithValue("@userType", newUser.getUserType());
+            myCommand.Parameters.AddWithValue("@status", newUser.getStatus());
             myCommand.Parameters.AddWithValue("@lastUpdated", newUser.getLastUpdated());
-            myCommand.Parameters.AddWithValue("@lastUpdatedBy", "");
+            myCommand.Parameters.AddWithValue("@lastUpdatedBy", newUser.getLastUpdatedBy());
 
             myCommand.ExecuteNonQuery();
 
@@ -239,27 +279,28 @@ public partial class Default : System.Web.UI.Page
         finally
         {
             myConnection.Close();
+            txtFirstName.Text = null;
+            txtLastName.Text = null;
+            txtNewUsername.Text = null;
+            txtNewPassword.Value = null;
+            txtConfirmPassword.Value = null;
+            rdoPosition.Text = null;
         }
-
-
-
-
     }
-
-    protected string findFullName(string username)
-    {
-        using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+        protected string findFullName(string username)
         {
-            string query = "SELECT FirstName + ' ' + LastName as FullName FROM dbo.[User] where Username = '" + username + "'";
-            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
             {
-                connection.Open();
-                string fullName = Convert.ToString(command.ExecuteScalar());
-                return fullName;
-                
+                string query = "SELECT FirstName + ' ' + LastName as FullName FROM dbo.[User] where Username = '" + username + "'";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    string fullName = Convert.ToString(command.ExecuteScalar());
+                    return fullName;
+
+                }
             }
         }
-    }
-      
+
 
 }

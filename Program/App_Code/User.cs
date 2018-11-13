@@ -10,7 +10,7 @@ public class User
 {
     //Attributes
     private int userID;
-    private string userName, firstName, lastName;
+    private string userName, firstName, lastName, userStatus;
     private string userType;
     private DateTime lastUpdated;
     private string lastUpdatedBy;
@@ -26,13 +26,14 @@ public class User
         setLastUpdated(lastUpdated);
         setLastUpdatedBy(lastUpdatedBy);
     }
-    public User(string userName, string firstName, string lastName, string userType, DateTime lastUpdated, string lastUpdatedBy)
+    public User(string userName, string firstName, string lastName, string userType, string userStatus, DateTime lastUpdated, string lastUpdatedBy)
     {
 
         setUserName(userName);
         setFirstName(firstName);
         setLastName(lastName);
         setUserType(userType);
+        setStatus(userStatus);
         setLastUpdated(lastUpdated);
         setLastUpdatedBy(lastUpdatedBy);
     }
@@ -57,6 +58,10 @@ public class User
     public string getUserType()
     {
         return this.userType;
+    }
+    public string getStatus()
+    {
+        return this.userStatus;
     }
     public DateTime getLastUpdated()
     {
@@ -87,6 +92,10 @@ public class User
     public void setUserType(string x)
     {
         this.userType = x;
+    }
+    public void setStatus(string x)
+    {
+        this.userStatus = x;
     }
     public void setLastUpdated(DateTime x)
     {

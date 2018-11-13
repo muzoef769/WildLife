@@ -63,9 +63,9 @@
 		<div class="row">
 <%-- <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4 col-xl-4 "></div>--%>
    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4 col-xl-4 offset-2">
-       <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-success" OnClick="btnLogin_Click" Text="Login" CausesValidation="true" UseSubmitBehavior="false"/>
+       <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-primary LoginButton" OnClick="btnLogin_Click" Text="Login" CausesValidation="true" UseSubmitBehavior="false"/>
    </div>
-    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4 col-xl-4 "><a class="btn btn-success" data-toggle="modal" data-target="#RegisterModal" href="index.html" role="button" runat="server">Register
+    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4 col-xl-4 "><a class="btn btn-primary LoginButton" data-toggle="modal" data-target="#RegisterModal" href="index.html" role="button" runat="server">Register
   </a></div>
 
     
@@ -95,7 +95,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-label-group">
-                    <label for="lastName">Last name</label>
+                  <%--  <label for="lastName">Last name</label>--%>
 <%--                     <input type="text" id="lastName" class="form-control" placeholder="Last name" required="required" runat="server">--%>
                       <asp:TextBox ID="txtLastName" class="form-control" placeholder="Last name" required="required" runat="server" MaxLength="50"></asp:TextBox>
                    
@@ -105,7 +105,7 @@
             </div>
             <div class="form-group">
               <div class="form-label-group">
-                 <label for="AddEmail">Username</label>
+                 <%--<label for="AddEmail">Username</label>--%>
 <%--                <input type="email" id="AddEmail" class="form-control" placeholder="Email address" required="required" runat="server">--%>
                   <asp:TextBox ID="txtNewUsername" class="form-control" placeholder="Username" required="required" runat="server" MaxLength="50"></asp:TextBox>
                
@@ -115,16 +115,16 @@
               <div class="form-row">
                 <div class="col-md-6">
                   <div class="form-label-group">
-                    <label>Password</label>
-                    <input id="txtNewPassword" type="password" class="form-control" autocomplete="off" runat="server" clientidmode="Static" required>
+                 <%--   <label>Password</label>--%>
+                    <input id="txtNewPassword" type="password" class="form-control" placeholder="Password" autocomplete="off" runat="server" clientidmode="Static" required>
                     <%-- <asp:TextBox ID="txtNewPassword" class="form-control" TextMode="Password" placeholder="Password" required="required" runat="server"></asp:TextBox>--%>
                     
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-label-group">
-                   <label>Confirm password</label>
-                     <input id="txtConfirmPassword" type="password" class="form-control" autocomplete="off" runat="server" clientidmode="Static" required>
+                   <%--<label>Confirm password</label>--%>
+                     <input id="txtConfirmPassword" type="password" class="form-control" placeholder="Confirm Password" autocomplete="off" runat="server" clientidmode="Static" required>
                       <div id="errors" class="text-center well" style="font-size: inherit"></div>
                      <%--<asp:TextBox ID="txtConfirmPassword" class="form-control" TextMode="Password" placeholder="Password" required="required" runat="server"></asp:TextBox>--%>
                                       <br />
@@ -149,7 +149,7 @@
             <asp:ListItem>Volunteer</asp:ListItem>
             <asp:ListItem>Staff</asp:ListItem>
                 </asp:RadioButtonList>
-                  
+          
           </div>
 
              <div class="form-group">

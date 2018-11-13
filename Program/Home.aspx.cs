@@ -97,10 +97,34 @@ public partial class Home : System.Web.UI.Page
 
         txtAddName.Text = " ";
 
-        
 
+    }
 
+    protected void btnStatusUpdate_Click(object sender, EventArgs e)
+    {
+        foreach (GridViewRow row in statusGridView.Rows)
+        {
+            CheckBox chkStatus = (row.Cells[4].FindControl("chkStatus") as CheckBox);
+            int userIDNo = Convert.ToInt32(row.Cells[0].Text);
+            if (chkStatus.Checked)
+            {
+                updateRow(userIDNo, "Approved");
+            }
+            else
+            {
+                updateRow(userIDNo, "Not Approved");
+            }
+        }
+    }
 
+    protected void updateRow(int userIDNo, string MarkStatus)
+    {
+        sc.Close();
+        string updateStatus = "UPDATE [dbo].[User] SET UserStatus = '" + MarkStatus + "'WHERE userID =" + userIDNo;
+        sc.Open();
+        SqlCommand statusUpdate = new SqlCommand(updateStatus, sc);
+        statusUpdate.ExecuteNonQuery();
+        statusGridView.DataBind();
 
     }
 

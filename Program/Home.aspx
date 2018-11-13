@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Home" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
-
+      <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     
     <div class="row">
         <div class="container-fluid WelcomeContainer">
@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class=" CardTitle WelcomeTitle d-flex justify-content-center ">Welcome, <%:Session["UserFullName"] %></h1>
+                           <h1 class=" CardTitle WelcomeTitle d-flex justify-content-center ">Welcome, <%:Session["UserFullName"] %></h1>
                         </div>
                          </div>
 
@@ -45,7 +45,7 @@
                 </div>
                          <div id="ViewProgramButton" class=" ml-4">
                     <a class="btn btn-primary d-flex  mx-auto btn-block justify-content-center btn btn-success" style=" width: 140px !important;" href="Program.aspx" role="button">View Programs</a>
-                </div>   
+                </div>    
                              
        
                                
@@ -59,6 +59,61 @@
 
 
 
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+        <div class="row">
+        <div class="container-fluid SimpleContainer">
+
+            <div class="card mx-auto  WelcomeCard">
+                <div class="card-body align-content-center" >
+                    <div class="row align-content-center">
+                        <div class="col-md-12">
+                            <h4 class=" CardTitle WelcomeTitle d-flex justify-content-center ">Approve Volunteer Status</h4>
+                        </div>
+                    <asp:UpdatePanel ID="statusPanhel" runat="server">
+                    <ContentTemplate> 
+                    </div>
+                    <asp:GridView ID="statusGridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" 
+                      HeaderStyle-ForeColor="black"
+                    ItemStyle-ForeColor="black" 
+                     CssClass=" table-responsive-md table table-condensed table-bordered table-hover AnimalCard justify-content-center"
+                     BackColor="White" HorizontalAlign="Center" DataKeyNames="UserID" >                       
+                        <Columns>
+                            <asp:BoundField DataField="UserID" HeaderText="UserID" SortExpression="UserID" InsertVisible="False" ReadOnly="True" />
+                            <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
+                            <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
+                            <asp:BoundField DataField="Username" HeaderText="Username" SortExpression="Username" />
+                            <asp:TemplateField HeaderText="Approve Volunteer?">
+                                <ItemTemplate>
+                                    <asp:CheckBox ID="chkStatus" runat="server" style="text-align: center" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                                                    </Columns> 
+                                                 <HeaderStyle ForeColor="Black" />
+                                                 </asp:GridView>
+                                               </ContentTemplate>  
+<%--                                                 <Triggers>
+                                                    <asp:AsyncPostBackTrigger ControlID="updatedStatus" EventName="SelectedIndexChanged" />
+                                                </Triggers>--%>
+                        </asp:UpdatePanel>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" 
+                        SelectCommand="SELECT [UserID], [FirstName], [LastName], [Username] FROM [User] WHERE ([UserStatus] = @UserStatus) AND ([UserType] = @UserType)">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="Not Approved" Name="UserStatus" Type="String" />
+                            <asp:Parameter DefaultValue="Volunteer" Name="UserType" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                        <asp:Button ID="btnStatusUpdate" runat="server" Text="Update Status" OnClick="btnStatusUpdate_Click" />
+                        </div>
+
+            
 
             </div>
         </div>
@@ -112,7 +167,7 @@
                     <div class="row">
 
                         <div class="col-md-2">
-                            <asp:Button ID="btnAddModal" runat="server" Text="Add" Class="btn btn-success FormButton" UseSubmitBehavior="false" OnClick="btnAddModal_Click"></asp:Button>
+                            <asp:Button ID="btnAddModal" runat="server" Text="Add" Class="btn btn-primary LoginButton FormButton" UseSubmitBehavior="false" OnClick="btnAddModal_Click"></asp:Button>
                         </div>
 
 
