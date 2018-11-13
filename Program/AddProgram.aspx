@@ -6,50 +6,91 @@
 
     <%--Beginning container--%>
 
+      <br />
+    <br />
+    <br />
+     <h1 id="ProgramMonth" class=" CardTitle mx-auto d-flex justify-content-center "> Add Program</h1>
+	<div class="row">
+        <div class="col-4 mx-auto">
+            <div class="d-flex justify-content-center "> 
+   <a href="AddOrganization.aspx" id="btnAddOrg" class=" btn btn-success" runat="server" onclick="btnAddOrg_Click">Add Organization</a>
+       </div>
+        </div>
+        </div>
 
-    <div class="CartContainer " style="z-index: 99;">
+    <div>
         
-    </div>
-
-
     <div class="row">
     <%--Program container--%>
+       
+       <div class="SimpleContainer col-sm-12 col-xs-12 col-md-4 col-lg-4 col-xl-4" style="z-index: 100;">
+        <div class=" AnimalReportCard ">
+            <h4>Cart 
+
+                <span class="price" style="color: black"><i class="fa fa-shopping-cart"></i><b>
+                    <asp:Label ID="lblCartTotal" runat="server" Text="0"></asp:Label></b></span>
+
+            </h4>
+            <div id ="programOne"  runat="server" visible="false">
+            <p><a href="#"><asp:Label ID ="lblProgramOne" runat="server" Text="Program One"></asp:Label></a> <span class="price">$
+                <asp:Label ID="lblProgramCostOne" runat="server" Text="70"></asp:Label></span></p>
+                </div>
+            <div id ="programTwo"  runat="server" visible="false">
+            <p><a href="#"><asp:Label ID ="lblProgramTwo" runat="server" Text="Program Two"></asp:Label></a> <span class="price">$
+                <asp:Label ID="lblProgramCostTwo" runat="server" Text="70"></asp:Label></span></p>
+                </div>
+            <div id="programThree"  runat="server" visible="false">
+            <p><a href="#"><asp:Label ID ="lblProgramThree" runat="server" Text="Program Three"></asp:Label></a> <span class="price">$
+                <asp:Label ID="lblProgramCostThree" runat="server" Text="70"></asp:Label></span></p>
+                </div>
+
+            <hr>
+            <p>
+                <asp:Label ID="lblSubtotal" runat="server" Text="Subtotal"></asp:Label>
+                <span class="price" style="color: black"><b>$
+                    <asp:Label ID="lblSubtotalCost" runat="server" Text="0"></asp:Label></b></span>
+            </p>
+
+            <p>
+                <asp:Label ID="lblMileage" runat="server" Text="Mileage Cost"></asp:Label>
+                <span class="price" style="color: black"><b>$
+                    <asp:Label ID="lblMileageCost" runat="server" Text="0"></asp:Label></b></span>
+            </p>
+            
+            <p>
+               
+                <asp:Label ID="lblTotalCost" runat="server" Text="Total Cost"></asp:Label>
+                <span class="price" style="color: black"><b>$
+                    <asp:Label ID="lblTotalCostPrice" runat="server" Text="0"></asp:Label></b></span>
+            </p>
+        </div>
+</div>
     <div class="SimpleContainer col-sm-12 col-xs-12 col-md-8 col-lg-8 col-xl-8" style="z-index: 100;">
         
-        
+        <div>
 
 
 
         <div class="ProgramReportCard ">
-            <div class="row">
-                <div class="col-md-12 mx-auto d-flex justify-content-center">
-                    <h1 class="heading-primary">Add Program</h1>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12 mx-auto d-flex justify-content-center Spacing">
-                    <a href="AddOrganization.aspx" id="btnAddOrg" class=" btn btn-primary LoginButton" runat="server" onclick="btnAddOrg_Click">Add Organization</a>
-                </div>
-            </div>
-
+            
 
             <br />
 
-                <div class="row">
-                                            <div class="col-md-3">
-                                                <label for="txtOrgDrp" class="label-style">Organization</label>
-                                            </div>
-                                            <div class="form-group col-md-4">
+                <div class="row ml-auto d-flex justify-content-center ">
+                   <div class="col-md-1 mx-auto">
+                    <label for="txtOrgDrp" class="label-style">Organization</label>
+                     </div>
+                    <br />
+                   <div class=" col-md-4  mx-auto">
                                                 
-                    <asp:DropDownList ID="drpOrganizationList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle" AppendDataBoundItems="True" DataSourceID="SqlDataSource3" DataTextField="OrganizationName" DataValueField="OrganizationID" OnSelectedIndexChanged="DrpOrganizationList_IndexChanged" AutoPostBack="true">
+                    <asp:DropDownList ID="drpOrganizationList" runat="server"  CssClass="btn btn-default btn-sm dropdown-toggle" AppendDataBoundItems="True" DataSourceID="SqlDataSource3" DataTextField="OrganizationName" DataValueField="OrganizationID" OnSelectedIndexChanged="DrpOrganizationList_IndexChanged" AutoPostBack="true">
 
                         <asp:ListItem Text="Select an Organization"></asp:ListItem>
                     </asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT OrganizationName, OrganizationID FROM Organization"></asp:SqlDataSource>
 
-                                            </div>
-                                        </div>
+                       </div>
+                      </div>
 
 
 
@@ -61,7 +102,7 @@
                     <div class="card-header" id="headingOne">
                         <h5 class="mb-0">
 
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <button class="btn " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 Program Information
                             </button>
                         </h5>
@@ -70,25 +111,30 @@
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-4 mx-auto ">
+                                <div class="col-md-4 ">
+                                       <label>Select Program </label>
+                                    <asp:DropDownList ID="drpProgramList" runat="server" CssClass="btn btn-light dropdown-toggle" DataSourceID="SqlDataSource1" DataTextField="ProgramName" DataValueField="ProgramID" AppendDataBoundItems="True" OnSelectedIndexChanged="DrpProgramList_SelectedIndexChanged" AutoPostBack="true">
 
-                                    <asp:DropDownList ID="drpProgramList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle" DataSourceID="SqlDataSource1" DataTextField="ProgramName" DataValueField="ProgramID" AppendDataBoundItems="True" OnSelectedIndexChanged="DrpProgramList_SelectedIndexChanged" AutoPostBack="true">
-
-                                        <asp:ListItem Text="Select a Program Name"></asp:ListItem>
+                                        <asp:ListItem Text="Program Name"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
-                                <div class="col-md-4 mx-auto ">
+                                 </div>
+                            <br />
+                            <div class="row">
+                                
+                                <div class="col-md-4">
+                                       <label>Select a Location Type </label>
                                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT [ProgramID], [ProgramName] FROM [Program]"></asp:SqlDataSource>
 
-                                    <asp:DropDownList ID="drpLocationTypeList" runat="server" CssClass="btn btn-default btn-sm dropdown-toggle" AutoPostBack="true" OnSelectedIndexChanged="drpLocationTypeList_SelectedIndexChanged">
-                                        <asp:ListItem Text="Select a Location Type"></asp:ListItem>
+                                    <asp:DropDownList ID="drpLocationTypeList" runat="server" CssClass="btn  btn-light dropdown-toggle" AutoPostBack="true" OnSelectedIndexChanged="drpLocationTypeList_SelectedIndexChanged">
+                                        <asp:ListItem Text="Location Type"></asp:ListItem>
                                         <asp:ListItem Value="Onsite" Text="Onsite"></asp:ListItem>
                                         <asp:ListItem Value="Offsite" Text="Offsite"></asp:ListItem>
                                         <asp:ListItem Value="Online" Text="Online"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                                 <div class="col-md-4 mx-auto  Spacing">
-                                    <h5>Date:</h5>
+                                   <label>Date </label>
 
                                     <input runat="server" clientidmode="Static" width="100%" type="date" id="datepicker">
                                 </div>
@@ -96,7 +142,7 @@
                             <br />
                             <div class="row">
                                 <div class="col-md-4 mx-auto  Spacing">
-                                    <label>Program Time: </label>
+                                    <label>Program Time: </label> &nbsp&nbsp
                                     <asp:TextBox ID="programTime" runat="server" type="time" step="900" min="8:00" max="17:00"></asp:TextBox>
 
 
@@ -122,7 +168,7 @@
                             <div class="row">
 
                                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-10">
-                                    <h4 class="Animal">Birds:</h4>
+                                    <label>Birds </label>
                                     <asp:UpdatePanel ID="UpdateBirds" runat="server">
                                         <ContentTemplate>
                                             <div class="border" style="overflow-y: scroll; width: 100px; height: 200px">
@@ -146,7 +192,7 @@
                                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-10">
                                     <asp:UpdatePanel ID="UpdateReptiles" runat="server">
                                         <ContentTemplate>
-                                            <h4 class="Animal">Reptiles:</h4>
+                                            <label>Reptiles </label>
                                             <div class="border" style="overflow-y: scroll; width: 100px; height: 200px">
                                                 <asp:CheckBoxList ID="CheckBoxList3" runat="server" DataSourceID="SqlDataSource5" DataTextField="AnimalName" DataValueField="AnimalID"></asp:CheckBoxList>
                                             </div>
@@ -163,7 +209,7 @@
                                 </div>
 
                                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-10">
-                                    <h4 class="Animal">Mammals:</h4>
+                                     <label>Mammals </label>
                                     <asp:UpdatePanel ID="UpdateMammals" runat="server">
                                         <ContentTemplate>
                                             <div class="border" style="overflow-y: scroll; width: 100px; height: 200px">
@@ -186,7 +232,7 @@
                             <div class="row">
                                 <div class="col-md-4 mx-auto Spacing">
 
-                                    <h5>Select Grade:</h5>
+                                    <label>Select Grade </label>
 
 
 
@@ -211,7 +257,7 @@
                                 </div>
 
                                 <div class="col-md-4 mx-auto Spacing">
-                                    <h5>Select Educators:</h5>
+                                     <label>Select Educators </label>
                                     <div class="border" style="overflow-y: scroll; width: 200px; height: 200px">
                                         <asp:CheckBoxList ID="CheckBoxList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="name" DataValueField="UserID"></asp:CheckBoxList>
                                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT UserID, CONCAT(FirstName, ' ', LastName) as name FROM [User] "></asp:SqlDataSource>
@@ -219,7 +265,7 @@
                                 </div>
 
                                 <div class="col-md-4 mx-auto Spacing">
-                                    <h4>Notes</h4>
+                                     <label>Notes </label>
                                     <textarea id="txtMiscNotes" runat="server" cols="20" rows="3"></textarea>
                                 </div>
 
@@ -230,7 +276,7 @@
                             </div>
                             <br />
                             <div class="row">
-                                <div class="col-2  mx-auto  text-center">
+                                <div class="col-6  mx-auto  text-center">
                                     <asp:Button ID="Button2" runat="server" CssClass="btn btn-success" Text="Add Program" OnClick="BtnAddProgram_Click" />
 
                                 </div>
@@ -245,7 +291,7 @@
             <div class="card">
                 <div class="card-header" id="headingTwo">
                     <h5 class="mb-0">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <button class="btn  collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             Contact Information</button>
                     </h5>
                 </div>
@@ -271,7 +317,7 @@
                                 <ContentTemplate>
                                     <div class="main-container">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <label for="txtFirstName" class="label-style">First Name</label>
                                             </div>
                                             <div class="form-group col-md-6">
@@ -283,7 +329,7 @@
 
 
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <label for="txtLastName" class="label-style">Last Name</label>
                                             </div>
                                             <div class="form-group col-md-6">
@@ -292,7 +338,7 @@
 
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <label for="txtEmail" class="label-style">Email Address</label>
                                             </div>
                                             <div class="form-group  col-md-6">
@@ -301,7 +347,7 @@
 
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <label for="txtPrimaryNumber" class="label-style">Primary Phone </label>
                                             </div>
                                             <div class="form-group  col-md-6">
@@ -310,7 +356,7 @@
 
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <label for="txtSecondaryNumber" class="label-style">Secondary Phone </label>
                                             </div>
                                             <div class="form-group  col-md-6">
@@ -339,7 +385,7 @@
         <div class="card" id="programLoc" runat="server">
             <div class="card-header" id="headingThree">
                 <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <button class="btn  collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         Program Location
                     </button>
                 </h5>
@@ -432,59 +478,25 @@
 
 
         <div class="row">
-            <div class="col-md-12 mx-auto d-flex justify-content-center Spacing">
+            <div class="col-md-4 mx-auto d-flex justify-content-center Spacing">
                 <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-success" OnClick="SubmitProgram" />
-                <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn btn-success" OnClick="Clear" />
+                
+
+            </div>
+            <div class="col-md-4 mx-auto d-flex justify-content-center Spacing">
+               <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn btn-success" OnClick="Clear" />
 
             </div>
         </div>
 
 
-    </div>
-        <div class="SimpleContainer col-sm-12 col-xs-12 col-md-8 col-lg-8 col-xl-8" style="z-index: 100;">
-        <div class="CartCard  ">
-            <h4>Cart 
-
-                <span class="price" style="color: black"><i class="fa fa-shopping-cart"></i><b>
-                    <asp:Label ID="lblCartTotal" runat="server" Text="0"></asp:Label></b></span>
-
-            </h4>
-            <div id ="programOne"  runat="server" visible="false">
-            <p><a href="#"><asp:Label ID ="lblProgramOne" runat="server" Text="Program One"></asp:Label></a> <span class="price">$
-                <asp:Label ID="lblProgramCostOne" runat="server" Text="70"></asp:Label></span></p>
-                </div>
-            <div id ="programTwo"  runat="server" visible="false">
-            <p><a href="#"><asp:Label ID ="lblProgramTwo" runat="server" Text="Program Two"></asp:Label></a> <span class="price">$
-                <asp:Label ID="lblProgramCostTwo" runat="server" Text="70"></asp:Label></span></p>
-                </div>
-            <div id="programThree"  runat="server" visible="false">
-            <p><a href="#"><asp:Label ID ="lblProgramThree" runat="server" Text="Program Three"></asp:Label></a> <span class="price">$
-                <asp:Label ID="lblProgramCostThree" runat="server" Text="70"></asp:Label></span></p>
-                </div>
-
-            <hr>
-            <p>
-                <asp:Label ID="lblSubtotal" runat="server" Text="Subtotal"></asp:Label>
-                <span class="price" style="color: black"><b>$
-                    <asp:Label ID="lblSubtotalCost" runat="server" Text="0"></asp:Label></b></span>
-            </p>
-
-            <p>
-                <asp:Label ID="lblMileage" runat="server" Text="Mileage Cost"></asp:Label>
-                <span class="price" style="color: black"><b>$
-                    <asp:Label ID="lblMileageCost" runat="server" Text="0"></asp:Label></b></span>
-            </p>
-            
-            <p>
-               
-                <asp:Label ID="lblTotalCost" runat="server" Text="Total Cost"></asp:Label>
-                <span class="price" style="color: black"><b>$
-                    <asp:Label ID="lblTotalCostPrice" runat="server" Text="0"></asp:Label></b></span>
-            </p>
-        </div>
 </div>
-
     </div>
+        
+        
+        
+
+    </div></div>
     <!-- end accordion -->
 
 

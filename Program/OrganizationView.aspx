@@ -20,8 +20,8 @@
         <br />
         <div class="table-responsive PaymentContainer d-flex justify-content-center " style="background-color: transparent; padding-top: 0% !important;">
  <div class="row mx-auto ">
-            <div class="col-xl-8 col-lg-12 col-md-12 col-s-12 ">
-                        <div class="col-xl-7 col-lg-12 col-md-12 col-s-12">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-s-12 ">
+                        
               <asp:GridView ID="grdOrganizations"    HeaderStyle-ForeColor="black" Class =" table table-condensed table-bordered table-hover AnimalCard" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowSorting="True" >
    
                   <Columns>
@@ -31,12 +31,12 @@
         <asp:BoundField DataField="County" HeaderText="County" SortExpression="County" />
         <asp:BoundField DataField="Name" HeaderText="Name" ReadOnly="True" SortExpression="Name" />
         <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-        <asp:BoundField DataField="PrimaryPhoneNumber" HeaderText="Primary Phone "  SortExpression="PrimaryPhoneNumber" HeaderStyle-CssClass="PhoneLine" />
+        <asp:BoundField DataField="PrimaryPhoneNumber" HeaderText="Primary Phone"  SortExpression="PrimaryPhoneNumber" HeaderStyle-Width="200px" />
     </Columns>
                  <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
         
               </asp:GridView>
-          </div>
+         
       </div>
            </div> </div>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT Organization.OrganizationName, Address.Street, Address.State, Address.County, (Contact.FirstName + ' '+  Contact.LastName) AS Name, Contact.Email, Contact.PrimaryPhoneNumber

@@ -343,7 +343,7 @@
                                 </div>
                             </div>
                         </div>
-                        <hr />
+                    
                         <div class="card">
                             <div class="card-header" id="headingTwo">
                                 <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"

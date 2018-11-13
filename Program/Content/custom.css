@@ -1320,7 +1320,7 @@ a.MonthTable:hover{ background-color:whitesmoke;}
         padding-right: 7%;
         padding-top: 10%;
     }
-
+}
     @media only screen and (max-width: 1200px) {
 
         .SimpleContainer {
@@ -1328,7 +1328,7 @@ a.MonthTable:hover{ background-color:whitesmoke;}
             padding-right: 7%;
             padding-top: 10%;
         }
-
+    }
         @media only screen and (max-width: 800px) {
 
             .SimpleContainer {
@@ -1373,10 +1373,7 @@ a.MonthTable:hover{ background-color:whitesmoke;}
             background-color: #339933 !important;
         }
 
-        .PhoneLine {
-            display: inline !important;
-        }
-
+     
         #tabCheckBox:checked {
             background-color: green !important;
         }
@@ -1418,7 +1415,7 @@ a.MonthTable:hover{ background-color:whitesmoke;}
                 padding-right: 7%;
                 padding-top: 10%;
             }
-
+        }
             @media only screen and (max-width: 1200px) {
 
                 .AnimalSimpleContainer {
@@ -1426,7 +1423,7 @@ a.MonthTable:hover{ background-color:whitesmoke;}
                     padding-right: 7%;
                     padding-top: 10%;
                 }
-
+            }
                 @media only screen and (max-width: 800px) {
 
                     .AnimalSimpleContainer {
@@ -1475,8 +1472,24 @@ a.MonthTable:hover{ background-color:whitesmoke;}
                 }
 
                 .ProgramCartContainer {
-                   
                     padding: 5px 20px 15px 20px;
-                  
-                   
                 }
+
+
+                .AddProgramCard {
+                    border-style: none;
+                    border-color: inherit;
+                    border-width: 2px;
+                    opacity: .92 !important;
+                    background-color: whitesmoke;
+                    border-radius: 15px;
+                    display: block;
+                    height: auto;
+                    text-align: center;
+                    vertical-align: middle;
+                    font-family: 'Raleway', sans-serif !important;
+                    margin-bottom: 40px;
+                    padding-top:100px;
+                }
+
+
