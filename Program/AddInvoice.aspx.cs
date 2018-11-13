@@ -47,10 +47,10 @@ public partial class AddInvoice : System.Web.UI.Page
     }
     protected void AddProgram(object sender, EventArgs e)
     {
-        int invoiceID;
-        string findInvoiceID = "SELECT InvoiceID FROM Invoice WHERE InvoiceID = (SELECT MAX(InvoiceID))";
-        //Invoice ID, New ProgramID, DateCreated, InvoiceStatus, LastUpdated, LUB
-        Invoice addInvoice = new Invoice(Int32.Parse(drpInvoiceOrganization.SelectedValue), 150 , DateTime.Now, "Incomplete",DateTime.Now, Session["UserFullName"].ToString());
+        //int invoiceID;
+        //string findInvoiceID = "SELECT InvoiceID FROM Invoice WHERE InvoiceID = (SELECT MAX(InvoiceID))";
+        ////Invoice ID, New ProgramID, DateCreated, InvoiceStatus, LastUpdated, LUB
+        //Invoice addInvoice = new Invoice(Int32.Parse(drpInvoiceOrganization.SelectedValue), 150 , DateTime.Now, "Incomplete",DateTime.Now, Session["UserFullName"].ToString());
     }
 
     protected void GridView_RowDataBound(object sender, GridViewRowEventArgs e)

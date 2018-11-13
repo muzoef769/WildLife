@@ -11,7 +11,9 @@ using System.Data;
 public partial class VolunteerAddProgram : System.Web.UI.Page
 {
     public static int programID;
-
+    double programCost;
+    public double mileageCost;
+    public double totalCost;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -435,9 +437,69 @@ public partial class VolunteerAddProgram : System.Web.UI.Page
             }
             connection.Close();
         }
+
+        int miles;
+        if (programLoc.Visible == true)
+        {
+            miles = Convert.ToInt32(txtMileage.Text);
+            mileageCost = miles * .57;
+            lblMileageCost.Text = mileageCost.ToString();
+        }
+        else
+        {
+            miles = 0;
+        }
+
+
+        //lblSubtotalCost.Text = totalCost.ToString();
+
         NewProgram.programList.Clear();
-        NewProgram.btnCount = 0;
+
+
+
+        for (int z = 0; z < NewProgram.programList.Count; z++)
+        {
+
+            if (z == 0)
+            {
+                //    lblProgramCostOne.Text = Convert.ToString(NewProgram.programList[z].getPrgCost());
+                totalCost += 250;
+                //    programOne.Visible = true;
+                //    programTwo.Visible = false;
+                //    programThree.Visible = false;
+            }
+
+            if (z == 1)
+            {
+                //    lblProgramCostTwo.Text = Convert.ToString(NewProgram.programList[z].getPrgCost());
+                //    totalCost += NewProgram.programList[z].getPrgCost();
+                //    programTwo.Visible = true;
+                totalCost += 160;
+            }
+
+
+            if (z == 2)
+            {
+                //    lblProgramCostThree.Text = Convert.ToString(NewProgram.programList[z].getPrgCost());
+                //    totalCost += NewProgram.programList[z].getPrgCost();
+                //    programThree.Visible = true;
+                totalCost += 160;
+            }
+
+
+            //lblSubtotalCost.Text = totalCost.ToString();
+
+
+        }
+        //totalCost = totalCost + mileageCost;
+        //lblTotalCostPrice.Text = totalCost.ToString();
+        double totalReal;
+        totalReal = Convert.ToDouble(lblSubtotalCost.Text) + mileageCost;
+        lblTotalCostPrice.Text = totalReal.ToString();
+        NewProgram.programList.Clear();
+
     }
+
 
     protected void BtnAddProgram_Click(object sender, EventArgs e)
     {
@@ -463,19 +525,45 @@ public partial class VolunteerAddProgram : System.Web.UI.Page
         //    NewProgram.programList.Add(newProgram);
         //}
 
-        NewProgram newProgram = new NewProgram(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
-                50, drpAgeLevel.SelectedValue, "Completed", Convert.ToDateTime(programTime.Text),
-                Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
+        int totalPeople;
+        totalPeople = Convert.ToInt32(txtAdults.Text) + Convert.ToInt32(txtKids.Text);
 
-                programID, DateTime.Now, "Raina", 0);
+        if (drpLocationTypeList.SelectedValue == "Onsite")
+        {
+            if (totalPeople < 20)
+            {
+                programCost = 100.00;
+            }
+            else
+            {
+                programCost = totalPeople * 5.00;
+            }
+        }
+
+        else if (drpLocationTypeList.SelectedValue == "Online")
+        {
+            programCost = 0.00;
+        }
+        else if (drpLocationTypeList.SelectedValue == "Offsite")
+        {
+            if (NewProgram.btnCount == 0)
+            {
+                programCost = 250.00;
+            }
+            else
+            {
+                programCost = 160.00;
+            }
+        }
+        NewProgram newProgram = new NewProgram(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
+                totalPeople, drpAgeLevel.SelectedValue, "Completed", Convert.ToDateTime(programTime.Text),
+                Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
+                programID, DateTime.Now, "Raina", programCost);
 
 
         NewProgram.programList.Add(newProgram);
 
 
-
-        double totalCost;
-        NewProgram.btnCount += 1;
         drpAgeLevel.SelectedValue = null;
         txtAdults.Text = null;
         txtKids.Text = null;
@@ -483,7 +571,7 @@ public partial class VolunteerAddProgram : System.Web.UI.Page
         drpLocationTypeList.SelectedValue = null;
         drpProgramList.SelectedValue = null;
         NewProgram.baseCost = 250 + (160 * (NewProgram.programList.Count - 1));
-        txtBaseCost.Text = NewProgram.baseCost.ToString();
+        //txtBaseCost.Text = NewProgram.baseCost.ToString();
 
         //Assigning to textboxes for testing
         //totalCost = NewProgram.baseCost + (Convert.ToDouble(txtMileage.Text) * .57);
@@ -496,13 +584,57 @@ public partial class VolunteerAddProgram : System.Web.UI.Page
         string location = NewProgram.programList[0].getLocationType();
         if (location == "Offsite" && NewProgram.btnCount >= 1)
         {
-            datepicker.Visible = false;
+            datepicker.Disabled = true;
+
+
             drpOrganizationList.Enabled = false;
+            drpLocationTypeList.SelectedIndex = 2;
+            drpLocationTypeList.Enabled = false;
+        }
+
+        for (int z = 0; z < NewProgram.programList.Count; z++)
+        {
+
+            if (z == 0)
+            {
+                lblProgramCostOne.Text = Convert.ToString(NewProgram.programList[z].getPrgCost());
+                totalCost += NewProgram.programList[z].getPrgCost();
+                programOne.Visible = true;
+                programTwo.Visible = false;
+                programThree.Visible = false;
+            }
+
+            if (z == 1)
+            {
+                lblProgramCostTwo.Text = Convert.ToString(NewProgram.programList[z].getPrgCost());
+                totalCost += NewProgram.programList[z].getPrgCost();
+                programTwo.Visible = true;
+
+            }
+
+
+            if (z == 2)
+            {
+                lblProgramCostThree.Text = Convert.ToString(NewProgram.programList[z].getPrgCost());
+                totalCost += NewProgram.programList[z].getPrgCost();
+                programThree.Visible = true;
+            }
         }
 
 
+        lblCartTotal.Text = Convert.ToString(NewProgram.programList.Count);
+        //lblProgramCostOne.Text = NewProgram.programList
+        //lblProgramCostTwo.Text = Convert.ToString(programCost);
+        //lblProgramCostThree.Text = Convert.ToString(programCost);
+
+
+        lblSubtotalCost.Text = totalCost.ToString();
+        totalCost += mileageCost;
+        lblTotalCostPrice.Text = totalCost.ToString();
+        NewProgram.btnCount += 1;
 
     }
+
 
     protected void drpLocationTypeList_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -516,4 +648,9 @@ public partial class VolunteerAddProgram : System.Web.UI.Page
             programLoc.Visible = true;
         }
     }
+protected void Clear(object sender, EventArgs e)
+{
+    NewProgram.programList.Clear();
+    NewProgram.btnCount = 0;
+}
 }

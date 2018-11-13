@@ -1,26 +1,26 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/VolunteerMasterPage.master" AutoEventWireup="true" CodeFile="VolunteerHome.aspx.cs" Inherits="VolunteerHome" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
+      <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    
     <div class="row">
-        <div class="container-fluid WelcomeContainer">
+        <div class="container-fluid PaymentContainer col-xl-10  col-lg-10 col-md-11 col-sm-11 col-xs-11">
 
-            <div class="card mx-auto  WelcomeCard">
+            <div class="card mx-auto  WelcomeCard ">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class=" CardTitle WelcomeTitle d-flex justify-content-center ">Welcome, <%:Session["UserFullName"] %></h1>
+                           <h1 class=" CardTitle WelcomeTitle d-flex justify-content-center ">Welcome, <%:Session["UserFullName"] %></h1>
                         </div>
                          </div>
 
-
-
-                    <div class="row">
+ <div class="row">
                          <div class="col-md-6 mx-auto d-flex justify-content-center">
-                             <div id="AddAnimalButton" class="col-md-12">
-                    <a class="btn btn-primary d-flex  mx-auto justify-content-center btn btn-success" style=" width: 140px !important;" href="#" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a>
+                             <div id="AddAnimalButton" class=" ml-2">
+                    <a class="btn btn-primary d-flex  mx-auto btn-block justify-content-center btn btn-success" style=" width: 140px !important;"  href="#" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a>
                 </div>
-                            <div id="AddOrganizationButton" class="col-md-12">
-                    <a class="btn btn-primary d-flex  mx-auto justify-content-center btn btn-success" style=" width: 140px !important;" href="VolunteerAddOrganization.aspx" role="button">Add Organization</a>
+                            <div id="AddOrganizationButton" class=" ml-4 ">
+                    <a class="btn btn-primary d-flex  mx-auto btn-block justify-content-center btn btn-success" style=" width: 140px !important;"  href="VolunteerAddOrganization.aspx" role="button">Add Organization</a>
                 </div>
                              
                              
@@ -38,12 +38,12 @@
                         
                     <div class="row">
                       <div class="col-md-6 mx-auto d-flex justify-content-center">
-                            <div id="AddProgramButton" class="col-md-12">
-                    <a class="btn btn-primary d-flex  mx-auto justify-content-center btn btn-success" style=" width: 140px !important;" href="VolunteerAddProgram.aspx" role="button">Add Program</a>
+                            <div id="AddProgramButton" class=" ml-2">
+                    <a class="btn btn-primary d-flex  mx-auto btn-block justify-content-center btn btn-success" style=" width: 140px !important;"  href="VolunteerAddProgram.aspx" role="button">Add Program</a>
                 </div>
-                         <div id="ViewProgramButton" class="col-md-12">
-                    <a class="btn btn-primary d-flex  mx-auto justify-content-center btn btn-success" style=" width: 140px !important;" href="VolunteerProgram.aspx" role="button">View Programs</a>
-                </div>   
+                         <div id="ViewProgramButton" class=" ml-4">
+                    <a class="btn btn-primary d-flex  mx-auto btn-block justify-content-center btn btn-success" style=" width: 140px !important;" href="VolunteerProgram.aspx" role="button">View Programs</a>
+                </div>    
                              
        
                                
@@ -65,8 +65,11 @@
 
     </div>
 
-          <div class="modal" id="AddModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-full" role="document">
+
+     <br /> <br /><br /> <br />
+
+      <div class="modal" id="AddModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog " role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Add Animal</h5>
@@ -108,9 +111,9 @@
                     </div>
                     <div class="row">
 
-<%--                        <div class="col-md-2">
-                            <asp:Button ID="btnAddModal" runat="server" Text="Add" Class="btn btn-success FormButton" UseSubmitBehavior="false" OnClick="btnAddModal_Click"></asp:Button>
-                        </div>--%>
+                        <div class="col-md-2">
+                            <asp:Button ID="btnAddModal" runat="server" Text="Add" Class="btn btn-primary LoginButton FormButton" UseSubmitBehavior="false" OnClick="btnAddModal_Click"></asp:Button>
+                        </div>
 
 
 

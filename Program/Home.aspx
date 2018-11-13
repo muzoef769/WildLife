@@ -66,8 +66,6 @@
 
 
     </div>
-
-
         <div class="row">
         <div class="container-fluid PaymentContainer">
 
@@ -84,10 +82,10 @@
                     <asp:GridView ID="statusGridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" 
                       HeaderStyle-ForeColor="black"
                     ItemStyle-ForeColor="black" 
-                     CssClass="  table table-condensed table-bordered table-hover AnimalCard justify-content-center"
+                     CssClass=" table-responsive-md table table-condensed table-bordered table-hover AnimalCard justify-content-center"
                      BackColor="White" HorizontalAlign="Center" DataKeyNames="UserID" >                       
                         <Columns>
-                            <asp:BoundField DataField="UserID" HeaderText="UserID" SortExpression="UserID" Visible="False" ReadOnly="True" />
+                            <asp:BoundField DataField="UserID" HeaderText="UserID" SortExpression="UserID" InsertVisible="False" ReadOnly="True" />
                             <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
                             <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
                             <asp:BoundField DataField="Username" HeaderText="Username" SortExpression="Username" />
@@ -97,14 +95,13 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                                                     </Columns> 
-                                                <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
+                                                 <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
                                                  </asp:GridView>
                                                </ContentTemplate>  
 <%--                                                 <Triggers>
                                                     <asp:AsyncPostBackTrigger ControlID="updatedStatus" EventName="SelectedIndexChanged" />
                                                 </Triggers>--%>
                         </asp:UpdatePanel>
-
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" 
                         SelectCommand="SELECT [UserID], [FirstName], [LastName], [Username] FROM [User] WHERE ([UserStatus] = @UserStatus) AND ([UserType] = @UserType)">
                         <SelectParameters>
@@ -112,19 +109,17 @@
                             <asp:Parameter DefaultValue="Volunteer" Name="UserType" Type="String" />
                         </SelectParameters>
                     </asp:SqlDataSource>
-                        </div>
+                    </div>
                     <br />
                         <div class="col-md-4 mx-auto">
-                        <asp:Button ID="btnStatusUpdate" runat="server" class="btn btn-success btn-block" Text="Update Status" OnClick="btnStatusUpdate_Click" />
+                        <asp:Button ID="btnStatusUpdate" class="btn btn-success btn-block" runat="server" Text="Update Status" OnClick="btnStatusUpdate_Click" />
                         </div>
-
-                    </div>
 
             
 
             </div>
         </div>
-</div>
+
 
 
     </div>

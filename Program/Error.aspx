@@ -6,6 +6,7 @@
         <h2 class="display-2 text-white">Error!</h2>
         <div class="jumbotron bg-secondary">
             <div>
+                <h5 class="text-white">You are encountering an error. Your account most likely hasn't been approved by the system administrator. Please contact your local administrator!</h5>
                 <a class="nav-link  display-4" href="Default.aspx" role="button">Back To Login</a>
             </div>
             
