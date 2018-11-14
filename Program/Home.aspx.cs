@@ -83,16 +83,17 @@ public partial class Home : System.Web.UI.Page
            );
 
 
-        string creatAnimal = "Insert into [dbo].[Animal] values (@Species, @ScientificName, @AnimalName, @AnimalType, @Status, @LastUpdated, @LastUpdatedBy)";
+        string creatAnimal = "Insert into [dbo].[Animal] values (@Species, @ScientificName, @AnimalName, @AnimalType, @Status, @Image, @LastUpdated, @LastUpdatedBy)";
         SqlCommand addAnimal = new SqlCommand(creatAnimal, sc);
         sc.Open();
-        addAnimal.Parameters.AddWithValue("@Species", newAnimal.getSpecies());
-        addAnimal.Parameters.AddWithValue("@ScientificName", newAnimal.getScientificName());
+        addAnimal.Parameters.AddWithValue("@Species", DBNull.Value);
+        addAnimal.Parameters.AddWithValue("@ScientificName", DBNull.Value);
         addAnimal.Parameters.AddWithValue("@AnimalName", newAnimal.getAnimalName());
         addAnimal.Parameters.AddWithValue("@AnimalType", newAnimal.getAnimalType());
         addAnimal.Parameters.AddWithValue("@Status", newAnimal.getStatus());
         addAnimal.Parameters.AddWithValue("@LastUpdated", newAnimal.getLastUpdated());
-        addAnimal.Parameters.AddWithValue("@LastUpdatedBy", newAnimal.getLastUpdatedBy());
+        addAnimal.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"]);
+        addAnimal.Parameters.AddWithValue("@Image", DBNull.Value);
         addAnimal.ExecuteNonQuery();
 
         txtAddName.Text = " ";
