@@ -3,15 +3,25 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="main">
+        <br />
+        <br />
+        <br />
+        <div class="row">
+        <div class="col-md-6 mx-auto text-center">
+            <h1 class="CardTitle">View Program Info</h1>
+        </div>
+    </div>
+
+
 
         <div class="container-fluid PaymentContainer">
 
-            <div class="card mx-auto ProgramCard" style="opacity: .8;">
+            <div class="card mx-auto ProgramCard" ">
                 <div class="card-body">
                     <div class="row mr-auto">
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                             <ContentTemplate>
-                                <asp:Button ID="gridRefresh" class="btn btn-refresh btn-lg" runat="server" Text="Refresh Tables" OnClick="gridRefresh_Click" />
+                                <asp:Button ID="gridRefresh" class="btn btn-success" runat="server" Text="Refresh Tables" OnClick="gridRefresh_Click" />
                             </ContentTemplate>
                             <Triggers>
                                 <asp:AsyncPostBackTrigger ControlID="gridRefresh" />
@@ -32,7 +42,7 @@
                             <div class="card-header" id="headingOne">
                                 <div class="d-flex justify-content-lg-start">
                                 
-                                    <button class="btn  " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <button class="btn btn-block btn-accordion  " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                         Outstanding Invoices
                                     </button>
                                
@@ -105,7 +115,7 @@
                         <div class="card">
                             <div class="card-header" id="headingTwo">
                                 <div class="d-flex justify-content-lg-start">
-                                    <button class="btn  collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <button class="btn btn-block btn-accordion  collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                         Fulfilled Invoices
                                     </button>
                               </div>
@@ -176,7 +186,7 @@
                         <div class="card">
                             <div class="card-header" id="headingThree">
                                 <div class="d-flex justify-content-lg-start">
-                                    <button class="btn   collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <button class="btn btn-block btn-accordion   collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                         All Invoices
                                     </button>
                                 </div>

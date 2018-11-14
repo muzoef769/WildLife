@@ -21,14 +21,9 @@
                     <div class="col-md-6 text-center mx-auto">
                 <h5 class="modal-title">Organization Name</h5>
                 </div>
-                    </div>
-                <br />
-             <div class="row">
-                                            <div class="col-md-5">
-                                                <label for="txtOrgName" class="label-style">Organization Name</label>
-                                            </div>
+             
                                             <div class="form-group col-md-6">
-                                                <asp:TextBox ID="txtOrgName" runat="server" placeholder=" Organization Name" ></asp:TextBox>
+                                                <asp:TextBox ID="txtOrgName" runat="server"  ></asp:TextBox>
                                             </div>
                                         </div>
 
@@ -37,7 +32,7 @@
                 <div class="card">
                     <div class="card-header" id="headingTwo">
                        <div class="d-flex justify-content-lg-start">
-                            <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <button class="btn btn-block btn-accordion collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                Organization Address</button>
                          </div>
                     </div>
@@ -46,7 +41,6 @@
                            
                             <div class="row">
                     <div class="col-md-6 text-center mx-auto">
-                <h5 class="modal-title">Organization Address</h5>
                         <br />
                 </div>
                     </div>
@@ -56,7 +50,7 @@
               <label for="txtStreet" class="label-style">Organization Address</label>
              </div>
              <div class="form-group col-md-6">
-            <asp:TextBox ID="txtStreet" runat="server"  placeholder=" Organization Address"></asp:TextBox>
+            <asp:TextBox ID="txtStreet" runat="server"  ></asp:TextBox>
               </div>
              </div>
 
@@ -142,7 +136,7 @@
               <label for="txtCity" class="label-style">City</label>
              </div>
              <div class="form-group col-md-6">
-            <asp:TextBox ID="txtCity" placeholder=" City" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtCity"  runat="server"></asp:TextBox>
               </div>
              </div>
 
@@ -151,7 +145,7 @@
               <label for="txtCounty" class="label-style">County</label>
              </div>
              <div class="form-group col-md-6">
-           <asp:Textbox ID="txtCounty" placeholder=" County" runat="server"></asp:Textbox>
+           <asp:Textbox ID="txtCounty"  runat="server"></asp:Textbox>
               </div>
              </div>
 
@@ -160,7 +154,7 @@
               <label for="txtZipCode" class="label-style">Zip Code</label>
              </div>
              <div class="form-group col-md-6">
-           <asp:TextBox ID="txtZipCode" placeholder=" Zip Code" runat="server"></asp:TextBox>
+           <asp:TextBox ID="txtZipCode" runat="server"></asp:TextBox>
               </div>
              </div>
 
@@ -171,7 +165,7 @@
             <div class="card" id ="programLoc" runat ="server">
                 <div class="card-header" id="headingThree">
                    <div class="d-flex justify-content-lg-start">
-                        <button class="btn  collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <button class="btn btn-block btn-accordion  collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             Contact Information
                         </button>
                     </div> 
@@ -182,7 +176,7 @@
 
                           <div class="row">
                     <div class="col-md-6 text-center mx-auto">
-                <h5 class="modal-title">Contact information </h5>
+
                         <br />
                 </div>
                     </div>
@@ -192,7 +186,7 @@
               <label for="txtFirstName" class="label-style">First Name</label>
              </div>
              <div class="form-group col-md-6">
-            <asp:TextBox ID="txtFirstName" placeholder=" First Name" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtFirstName"  runat="server"></asp:TextBox>
               </div>
              </div>
 
@@ -201,7 +195,7 @@
               <label for="txtLastName" class="label-style">Last Name</label>
              </div>
              <div class="form-group col-md-6">
-             <asp:Textbox ID="txtLastName" placeholder=" Last Name" runat="server"></asp:Textbox>
+             <asp:Textbox ID="txtLastName"  runat="server"></asp:Textbox>
               </div>
              </div>
 
@@ -210,7 +204,7 @@
               <label for="txtEmail" class="label-style">Email</label>
              </div>
              <div class="form-group col-md-6">
-            <asp:TextBox ID="txtEmail" placeholder=" Email" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtEmail"  runat="server"></asp:TextBox>
               </div>
              </div>
 
@@ -219,7 +213,7 @@
               <label for="txtPrimaryPhone" class="label-style">Primary Phone</label>
              </div>
              <div class="form-group col-md-6">
-           <asp:Textbox ID="txtPrimaryPhone"  placeholder=" Primary Phone" runat="server"></asp:Textbox>
+           <asp:Textbox ID="txtPrimaryPhone"   runat="server"></asp:Textbox>
               </div>
              </div>
 
@@ -228,7 +222,7 @@
               <label for="txtSecondaryPhone" class="label-style">Secondary Phone</label>
              </div>
              <div class="form-group col-md-6">
-          <asp:TextBox ID="txtSecondaryPhone" placeholder=" Secondary Phone"  runat="server"></asp:TextBox>
+          <asp:TextBox ID="txtSecondaryPhone"  runat="server"></asp:TextBox>
               </div>
              </div>
                         </div>

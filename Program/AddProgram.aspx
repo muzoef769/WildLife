@@ -10,13 +10,7 @@
     <br />
     <br />
      <h1 id="ProgramMonth" class=" CardTitle mx-auto d-flex justify-content-center "> Add Program</h1>
-	<div class="row">
-        <div class="col-4 mx-auto">
-            <div class="d-flex justify-content-center "> 
-   <a href="AddOrganization.aspx" id="btnAddOrg" class=" btn btn-success" runat="server" onclick="btnAddOrg_Click">Add Organization</a>
-       </div>
-        </div>
-        </div>
+	
 
     <div>
         
@@ -24,7 +18,7 @@
     <%--Program container--%>
        
        <div class="SimpleContainer col-sm-12 col-xs-12 col-md-4 col-lg-4 col-xl-4" style="z-index: 100;">
-        <div class=" AnimalReportCard ">
+        <div class=" AnimalReportCard text-left" style="padding-left:15px; padding-top:15px; padding-bottom:5px;">
             <h4>Cart 
 
                 <span class="price" style="color: black"><i class="fa fa-shopping-cart"></i><b>
@@ -76,12 +70,13 @@
 
             <br />
 
-                <div class="row ml-auto d-flex justify-content-center ">
-                   <div class="col-md-1 mx-auto">
+                <div class="row mx-auto d-flex justify-content-center ">
+
+
+
+                   <div class="col-md-4 text-center">
                     <label for="txtOrgDrp" class="label-style">Organization</label>
-                     </div>
-                    <br />
-                   <div class=" col-md-4  mx-auto">
+                   
                                                 
                     <asp:DropDownList ID="drpOrganizationList" runat="server"  CssClass="btn btn-default btn-sm dropdown-toggle" AppendDataBoundItems="True" DataSourceID="SqlDataSource3" DataTextField="OrganizationName" DataValueField="OrganizationID" OnSelectedIndexChanged="DrpOrganizationList_IndexChanged" AutoPostBack="true">
 
@@ -90,6 +85,21 @@
                     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT OrganizationName, OrganizationID FROM Organization"></asp:SqlDataSource>
 
                        </div>
+
+
+                     <div class="col-4 ">
+            <div class="d-flex justify-content-center "> 
+   <a href="AddOrganization.aspx" id="btnAddOrg" class=" btn btn-success" runat="server" onclick="btnAddOrg_Click">Add Organization</a>
+       </div>
+        </div>
+
+
+                    <div class=" col-md-4">
+                        <asp:Label ID="lblInvoice" runat="server" Text="Invoice Number: "></asp:Label>
+                         <asp:TextBox   runat="server" ></asp:TextBox>
+                  
+                    </div>
+
                       </div>
 
 
@@ -102,7 +112,7 @@
                     <div class="card-header" id="headingOne">
                         <h5 class="mb-0">
 
-                            <button class="btn " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <button class="btn btn-block btn-accordion" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 Program Information
                             </button>
                         </h5>
@@ -152,14 +162,14 @@
 
                                 <div class="col-md-4 mx-auto  Spacing">
                                     <label>Adults </label>
-                                    <asp:TextBox ID="txtAdults" runat="server" Width="100%" Placeholder=" Number of Adults"></asp:TextBox>
+                                    <asp:TextBox ID="txtAdults" runat="server" Width="100%"></asp:TextBox>
 
                                 </div>
 
 
                                 <div class="col-md-4 mx-auto  Spacing">
                                     <label>Children </label>
-                                    <asp:TextBox ID="txtKids" runat="server" Width="100%" Placeholder=" Number of Kids"></asp:TextBox>
+                                    <asp:TextBox ID="txtKids" runat="server" Width="100%" ></asp:TextBox>
 
 
                                 </div>
@@ -291,7 +301,7 @@
             <div class="card">
                 <div class="card-header" id="headingTwo">
                     <h5 class="mb-0">
-                        <button class="btn  collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <button class="btn btn-block btn-accordion collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             Contact Information</button>
                     </h5>
                 </div>
@@ -385,7 +395,7 @@
         <div class="card" id="programLoc" runat="server">
             <div class="card-header" id="headingThree">
                 <h5 class="mb-0">
-                    <button class="btn  collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <button class="btn btn-block  btn-accordion collapsed"  type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         Program Location
                     </button>
                 </h5>
@@ -402,7 +412,7 @@
                                             <label for="txtStreet" class="label-style">Street</label>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <asp:TextBox ID="txtStreet" runat="server" placeholder=" Street"></asp:TextBox>
+                                            <asp:TextBox ID="txtStreet" runat="server" ></asp:TextBox>
                                         </div>
                                     </div>
 
@@ -411,7 +421,7 @@
                                             <label for="txtCity" class="label-style">City</label>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <asp:TextBox ID="txtCity" runat="server" placeholder=" City"></asp:TextBox>
+                                            <asp:TextBox ID="txtCity" runat="server" ></asp:TextBox>
                                         </div>
                                     </div>
 
@@ -420,7 +430,7 @@
                                             <label for="txtState" class="label-style">State</label>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <asp:TextBox ID="txtState" runat="server" placeholder=" State"></asp:TextBox>
+                                            <asp:TextBox ID="txtState" runat="server" ></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -428,7 +438,7 @@
                                             <label for="txtCounty" class="label-style">County</label>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <asp:TextBox ID="txtCounty" runat="server" placeholder=" County"></asp:TextBox>
+                                            <asp:TextBox ID="txtCounty" runat="server" ></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -436,7 +446,7 @@
                                             <label for="txtCountry" class="label-style">Country</label>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <asp:TextBox ID="txtCountry" runat="server" placeholder=" Country"></asp:TextBox>
+                                            <asp:TextBox ID="txtCountry" runat="server" ></asp:TextBox>
                                         </div>
                                     </div>
 
@@ -445,7 +455,7 @@
                                             <label for="txtZipCode" class="label-style">Zip Code</label>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <asp:TextBox ID="txtZipCode" runat="server" placeholder=" Zip Code"></asp:TextBox>
+                                            <asp:TextBox ID="txtZipCode" runat="server" ></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -453,7 +463,7 @@
                                             <label for="txtMileage" class="label-style">Mileage</label>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <asp:TextBox ID="txtMileage" runat="server" Placeholder=" Enter Mileage"></asp:TextBox>
+                                            <asp:TextBox ID="txtMileage" runat="server" ></asp:TextBox>
                                         </div>
                                     </div>
 

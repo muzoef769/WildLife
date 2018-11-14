@@ -19,8 +19,8 @@
 
     <div class="row">
         <br />
-        <div id="AddAnimalButton" class="col-lg-2 col-md-4 col-s-4 mx-auto">
-            <a class="btn btn-primary d-flex  mx-auto justify-content-center btn btn-success" href="#" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a>
+        <div id="AddAnimalButton" class="col-lg-2 col-md-4 col-s-4 col-xs-4 mx-auto">
+            <a class="  btn-block  btn btn-success" href="#" data-toggle="modal" data-target="#AddModal" role="button">Add Animal</a>
         </div>
     
    
@@ -28,12 +28,17 @@
         <asp:SqlDataSource ID="EditAnimal" runat="server" ConnectionString="<%$ ConnectionStrings:WildlifeCenterConnectionString %>" SelectCommand="SELECT [AnimalName], [AnimalID] FROM [Animal]"></asp:SqlDataSource>
     </div>
     <br />
- 
-
-    <div class="table-responsive PaymentContainer d-flex justify-content-center " style="background-color: transparent; padding-top: 0% !important;">
-        <div class="row mx-auto d-flex justify-content-center ">
+  <div class="row mr-auto">
+    <div class=" col-md-11 text-right">
+                         <asp:TextBox  Placeholder=" Search by Animal" runat="server" ></asp:TextBox>
+                    <asp:Button  runat="server"   CssClass="btn btn-success"  Text="Search" />
+                    </div>
+      </div>
+    <br />
+    <div class="table-responsive PaymentContainer  d-flex justify-content-center   " style="background-color: transparent; padding-top: 0% !important;">
+        <div class="row mx-auto">
       
-            <div class="col-xl-6 col-lg-12  col-md-12 col-s-12 ">
+            <div class="col-xl-7 col-lg-12 col-md-12 col-s-12 ">
                <%-- <asp:GridView ID="GridView2" runat="server" Visible="False" HorizontalAlign="Center" Class=" AnimalCard table table-condensed table-bordered table-hover" BackColor="White">
                 </asp:GridView>--%>
                 <br />
@@ -70,7 +75,6 @@
                         <asp:BoundField DataField="TotalAdults" HeaderText="TotalAdults" ReadOnly="True" SortExpression="TotalAdults" />
                         <asp:BoundField DataField="TotalPeople" HeaderText="TotalPeople" ReadOnly="True" SortExpression="TotalPeople" />
                         <asp:BoundField DataField="TotalPrograms" HeaderText="TotalPrograms" SortExpression="TotalPrograms" ReadOnly="True" />
-                        <asp:BoundField DataField="LastUpdatedBy" HeaderText="LastUpdatedBy" SortExpression="LastUpdatedBy" />
                         <asp:ImageField DataImageUrlField="Image" >
 <ControlStyle Height="50px" Width="50px"></ControlStyle>
                         </asp:ImageField>
@@ -98,7 +102,7 @@
         DeleteCommand="DELETE FROM [Animal] WHERE [AnimalID] = @original_AnimalID AND [AnimalName] = @original_AnimalName AND [AnimalType] = @original_AnimalType AND [Status] = @original_Status AND [LastUpdated] = @original_LastUpdated AND [LastUpdatedBy] = @original_LastUpdatedBy"
         InsertCommand="INSERT INTO [Animal] ([AnimalName], [AnimalType], [Status], [LastUpdated], [LastUpdatedBy]) VALUES (@AnimalName, @AnimalType, @Status, @LastUpdated, @LastUpdatedBy)"
         OldValuesParameterFormatString="original_{0}"
-        SelectCommand="SELECT Animal.AnimalID, Animal.AnimalName, Animal.AnimalType, Animal.Status, Animal.LastUpdatedBy, Animal.Image, SUM(ISNULL(NewProgram.TotalKids, '0')) AS TotalKids, SUM(ISNULL(NewProgram.TotalAdults, '0')) AS TotalAdults, SUM(ISNULL(NewProgram.TotalPeople, '0')) AS TotalPeople, COUNT(AssignAnimal.AssignAnimalID) AS TotalPrograms FROM Animal LEFT OUTER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID LEFT OUTER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID GROUP BY Animal.AnimalID, Animal.AnimalName, Animal.AnimalType, Animal.Status, Animal.LastUpdatedBy, Animal.Image"
+        SelectCommand="SELECT Animal.AnimalID, Animal.AnimalName, Animal.AnimalType, Animal.Status, Animal.Image, SUM(ISNULL(NewProgram.TotalKids, '0')) AS TotalKids, SUM(ISNULL(NewProgram.TotalAdults, '0')) AS TotalAdults, SUM(ISNULL(NewProgram.TotalPeople, '0')) AS TotalPeople, COUNT(AssignAnimal.AssignAnimalID) AS TotalPrograms FROM Animal LEFT OUTER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID LEFT OUTER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID GROUP BY Animal.AnimalID, Animal.AnimalName, Animal.AnimalType, Animal.Status, Animal.LastUpdatedBy, Animal.Image"
         UpdateCommand="UPDATE [Animal] SET [AnimalName] = @AnimalName, [AnimalType] = @AnimalType, [Status] = @Status, [LastUpdated] = @LastUpdated, [LastUpdatedBy] = @LastUpdatedBy WHERE [AnimalID] = @original_AnimalID AND [AnimalName] = @original_AnimalName AND [AnimalType] = @original_AnimalType AND [Status] = @original_Status AND [LastUpdated] = @original_LastUpdated AND [LastUpdatedBy] = @original_LastUpdatedBy">
         <DeleteParameters>
             <asp:Parameter Name="original_AnimalID" Type="Int32" />

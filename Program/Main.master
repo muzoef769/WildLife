@@ -11,7 +11,7 @@
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <link href="Content/custom.css" rel="stylesheet" type="text/css" media="screen"/>
      <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
-
+    <link href="Content/font-awesome.min.css" rel="stylesheet" />
 
     <%--<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <script src="Scripts/jquery-3.3.1.slim.min.js"></script>
@@ -79,7 +79,8 @@
                         <a class="nav-link" href="OrganizationView.aspx">Organizations</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-danger" href="Default.aspx">Logout</a>
+                        <asp:Button ID="btnLogOut" runat="server" OnClick="Clear_Session" Text="Logout" CssClass="btn btn-link text-danger"/>
+                        <%--<a class="nav-link text-danger" runat="server" onclick="Clear_Session">Logout</a>--%>
                     </li>
                 </ul>
 
@@ -94,8 +95,6 @@
         </div>
             
     </form>
-     <footer class="fixed-bottom">
-                <p class="text-white-50">&copy; <%: DateTime.Now.Year %> - The Wildlife Center of Virginia. All Rights Reserved.</p>
-            </footer>
+
 </body>
 </html>

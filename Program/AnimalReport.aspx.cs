@@ -21,7 +21,7 @@ public partial class AnimalReport : System.Web.UI.Page
         using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
         {
             connection.Open();
-            string sql = "SELECT Animal.AnimalName, Animal.AnimalType, Animal.Status, SUM(ISNULL(NewProgram.TotalKids, '0')) AS TotalKids, SUM(ISNULL(NewProgram.TotalAdults, '0')) AS TotalAdults, SUM(ISNULL(NewProgram.TotalPeople, '0')) AS TotalPeople, COUNT(AssignAnimal.AssignAnimalID) AS TotalPrograms, Animal.LastUpdatedBy FROM Animal LEFT OUTER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID LEFT OUTER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID GROUP BY Animal.AnimalName, Animal.AnimalType, Animal.Status, Animal.LastUpdatedBy";
+            string sql = "SELECT Animal.AnimalName, Animal.AnimalType, Animal.Status, SUM(ISNULL(NewProgram.TotalKids, '0')) AS TotalKids, SUM(ISNULL(NewProgram.TotalAdults, '0')) AS TotalAdults, SUM(ISNULL(NewProgram.TotalPeople, '0')) AS TotalPeople, COUNT(AssignAnimal.AssignAnimalID) AS TotalPrograms FROM Animal LEFT OUTER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID LEFT OUTER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID GROUP BY Animal.AnimalName, Animal.AnimalType, Animal.Status";
             using(SqlDataAdapter sda = new SqlDataAdapter(sql, connection))
             {
                 DataSet data = new DataSet();
@@ -61,7 +61,7 @@ public partial class AnimalReport : System.Web.UI.Page
         using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
         {
             connection.Open();
-            string sql = "SELECT Animal.AnimalName, Animal.AnimalType, Animal.Status, SUM(ISNULL(NewProgram.TotalKids, '0')) AS TotalKids, SUM(ISNULL(NewProgram.TotalAdults, '0')) AS TotalAdults, SUM(ISNULL(NewProgram.TotalPeople, '0')) AS TotalPeople, COUNT(AssignAnimal.AssignAnimalID) AS TotalPrograms, Animal.LastUpdatedBy FROM Animal LEFT OUTER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID LEFT OUTER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID WHERE YEAR(NewProgram.DateCompleted) = " + drpYearList.SelectedValue + "GROUP BY Animal.AnimalName, Animal.AnimalType, Animal.Status, Animal.LastUpdatedBy;";
+            string sql = "SELECT Animal.AnimalName, Animal.AnimalType, Animal.Status, SUM(ISNULL(NewProgram.TotalKids, '0')) AS TotalKids, SUM(ISNULL(NewProgram.TotalAdults, '0')) AS TotalAdults, SUM(ISNULL(NewProgram.TotalPeople, '0')) AS TotalPeople, COUNT(AssignAnimal.AssignAnimalID) AS TotalPrograms FROM Animal LEFT OUTER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID LEFT OUTER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID WHERE YEAR(NewProgram.DateCompleted) = " + drpYearList.SelectedValue + "GROUP BY Animal.AnimalName, Animal.AnimalType, Animal.Status";
             using (SqlDataAdapter sda = new SqlDataAdapter(sql, connection))
             {
                 DataSet data = new DataSet();
@@ -73,12 +73,10 @@ public partial class AnimalReport : System.Web.UI.Page
     }
     protected void generateMonthReport(object sender, EventArgs e)
     {
-        
-
         using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
         {
             connection.Open();
-            string sql = "SELECT Animal.AnimalName, Animal.AnimalType, Animal.Status, SUM(ISNULL(NewProgram.TotalKids, '0')) AS TotalKids, SUM(ISNULL(NewProgram.TotalAdults, '0')) AS TotalAdults, SUM(ISNULL(NewProgram.TotalPeople, '0')) AS TotalPeople, COUNT(AssignAnimal.AssignAnimalID) AS TotalPrograms, Animal.LastUpdatedBy FROM Animal LEFT OUTER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID LEFT OUTER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID WHERE MONTH(NewProgram.DateCompleted) = " + drpMonthList.SelectedValue + "GROUP BY Animal.AnimalName, Animal.AnimalType, Animal.Status, Animal.LastUpdatedBy;";
+            string sql = "SELECT Animal.AnimalName, Animal.AnimalType, Animal.Status, SUM(ISNULL(NewProgram.TotalKids, '0')) AS TotalKids, SUM(ISNULL(NewProgram.TotalAdults, '0')) AS TotalAdults, SUM(ISNULL(NewProgram.TotalPeople, '0')) AS TotalPeople, COUNT(AssignAnimal.AssignAnimalID) AS TotalPrograms FROM Animal LEFT OUTER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID LEFT OUTER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID WHERE MONTH(NewProgram.DateCompleted) = " + drpMonthList.SelectedValue + "GROUP BY Animal.AnimalName, Animal.AnimalType, Animal.Status";
             using (SqlDataAdapter sda = new SqlDataAdapter(sql, connection))
             {
                 DataSet data = new DataSet();
@@ -87,19 +85,13 @@ public partial class AnimalReport : System.Web.UI.Page
                 grdViewReport.DataBind();
             }
         }
-
-
-
-
     }
-
-
     protected void AnimalType(object sender, EventArgs e)
     {
         using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
         {
             connection.Open();
-            string sql = "SELECT Animal.AnimalName, Animal.AnimalType, Animal.Status, SUM(ISNULL(NewProgram.TotalKids, '0')) AS TotalKids, SUM(ISNULL(NewProgram.TotalAdults, '0')) AS TotalAdults, SUM(ISNULL(NewProgram.TotalPeople, '0')) AS TotalPeople, COUNT(AssignAnimal.AssignAnimalID) AS TotalPrograms, Animal.LastUpdatedBy FROM Animal LEFT OUTER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID LEFT OUTER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID WHERE Animal.AnimalType = '" + drpAnimalTypeReport.SelectedValue + "' GROUP BY Animal.AnimalName, Animal.AnimalType, Animal.Status, Animal.LastUpdatedBy;";
+            string sql = "SELECT Animal.AnimalName, Animal.AnimalType, Animal.Status, SUM(ISNULL(NewProgram.TotalKids, '0')) AS TotalKids, SUM(ISNULL(NewProgram.TotalAdults, '0')) AS TotalAdults, SUM(ISNULL(NewProgram.TotalPeople, '0')) AS TotalPeople, COUNT(AssignAnimal.AssignAnimalID) AS TotalPrograms FROM Animal LEFT OUTER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID LEFT OUTER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID WHERE Animal.AnimalType = '" + drpAnimalTypeReport.SelectedValue + "' GROUP BY Animal.AnimalName, Animal.AnimalType, Animal.Status";
             using (SqlDataAdapter sda = new SqlDataAdapter(sql, connection))
             {
                 DataSet data = new DataSet();
@@ -108,24 +100,5 @@ public partial class AnimalReport : System.Web.UI.Page
                 grdViewReport.DataBind();
             }
         }
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

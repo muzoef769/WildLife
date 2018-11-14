@@ -9,11 +9,13 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Web.Configuration;
 using System.Drawing;
+using System.Text.RegularExpressions;
 
 public partial class Program : System.Web.UI.Page
 {
     System.Data.SqlClient.SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
     public static Int32 id;
+    private string SearchString = "";
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -64,4 +66,35 @@ public partial class Program : System.Web.UI.Page
         GridView2.DataSource = dt3;
         GridView2.DataBind();
     }
+    public string HighlightText(string InputTxt)
+    {
+        string Search_Str = txtSearchAll.Text;
+        // Setup the regular expression and add the Or operator.
+        Regex RegExp = new Regex(Search_Str.Replace(" ", "|").Trim(), RegexOptions.IgnoreCase);
+        // Highlight keywords by calling the
+        //delegate each time a keyword is found.
+        return RegExp.Replace(InputTxt, new MatchEvaluator(ReplaceKeyWords));
+    }
+
+    public string ReplaceKeyWords(Match m)
+    {
+        return ("<span class=highlight>" + m.Value + "</span>");
+    }
+    protected void btnSearchAll_Click(object sender, EventArgs e)
+    {
+        //  Set the value of the SearchString so it gets
+        SearchString = txtSearchAll.Text;
+    }
+    protected void btnClearAll_Click(object sender, EventArgs e)
+    {
+        //  Simple clean up text to return the Gridview to it's default state
+        txtSearchAll.Text = "";
+        SearchString = "";
+        GridView5.DataBind();
+    }
+    protected void txtSearchAll_TextChanged(object sender, EventArgs e)
+    {
+        SearchString = txtSearchAll.Text;
+    }
+
 }

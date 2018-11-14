@@ -70,20 +70,18 @@ public partial class Home : System.Web.UI.Page
 
 
         Animals newAnimal = new Animals(
-           "GG",
-           "JackRicci",
+           "Red Falcon",
+           "Buddy",
            txtAddName.Text,
            ddlAddType.SelectedValue.ToString(),
           ddlAddStatus.SelectedValue,
            DateTime.Today,
-           "Staff"
-
-
-
+           "Staff",
+           "~\\Images\\Animals\\default_bird.jpg"
            );
 
 
-        string creatAnimal = "Insert into [dbo].[Animal] values (@Species, @ScientificName, @AnimalName, @AnimalType, @Status, @LastUpdated, @LastUpdatedBy)";
+        string creatAnimal = "Insert into [dbo].[Animal] values (@Species, @ScientificName, @AnimalName, @AnimalType, @Status, @Image, @LastUpdated, @LastUpdatedBy)";
         SqlCommand addAnimal = new SqlCommand(creatAnimal, sc);
         sc.Open();
         addAnimal.Parameters.AddWithValue("@Species", newAnimal.getSpecies());
@@ -91,8 +89,10 @@ public partial class Home : System.Web.UI.Page
         addAnimal.Parameters.AddWithValue("@AnimalName", newAnimal.getAnimalName());
         addAnimal.Parameters.AddWithValue("@AnimalType", newAnimal.getAnimalType());
         addAnimal.Parameters.AddWithValue("@Status", newAnimal.getStatus());
+        addAnimal.Parameters.AddWithValue("@Image",newAnimal.getImage());
         addAnimal.Parameters.AddWithValue("@LastUpdated", newAnimal.getLastUpdated());
         addAnimal.Parameters.AddWithValue("@LastUpdatedBy", newAnimal.getLastUpdatedBy());
+
         addAnimal.ExecuteNonQuery();
 
         txtAddName.Text = " ";
@@ -134,21 +134,4 @@ public partial class Home : System.Web.UI.Page
         statusGridView.DataBind();
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

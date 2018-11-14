@@ -5424,15 +5424,15 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1040;
-  background-color: grey !important;
+  background-color: lightgray !important;
 }
 
 .modal-backdrop.fade {
-  opacity: 0;
+  opacity: 1 !important;
 }
 
 .modal-backdrop.show {
-  opacity: 0.7 !important;
+  opacity: 1 !important;
 }
 
 .modal-header {

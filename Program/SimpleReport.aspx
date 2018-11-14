@@ -43,7 +43,7 @@
                     <div class="accordion" id="accordionExample">
                         <div class="card">
                             <div class="card-header" id="headingOne">
-                                <button class="btn" type="button" data-toggle="collapse" data-target="#collapseOne"
+                                <button class=" btn btn-block btn-accordion" type="button" data-toggle="collapse" data-target="#collapseOne"
                                     aria-expanded="true" aria-controls="collapseOne">
                                     Program Totals
                                 </button>
@@ -347,7 +347,7 @@
                     
                         <div class="card">
                             <div class="card-header" id="headingTwo">
-                                <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                                <button class="btn btn-block btn-accordion collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
                                     aria-expanded="false" aria-controls="collapseTwo">
                                     Annual Animal View
                                 </button>

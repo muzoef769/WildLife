@@ -40,7 +40,6 @@ public class Animals
     public Animals(string species, string scientificName, string AnimalName, string AnimalType, string Status, DateTime lastUpdated, string lastUpdatedBy, string Image)
     {
 
-
         setSpecies(species);
         setScientificName(scientificName);
         setAnimalName(AnimalName);
