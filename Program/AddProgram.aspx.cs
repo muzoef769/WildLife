@@ -163,7 +163,7 @@ public partial class AddProgram : System.Web.UI.Page
         else
         {
             drpLocationTypeList.Items.Add(("Online"));
-            txtMileage.Visible = false;
+           
         }
     }
 
@@ -609,7 +609,7 @@ public partial class AddProgram : System.Web.UI.Page
 
             if (z == 0)
             {
-                lblProgramCostOne.Text = Convert.ToString(NewProgram.programList[z].getPrgCost());
+                lblProgramCostOne.Text = NewProgram.programList[z].getPrgCost().ToString("C");
                 totalCost += NewProgram.programList[z].getPrgCost();
                 programOne.Visible = true;
                 programTwo.Visible = false;
@@ -618,7 +618,7 @@ public partial class AddProgram : System.Web.UI.Page
 
             if (z == 1)
             {
-                lblProgramCostTwo.Text = Convert.ToString(NewProgram.programList[z].getPrgCost());
+                lblProgramCostTwo.Text = NewProgram.programList[z].getPrgCost().ToString("C");
                 totalCost += NewProgram.programList[z].getPrgCost();
                 programTwo.Visible = true;
 
@@ -627,7 +627,7 @@ public partial class AddProgram : System.Web.UI.Page
 
             if (z == 2)
             {
-                lblProgramCostThree.Text = Convert.ToString(NewProgram.programList[z].getPrgCost());
+                lblProgramCostThree.Text = NewProgram.programList[z].getPrgCost().ToString("C");
                 totalCost += NewProgram.programList[z].getPrgCost();
                 programThree.Visible = true;
             }

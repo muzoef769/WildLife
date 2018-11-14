@@ -26,15 +26,15 @@
 
             </h4>
             <div id ="programOne"  runat="server" visible="false">
-            <p><a href="#"><asp:Label ID ="lblProgramOne" runat="server" Text="Program One"></asp:Label></a> <span class="price">$
+            <p><a href="#"><asp:Label ID ="lblProgramOne" runat="server" Text="Program One"></asp:Label></a> <span class="price">
                 <asp:Label ID="lblProgramCostOne" runat="server" Text="70"></asp:Label></span></p>
                 </div>
             <div id ="programTwo"  runat="server" visible="false">
-            <p><a href="#"><asp:Label ID ="lblProgramTwo" runat="server" Text="Program Two"></asp:Label></a> <span class="price">$
+            <p><a href="#"><asp:Label ID ="lblProgramTwo" runat="server" Text="Program Two"></asp:Label></a> <span class="price">
                 <asp:Label ID="lblProgramCostTwo" runat="server" Text="70"></asp:Label></span></p>
                 </div>
             <div id="programThree"  runat="server" visible="false">
-            <p><a href="#"><asp:Label ID ="lblProgramThree" runat="server" Text="Program Three"></asp:Label></a> <span class="price">$
+            <p><a href="#"><asp:Label ID ="lblProgramThree" runat="server" Text="Program Three"></asp:Label></a> <span class="price">
                 <asp:Label ID="lblProgramCostThree" runat="server" Text="70"></asp:Label></span></p>
                 </div>
 
@@ -261,6 +261,10 @@
                                         <asp:ListItem>10th Grade</asp:ListItem>
                                         <asp:ListItem>11th Grade</asp:ListItem>
                                         <asp:ListItem>12th Grade</asp:ListItem>
+                                        
+                                        <asp:ListItem>Elementary School</asp:ListItem>
+                                        <asp:ListItem>Middle School</asp:ListItem>
+                                        <asp:ListItem>High School</asp:ListItem>
                                         <asp:ListItem>Familes</asp:ListItem>
                                         <asp:ListItem>Adults Only</asp:ListItem>
                                     </asp:DropDownList>

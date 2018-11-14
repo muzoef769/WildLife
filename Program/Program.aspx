@@ -63,7 +63,7 @@
                     <a style=" margin-right:5px; color:black;" class="nav-link  " id="contact-tab" data-toggle="tab" href="#OffSite" role="tab" aria-controls="contact" aria-selected="false">OffSite</a>
                 </li>
                 <li class="nav-item ml-auto">
-                    <asp:TextBox ID="txtSearchAll" Placeholder="Search by Organization" runat="server" AutoPostBack="True"
+                    <asp:TextBox ID="txtSearchAll" Placeholder="Search by Program Name" runat="server" AutoPostBack="True"
                                     OnTextChanged="txtSearchAll_TextChanged"></asp:TextBox>
                     <asp:Button
                         ID="btnSearchAll"
@@ -91,8 +91,8 @@
                              <asp:GridView ID="GridView5" runat="server"
                                 HeaderStyle-ForeColor="Black" DateKeyNames="NewProgramID"
                                 ItemStyle-ForeColor="black" AutoGenerateColumns="False" CssClass="  table table-condensed table-bordered table-hover AnimalCard"
-                                DataSourceID="SqlDataSource1" BackColor="White" HorizontalAlign="Left"
-                                AllowSorting="True" OnRowDataBound="GridView1_RowDataBound1">
+                                DataSourceID="SqlDataSource1" BackColor="White" HorizontalAlign="Left "
+                                AllowSorting="True" OnRowDataBound="GridView1_RowDataBound1" OnSelectedIndexChanged="GridView5_SelectedIndexChanged">
 
                                 <Columns>
 
@@ -239,7 +239,7 @@
                                 HeaderStyle-ForeColor="Black" DateKeyNames="NewProgramID"
                                 ItemStyle-ForeColor="black" AutoGenerateColumns="False" CssClass="  table table-condensed table-bordered table-hover AnimalCard"
                                 DataSourceID="ProgramSQL1" BackColor="White" HorizontalAlign="Left"
-                                AllowSorting="True" OnRowDataBound="GridView1_RowDataBound1">
+                                AllowSorting="True" OnRowDataBound="GridView1_RowDataBound1" OnSelectedIndexChanged="GridView3_SelectedIndexChanged">
 
                                 <Columns>
 
@@ -311,7 +311,7 @@
                                 HeaderStyle-ForeColor="Black" DateKeyNames="NewProgramID"
                                 ItemStyle-ForeColor="black" AutoGenerateColumns="False" CssClass="  table table-condensed table-bordered table-hover AnimalCard"
                                 DataSourceID="ProgramSQL2" BackColor="White" HorizontalAlign="Left"
-                                AllowSorting="True" OnRowDataBound="GridView1_RowDataBound1">
+                                AllowSorting="True" OnRowDataBound="GridView1_RowDataBound1" OnSelectedIndexChanged="GridView4_SelectedIndexChanged">
 
                                 <Columns>
 

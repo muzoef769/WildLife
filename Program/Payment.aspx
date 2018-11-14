@@ -85,14 +85,13 @@
                                                 </Triggers>
                                             </asp:UpdatePanel>
                                             <asp:SqlDataSource ID="outstandingSource" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>"
-                                                SelectCommand="SELECT i.InvoiceID, InvoiceNumber, FORMAT(DateCreated, 'yyyy-MM-dd') as 'DateCreated', ProgramName, OrganizationName, ProgramCost, InvoiceStatus
-                                                    FROM 
-                                                    dbo.Program p inner join dbo.NewProgram np on p.ProgramID = np.ProgramID 
+                                                SelectCommand="SELECT i.InvoiceID, InvoiceNumber, FORMAT(DateCreated, 'MM/dd/yyyy') as 'DateCreated', ProgramName, OrganizationName, ProgramCost, InvoiceStatus FROM dbo.Program p inner join dbo.NewProgram np on p.ProgramID = np.ProgramID 
                                                     inner join dbo.AssignInvoice ai on ai.NewProgramID = np.NewProgramID
                                                     inner join dbo.Address a on a.AddressID = np.AddressID
                                                     inner join dbo.Organization o on o.AddressID = a.AddressID
 													inner join dbo.Invoice i on i.InvoiceID = ai.InvoiceID
-                                                    WHERE InvoiceStatus = 'Incompleted'"
+                                                    WHERE InvoiceStatus = 'Incompleted'
+                                                    GROUP BY i.InvoiceID, InvoiceNumber, FORMAT(DateCreated, 'MM/dd/yyyy'), ProgramName, OrganizationName, ProgramCost, InvoiceStatus"
                                                 UpdateCommand="UPDATE dbo.Invoice set InvoiceStatus = @InvoiceStatus where InvoiceID = @InvoiceID ">
                                                 <UpdateParameters>
                                                     <asp:Parameter Name="InvoiceStatus" Type="String" />
@@ -156,7 +155,7 @@
                                                 </Triggers>
                                             </asp:UpdatePanel>
                                             <asp:SqlDataSource ID="paidSource" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>"
-                                                SelectCommand="SELECT i.InvoiceID, InvoiceNumber, FORMAT(DateCreated, 'yyyy-MM-dd') as 'DateCreated', ProgramName, OrganizationName, ProgramCost, InvoiceStatus
+                                                SelectCommand="SELECT i.InvoiceID, InvoiceNumber, FORMAT(DateCreated, 'MM/dd/yyyy') as 'DateCreated', ProgramName, OrganizationName, ProgramCost, InvoiceStatus
                                                     FROM 
                                                     dbo.Program p inner join dbo.NewProgram np on p.ProgramID = np.ProgramID 
                                                     inner join dbo.AssignInvoice ai on ai.NewProgramID = np.NewProgramID
@@ -227,7 +226,7 @@
                                                 </Triggers>
                                             </asp:UpdatePanel>
                                             <asp:SqlDataSource ID="programSource" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>"
-                                                SelectCommand="SELECT i.InvoiceID, InvoiceNumber, FORMAT(DateCreated, 'yyyy-MM-dd') as 'DateCreated', ProgramName, OrganizationName, ProgramCost, InvoiceStatus
+                                                SelectCommand="SELECT i.InvoiceID, InvoiceNumber, FORMAT(DateCreated, 'MM/dd/yyyy') as 'DateCreated', ProgramName, OrganizationName, ProgramCost, InvoiceStatus
                                                     FROM 
                                                     dbo.Program p inner join dbo.NewProgram np on p.ProgramID = np.ProgramID 
                                                     inner join dbo.AssignInvoice ai on ai.NewProgramID = np.NewProgramID
