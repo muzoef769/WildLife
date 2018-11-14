@@ -97,7 +97,7 @@
                                 <Columns>
 
                                     <asp:BoundField DataField="ProgramName" HeaderText="Program Name" SortExpression="ProgramName" />
-                                    <asp:BoundField DataField="ProgramCost" HeaderText="Program Cost" SortExpression="ProgramCost" />
+                                    <asp:BoundField DataField="ProgramCost" HeaderText="Program Cost" SortExpression="ProgramCost" DataFormatString="${0:###,###,###.00}" />
                                     <asp:BoundField DataField="LocationType" HeaderText="Location" SortExpression="LocationType" />
                                     <asp:BoundField DataField="TotalPeople" HeaderText="Total People" SortExpression="TotalPeople" />
                                     <asp:BoundField DataField="DateCompleted" HeaderText="Date Completed" SortExpression="DateCompleted" />
@@ -173,7 +173,7 @@
                                 <Columns>
 
                                     <asp:BoundField DataField="ProgramName" HeaderText="Program Name" SortExpression="ProgramName" />
-                                    <asp:BoundField DataField="ProgramCost" HeaderText="Program Cost" SortExpression="ProgramCost" />
+                                    <asp:BoundField DataField="ProgramCost" HeaderText="Program Cost" SortExpression="ProgramCost" DataFormatString="${0:###,###,###.00}" />
                                     <asp:BoundField DataField="LocationType" HeaderText="Location" SortExpression="LocationType" />
                                     <asp:BoundField DataField="TotalPeople" HeaderText="Total People" SortExpression="TotalPeople" />
                                     <asp:BoundField DataField="DateCompleted" HeaderText="Date Completed" SortExpression="DateCompleted" />
@@ -244,7 +244,7 @@
                                 <Columns>
 
                                     <asp:BoundField DataField="ProgramName" HeaderText="Program Name" SortExpression="ProgramName" />
-                                    <asp:BoundField DataField="ProgramCost" HeaderText="Program Cost" SortExpression="ProgramCost" />
+                                    <asp:BoundField DataField="ProgramCost" HeaderText="Program Cost" SortExpression="ProgramCost" DataFormatString="${0:###,###,###.00}" />
                                     <asp:BoundField DataField="LocationType" HeaderText="Location" SortExpression="LocationType" />
                                     <asp:BoundField DataField="TotalPeople" HeaderText="Total People" SortExpression="TotalPeople" />
                                     <asp:BoundField DataField="DateCompleted" HeaderText="Date Completed" SortExpression="DateCompleted" />
@@ -316,7 +316,7 @@
                                 <Columns>
 
                                     <asp:BoundField DataField="ProgramName" HeaderText="Program Name" SortExpression="ProgramName" />
-                                    <asp:BoundField DataField="ProgramCost" HeaderText="Program Cost" SortExpression="ProgramCost" />
+                                    <asp:BoundField DataField="ProgramCost" HeaderText="Program Cost" SortExpression="ProgramCost" DataFormatString="${0:###,###,###.00}" />
                                     <asp:BoundField DataField="LocationType" HeaderText="Location" SortExpression="LocationType" />
                                     <asp:BoundField DataField="TotalPeople" HeaderText="Total People" SortExpression="TotalPeople" />
                                     <asp:BoundField DataField="DateCompleted" HeaderText="Date Completed" SortExpression="DateCompleted" />
@@ -424,4 +424,3 @@
     </div>
 
 </asp:Content>
-
