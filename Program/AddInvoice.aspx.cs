@@ -12,6 +12,7 @@ public partial class AddInvoice : System.Web.UI.Page
 {
     SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
     public int getNewProgramID;
+    public string findInvoiceID;
     protected void Page_Load(object sender, EventArgs e)
     {
     }
@@ -47,10 +48,47 @@ public partial class AddInvoice : System.Web.UI.Page
     }
     protected void AddProgram(object sender, EventArgs e)
     {
-        //int invoiceID;
-        //string findInvoiceID = "SELECT InvoiceID FROM Invoice WHERE InvoiceID = (SELECT MAX(InvoiceID))";
-        ////Invoice ID, New ProgramID, DateCreated, InvoiceStatus, LastUpdated, LUB
-        //Invoice addInvoice = new Invoice(Int32.Parse(drpInvoiceOrganization.SelectedValue), 150 , DateTime.Now, "Incomplete",DateTime.Now, Session["UserFullName"].ToString());
+        //Invoice ID, New ProgramID, DateCreated, InvoiceStatus, LastUpdated, LUB
+        Invoice addInvoice = new Invoice(txtInvoice.Text, 150, DateTime.Now, "Incomplete", DateTime.Now, Session["UserFullName"].ToString());
+
+        using(SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+        {
+            sc.Open();
+            string sql = "INSERT INTO Invoice(InvoiceNumber, TotalCost, DateCreated, InvoiceStatus, LastUpdated, LastUpdatedBy) VALUES (@Invoice, @Cost, @Date, @Status, @LU, @LUB)";
+            using (SqlCommand command = new SqlCommand(sql, sc))
+            {
+                command.Parameters.AddWithValue("@Invoice", addInvoice.getInvoiceNumber());
+                command.Parameters.AddWithValue("@Cost", addInvoice.getTotal());
+                command.Parameters.AddWithValue("@Date", addInvoice.getDateCreated());
+                command.Parameters.AddWithValue("@Status", addInvoice.getInvoiceStatus());
+                command.Parameters.AddWithValue("@LU", addInvoice.getLastUpdated());
+                command.Parameters.AddWithValue("@LUB", addInvoice.getLastUpdatedBy());
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        
+
+        using (SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+        {
+            sc.Open();
+
+            SqlCommand findInvoiceID = new SqlCommand("SELECT MAX(InvoiceID) FROM Invoice", sc);
+            int findID = Convert.ToInt32(findInvoiceID.ExecuteScalar());
+
+            AssignInvoice invoice1 = new AssignInvoice(findID, Int32.Parse(drpInvoiceOrganization.SelectedValue), DateTime.Now, Session["UserFullName"].ToString());
+
+            string sql1 = "INSERT INTO AssignInvoice(InvoiceID, NewProgramID, LastUpdated, LastUpdatedBy) VALUES (@ID, @ID2, @LU, @LUB)";
+            using (SqlCommand command = new SqlCommand(sql1,sc))
+            {
+                command.Parameters.AddWithValue("@ID", invoice1.InvoiceID1);
+                command.Parameters.AddWithValue("ID2", invoice1.NewProgramID1);
+                command.Parameters.AddWithValue("LU", invoice1.LastUpdated1);
+                command.Parameters.AddWithValue("@LUB", invoice1.LastUpdatedBy1);
+            }
+        }
+
     }
 
     protected void GridView_RowDataBound(object sender, GridViewRowEventArgs e)
