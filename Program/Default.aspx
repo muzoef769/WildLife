@@ -46,19 +46,21 @@
     <div class="container-fluid LoginContainer">
         <div class="card mx-auto  LoginCard" style="width: 25rem;">
             <div class="card-body ">
-                <h2 class=" CardTitle d-flex justify-content-center ">Log In</h2>
-                <div class="form-group">
-                    <label>Username</label>
-                    <asp:TextBox ID="txtUsername" placeholder="Username" required="required" CssClass="form-control" runat="server"></asp:TextBox>
-                </div>
+                <h2 class=" CardTitle d-flex justify-content-center">Log In</h2>
+                <br />
                 <div class="form-group ">
-                    <label>Password</label>
-                    <asp:TextBox ID="txtPassword" placeholder="Password" TextMode="Password" required="required" CssClass="form-control" runat="server"></asp:TextBox>
+                    <%--<label>Username</label>--%>
+                    <asp:TextBox ID="txtUsername" placeholder="Username" required="required" CssClass="form-control text-center " runat="server"></asp:TextBox>
+                </div>
+                <br />
+                <div class="form-group ">
+                    <%--<label>Password</label>--%>
+                    <asp:TextBox ID="txtPassword" placeholder="Password" TextMode="Password" required="required" CssClass="form-control text-center " runat="server"></asp:TextBox>
                     <%--<div class="text-center"><asp:Label ID="lblStatus" runat="server" Visible="false" ForeColor="White"></asp:Label></div>--%>
                 </div>
                 <div class="form-group ">
                     <div class="text-center">
-                        <asp:Label ID="lblStatus" runat="server" Visible="true" ForeColor="Transparent" Text="qiejiowqj"></asp:Label></div>
+                        <asp:Textbox ID="txtStatus" runat="server" Visible="true" ForeColor="Transparent" BackColor="Black" BorderStyle="None" ReadOnly="true" OnTextChanged="txtStatus_TextChanged" CssClass="text-center" ></asp:Textbox></div>
                 </div>
            
                 <div class="row">

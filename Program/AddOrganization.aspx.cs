@@ -90,7 +90,7 @@ public partial class AddOrganization : System.Web.UI.Page
             }
 
             //Grabbing the associated OrganizationID from the Organization table
-            string getOrgID = "SELECT OrganizationID FROM Organization WHERE OrganizationID = (SELECT MAX(OrganizationID) FROM Organization)";
+            string getOrgID = "SELECT MAX(OrganizationID) FROM Organization";
             using (SqlCommand command = new SqlCommand(getOrgID, connection))
             {
                 orgID = Convert.ToInt32(command.ExecuteNonQuery());

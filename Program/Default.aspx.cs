@@ -21,8 +21,8 @@ public partial class Default : System.Web.UI.Page
     {
         if (IsPostBack)
         {
-            lblStatus.ForeColor = Color.Transparent;
-            lblStatus.Visible = false;
+            txtStatus.ForeColor = Color.Transparent;
+            //txtStatus.Visible = false;
             btnLogin.Enabled = true;
             txtUsername.Enabled = true;
             txtPassword.Enabled = true;
@@ -102,89 +102,79 @@ public partial class Default : System.Web.UI.Page
                 if (PasswordHash.ValidatePassword(txtPassword.Text, storedHash)) // if the entered password matches what is stored, it will show success
                 {
                     // Clear Fields
-                    lblStatus.ForeColor = Color.White;
-                    lblStatus.Text = "Success!";
-                    lblStatus.Visible = true;
+                    txtStatus.ForeColor = Color.White;
+                    txtStatus.Text = "Success!";
+                    //txtStatus.Visible = true;
                     btnLogin.Enabled = false;
 
                     txtUsername.Enabled = false;
                     txtPassword.Enabled = false;
                     Session["Username"] = txtUsername.Text;
                     Session["UserFullName"] = findFullName(txtUsername.Text);
+
+
+                    getVolunteer.Connection = sc;
+
+                    getVolunteer.CommandText = "SELECT UserType, UserStatus from [dbo].[User] where Username = @Username and UserType = @UserType and UserStatus = @UserStatus";
+                    getVolunteer.Parameters.AddWithValue("@Username", txtUsername.Text);
+                    getVolunteer.Parameters.AddWithValue("UserType", "Volunteer");
+                    getVolunteer.Parameters.AddWithValue("UserStatus", "Approved");
+
+                    SqlDataReader volunteerReader = getVolunteer.ExecuteReader();
+
+                    System.Data.SqlClient.SqlCommand getStaff = new System.Data.SqlClient.SqlCommand();
+                    getStaff.Connection = sc;
+
+                    getStaff.CommandText = "SELECT UserType, UserStatus from [dbo].[User] where Username = @Username and UserType = @UserType";
+                    getStaff.Parameters.AddWithValue("@Username", txtUsername.Text);
+                    getStaff.Parameters.AddWithValue("UserType", "Staff");
+
+                    SqlDataReader staffReader = getStaff.ExecuteReader();
+
+                    if (volunteerReader.HasRows)
+                    {
+                        while (volunteerReader.Read())
+                        {
+                            Response.Redirect("VolunteerHome.aspx", false);
+                        }
+
+                    }
+                    else if (staffReader.HasRows)
+                    {
+                        while (staffReader.Read())
+                        {
+                            Response.Redirect("Home.aspx", false);
+                        }
+                    }
+                    else
+                    {
+                        Response.Redirect("Error.aspx", false);
+                    }
+
+                    volunteerReader.Close();
+                    staffReader.Close();
+
+
+
+
                 }
                 else
                 {
-                    lblStatus.ForeColor = Color.White;
-                    lblStatus.Text = "Password is wrong.";
-                    lblStatus.Visible = true;
+                    txtStatus.ForeColor = Color.White;
+                    txtStatus.Text = "Password is wrong.";
+                    //txtStatus.Visible = true;
                 }
             }
 
         }
-        reader.Close();
-        //Get User Type
-        getVolunteer.Connection = sc;
-
-        getVolunteer.CommandText = "SELECT UserType, UserStatus from [dbo].[User] where Username = @Username and UserType = @UserType and UserStatus = @UserStatus";
-        getVolunteer.Parameters.AddWithValue("@Username", txtUsername.Text);
-        getVolunteer.Parameters.AddWithValue("UserType", "Volunteer");
-        getVolunteer.Parameters.AddWithValue("UserStatus", "Approved");
-
-        SqlDataReader volunteerReader = getVolunteer.ExecuteReader();
-
-        System.Data.SqlClient.SqlCommand getStaff = new System.Data.SqlClient.SqlCommand();
-        getStaff.Connection = sc;
-
-        getStaff.CommandText = "SELECT UserType, UserStatus from [dbo].[User] where Username = @Username and UserType = @UserType";
-        getStaff.Parameters.AddWithValue("@Username", txtUsername.Text);
-        getStaff.Parameters.AddWithValue("UserType", "Staff");
-
-        SqlDataReader staffReader = getStaff.ExecuteReader();
-
-        if (volunteerReader.HasRows)
-        {
-            while (volunteerReader.Read())
-            {
-                Response.Redirect("VolunteerHome.aspx", false);
-            }
-
-        }
-        else if (staffReader.HasRows)
-        {
-            while (staffReader.Read())
-            {
-                Response.Redirect("Home.aspx", false);
-            }
-        }
         else
         {
-            Response.Redirect("Error.aspx", false);
+            txtStatus.Text = "Username does not exist.";
+            txtStatus.ForeColor = Color.White ;
+            //txtStatus.Visible = true;
         }
+        reader.Close();
 
-        volunteerReader.Close();
-        staffReader.Close();
-
-        //System.Data.SqlClient.SqlCommand getStaff = new System.Data.SqlClient.SqlCommand();
-        //getStaff.Connection = sc;
-
-        //getStaff.CommandText = "SELECT UserType, UserStatus from [dbo].[User] where Username = @Username and UserType = @UserType";
-        //getStaff.Parameters.AddWithValue("@Username", txtUsername.Text);
-        //getStaff.Parameters.AddWithValue("UserType", "Staff");
-
-        //SqlDataReader staffReader = getStaff.ExecuteReader();
-
-        //if (staffReader.HasRows)
-        //{
-        //    while (staffReader.Read())
-        //    {
-        //        Response.Redirect("Home.aspx", false);
-        //    }
-
-        //}
-        //else
-        //{
-        //    Response.Redirect("Error.aspx", false);
-        //}
 
     }
 
@@ -193,9 +183,9 @@ public partial class Default : System.Web.UI.Page
         Response.Redirect("createUser.aspx", false);
     }
 
-    protected void txtUsername_TextChanged(object sender, EventArgs e)
+    protected void txtStatus_TextChanged(object sender, EventArgs e)
     {
-        if (lblStatus.Equals("Username does not exist."))
+        if (txtStatus.Equals("Username does not exist."))
         {
             txtUsername.Text = null;
             txtPassword.Text = null;
