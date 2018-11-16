@@ -29,6 +29,7 @@ public class Contact
         setContactEmail(contactEmail);
         setPrimaryPhone(primaryPhone);
         setSecondaryPhone(secondaryPhone);
+        setOrgID(orgID);
         setLastUpdated(lastUpdated);
         setLastUpdatedBy(lastUpdatedBy);
     }

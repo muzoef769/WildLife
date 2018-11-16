@@ -228,21 +228,23 @@
                         </div>
                     </div>
                 </div>
-
-
-                <div class="justify-content-center ">
-
-
-                    <br />
-                    <div class="row">
-                        <div class="col-md-6 text-center mx-auto Spacing">
-                            <asp:Button ID="btnAddOrganization" runat="server" Text="Add Organization" Style="color: white;" CssClass=" btn btn-success" OnClick="btnAddOrganization_Click" />
-                        </div>
-                        <br />
-                        <div class="col-md-6 text-center mx-auto Spacing">
-                            <button id="btnReturn" type="button" class="btn btn-success" style="color: white;" onclick="javascript:history.go(-1)">Return</button>
-                        </div>
             </div>
         </div>
+    </div>
+
+    <div class="justify-content-center ">
+
+
+        <br />
+        <div class="row">
+            <div class="col-md-6 text-center mx-auto Spacing">
+                <asp:Button ID="btnAddOrganization" runat="server" Text="Add Organization" Style="color: white;" CssClass=" btn btn-success" OnClick="btnAddOrganization_Click" />
+            </div>
+            <br />
+            <div class="col-md-6 text-center mx-auto Spacing">
+                <button id="btnReturn" type="button" class="btn btn-success" style="color: white;" onclick="javascript:history.go(-1)">Return</button>
+            </div>
+        </div>
+    </div>
 </asp:Content>
 
