@@ -238,7 +238,7 @@ public partial class AddProgram : System.Web.UI.Page
         {
 
             connection.Open();
-            Address address = new Address(txtStreet.Text, txtState.Text, txtCity.Text, txtCounty.Text, txtCountry.Text, txtZipCode.Text, "Program Location", DateTime.Today, "Raina");
+            Address address = new Address(txtStreet.Text, txtState.Text, txtCity.Text, txtCounty.Text, txtCountry.Text, txtZipCode.Text, "Program Location", DateTime.Today, Session["UserFullName"].ToString());
             int newAddressID;
 
             if (drpLocationTypeList.SelectedValue == "Onsite")
@@ -375,7 +375,7 @@ public partial class AddProgram : System.Web.UI.Page
                         command.Parameters.AddWithValue("@AnimalID", animal);
                         command.Parameters.AddWithValue("@NewProgramID", newProgramID);
                         command.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
-                        command.Parameters.AddWithValue("@LastUpdatedBy", "Raina"); ///Need to change this
+                        command.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"].ToString()); ///Need to change this
 
                         command.ExecuteNonQuery();
 
@@ -402,7 +402,7 @@ public partial class AddProgram : System.Web.UI.Page
                         command.Parameters.AddWithValue("@UserID", user);
                         command.Parameters.AddWithValue("@NewProgramID", newProgramID);
                         command.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
-                        command.Parameters.AddWithValue("@LastUpdatedBy", "Raina"); ///Need to change this
+                        command.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"].ToString()); ///Need to change this
 
                         command.ExecuteNonQuery();
 
@@ -426,7 +426,7 @@ public partial class AddProgram : System.Web.UI.Page
                         command.Parameters.AddWithValue("@Secondary", txtSecondaryNumber.Text);
                         command.Parameters.AddWithValue("@orgID", drpOrganizationList.SelectedValue);
                         command.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
-                        command.Parameters.AddWithValue("@LastUpdatedBy", "Raina");
+                        command.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"].ToString());
 
                         command.ExecuteNonQuery();
 
@@ -567,24 +567,6 @@ public partial class AddProgram : System.Web.UI.Page
 
         programID = Convert.ToInt32(drpOrganizationList.SelectedValue); /*Grab ProgramID*/
 
-
-
-        //if (txtMileage.Visible == true)
-        //{
-        //    NewProgram newProgram = new NewProgram(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
-        //        /* people*/ 50, drpAgeLevel.SelectedValue, /*mileage*/ Int32.Parse(txtMileage.Text), "Completed",
-        //        /*time*/DateTime.Now, Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
-        //         programID, /*addressID*/10, DateTime.Now, "Raina");
-        //    NewProgram.programList.Add(newProgram);
-        //}
-        //else if (txtMileage.Visible == false)
-        //{
-        //    NewProgram newProgram = new NewProgram(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
-        //        /* people*/ 50, drpAgeLevel.SelectedValue, /*mileage*/ 0, "Completed",
-        //        /*time*/DateTime.Now, Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
-        //         programID, /*addressID*/10, DateTime.Now, "Raina");
-        //    NewProgram.programList.Add(newProgram);
-        //}
         int totalPeople;
         totalPeople = Convert.ToInt32(txtAdults.Text) + Convert.ToInt32(txtKids.Text);
 
@@ -618,16 +600,7 @@ public partial class AddProgram : System.Web.UI.Page
         NewProgram newProgram = new NewProgram(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
                 totalPeople, drpAgeLevel.SelectedValue, "Completed", Convert.ToDateTime(programTime.Text),
                 Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
-                programID, DateTime.Now, "Raina", programCost);
-
-        //for (int l = 0; l < NewProgram.programList.Count; l++)
-        //{
-        //    if (NewProgram.programList[l].getLocationType() == "Offsite" && l==0)
-        //    {
-        //        NewProgram.programList[l].setPrgCost() = 250.00;
-        //    }
-
-        //}
+                programID, DateTime.Now, Session["UserFullName"].ToString(), programCost);
 
         NewProgram.programList.Add(newProgram);
 
@@ -643,11 +616,6 @@ public partial class AddProgram : System.Web.UI.Page
         drpProgramList.SelectedValue = null;
         NewProgram.baseCost = 250 + (160 * (NewProgram.programList.Count - 1));
 
-        //Assigning to textboxes for testing
-        //totalCost = NewProgram.baseCost + (Convert.ToDouble(txtMileage.Text) * .57);
-        ////txtProgramCost.Text = NewProgram.baseCost.ToString();
-        //txtMileage.Text = NewProgram.programList.Count.ToString();
-        //txtTotalCost.Text = totalCost.ToString();()
 
 
 

@@ -17,16 +17,6 @@ public partial class VolunteerAddOrganization : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (IsPostBack)
-        {
-            txtOrgName.Text = null;
-            txtStreet.Text = null;
-            drpCountry.Text = null;
-            drpState.Text = null;
-            txtCity.Text = null;
-            txtCounty.Text = null;
-            txtZipCode.Text = null;
-        }
     }
 
     protected void btnAddOrganization_Click(object sender, EventArgs e)
@@ -40,7 +30,9 @@ public partial class VolunteerAddOrganization : System.Web.UI.Page
             txtZipCode.Text,
             "Organization",
             DateTime.Now,
-            "");
+            Session["UserFullName"].ToString());
+
+
 
         using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
         {
@@ -57,7 +49,7 @@ public partial class VolunteerAddOrganization : System.Web.UI.Page
                 command.Parameters.AddWithValue("@ZipCode", newAddress.getZipCode());
                 command.Parameters.AddWithValue("@AddressType", newAddress.getAddressType());
                 command.Parameters.AddWithValue("@LastUpdated", newAddress.getLastUpdated());
-                command.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"]);
+                command.Parameters.AddWithValue("@LastUpdatedBy", newAddress.getLastUpdatedBy());
 
                 command.ExecuteNonQuery();
 
@@ -70,13 +62,11 @@ public partial class VolunteerAddOrganization : System.Web.UI.Page
             }
 
             Organization newOrganization = new Organization(
-                  addressID,
-                  1,
                   txtOrgName.Text,
+                  addressID,
                   DateTime.Now,
-                  ""
+                  Session["UserFullName"].ToString()
                   );
-
             string organizationInsert = "INSERT INTO ORGANIZATION (OrganizationName, AddressID, LastUpdated, LastUpdatedBy) VALUES (@OrgName, @AddressID, @LastUpdated, @LastUpdatedBy)";
 
             using (SqlCommand command = new SqlCommand(organizationInsert, connection))
@@ -84,7 +74,7 @@ public partial class VolunteerAddOrganization : System.Web.UI.Page
                 command.Parameters.AddWithValue("@OrgName", newOrganization.OrgName);
                 command.Parameters.AddWithValue("@AddressID", newOrganization.AddressID);
                 command.Parameters.AddWithValue("@LastUpdated", newOrganization.LastUpdated);
-                command.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"]);
+                command.Parameters.AddWithValue("@LastUpdatedBy", newOrganization.LastUpdatedBy);
 
                 command.ExecuteNonQuery();
             }
@@ -93,7 +83,7 @@ public partial class VolunteerAddOrganization : System.Web.UI.Page
             string getOrgID = "SELECT OrganizationID FROM Organization WHERE OrganizationID = (SELECT MAX(OrganizationID) FROM Organization)";
             using (SqlCommand command = new SqlCommand(getOrgID, connection))
             {
-                orgID = Convert.ToInt32(command.ExecuteNonQuery());
+                orgID = Convert.ToInt32(command.ExecuteScalar());
             }
 
             Contact newContact = new Contact(
@@ -104,10 +94,9 @@ public partial class VolunteerAddOrganization : System.Web.UI.Page
                 txtSecondaryPhone.Text,
                 orgID,
                 DateTime.Now,
-                "");
+                Session["UserFullName"].ToString());
 
             string newContactInsert = "INSERT INTO CONTACT (FirstName, LastName, Email, PrimaryPhoneNumber, SecondaryPhoneNumber, OrganizationID, LastUpdated, LastUpdatedBy) VALUES (@fName, @lName, @email, @primary, @secondary, @orgID, @lastUpdated, @lastUpdatedBy)";
-
 
             using (SqlCommand command = new SqlCommand(newContactInsert, connection))
             {
@@ -118,11 +107,12 @@ public partial class VolunteerAddOrganization : System.Web.UI.Page
                 command.Parameters.AddWithValue("@secondary", newContact.getSecondaryNumber());
                 command.Parameters.AddWithValue("@orgID", newContact.getOrgID());
                 command.Parameters.AddWithValue("@lastUpdated", newContact.getLastUpdated());
-                command.Parameters.AddWithValue("@lastUpdatedBy", Session["UserFullName"]);
+                command.Parameters.AddWithValue("@lastUpdatedBy", newContact.getLastUpdatedBy());
 
                 command.ExecuteNonQuery();
             }
         }
+        clearTextBox();
 
     }
 
@@ -131,5 +121,20 @@ public partial class VolunteerAddOrganization : System.Web.UI.Page
 
         Server.Transfer("OrganizationView.aspx", true);
 
+    }
+    protected void clearTextBox()
+    {
+        txtOrgName.Text = null;
+        txtStreet.Text = null;
+        drpCountry.Text = null;
+        drpState.Text = null;
+        txtCity.Text = null;
+        txtCounty.Text = null;
+        txtZipCode.Text = null;
+        txtFirstName.Text = null;
+        txtLastName.Text = null;
+        txtEmail.Text = null;
+        txtPrimaryPhone.Text = null;
+        txtSecondaryPhone.Text = null;
     }
 }

@@ -18,7 +18,7 @@ public partial class Animal : System.Web.UI.Page
     System.Data.SqlClient.SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
 
     public static Int32 id;
-
+    string ImageString;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -56,8 +56,9 @@ public partial class Animal : System.Web.UI.Page
 
 
            );
-
-
+        
+        FileUpload1.SaveAs(Server.MapPath("Images\\Animals\\" + FileUpload1.FileName));
+        ImageString = "~\\Images\\Animals\\" + FileUpload1.FileName;
         string creatAnimal = "Insert into [dbo].[Animal] values (@Species, @ScientificName, @AnimalName, @AnimalType, @Status, @Image, @LastUpdated, @LastUpdatedBy)";
         SqlCommand addAnimal = new SqlCommand(creatAnimal, sc);
         sc.Open();
@@ -68,7 +69,8 @@ public partial class Animal : System.Web.UI.Page
         addAnimal.Parameters.AddWithValue("@Status", newAnimal.getStatus());
         addAnimal.Parameters.AddWithValue("@LastUpdated", newAnimal.getLastUpdated());
         addAnimal.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"]);
-        addAnimal.Parameters.AddWithValue("@Image", DBNull.Value);
+        addAnimal.Parameters.AddWithValue("@Image", ImageString);
+        
         addAnimal.ExecuteNonQuery();
 
         txtAddName.Text = " ";

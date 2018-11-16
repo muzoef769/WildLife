@@ -13,7 +13,7 @@ public partial class Home : System.Web.UI.Page
 {
     System.Data.SqlClient.SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
 
-
+    string ImageString;
     protected void Page_Load(object sender, EventArgs e)
     {
         //lblCurrentMonth.Text = DateTime.Today.ToString("MM/dd/yyyy");
@@ -24,36 +24,36 @@ public partial class Home : System.Web.UI.Page
         //{
 
 
-            //try
-            //{
+        //try
+        //{
 
-            //    sc.Open();
-            //    System.Data.SqlClient.SqlCommand findType = new System.Data.SqlClient.SqlCommand();
-            //    findType.Connection = sc;
-            //    // SELECT PASSWORD STRING WHERE THE ENTERED USERNAME MATCHES
-            //    findType.CommandText = "select [UserType] from [dbo].[User] where Username = @Username AND UserType = @UserType";
+        //    sc.Open();
+        //    System.Data.SqlClient.SqlCommand findType = new System.Data.SqlClient.SqlCommand();
+        //    findType.Connection = sc;
+        //    // SELECT PASSWORD STRING WHERE THE ENTERED USERNAME MATCHES
+        //    findType.CommandText = "select [UserType] from [dbo].[User] where Username = @Username AND UserType = @UserType";
 
-            //    findType.Parameters.AddWithValue("@Username", Session["Username"]);
-            //    findType.Parameters.AddWithValue("@UserType", "Staff");
-
-
-            //    SqlDataReader reader = findType.ExecuteReader(); // create a reader
+        //    findType.Parameters.AddWithValue("@Username", Session["Username"]);
+        //    findType.Parameters.AddWithValue("@UserType", "Staff");
 
 
-            //    if (reader.HasRows) // if the username is an Admin, Create User button appears
-            //    {
-            //        while (reader.Read())
-            //        {
-            //            btnUser.Visible = true;
-            //        }
-            //    }
-            //    sc.Close();
-            //}
-            //catch
-            //{
-            //    sc.Close();
-            //    Response.Redirect("Error.aspx", false);
-            //}
+        //    SqlDataReader reader = findType.ExecuteReader(); // create a reader
+
+
+        //    if (reader.HasRows) // if the username is an Admin, Create User button appears
+        //    {
+        //        while (reader.Read())
+        //        {
+        //            btnUser.Visible = true;
+        //        }
+        //    }
+        //    sc.Close();
+        //}
+        //catch
+        //{
+        //    sc.Close();
+        //    Response.Redirect("Error.aspx", false);
+        //}
         //}
 
     }
@@ -76,10 +76,12 @@ public partial class Home : System.Web.UI.Page
            ddlAddType.SelectedValue.ToString(),
           ddlAddStatus.SelectedValue,
            DateTime.Today,
-           "Staff",
-           "~\\Images\\Animals\\default_bird.jpg"
+           "Staff"
+           
            );
 
+        FileUpload1.SaveAs(Server.MapPath("Images\\Animals\\" + FileUpload1.FileName));
+        ImageString = "~\\Images\\Animals\\" + FileUpload1.FileName;
 
         string creatAnimal = "Insert into [dbo].[Animal] values (@Species, @ScientificName, @AnimalName, @AnimalType, @Status, @Image, @LastUpdated, @LastUpdatedBy)";
         SqlCommand addAnimal = new SqlCommand(creatAnimal, sc);
@@ -89,47 +91,48 @@ public partial class Home : System.Web.UI.Page
         addAnimal.Parameters.AddWithValue("@AnimalName", newAnimal.getAnimalName());
         addAnimal.Parameters.AddWithValue("@AnimalType", newAnimal.getAnimalType());
         addAnimal.Parameters.AddWithValue("@Status", newAnimal.getStatus());
-        addAnimal.Parameters.AddWithValue("@Image",newAnimal.getImage());
         addAnimal.Parameters.AddWithValue("@LastUpdated", newAnimal.getLastUpdated());
         addAnimal.Parameters.AddWithValue("@LastUpdatedBy", newAnimal.getLastUpdatedBy());
-
+        addAnimal.Parameters.AddWithValue("@Image", ImageString);
         addAnimal.ExecuteNonQuery();
 
         txtAddName.Text = " ";
 
 
     }
-    
+
     protected void btnStatusUpdate_Click(object sender, EventArgs e)
     {
         try
         {
             foreach (GridViewRow row in statusGridView.Rows)
             {
-                CheckBox chkStatus = (row.Cells[4].FindControl("chkStatus") as CheckBox);
-                int userIDNo = Convert.ToInt32(row.Cells[0].Text);
+                CheckBox chkStatus = (row.Cells[3].FindControl("chkStatus") as CheckBox);
+                String userName = (row.Cells[2].Text);
                 if (chkStatus.Checked)
                 {
-                    updateRow(userIDNo, "Approved");
+                    updateRow(userName, "Approved");
                 }
-                else
-                {
-                    updateRow(userIDNo, "Not Approved");
-                }
+                //else
+                //{
+                //    updateRow(userName, "Not Approved");
+                //}
             }
         }
-        catch(Exception E)
+        catch (Exception)
         {
 
         }
     }
 
-    protected void updateRow(int userIDNo, string MarkStatus)
+    protected void updateRow(String userName, String MarkStatus)
     {
         sc.Close();
-        string updateStatus = "UPDATE [dbo].[User] SET UserStatus = '" + MarkStatus + "'WHERE userID =" + userIDNo;
+        string updateStatus = "UPDATE [dbo].[User] SET UserStatus = @MarkStatus WHERE Username = @Username";
         sc.Open();
         SqlCommand statusUpdate = new SqlCommand(updateStatus, sc);
+        statusUpdate.Parameters.AddWithValue("@MarkStatus", MarkStatus);
+        statusUpdate.Parameters.AddWithValue("@Username", userName);
         statusUpdate.ExecuteNonQuery();
         statusGridView.DataBind();
 

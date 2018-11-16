@@ -169,7 +169,8 @@
                             </asp:DropDownList>
                             <h4>Name: </h4>
                             <asp:TextBox ID="txtAddName" runat="server" CssClass="form-control" AutoCompleteType="Disabled" ReadOnly="False"></asp:TextBox>
-
+                            <h4>Add Image</h4>
+                            <asp:FileUpload ID="FileUpload1" runat="server" />
                             <br>
                         </div>
                         <!-- End  Description -->
