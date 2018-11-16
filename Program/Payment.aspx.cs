@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
@@ -11,6 +12,7 @@ using System.Web.UI.WebControls;
 
 public partial class Payment : System.Web.UI.Page
 {
+    private string SearchString = "";
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -100,5 +102,53 @@ public partial class Payment : System.Web.UI.Page
         }
 
         ExportToExcel(allInvGrid, "All");
+    }
+
+    protected void outInvGrid_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+
+        //int npID = Convert.ToInt32(outInvGrid.DataKeys[e.RowIndex].Values["NewProgramID"]);
+        //SqlCommand cmd = new SqlCommand("DELETE FROM XML WHERE Part_Numbber=" + Part_Numbber + "", con);
+        //con.Open();
+        //int temp = cmd.ExecuteNonQuery();
+        //if (temp == 1)
+        //{
+        //    lblMessage.Text = "Record deleted successfully";
+        //}
+        //con.Close();
+        //FillGrid();
+
+        //using (SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+        //{
+        //    string query = "DELETE FROM dbo.AssignInvoice where NewProgramID = @NewProgramID";
+        //    using (SqlCommand command = new SqlCommand(query, sc))
+        //    {
+        //        command.Parameters.Add("@NewProgramID", );
+        //        sc.Open();
+        //        command.ExecuteNonQuery();
+
+        //    }
+        //}
+        //outInvGrid.DataBind();
+    }
+
+    protected void btnFilter_Click(object sender, EventArgs e)
+    {
+        //  Set the value of the SearchString so it gets
+        SearchString = txtYear.Text;
+    }
+    public string HighlightText(string InputTxt)
+    {
+        string Search_Str = txtYear.Text;
+        // Setup the regular expression and add the Or operator.
+        Regex RegExp = new Regex(Search_Str.Replace(" ", "|").Trim(), RegexOptions.IgnoreCase);
+        // Highlight keywords by calling the
+        //delegate each time a keyword is found.
+        return RegExp.Replace(InputTxt, new MatchEvaluator(ReplaceKeyWords));
+    }
+
+    public string ReplaceKeyWords(Match m)
+    {
+        return ("<span class=highlight>" + m.Value + "</span>");
     }
 }
