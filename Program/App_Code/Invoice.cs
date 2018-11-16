@@ -12,7 +12,7 @@ public class Invoice
     private int invoiceID;
     private int newProgramID;
     private string invoiceNumber;
-    private int total;
+    private double total;
     private DateTime dateCreated;
     private string status;
 
@@ -22,17 +22,17 @@ public class Invoice
 
     //Invoice constructor
 
-    public Invoice(int newProgramID, int total, DateTime dateCreated, string status, DateTime lastUpdated, string lastUpdatedBy)
-    {
-        setNewProgramID(newProgramID);
-        setTotal(total);
-        setDateCreated(dateCreated);
-        setInvoiceStatus(status);
-        setLastUpdated(lastUpdated);
-        setLastUpdatedBy(lastUpdatedBy);
-    }
+    //public Invoice(int newProgramID, int total, DateTime dateCreated, string status, DateTime lastUpdated, string lastUpdatedBy)
+    //{
+    //    setNewProgramID(newProgramID);
+    //    setTotal(total);
+    //    setDateCreated(dateCreated);
+    //    setInvoiceStatus(status);
+    //    setLastUpdated(lastUpdated);
+    //    setLastUpdatedBy(lastUpdatedBy);
+    //}
 
-    public Invoice(string invoiceNumber, int total, DateTime dateCreated, string status, DateTime lastUpdated, string lastUpdatedBy)
+    public Invoice(string invoiceNumber, double total, DateTime dateCreated, string status, DateTime lastUpdated, string lastUpdatedBy)
     {
         this.invoiceNumber = invoiceNumber;
         this.total = total;
@@ -51,7 +51,7 @@ public class Invoice
     {
         return this.newProgramID;
     }
-    public int getTotal()
+    public double getTotal()
     {
         return this.total;
     }
@@ -85,7 +85,7 @@ public class Invoice
     {
         this.newProgramID = x;
     }
-    public void setTotal(int x)
+    public void setTotal(double x)
     {
         this.total = x;
     }

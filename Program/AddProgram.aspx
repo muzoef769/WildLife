@@ -95,7 +95,7 @@
 
                     <div class=" col-md-4">
                         <asp:Label ID="lblInvoice" runat="server" Text="Invoice Number: "></asp:Label>
-                         <asp:TextBox   runat="server" ></asp:TextBox>
+                         <asp:TextBox ID ="txtInvoiceNumber"  runat="server" ></asp:TextBox>
                   
                     </div>
 

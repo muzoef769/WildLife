@@ -14,6 +14,7 @@ public partial class AddProgram : System.Web.UI.Page
     double programCost;
     public double mileageCost;
     public double totalCost;
+    public double totalReal;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -435,25 +436,83 @@ public partial class AddProgram : System.Web.UI.Page
 
             }
 
-            connection.Close();
+            int miles;
+            if (programLoc.Visible == true)
+            {
+                miles = Convert.ToInt32(txtMileage.Text);
+                mileageCost = miles * .57;
+                lblMileageCost.Text = mileageCost.ToString();
+            }
+            else
+            {
+                miles = 0;
+            }
+
+            totalReal = Convert.ToDouble(lblSubtotalCost.Text) + mileageCost;
+        lblTotalCostPrice.Text = totalReal.ToString();
+             Invoice newInvoice = new Invoice(txtInvoiceNumber.Text, totalReal, Convert.ToDateTime(datepicker.Value), "Incompleted", DateTime.Today, "Raina");
+
+        string invoiceInsert = "Insert into Invoice([InvoiceNumber], [TotalCost], [DateCreated], [InvoiceStatus], [LastUpdated], [LastUpdatedBy])VALUES (" +
+               "@InvoiceNumber, @TotalCost, @DateCreated, @InvoiceStatus, @LastUpdated, @LastUpdatedBy)";
+
+        using (SqlCommand command = new SqlCommand(invoiceInsert, connection))
+        {
+
+
+            command.Parameters.AddWithValue("@InvoiceNumber", newInvoice.getInvoiceNumber());
+            command.Parameters.AddWithValue("@TotalCost", newInvoice.getTotal());
+            command.Parameters.AddWithValue("@DateCreated", newInvoice.getDateCreated());
+            command.Parameters.AddWithValue("@InvoiceStatus", newInvoice.getInvoiceStatus());
+            command.Parameters.AddWithValue("@LastUpdated", newInvoice.getLastUpdated());
+            command.Parameters.AddWithValue("@LastUpdatedBy", newInvoice.getLastUpdatedBy());
+
+            command.ExecuteNonQuery();
+
         }
 
-        int miles;
-        if (programLoc.Visible == true)
-        {
-            miles = Convert.ToInt32(txtMileage.Text);
-            mileageCost = miles * .57;
-            lblMileageCost.Text = mileageCost.ToString();
+
+            int newProgramID2;
+            string findProgramID2 = "Select NewProgramID from NewProgram where NewProgramID = (Select Max(NewProgramID) from NewProgram)";
+            using (SqlCommand command = new SqlCommand(findProgramID2, connection))
+            {
+
+                newProgramID2 = Convert.ToInt32(command.ExecuteScalar());
+            }
+
+            int invoiceID;
+            string findInvoiceID = "Select InvoiceID from Invoice where InvoiceID = (Select Max(InvoiceID) from Invoice)";
+            using (SqlCommand command = new SqlCommand(findInvoiceID, connection))
+            {
+
+                invoiceID = Convert.ToInt32(command.ExecuteScalar());
+            }
+            string assignInvoice = "Insert into AssignInvoice([InvoiceID], [NewProgramID], [LastUpdated], [LastUpdatedBy])VALUES (" +
+                  "@InvoiceID, @NewProgramID, @LastUpdated, @LastUpdatedBy)";
+
+
+            
+                using (SqlCommand command = new SqlCommand(assignInvoice, connection))
+                {
+                    command.Parameters.AddWithValue("@InvoiceID", invoiceID);
+                    command.Parameters.AddWithValue("@NewProgramID", newProgramID2);
+                    command.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
+                    command.Parameters.AddWithValue("@LastUpdatedBy", "Raina"); ///Need to change this
+
+                    command.ExecuteNonQuery();
+
+                }
+
+
+
+                connection.Close();
         }
-        else
-        {
-            miles = 0;
-        }
+
+       
 
 
         //lblSubtotalCost.Text = totalCost.ToString();
 
-        NewProgram.programList.Clear();
+        //NewProgram.programList.Clear();
 
 
 
@@ -493,10 +552,13 @@ public partial class AddProgram : System.Web.UI.Page
         }
         //totalCost = totalCost + mileageCost;
         //lblTotalCostPrice.Text = totalCost.ToString();
-        double totalReal;
-        totalReal = Convert.ToDouble(lblSubtotalCost.Text) + mileageCost;
-        lblTotalCostPrice.Text = totalReal.ToString();
+      
+      
         NewProgram.programList.Clear();
+        NewProgram.btnCount = 0;
+
+
+
 
     }
 
@@ -663,6 +725,39 @@ public partial class AddProgram : System.Web.UI.Page
     protected void Clear(object sender, EventArgs e)
     {
         NewProgram.programList.Clear();
+        lblCartTotal.Text = Convert.ToString(NewProgram.programList.Count);
         NewProgram.btnCount = 0;
+         programCost =0.0;
+     mileageCost =0.0;
+        lblMileageCost.Text = Convert.ToString(mileageCost);
+     totalCost =0.0;
+    totalReal =0.0;
+        lblSubtotalCost.Text = totalCost.ToString();
+    lblTotalCostPrice.Text = totalCost.ToString();
+        if (lblProgramOne.Visible==true)
+        {
+            lblProgramOne.Visible = false;
+            lblProgramCostOne.Visible = false;
+        }
+
+        if (lblProgramTwo.Visible == true)
+        {
+            lblProgramOne.Visible = false;
+            lblProgramCostOne.Visible = false;
+            lblProgramTwo.Visible = false;
+            lblProgramCostTwo.Visible = false;
+        }
+
+
+        if (lblProgramThree.Visible == true)
+        {
+            lblProgramOne.Visible = false;
+            lblProgramCostOne.Visible = false;
+            lblProgramTwo.Visible = false;
+            lblProgramCostTwo.Visible = false;
+            lblProgramThree.Visible = false;
+            lblProgramCostThree.Visible = false;
+        }
+
     }
 }
