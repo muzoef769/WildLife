@@ -15,6 +15,24 @@
 
 
   <div class="card-body container-fluid">
+      <li class="nav-item ml-auto">
+                    <asp:TextBox ID="txtSearchAll" Placeholder="Search by Org Name" runat="server" AutoPostBack="True"
+                                    OnTextChanged="txtSearchAll_TextChanged"></asp:TextBox>
+                    <asp:Button
+                        ID="btnSearchAll"
+                        runat="server" 
+                        CssClass="btn btn-success"
+                        Text="Search"
+                        OnClick="btnSearchAll_Click"/>
+                    <asp:Button
+                        ID="btnClearAll"
+                        CssClass="btn btn-warning"
+                        runat="server"
+                        Text="Clear"
+                        OnClick="btnClearAll_Click" />
+
+                </li>
+
 		</div>
     
         <br />
