@@ -13,7 +13,7 @@ public partial class Home : System.Web.UI.Page
 {
     System.Data.SqlClient.SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
 
-
+    string ImageString;
     protected void Page_Load(object sender, EventArgs e)
     {
         //lblCurrentMonth.Text = DateTime.Today.ToString("MM/dd/yyyy");
@@ -76,10 +76,12 @@ public partial class Home : System.Web.UI.Page
            ddlAddType.SelectedValue.ToString(),
           ddlAddStatus.SelectedValue,
            DateTime.Today,
-           "Staff",
-           "~\\Images\\Animals\\default_bird.jpg"
+           "Staff"
+           
            );
 
+        FileUpload1.SaveAs(Server.MapPath("Images\\Animals\\" + FileUpload1.FileName));
+        ImageString = "~\\Images\\Animals\\" + FileUpload1.FileName;
 
         string creatAnimal = "Insert into [dbo].[Animal] values (@Species, @ScientificName, @AnimalName, @AnimalType, @Status, @Image, @LastUpdated, @LastUpdatedBy)";
         SqlCommand addAnimal = new SqlCommand(creatAnimal, sc);
@@ -89,10 +91,9 @@ public partial class Home : System.Web.UI.Page
         addAnimal.Parameters.AddWithValue("@AnimalName", newAnimal.getAnimalName());
         addAnimal.Parameters.AddWithValue("@AnimalType", newAnimal.getAnimalType());
         addAnimal.Parameters.AddWithValue("@Status", newAnimal.getStatus());
-        addAnimal.Parameters.AddWithValue("@Image", newAnimal.getImage());
         addAnimal.Parameters.AddWithValue("@LastUpdated", newAnimal.getLastUpdated());
         addAnimal.Parameters.AddWithValue("@LastUpdatedBy", newAnimal.getLastUpdatedBy());
-
+        addAnimal.Parameters.AddWithValue("@Image", ImageString);
         addAnimal.ExecuteNonQuery();
 
         txtAddName.Text = " ";
