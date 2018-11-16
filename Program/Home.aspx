@@ -72,8 +72,7 @@
                         <div class="col-md-12 mx-auto">
                             <h4 class=" CardTitle WelcomeTitle d-flex justify-content-center ">Approve Volunteer Status</h4>
                         </div>
-                        <asp:UpdatePanel ID="statusPanhel" runat="server">
-                            <ContentTemplate>
+
                                 </div>
                         <div class="mx-auto table-responsive">
                             <asp:GridView ID="statusGridView" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1"
@@ -94,11 +93,7 @@
                                 </Columns>
                                 <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
                             </asp:GridView>
-                            </ContentTemplate>
-                            <%--                                                 <Triggers>
-                                                    <asp:AsyncPostBackTrigger ControlID="updatedStatus" EventName="SelectedIndexChanged" />
-                                                </Triggers>--%>
-                        </asp:UpdatePanel>
+
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>"
                             SelectCommand="SELECT [FirstName], [LastName], [Username] FROM [User] WHERE ([UserStatus] = @UserStatus) AND ([UserType] = @UserType)">
                             <SelectParameters>
