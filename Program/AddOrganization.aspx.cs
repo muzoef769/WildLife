@@ -17,16 +17,6 @@ public partial class AddOrganization : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (IsPostBack)
-        {
-            txtOrgName.Text = null;
-            txtStreet.Text = null;
-            drpCountry.Text = null;
-            drpState.Text = null;
-            txtCity.Text = null;
-            txtCounty.Text = null;
-            txtZipCode.Text = null;
-        }
     }
 
     protected void btnAddOrganization_Click(object sender, EventArgs e)
@@ -40,7 +30,9 @@ public partial class AddOrganization : System.Web.UI.Page
             txtZipCode.Text,
             "Organization",
             DateTime.Now,
-            "");
+            Session["UserFullName"].ToString());
+
+        
 
         using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
         {
@@ -57,7 +49,7 @@ public partial class AddOrganization : System.Web.UI.Page
                 command.Parameters.AddWithValue("@ZipCode", newAddress.getZipCode());
                 command.Parameters.AddWithValue("@AddressType", newAddress.getAddressType());
                 command.Parameters.AddWithValue("@LastUpdated", newAddress.getLastUpdated());
-                command.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"].ToString());
+                command.Parameters.AddWithValue("@LastUpdatedBy", newAddress.getLastUpdatedBy());
 
                 command.ExecuteNonQuery();
 
@@ -75,7 +67,6 @@ public partial class AddOrganization : System.Web.UI.Page
                   DateTime.Now,
                   Session["UserFullName"].ToString()
                   );
-
             string organizationInsert = "INSERT INTO ORGANIZATION (OrganizationName, AddressID, LastUpdated, LastUpdatedBy) VALUES (@OrgName, @AddressID, @LastUpdated, @LastUpdatedBy)";
 
             using (SqlCommand command = new SqlCommand(organizationInsert, connection))
@@ -121,6 +112,8 @@ public partial class AddOrganization : System.Web.UI.Page
                 command.ExecuteNonQuery();
             }
         }
+        clearTextBox();
+
     }
 
     protected void btnReturn_Click(object sender, EventArgs e)
@@ -128,5 +121,20 @@ public partial class AddOrganization : System.Web.UI.Page
 
         Server.Transfer("OrganizationView.aspx", true);
 
+    }
+    protected void clearTextBox()
+    {
+        txtOrgName.Text = null;
+        txtStreet.Text = null;
+        drpCountry.Text = null;
+        drpState.Text = null;
+        txtCity.Text = null;
+        txtCounty.Text = null;
+        txtZipCode.Text = null;
+        txtFirstName.Text = null;
+        txtLastName.Text = null;
+        txtEmail.Text = null;
+        txtPrimaryPhone.Text = null;
+        txtSecondaryPhone.Text = null;
     }
 }

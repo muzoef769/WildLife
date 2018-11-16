@@ -23,7 +23,6 @@ public class Organization
         this.LastUpdatedBy = lastUpdatedBy;
     }
 
-    public int OrgID { get => orgID; set => orgID = value; }
     public string OrgName { get => orgName; set => orgName = value; }
     public int AddressID { get => addressID; set => addressID = value; }
     public DateTime LastUpdated { get => lastUpdated; set => lastUpdated = value; }
