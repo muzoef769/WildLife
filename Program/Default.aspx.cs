@@ -34,35 +34,6 @@ public partial class Default : System.Web.UI.Page
 
     protected void btnLogin_Click(object sender, EventArgs e)
     {
-        //try
-        //{
-        //    //connect to database to retrieve stored password string
-
-        //    myConnection.Open();
-        //    System.Data.SqlClient.SqlCommand getUserType = new System.Data.SqlClient.SqlCommand();
-        //    getUserType.Connection = myConnection;
-
-        //    getUserType.CommandText = "SELECT UserType from [dbo].[User] where Username = @Username";
-        //    getUserType.Parameters.AddWithValue("@Username", txtUsername.Text);
-        //    SqlDataReader typeReader = getUserType.ExecuteReader();
-        //    //userType = Convert.ToString(getUserType.ExecuteScalar());
-
-        //    while (typeReader.Read())
-        //    {
-        //        Session["UserType"] = typeReader["UserType"].ToString();
-        //    }
-        //}
-        //catch (Exception E)
-        //{
-
-        //}
-        //finally
-        //{
-        //    myConnection.Close();
-        //}
-
-        //try
-        //{
         SqlConnection sc = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString);
 
         sc.Open();
@@ -76,21 +47,6 @@ public partial class Default : System.Web.UI.Page
 
         System.Data.SqlClient.SqlCommand getVolunteer = new System.Data.SqlClient.SqlCommand();
 
-
-        //getUserType.CommandText = "SELECT UserType from [dbo].[User] where Username = @Username";
-        //getUserType.Parameters.AddWithValue("@Username", txtUsername.Text);
-
-        //Session["UserType"] = getUserType.ExecuteScalar().ToString();
-        //SqlDataReader typeReader = getUserType.ExecuteReader();
-        //userType = Convert.ToString(getUserType.ExecuteScalar());
-
-        //while (typeReader.Read())
-        //{
-        //    Session["UserType"] = typeReader["UserType"].ToString();
-        //}
-
-        //if ((string)Session["UserType"] == "Volunteer")
-        //{
         if (reader.HasRows) // if the username exists, it will continue
         {
 
@@ -196,17 +152,18 @@ public partial class Default : System.Web.UI.Page
     {
 
 
-        User newUser = new User(
+        Users newUser = new Users(
            txtNewUsername.Text,
            txtFirstName.Text,
             txtLastName.Text,
             rdoPosition.SelectedValue,
             "Not Approved",
             DateTime.Now,
-            txtNewUsername.Text
+            txtNewUsername.Text,
+            txtEmail.Text
             );
 
-        String myQuery = "INSERT INTO [WildlifeCenter].[dbo].[User] (FirstName, LastName, Username, UserType, UserStatus, LastUpdated, LastUpdatedBy) VALUES (@firstName, @lastName, @userName, @userType, @status, @lastUpdated, @lastUpdatedBy)";
+        String myQuery = "INSERT INTO [WildlifeCenter].[dbo].[User] (FirstName, LastName, Username, UserType, UserStatus, LastUpdated, LastUpdatedBy, Email) VALUES (@firstName, @lastName, @userName, @userType, @status, @lastUpdated, @lastUpdatedBy, @Email)";
 
         try
         {
@@ -220,6 +177,7 @@ public partial class Default : System.Web.UI.Page
             myCommand.Parameters.AddWithValue("@status", newUser.getStatus());
             myCommand.Parameters.AddWithValue("@lastUpdated", newUser.getLastUpdated());
             myCommand.Parameters.AddWithValue("@lastUpdatedBy", newUser.getLastUpdatedBy());
+            myCommand.Parameters.AddWithValue("@Email", newUser.getEmail());
 
             myCommand.ExecuteNonQuery();
 
@@ -233,15 +191,9 @@ public partial class Default : System.Web.UI.Page
         {
             myConnection.Close();
         }
+
         try
         {
-
-            //myConnection.Open();
-
-            //String myQuery2 = "SELECT MAX([UserID]) FROM [WildlifeCenter].[dbo].[User]";
-            //SqlCommand myCommand2 = new SqlCommand(myQuery2, myConnection);
-            //myCommand2.ExecuteNonQuery();
-
 
             myConnection.Close();
 
@@ -287,10 +239,13 @@ public partial class Default : System.Web.UI.Page
                     connection.Open();
                     string fullName = Convert.ToString(command.ExecuteScalar());
                     return fullName;
-
                 }
             }
         }
+    protected void PasswordReset(object sender, EventArgs e)
+    {
+        Response.Redirect("PasswordReset.aspx", false);
+    }
 
 
 }
