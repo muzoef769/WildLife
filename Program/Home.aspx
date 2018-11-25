@@ -44,19 +44,10 @@
                                 <a class="btn btn-primary d-flex  mx-auto btn-block justify-content-center btn btn-success" style="width: 140px !important;" href="Program.aspx" role="button">View Programs</a>
                             </div>
 
-
-
-
                         </div>
-
                     </div>
 
-
                 </div>
-
-
-
-
             </div>
         </div>
 
