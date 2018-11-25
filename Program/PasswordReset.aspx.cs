@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 using System.Net.Mail;
+using System.Text;
 
 public partial class PasswordReset : System.Web.UI.Page
 {
@@ -17,54 +18,63 @@ public partial class PasswordReset : System.Web.UI.Page
 
     }
 
-    //protected void btnPass_Click(object sender, EventArgs e)
-    //{
-    //    using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
-    //    {
-    //        string select = "SELECT FirstName FROM Contact WHERE Email = @Email";
-    //        connection.Open();
-    //        using (SqlCommand command = new SqlCommand())
-    //        {
-    //            command.Connection = connection;
-    //            command.CommandType = CommandType.Text;
-    //            command.CommandText = select;
-
-    //            SqlParameter email = new SqlParameter("@Email", SqlDbType.VarChar, 50);
-    //            email.Value = txtEmail.Text.Trim().ToString();
-    //            command.Parameters.Add(email);
-
-    //            DataSet dsPwd = new DataSet();
-    //            SqlDataAdapter adapter = new SqlDataAdapter(command);
-    //            adapter.Fill(dsPwd);
-    //            connection.Close();
-
-    //            if (dsPwd.Tables[0].Rows.Count > 0)
-    //            {
-    //                MailMessage loginInfo = new MailMessage();
-    //                loginInfo.To.Add(txtEmail.Text.ToString());
-    //                loginInfo.From = new MailAddress("fernando.muzo895@gmail.com");
-    //                loginInfo.Subject = "Wildlife Center - Password Reset Link";
-
-    //                loginInfo.Body = "First Name: " + dsPwd.Tables[0].Rows[0]["FirstName"];
-
-    //                loginInfo.IsBodyHtml = true;
-    //                SmtpClient smtp = new SmtpClient();
-    //                smtp.Host = "smtp.outlook-office365.com";
-    //                smtp.Port = 587;
-    //                smtp.EnableSsl = true;
-    //                smtp.Credentials = new System.Net.NetworkCredential("muzoef@dukes.jmu.edu", "%$RNGR_grp16%");
-    //                smtp.Send(loginInfo);
-    //                lblMessage.Text = "Password was sent!";
-    //            }
-    //            else
-    //            {
-    //                lblMessage.Text = "Email Address not registered.";
-    //            }
-    //        }
-    //    }
-    //}
-    protected void PasswordRecovery1_SendingEmai(object sender, EventArgs e)
+    protected void btnPass_Click(object sender, EventArgs e)
     {
+       using(SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+        {
+            SqlCommand cmd = new SqlCommand("[dbo].[spResetPassword]",connection);
+            cmd.CommandType = CommandType.StoredProcedure;
 
+            SqlParameter paramUserName = new SqlParameter("@UserName", txtUserName.Text);
+            cmd.Parameters.Add(paramUserName);
+
+            connection.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (Convert.ToBoolean(reader["ReturnCode"]))
+                {
+                    SendPasswordResetEmail(reader["Email"].ToString(), txtUserName.Text, reader["UniqueId"].ToString());
+                    lblMessage.Text = "An email with instructions to reset your password is sent to your email.";
+                }
+                else
+                {
+                    lblMessage.ForeColor = System.Drawing.Color.Red;
+                    lblMessage.Text = "UserName not found!";
+                }
+            }
+        }
+    }
+    protected void SendPasswordResetEmail(string ToEmail, string UserName, string UniqueId)
+    {
+        MailMessage mailMessage = new MailMessage("fernando.muzo895@gmail.com", ToEmail);
+        Users.USER_NAME = UserName;
+
+        StringBuilder emailBody = new StringBuilder();
+
+        emailBody.Append("Dear " + UserName + ", <br /><br />");
+        emailBody.Append("Please click on the following link to reset your password.");
+        emailBody.Append("<br />");
+        emailBody.Append("http://localhost:55158/ResetPasswordPage.aspx?uid=" + UniqueId);
+        emailBody.Append("<br /><br />");
+        emailBody.Append("<br/>Very respectfully,<br />");
+        emailBody.Append("<b>K&B Consulting</b>");
+
+        mailMessage.IsBodyHtml = true;
+
+        mailMessage.Body = emailBody.ToString();
+        mailMessage.Subject = "Reset Password";
+        SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+
+        client.UseDefaultCredentials = false;
+        client.Credentials = new System.Net.NetworkCredential()
+        {
+            UserName = "KandBConsulting484@gmail.com",
+            Password = "#CIS484#wildlife"
+
+        };
+        
+        client.EnableSsl = true;
+        client.Send(mailMessage);
     }
 }

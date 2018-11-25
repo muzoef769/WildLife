@@ -31,7 +31,7 @@
                         <a class="btn btn-success btn-block" data-toggle="modal" data-target="#RegisterModal" href="index.html" role="button" runat="server">Register
                         </a>
                     </div>
-                    <asp:Button ID="btnPass" runat="server" OnClick="PasswordReset" Text="Password Reset" CausesValidation="true" UseSubmitBehavior="false"/>
+                    <%--<asp:Button ID="btnPass" runat="server" OnClick="PasswordReset" Text="Password Reset" CausesValidation="true" UseSubmitBehavior="false"/>--%>
                 </div>
             </div>
         </div>
@@ -59,6 +59,13 @@
 
                                         </div>
                                     </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-label-group">
+                                            <asp:TextBox ID="txtEmail" class="form-control" placeholder="Email" required="required" runat="server" MaxLength="50"></asp:TextBox>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="form-group">
