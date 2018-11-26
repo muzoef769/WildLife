@@ -31,6 +31,9 @@
                         <a class="btn btn-success btn-block" data-toggle="modal" data-target="#RegisterModal" href="index.html" role="button" runat="server">Register
                         </a>
                     </div>
+                    <div class="align-content-center">
+                        <asp:Button ID="Button1" runat="server" CssClass="btn btn-success btn-block" OnClick="PasswordReset" Text="Password Reset" CausesValidation="true" UseSubmitBehavior="false" />
+                    </div>
                     <%--<asp:Button ID="btnPass" runat="server" OnClick="PasswordReset" Text="Password Reset" CausesValidation="true" UseSubmitBehavior="false"/>--%>
                 </div>
             </div>
