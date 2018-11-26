@@ -62,7 +62,7 @@
 
                                         </div>
                                     </div>
-
+                                    <br />
                                     <div class="col-md-6">
                                         <div class="form-label-group">
                                             <asp:TextBox ID="txtEmail" class="form-control" placeholder="Email" required="required" runat="server" MaxLength="50"></asp:TextBox>

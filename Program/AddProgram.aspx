@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="AddProgram.aspx.cs" Inherits="AddProgram" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="AddProgram.aspx.cs" Inherits="AddProgram" EnableEventValidation = "false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
 
@@ -12,7 +12,7 @@
 	
 
     <div>
-        
+       
     <div class="row">
     <%--Program container--%>
        
@@ -25,11 +25,11 @@
 
             </h4>
             <div id ="programOne"  runat="server" visible="false">
-            <p><a href="#"><asp:Label ID ="lblProgramOne" runat="server" Text="Program One"></asp:Label></a> <span class="price">
+            <p><a href="#"  data-toggle="modal" data-target="#EditProgramOne"><asp:Label ID ="lblProgramOne" runat="server" Text="Program One"></asp:Label></a> <span class="price">
                 <asp:Label ID="lblProgramCostOne" runat="server" Text="70"></asp:Label></span></p>
                 </div>
             <div id ="programTwo"  runat="server" visible="false">
-            <p><a href="#"><asp:Label ID ="lblProgramTwo" runat="server" Text="Program Two"></asp:Label></a> <span class="price">
+            <p><a href="#"  data-toggle="modal" data-target="#EditProgramTwo"><asp:Label ID ="lblProgramTwo" runat="server" Text="Program Two"></asp:Label></a> <span class="price">
                 <asp:Label ID="lblProgramCostTwo" runat="server" Text="70"></asp:Label></span></p>
                 </div>
             <div id="programThree"  runat="server" visible="false">
@@ -43,21 +43,34 @@
                 <span class="price" style="color: black"><b>$
                     <asp:Label ID="lblSubtotalCost" runat="server" Text="0"></asp:Label></b></span>
             </p>
-
-            <p>
-                <asp:Label ID="lblMileage" runat="server" Text="Mileage Cost"></asp:Label>
+            <asp:Updatepanel ID="cartUp" runat="server">
+           <ContentTemplate>
+            <p><a href="#"  data-toggle="modal" data-target="#EditMileageCost">
+                <asp:Label ID="lblMileage" runat="server" Text="Mileage Cost"></asp:Label></a>
+                
                 <span class="price" style="color: black"><b>$
-                    <asp:Label ID="lblMileageCost" runat="server" Text="0"></asp:Label></b></span>
+                    <asp:Label ID="lblMileageCost" runat="server" Text="0" ></asp:Label></b></span>
             </p>
-            
+             </ContentTemplate>
+           <Triggers>
+              <asp:AsyncPostBackTrigger ControlID="txtMileage" EventName="TextChanged" />
+                 </Triggers>
+           </asp:Updatepanel> 
             <p>
-               
+               <asp:UpdatePanel ID="UpTotal" runat="server">
+                   <ContentTemplate>
                 <asp:Label ID="lblTotalCost" runat="server" Text="Total Cost"></asp:Label>
                 <span class="price" style="color: black"><b>$
                     <asp:Label ID="lblTotalCostPrice" runat="server" Text="0"></asp:Label></b></span>
             </p>
+                       </ContentTemplate>
+                   <Triggers>
+              <asp:AsyncPostBackTrigger ControlID="txtMileage" EventName="TextChanged" />
+                 </Triggers>
+            </asp:UpdatePanel>
         </div>
 </div>
+             
     <div class="SimpleContainer col-sm-12 col-xs-12 col-md-8 col-lg-8 col-xl-8" style="z-index: 100;">
         
         <div>
@@ -79,10 +92,11 @@
                                                 
                     <asp:DropDownList ID="drpOrganizationList" runat="server"  CssClass="btn btn-default btn-sm dropdown-toggle" AppendDataBoundItems="True" DataSourceID="SqlDataSource3" DataTextField="OrganizationName" DataValueField="OrganizationID" OnSelectedIndexChanged="DrpOrganizationList_IndexChanged" AutoPostBack="true">
 
-                        <asp:ListItem Text="Select an Organization"></asp:ListItem>
+                        <asp:ListItem Value="0" Text="Select an Organization"></asp:ListItem>
                     </asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT OrganizationName, OrganizationID FROM Organization"></asp:SqlDataSource>
-
+                         <asp:RequiredFieldValidator ID="orgValidator" runat="server" ControlToValidate="drpOrganizationList" 
+                            InitialValue="0" ErrorMessage="*" ForeColor ="Red" ValidationGroup="addProgram"></asp:RequiredFieldValidator>
                        </div>
 
 
@@ -121,31 +135,44 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-4 ">
+
                                        <label>Select Program </label>
+                                     <asp:RequiredFieldValidator ID="prgValidator" runat="server" ControlToValidate="drpProgramList" 
+                            InitialValue="0"  ErrorMessage="*" ForeColor ="Red" ValidationGroup="addProgram"></asp:RequiredFieldValidator>
                                     <asp:DropDownList ID="drpProgramList" runat="server" CssClass="btn btn-light dropdown-toggle" DataSourceID="SqlDataSource1" DataTextField="ProgramName" DataValueField="ProgramID" AppendDataBoundItems="True" OnSelectedIndexChanged="DrpProgramList_SelectedIndexChanged" AutoPostBack="true">
 
-                                        <asp:ListItem Text="Program Name"></asp:ListItem>
+                                        <asp:ListItem Value="0" Text="Select a Program Name"></asp:ListItem>
+
                                     </asp:DropDownList>
+                                    
                                 </div>
+                                
                                  </div>
+                           
                             <br />
                             <div class="row">
                                 
                                 <div class="col-md-4">
                                        <label>Select a Location Type </label>
+                                    <asp:RequiredFieldValidator ID="locationValidator" runat="server" ControlToValidate="drpLocationTypeList" 
+                            InitialValue="0" ErrorMessage="*" ForeColor ="Red" ValidationGroup="addProgram"></asp:RequiredFieldValidator>
                                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT [ProgramID], [ProgramName] FROM [Program]"></asp:SqlDataSource>
 
                                     <asp:DropDownList ID="drpLocationTypeList" runat="server" CssClass="btn  btn-light dropdown-toggle" AutoPostBack="true" OnSelectedIndexChanged="drpLocationTypeList_SelectedIndexChanged">
-                                        <asp:ListItem Text="Location Type"></asp:ListItem>
+                                        <asp:ListItem Value ="0" Text="Select a Location Type"></asp:ListItem>
                                         <asp:ListItem Value="Onsite" Text="Onsite"></asp:ListItem>
                                         <asp:ListItem Value="Offsite" Text="Offsite"></asp:ListItem>
                                         <asp:ListItem Value="Online" Text="Online"></asp:ListItem>
                                     </asp:DropDownList>
+
+                                    
                                 </div>
                                 <div class="col-md-4 mx-auto  Spacing">
                                    <label>Date </label>
 
                                     <input runat="server" clientidmode="Static" width="100%" type="date" id="datepicker">
+                                    <asp:RequiredFieldValidator ID ="dateValidator" runat="server" ControlToValidate="datepicker"
+                                        ErrorMessage ="*" ForeColor="Red" ValidationGroup="addProgram"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
                             <br />
@@ -154,23 +181,30 @@
                                     <label>Program Time: </label> &nbsp&nbsp
                                     <asp:TextBox ID="programTime" runat="server" type="time" step="900" min="8:00" max="17:00"></asp:TextBox>
 
-
+                                    <asp:RequiredFieldValidator ID="timeValidator" runat="server" ControlToValidate="programTime" 
+                             ErrorMessage="*" ForeColor ="Red" ValidationGroup="addProgram"></asp:RequiredFieldValidator>
                                 </div>
 
 
 
                                 <div class="col-md-4 mx-auto  Spacing">
                                     <label>Adults </label>
+                                     <asp:RequiredFieldValidator ID="adultsValidator" runat="server" ControlToValidate="txtAdults" 
+                             ErrorMessage="*" ForeColor ="Red" ValidationGroup="addProgram"></asp:RequiredFieldValidator>
                                     <asp:TextBox ID="txtAdults" runat="server" Width="100%"></asp:TextBox>
-
+                                    
                                 </div>
 
 
                                 <div class="col-md-4 mx-auto  Spacing">
                                     <label>Children </label>
+
                                     <asp:TextBox ID="txtKids" runat="server" Width="100%" ></asp:TextBox>
+                                    
+                                   
+                                    <label>ProgramOne </label>
 
-
+                                    <asp:TextBox ID="TextBox1" runat="server" Width="100%" ></asp:TextBox>
                                 </div>
                             </div>
                             <br />
@@ -247,8 +281,7 @@
 
 
                                     <asp:DropDownList ID="drpAgeLevel" runat="server">
-                                        <asp:ListItem>Grade Level</asp:ListItem>
-                                        <asp:ListItem>1st Grade</asp:ListItem>
+                                        <asp:ListItem Value ="0" Text ="Select an Age Level"></asp:ListItem>                                        <asp:ListItem>1st Grade</asp:ListItem>
                                         <asp:ListItem>2nd Grade</asp:ListItem>
                                         <asp:ListItem>3rd Grade</asp:ListItem>
                                         <asp:ListItem>4th Grade</asp:ListItem>
@@ -267,10 +300,14 @@
                                         <asp:ListItem>Familes</asp:ListItem>
                                         <asp:ListItem>Adults Only</asp:ListItem>
                                     </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="ageValidator" runat="server" ControlToValidate="drpAgeLevel" 
+                            InitialValue="0"  ErrorMessage="*" ForeColor ="Red" ValidationGroup="addProgram"></asp:RequiredFieldValidator>
                                 </div>
 
                                 <div class="col-md-4 mx-auto Spacing">
                                      <label>Select Educators </label>
+                                    <asp:CustomValidator ID="CustomValidator1" ErrorMessage="*"
+    ClientValidationFunction="ValidateCheckBoxList" ValidationGroup="addProgram" runat="server" ForeColor="Red" />
                                     <div class="border" style="overflow-y: scroll; width: 200px; height: 200px">
                                         <asp:CheckBoxList ID="CheckBoxList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="name" DataValueField="UserID"></asp:CheckBoxList>
                                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT UserID, CONCAT(FirstName, ' ', LastName) as name FROM [User] "></asp:SqlDataSource>
@@ -290,7 +327,7 @@
                             <br />
                             <div class="row">
                                 <div class="col-6  mx-auto  text-center">
-                                    <asp:Button ID="Button2" runat="server" CssClass="btn btn-success" Text="Add Program" OnClick="BtnAddProgram_Click" />
+                                    <asp:Button ID="Button2" runat="server" CssClass="btn btn-success" Text="Add Program" OnClick="BtnAddProgram_Click" ValidationGroup="addProgram" />
 
                                 </div>
                             </div>
@@ -337,7 +374,7 @@
                                                 <asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
 
                                             </div>
-
+                                           
                                         </div>
 
 
@@ -348,7 +385,7 @@
                                             <div class="form-group col-md-6">
                                                 <asp:TextBox ID="txtLastName" runat="server"></asp:TextBox>
                                             </div>
-
+                                           
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
@@ -357,7 +394,7 @@
                                             <div class="form-group  col-md-6">
                                                 <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
                                             </div>
-
+                                         
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
@@ -366,8 +403,7 @@
                                             <div class="form-group  col-md-6">
                                                 <asp:TextBox ID="txtPrimaryNumber" runat="server"></asp:TextBox>
                                             </div>
-
-                                        </div>
+                                           
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label for="txtSecondaryNumber" class="label-style">Secondary Phone </label>
@@ -375,7 +411,7 @@
                                             <div class="form-group  col-md-6">
                                                 <asp:TextBox ID="txtSecondaryNumber" runat="server"></asp:TextBox>
                                             </div>
-
+                                           
                                         </div>
                                 </ContentTemplate>
                                 <Triggers>
@@ -466,7 +502,7 @@
                                             <label for="txtMileage" class="label-style">Mileage</label>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <asp:TextBox ID="txtMileage" runat="server" ></asp:TextBox>
+                                            <asp:TextBox ID="txtMileage" runat="server" OnTextChanged="txtMileage_TextChanged" AutoPostBack="true"></asp:TextBox>
                                         </div>
                                     </div>
 
@@ -492,7 +528,7 @@
 
         <div class="row">
             <div class="col-md-4 mx-auto d-flex justify-content-center Spacing">
-                <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-success" OnClick="SubmitProgram" />
+                <input type="button" ID="btnSubmit" runat="server"  value="Submit" Class="btn btn-success"   onserverclick="SubmitProgram" data-toggle="modal" data-target="#Confirmation" />
                 
 
             </div>
@@ -518,11 +554,143 @@
 
 
     <!-- end container -->
+    <%--Program One Modal--%>
+       <div class="modal" id="EditProgramOne" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Program One</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body p-4" id="resultAdd">
+
+
+
+                    <div class="row  ">
+
+                        <div class=" col-md-8">
+            
+                            <h4>Program Cost: </h4>
+                            <asp:TextBox ID="txtProgramCostOne" runat="server" CssClass="form-control" AutoCompleteType="Disabled" ReadOnly="False" PlaceHolder="Enter Cost"></asp:TextBox>
+                            <br>
+                        </div>
+                        <!-- End  Description -->
+
+
+                    </div>
+                    <div class="row">
+                        <br>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-2">
+                            <asp:Button ID="btnUpdateProgramOne" runat="server" Text="Update" Class="btn btn-success FormButton" UseSubmitBehavior="false" OnClick="btnUpdatePrgOne_Click"></asp:Button>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <%--                    <button type="button" data-toggle="modal" data-target="#EditModal" class="btn btn-secondary" data-dismiss="modal">Edit</button>--%>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <%--Program One Modal--%>
+       <div class="modal" id="EditMileageCost" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Mileage Cost</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body p-4" id="mileageMod">
+
+
+
+                    <div class="row  ">
+
+                        <div class=" col-md-8">
+            
+                            <h4>Mileage Cost: </h4>
+                            <asp:TextBox ID="txtEditMileage" runat="server" CssClass="form-control" AutoCompleteType="Disabled" ReadOnly="False" PlaceHolder="Enter Mileage Cost"></asp:TextBox>
+                            <br>
+                        </div>
+                        <!-- End  Description -->
+
+
+                    </div>
+                    <div class="row">
+                        <br>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-2">
+                            <asp:Button ID="btnUpdateMileage" runat="server" Text="Update" Class="btn btn-success FormButton" UseSubmitBehavior="false" OnClick="btnUpdateMileage_Click"></asp:Button>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <%--                    <button type="button" data-toggle="modal" data-target="#EditModal" class="btn btn-secondary" data-dismiss="modal">Edit</button>--%>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
 
 
+
+
+
+
+ <%--Program One Modal--%>
+       <div class="modal" id="Confirmation" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmation Page</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body p-4" id="confirmationMod">
+
+
+
+                    <div class="row  ">
+
+                        <h5>Successfully Created Invoice</h5>
+                    </div>
+                    
+                    <div class="row">
+
+                       
+
+
+
+                    
+
+                </div>
+                <div class="modal-footer">
+                    <%--                    <button type="button" data-toggle="modal" data-target="#EditModal" class="btn btn-secondary" data-dismiss="modal">Edit</button>--%>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <script>
         //uses classList, setAttribute, and querySelectorAll
         //if you want this to work in IE8/9 youll need to polyfill these
@@ -594,5 +762,20 @@
 
 
     </script>
+     <script type="text/javascript">
+    function ValidateCheckBoxList(sender, args) {
+        var checkBoxList = document.getElementById("<%=CheckBoxList1.ClientID %>");
+        var checkboxes = checkBoxList.getElementsByTagName("input");
+        var isValid = false;
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                isValid = true;
+                break;
+            }
+        }
+        args.IsValid = isValid;
+    }
+</script>
+   
 </asp:Content>
 

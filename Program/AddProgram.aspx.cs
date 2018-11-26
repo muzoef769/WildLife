@@ -314,7 +314,16 @@ public partial class AddProgram : System.Web.UI.Page
                     command.Parameters.AddWithValue("@adult", NewProgram.programList[j].getNumAdults());
                     command.Parameters.AddWithValue("@totalpeople", NewProgram.programList[j].getTotalPeople());
                     command.Parameters.AddWithValue("@age", NewProgram.programList[j].getAgeLevel());
-                    command.Parameters.AddWithValue("@mileage", NewProgram.programList[j].getTotalMileage());
+                    if (programLoc.Visible == true)
+                    {
+                        command.Parameters.AddWithValue("@mileage", Convert.ToInt32(txtMileage.Text));
+
+                        
+                    }
+                    else if (programLoc.Visible ==false)
+                    {
+                        command.Parameters.AddWithValue("@mileage", NewProgram.programList[j].getTotalMileage());
+                    }
                     command.Parameters.AddWithValue("@status", NewProgram.programList[j].getProgramStatus());
                     command.Parameters.AddWithValue("@time", NewProgram.programList[j].getTimeSlot());
                     command.Parameters.AddWithValue("@complete", NewProgram.programList[j].getDateCompleted());
@@ -436,21 +445,22 @@ public partial class AddProgram : System.Web.UI.Page
 
             }
 
-            int miles;
-            if (programLoc.Visible == true)
-            {
-                miles = Convert.ToInt32(txtMileage.Text);
-                mileageCost = miles * .57;
-                lblMileageCost.Text = mileageCost.ToString();
-            }
-            else
-            {
-                miles = 0;
-            }
-
-            totalReal = Convert.ToDouble(lblSubtotalCost.Text) + mileageCost;
-        lblTotalCostPrice.Text = totalReal.ToString();
-             Invoice newInvoice = new Invoice(txtInvoiceNumber.Text, totalReal, Convert.ToDateTime(datepicker.Value), "Incompleted", DateTime.Today, "Raina");
+            //int miles;
+            //if (programLoc.Visible == true)
+            //{
+            //    miles = Convert.ToInt32(txtMileage.Text);
+            //    mileageCost = miles * .57;
+            //    lblMileageCost.Text = mileageCost.ToString();
+            //}
+            //else
+            //{
+            //    miles = 0;
+            //}
+            totalReal = Convert.ToDouble(lblTotalCostPrice.Text);
+            //lblTotalCostPrice.Text = totalReal.ToString();
+            //totalReal = Convert.ToDouble(lblSubtotalCost.Text) + mileageCost;
+            //lblTotalCostPrice.Text = totalReal.ToString();
+            Invoice newInvoice = new Invoice(txtInvoiceNumber.Text, totalReal, Convert.ToDateTime(datepicker.Value), "Incompleted", DateTime.Today, "Raina");
 
         string invoiceInsert = "Insert into Invoice([InvoiceNumber], [TotalCost], [DateCreated], [InvoiceStatus], [LastUpdated], [LastUpdatedBy])VALUES (" +
                "@InvoiceNumber, @TotalCost, @DateCreated, @InvoiceStatus, @LastUpdated, @LastUpdatedBy)";
@@ -562,9 +572,27 @@ public partial class AddProgram : System.Web.UI.Page
 
     }
 
+
+
+    protected void btnUpdatePrgOne_Click(object sender, EventArgs e)
+    {
+        NewProgram.programList[0].setPrgCost(Convert.ToDouble(txtProgramCostOne.Text));
+        //lblProgramCostOne.Text = NewProgram.programList[0].getPrgCost().ToString("C");
+        //lblSubtotalCost.Text = totalCost.ToString();
+        //totalCost += mileageCost;
+        //lblTotalCostPrice.Text = totalCost.ToString();
+        //Page.DataBind();
+        
+
+
+
+    }
+
+
+
+
     protected void BtnAddProgram_Click(object sender, EventArgs e)
     {
-
         programID = Convert.ToInt32(drpOrganizationList.SelectedValue); /*Grab ProgramID*/
 
         int totalPeople;
@@ -597,14 +625,15 @@ public partial class AddProgram : System.Web.UI.Page
                 programCost = 160.00;
             }
         }
+        if (Page.IsValid) { 
         NewProgram newProgram = new NewProgram(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
-                totalPeople, drpAgeLevel.SelectedValue, "Completed", Convert.ToDateTime(programTime.Text),
+                totalPeople, drpAgeLevel.SelectedValue, "Paid", Convert.ToDateTime(programTime.Text),
                 Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
                 programID, DateTime.Now, Session["UserFullName"].ToString(), programCost);
 
         NewProgram.programList.Add(newProgram);
 
-
+            }
 
 
 
@@ -674,6 +703,8 @@ public partial class AddProgram : System.Web.UI.Page
         totalCost += mileageCost;
         lblTotalCostPrice.Text = totalCost.ToString();
         NewProgram.btnCount += 1;
+        TextBox1.Text = NewProgram.programList[0].getPrgCost().ToString();
+
 
     }
 
@@ -689,6 +720,15 @@ public partial class AddProgram : System.Web.UI.Page
             programLoc.Visible = true;
         }
     }
+
+  
+
+    protected void btnUpdateMileage_Click(object sender, EventArgs e)
+    {
+        mileageCost = Convert.ToDouble(txtEditMileage.Text);
+        //lblMileageCost.Text = mileageCost.ToString();
+    }
+
 
     protected void Clear(object sender, EventArgs e)
     {
@@ -727,5 +767,22 @@ public partial class AddProgram : System.Web.UI.Page
             lblProgramCostThree.Visible = false;
         }
 
+    }
+
+    protected void txtMileage_TextChanged(object sender, EventArgs e)
+    {
+        int miles;
+        if (programLoc.Visible == true)
+        {
+            miles = Convert.ToInt32(txtMileage.Text);
+            mileageCost = miles * .57;
+            lblMileageCost.Text = mileageCost.ToString();
+        }
+        else
+        {
+            miles = 0;
+        }
+        totalReal = Convert.ToDouble(lblSubtotalCost.Text) + mileageCost;
+        lblTotalCostPrice.Text = totalReal.ToString();
     }
 }
