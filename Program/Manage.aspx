@@ -202,11 +202,11 @@
                                             <ContentTemplate>
                                                 <asp:DropDownList runat="server" ID="ddlStatus" OnSelectedIndexChanged="Unnamed_SelectedIndexChanged"
                                                     CssClass=" btn-sm text-center" AutoPostBack="true">
-                                                    <asp:ListItem Value =""></asp:ListItem>
-                                                    <asp:ListItem>Active</asp:ListItem>
-                                                    <asp:ListItem>Inactive</asp:ListItem>
-                                                    <asp:ListItem>Temporarily Inactive</asp:ListItem>
-                                                    <asp:ListItem>Not Approved</asp:ListItem>
+                                                    <asp:ListItem Value = ""></asp:ListItem>
+                                                    <asp:ListItem Value="Active">Active</asp:ListItem>
+                                                    <asp:ListItem Value="Inactive">Inactive</asp:ListItem>
+                                                    <asp:ListItem Value="Temporarily Inactive">Temporarily Inactive</asp:ListItem>
+                                                    <asp:ListItem Value="Not Approved">Not Approved</asp:ListItem>
                                                 </asp:DropDownList>
                                             </ContentTemplate>
                                             <Triggers>
