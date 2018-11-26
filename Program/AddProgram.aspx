@@ -109,6 +109,8 @@
 
                     <div class=" col-md-4">
                         <asp:Label ID="lblInvoice" runat="server" Text="Invoice Number: "></asp:Label>
+                        <asp:RequiredFieldValidator ID ="RequiredFieldValidator1" runat="server" ControlToValidate="txtInvoiceNumber"
+                                        ErrorMessage ="*" ForeColor="Red" ValidationGroup="addProgram"></asp:RequiredFieldValidator>
                          <asp:TextBox ID ="txtInvoiceNumber"  runat="server" ></asp:TextBox>
                   
                     </div>
@@ -189,8 +191,7 @@
 
                                 <div class="col-md-4 mx-auto  Spacing">
                                     <label>Adults </label>
-                                     <asp:RequiredFieldValidator ID="adultsValidator" runat="server" ControlToValidate="txtAdults" 
-                             ErrorMessage="*" ForeColor ="Red" ValidationGroup="addProgram"></asp:RequiredFieldValidator>
+                                    kellyandtheboys484#
                                     <asp:TextBox ID="txtAdults" runat="server" Width="100%"></asp:TextBox>
                                     
                                 </div>
