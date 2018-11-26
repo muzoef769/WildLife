@@ -341,7 +341,7 @@ public partial class AddProgram : System.Web.UI.Page
                 using (SqlCommand command = new SqlCommand(findProgramID, connection))
                 {
 
-                    newProgramID = Convert.ToInt32(command.ExecuteScalar());
+                    newProgramID = Convert.ToInt32(findProgramID);
                 }
 
 

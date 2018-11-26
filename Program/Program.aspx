@@ -89,7 +89,7 @@
                     <div class="row mx-auto d-flex justify-content-center ">
                         <div class="col-xl-7 col-lg-12 col-md-12 col-s-12 ">
                              <asp:GridView ID="GridView5" runat="server"
-                                HeaderStyle-ForeColor="Black" DateKeyNames="NewProgramID"
+                                HeaderStyle-ForeColor="Black" DateKeyNames="NewProgramID" EnableSortingAndPagingCallbacks="true"
                                 ItemStyle-ForeColor="black" AutoGenerateColumns="False" CssClass="  table table-condensed table-bordered table-hover AnimalCard"
                                 DataSourceID="SqlDataSource1" BackColor="White" HorizontalAlign="Left "
                                 AllowSorting="True" OnRowDataBound="GridView1_RowDataBound1" OnSelectedIndexChanged="GridView5_SelectedIndexChanged">
@@ -155,6 +155,9 @@
                                     <asp:Parameter Name="LastUpdatedBy2" Type="String" />
                                 </UpdateParameters>
                             </asp:SqlDataSource>
+
+                            <br />
+                            <asp:Button id="allButton" class=" btn btn-success" runat="server" OnClick="allButton_Click" Text="Export To Excel"></asp:Button>
                         </div>
                     </div>
                 </div>
@@ -165,7 +168,7 @@
                     <div class="row mx-auto d-flex justify-content-center ">
                         <div class="col-xl-7 col-lg-12 col-md-12 col-s-12 ">
                             <asp:GridView ID="GridView1" runat="server"
-                                HeaderStyle-ForeColor="black" DataKeyNames="NewProgramID"
+                                HeaderStyle-ForeColor="black" DataKeyNames="NewProgramID" EnableSortingAndPagingCallbacks="true"
                                 ItemStyle-ForeColor="black" AutoGenerateColumns="False" CssClass="  table table-condensed table-bordered table-hover AnimalCard"
                                 DataSourceID="ProgramSQL" BackColor="White" HorizontalAlign="Left"
                                 AllowSorting="True" OnRowDataBound="GridView1_RowDataBound1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
@@ -194,6 +197,9 @@
                                 OldValuesParameterFormatString="original_{0}"
                                 SelectCommand="SELECT Program.ProgramName, Program.ProgramCost, NewProgram.LocationType, NewProgram.TotalPeople, Format(NewProgram.DateCompleted, 'MM/dd/yyyy') as 'DateCompleted', NewProgram.NewProgramID FROM Program INNER JOIN NewProgram ON Program.ProgramID = NewProgram.ProgramID WHERE upper(NewProgram.LocationType)='ONLINE' ORDER BY NewProgram.DateCompleted DESC"
                                 UpdateCommand="UPDATE [Program] SET [ProgramName] = @ProgramName1 AND [ProgramType] = @ProgramType1 AND [ProgramCost] = @ProgramCost1 AND [Capacity] = @Capacity1 AND [LastUpdated] = @LastUpdated1 AND [LastUpdatedBy] = @LastUpdatedBy1 WHERE [ProgramID] = @ProgramID2 AND [ProgramName] = @ProgramName2 AND [ProgramType] = @ProgramType2 AND [ProgramCost] = @ProgramCost2 AND [Capacity] = @Capacity2 AND [LastUpdated] = @LastUpdated2 AND [LastUpdatedBy] = @LastUpdatedBy2">
+                                <FilterParameters>
+                                    <asp:ControlParameter Name="ProgramName" ControlID="txtSearchAll" PropertyName="Text" />
+                                </FilterParameters>
                                 <DeleteParameters>
                                     <asp:Parameter Name="original_ProgramID" Type="Int32" />
                                     <asp:Parameter Name="original_ProgramName" Type="String" />
@@ -227,6 +233,8 @@
                                     <asp:Parameter Name="LastUpdatedBy2" Type="String" />
                                 </UpdateParameters>
                             </asp:SqlDataSource>
+                            <br />
+                            <asp:Button id="onlineButton" class=" btn btn-success" runat="server" OnClick="onlineButton_Click" Text="Export To Excel"></asp:Button>
                         </div>
                     </div>
                 </div>
@@ -236,7 +244,7 @@
                     <div class="row mx-auto d-flex justify-content-center">
                         <div class="col-xl-7 col-lg-12 col-md-12 col-s-12">
                             <asp:GridView ID="GridView3" runat="server"
-                                HeaderStyle-ForeColor="Black" DateKeyNames="NewProgramID"
+                                HeaderStyle-ForeColor="Black" DateKeyNames="NewProgramID" EnableSortingAndPagingCallbacks="true"
                                 ItemStyle-ForeColor="black" AutoGenerateColumns="False" CssClass="  table table-condensed table-bordered table-hover AnimalCard"
                                 DataSourceID="ProgramSQL1" BackColor="White" HorizontalAlign="Left"
                                 AllowSorting="True" OnRowDataBound="GridView1_RowDataBound1" OnSelectedIndexChanged="GridView3_SelectedIndexChanged">
@@ -265,7 +273,9 @@
                                 OldValuesParameterFormatString="original_{0}"
                                 SelectCommand="SELECT Program.ProgramName, Program.ProgramCost, NewProgram.LocationType, NewProgram.TotalPeople, Format(NewProgram.DateCompleted, 'MM/dd/yyyy') as 'DateCompleted', NewProgram.NewProgramID FROM Program INNER JOIN NewProgram ON Program.ProgramID = NewProgram.ProgramID WHERE upper(NewProgram.LocationType)='ONSITE' ORDER BY NewProgram.DateCompleted DESC"
                                 UpdateCommand="UPDATE [Program] SET [ProgramName] = @ProgramName1 AND [ProgramType] = @ProgramType1 AND [ProgramCost] = @ProgramCost1 AND [Capacity] = @Capacity1 AND [LastUpdated] = @LastUpdated1 AND [LastUpdatedBy] = @LastUpdatedBy1 WHERE [ProgramID] = @ProgramID2 AND [ProgramName] = @ProgramName2 AND [ProgramType] = @ProgramType2 AND [ProgramCost] = @ProgramCost2 AND [Capacity] = @Capacity2 AND [LastUpdated] = @LastUpdated2 AND [LastUpdatedBy] = @LastUpdatedBy2">
-
+                                <FilterParameters>
+                                    <asp:ControlParameter Name="ProgramName" ControlID="txtSearchAll" PropertyName="Text" />
+                                </FilterParameters>
                                 <DeleteParameters>
                                     <asp:Parameter Name="original_ProgramID" Type="Int32" />
                                     <asp:Parameter Name="original_ProgramName" Type="String" />
@@ -299,6 +309,8 @@
                                     <asp:Parameter Name="LastUpdatedBy2" Type="String" />
                                 </UpdateParameters>
                             </asp:SqlDataSource>
+                            <br />
+                            <asp:Button id="onsiteButton" class=" btn btn-success" runat="server" OnClick="onsiteButton_Click" Text="Export To Excel"></asp:Button>
                         </div>
                     </div>
                 </div>
@@ -308,7 +320,7 @@
                     <div class="row mx-auto d-flex justify-content-center">
                         <div class="col-xl-7 col-lg-12 col-md-12 col-s-12">
                             <asp:GridView ID="GridView4" runat="server"
-                                HeaderStyle-ForeColor="Black" DateKeyNames="NewProgramID"
+                                HeaderStyle-ForeColor="Black" DateKeyNames="NewProgramID" EnableSortingAndPagingCallbacks="true"
                                 ItemStyle-ForeColor="black" AutoGenerateColumns="False" CssClass="  table table-condensed table-bordered table-hover AnimalCard"
                                 DataSourceID="ProgramSQL2" BackColor="White" HorizontalAlign="Left"
                                 AllowSorting="True" OnRowDataBound="GridView1_RowDataBound1" OnSelectedIndexChanged="GridView4_SelectedIndexChanged">
@@ -337,7 +349,9 @@
                                 OldValuesParameterFormatString="original_{0}"
                                 SelectCommand="SELECT Program.ProgramName, Program.ProgramCost, NewProgram.LocationType, NewProgram.TotalPeople, Format(NewProgram.DateCompleted, 'MM/dd/yyyy') as 'DateCompleted', NewProgram.NewProgramID FROM Program INNER JOIN NewProgram ON Program.ProgramID = NewProgram.ProgramID WHERE upper(NewProgram.LocationType)='OFFSITE' ORDER BY NewProgram.DateCompleted DESC"
                                 UpdateCommand="UPDATE [Program] SET [ProgramName] = @ProgramName1 AND [ProgramType] = @ProgramType1 AND [ProgramCost] = @ProgramCost1 AND [Capacity] = @Capacity1 AND [LastUpdated] = @LastUpdated1 AND [LastUpdatedBy] = @LastUpdatedBy1 WHERE [ProgramID] = @ProgramID2 AND [ProgramName] = @ProgramName2 AND [ProgramType] = @ProgramType2 AND [ProgramCost] = @ProgramCost2 AND [Capacity] = @Capacity2 AND [LastUpdated] = @LastUpdated2 AND [LastUpdatedBy] = @LastUpdatedBy2">
-
+                                <FilterParameters>
+                                    <asp:ControlParameter Name="ProgramName" ControlID="txtSearchAll" PropertyName="Text" />
+                                </FilterParameters>
                                 <DeleteParameters>
                                     <asp:Parameter Name="original_ProgramID" Type="Int32" />
                                     <asp:Parameter Name="original_ProgramName" Type="String" />
@@ -371,6 +385,8 @@
                                     <asp:Parameter Name="LastUpdatedBy2" Type="String" />
                                 </UpdateParameters>
                             </asp:SqlDataSource>
+                            <br />
+                            <asp:Button id="offsiteButton" class=" btn btn-success" runat="server" OnClick="offsiteButton_Click" Text="Export To Excel"></asp:Button>
                         </div>
                     </div>
                 </div>

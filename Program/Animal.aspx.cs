@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Web.Configuration;
 using System.Drawing;
-
+using System.IO;
 
 public partial class Animal : System.Web.UI.Page
 {
@@ -206,23 +206,34 @@ public partial class Animal : System.Web.UI.Page
 
 
     }
+    public override void VerifyRenderingInServerForm(Control control)
+    {
+        /* Verifies that the control is rendered */
+    }
 
+    protected void ExportToExcel(GridView grid, string prefix)
+    {
+        Response.Clear();
+        Response.Buffer = true;
+        Response.ClearContent();
+        Response.ClearHeaders();
+        Response.Charset = "";
+        string FileName = prefix + "Animals" + DateTime.Now + ".xls";
+        StringWriter strwritter = new StringWriter();
+        HtmlTextWriter htmltextwrtter = new HtmlTextWriter(strwritter);
+        Response.Cache.SetCacheability(HttpCacheability.NoCache);
+        Response.ContentType = "application/vnd.ms-excel";
+        Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName);
+        grid.GridLines = GridLines.Both;
+        grid.HeaderStyle.Font.Bold = true;
+        grid.RenderControl(htmltextwrtter);
+        Response.Write(strwritter.ToString());
+        Response.End();
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    protected void animalButton_Click(object sender, EventArgs e)
+    {
+        ExportToExcel(GridView1, "");
+    }
 }
 

@@ -59,7 +59,7 @@
         
         <div class="row mx-auto ">
             <div class="col-xl-8 col-lg-12 col-md-12 col-s-12 ">
-                <asp:GridView ID="GridView1" runat="server" HeaderStyle-ForeColor="black" ItemStyle-ForeColor="black" AutoGenerateColumns="False" DataKeyNames="AnimalID"
+                <asp:GridView ID="GridView1" runat="server" EnableSortingAndPagingCallbacks="true" HeaderStyle-ForeColor="black" ItemStyle-ForeColor="black" AutoGenerateColumns="False" DataKeyNames="AnimalID"
                     Class="  table table-condensed table-bordered table-hover AnimalCard" DataSourceID="AnimalSQL" BackColor="White" HorizontalAlign="Left"
                     OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowSorting="True" Width="900px" Height="600px" OnRowDataBound="GridView1_RowDataBound1">
 
@@ -82,7 +82,9 @@
 
 <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
                 </asp:GridView>
+                <asp:Button id="animalButton" class=" btn btn-success" runat="server" OnClick="animalButton_Click" Text="Export To Excel"></asp:Button>
             </div>
+            
 
 
 
