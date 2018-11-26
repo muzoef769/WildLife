@@ -60,7 +60,7 @@
                                             <br />
 
                                             <br />
-                                            <asp:Button ID="Button2" runat="server"
+                                            <asp:LinkButton ID="Button2" runat="server" PostBackUrl="#scrollSpot"
                                                 CssClass="btn btn-success"
                                                 UseSubmitBehavior="false"
                                                 CauseValidation="true"
@@ -89,7 +89,7 @@
                                             <br />
                                             <br />
 
-                                            <asp:Button ID="Button3" runat="server"
+                                            <asp:LinkButton ID="Button3" runat="server" PostBackUrl="#scrollSpot"
                                                 CssClass="btn btn-success"
                                                 UseSubmitBehavior="false"
                                                 CauseValidation="true"
@@ -135,7 +135,7 @@
                                             </asp:DropDownList>
                                             <br />
                                             <br />
-                                            <asp:Button ID="Button4" runat="server"
+                                            <asp:LinkButton ID="Button4" runat="server" PostBackUrl="#scrollSpot"
                                                 CssClass="btn btn-success"
                                                 UseSubmitBehavior="false"
                                                 CauseValidation="true"
@@ -151,7 +151,7 @@
 
                                 <div class="col-lg-6 col-md- 6 col-s-12 col-xl-6">
                                     <div class="card mx-auto AnimalReportCard">
-                                        <div class="card-body">
+                                        <div id="scrollSpot" class="card-body">
                                             <h5 class="card-title">Annual Animal Report</h5>
                                             <p>
                                                 Annual Animal Report displays all birds, mammals,
@@ -166,7 +166,7 @@
                                             </asp:DropDownList>
                                             <br />
                                             <br />
-                                            <asp:Button ID="Button5" runat="server"
+                                            <asp:LinkButton ID="Button5" runat="server" PostBackUrl="#scrollSpot"
                                                 CssClass="btn btn-success"
                                                 UseSubmitBehavior="false"
                                                 CauseValidation="true"
