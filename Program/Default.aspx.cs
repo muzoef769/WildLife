@@ -151,72 +151,108 @@ public partial class Default : System.Web.UI.Page
     protected void btnRegister_Click(object sender, EventArgs e)
     {
 
+        //Page.Validate();
 
-        Users newUser = new Users(
-           txtNewUsername.Text,
-           txtFirstName.Text,
-            txtLastName.Text,
-            rdoPosition.SelectedValue,
-            "Not Approved",
-            DateTime.Now,
-            txtNewUsername.Text,
-            txtEmail.Text
-            );
-
-        String myQuery = "INSERT INTO [WildlifeCenter].[dbo].[User] (FirstName, LastName, Username, UserType, UserStatus, LastUpdated, LastUpdatedBy, Email) VALUES (@firstName, @lastName, @userName, @userType, @status, @lastUpdated, @lastUpdatedBy, @Email)";
-
-        try
-        {
-            myConnection.Open();
-
-            SqlCommand myCommand = new SqlCommand(myQuery, myConnection);
-            myCommand.Parameters.AddWithValue("@firstName", newUser.getFirstName());
-            myCommand.Parameters.AddWithValue("@lastName", newUser.getLastName());
-            myCommand.Parameters.AddWithValue("@userName", newUser.getUserName());
-            myCommand.Parameters.AddWithValue("@userType", newUser.getUserType());
-            myCommand.Parameters.AddWithValue("@status", newUser.getStatus());
-            myCommand.Parameters.AddWithValue("@lastUpdated", newUser.getLastUpdated());
-            myCommand.Parameters.AddWithValue("@lastUpdatedBy", newUser.getLastUpdatedBy());
-            myCommand.Parameters.AddWithValue("@Email", newUser.getEmail());
-
-            myCommand.ExecuteNonQuery();
-
-
-        }
-        catch (Exception E)
-        {
-
-        }
-        finally
-        {
-            myConnection.Close();
-        }
-
+        //if (Page.IsValid)
+        //{
+        //    COMMIT VALUES
         try
         {
 
-            myConnection.Close();
+            ViewState["password"] = txtConfirmPassword.Value;
 
-            Password newPassword = new Password(
-                newUser.getUserID(),
-                txtNewUsername.Text,
-                "PBKDF2");
+            String strGetUser = "Select UserID from [dbo].[User] where Username = @Username";
 
-            String myQuery3 = "INSERT INTO [WildlifeCenter].[dbo].[Password] (UserId, Username, PasswordHash) VALUES ((SELECT MAX([UserID]) FROM [WildlifeCenter].[dbo].[User]), @Username, @PasswordHash)";
+            // CHECK FOR EXISTING USERNAMES IN USER RECORD
+            using (SqlCommand getUser = new SqlCommand(strGetUser, myConnection))
+            {
+                myConnection.Open();
+                getUser.Parameters.AddWithValue("@Username", txtNewUsername.Text);
+                SqlDataReader reader = getUser.ExecuteReader();
 
-            myConnection.Open();
+                // if the username exists, process will stop
+                if (reader.HasRows)
+                {
 
-            SqlCommand myCommand3 = new SqlCommand(myQuery3, myConnection);
-            //myCommand3.Parameters.AddWithValue("@UserID", newPassword.getUserID());
-            myCommand3.Parameters.AddWithValue("@Username", newPassword.getUserName());
-            myCommand3.Parameters.AddWithValue("@PasswordHash", PasswordHash.HashPassword(txtNewPassword.Value));
+                    txtNewUsername.Text = null;
+                    txtNewUsername.Text = "Username Already Exists!";
+                    
+
+                }
+
+                // if the username doesn't exist, it will show failure
+                else
+                {
+                    myConnection.Close();
+                    Users newUser = new Users(
+                    txtNewUsername.Text,
+                    txtFirstName.Text,
+                    txtLastName.Text,
+                    rdoPosition.SelectedValue,
+                    "InActive",
+                    DateTime.Now,
+                    txtNewUsername.Text,
+                    "user@gmail.com"
+                    );
+
+                    String myQuery = "INSERT INTO [WildlifeCenter].[dbo].[User] (FirstName, LastName, Username, UserType, UserStatus, LastUpdated, LastUpdatedBy) VALUES (@firstName, @lastName, @userName, @userType, @status, @lastUpdated, @lastUpdatedBy)";
+
+                    try
+                    {
+                        myConnection.Open();
+
+                        SqlCommand myCommand = new SqlCommand(myQuery, myConnection);
+                        myCommand.Parameters.AddWithValue("@firstName", newUser.getFirstName());
+                        myCommand.Parameters.AddWithValue("@lastName", newUser.getLastName());
+                        myCommand.Parameters.AddWithValue("@userName", newUser.getUserName());
+                        myCommand.Parameters.AddWithValue("@userType", newUser.getUserType());
+                        myCommand.Parameters.AddWithValue("@status", newUser.getStatus());
+                        myCommand.Parameters.AddWithValue("@lastUpdated", newUser.getLastUpdated());
+                        myCommand.Parameters.AddWithValue("@lastUpdatedBy", newUser.getLastUpdatedBy());
+
+                        myCommand.ExecuteNonQuery();
 
 
-            myCommand3.ExecuteNonQuery();
+                    }
+                    catch (Exception E)
+                    {
+
+                    }
+
+                    try
+                    {
+
+                        myConnection.Close();
+
+                        Password newPassword = new Password(
+                            newUser.getUserID(),
+                            txtNewUsername.Text,
+                            "PBKDF2");
+
+                        String myQuery3 = "INSERT INTO [WildlifeCenter].[dbo].[Password] (UserId, Username, PasswordHash) VALUES ((SELECT MAX([UserID]) FROM [WildlifeCenter].[dbo].[User]), @Username, @PasswordHash)";
+
+                        myConnection.Open();
+
+                        SqlCommand myCommand3 = new SqlCommand(myQuery3, myConnection);
+                        //myCommand3.Parameters.AddWithValue("@UserID", newPassword.getUserID());
+                        myCommand3.Parameters.AddWithValue("@Username", newPassword.getUserName());
+                        myCommand3.Parameters.AddWithValue("@PasswordHash", PasswordHash.HashPassword(txtNewPassword.Value));
+
+
+                        myCommand3.ExecuteNonQuery();
+                    }
+                    catch (Exception E)
+                    {
+                        txtNewUsername.Text = E.ToString();
+                    }
+
+                }
+            }
         }
+
         catch (Exception E)
         {
-            txtNewUsername.Text = E.ToString();
+
         }
         finally
         {
@@ -229,20 +265,25 @@ public partial class Default : System.Web.UI.Page
             rdoPosition.Text = null;
         }
     }
-        protected string findFullName(string username)
+
+
+
+    protected string findFullName(string username)
+    {
+        using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
         {
-            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+            string query = "SELECT FirstName + ' ' + LastName as FullName FROM dbo.[User] where Username = '" + username + "'";
+            using (SqlCommand command = new SqlCommand(query, connection))
             {
-                string query = "SELECT FirstName + ' ' + LastName as FullName FROM dbo.[User] where Username = '" + username + "'";
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    connection.Open();
-                    string fullName = Convert.ToString(command.ExecuteScalar());
-                    return fullName;
-                }
+                connection.Open();
+                string fullName = Convert.ToString(command.ExecuteScalar());
+                return fullName;
+
             }
         }
-    protected void PasswordReset(object sender, EventArgs e)
+    }
+
+protected void PasswordReset(object sender, EventArgs e)
     {
         Response.Redirect("PasswordReset.aspx", false);
     }
