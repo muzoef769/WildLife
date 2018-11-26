@@ -28,7 +28,7 @@
                             <br />
 
                             <br />
-                            <asp:Button ID="btnSearchByDate" runat="server"
+                            <asp:LinkButton ID="btnSearchByDate" runat="server" PostBackUrl="#scrollSpot"
                                 CssClass="btn btn-success"
                                 UseSubmitBehavior="false"
                                 CauseValidation="true"
@@ -57,7 +57,7 @@
                             <br />
                             <br />
 
-                            <asp:Button ID="Button1" runat="server"
+                            <asp:LinkButton ID="Button1" runat="server" PostBackUrl="#scrollSpot"
                                 CssClass="btn btn-success"
                                 UseSubmitBehavior="false"
                                 CauseValidation="true"
@@ -103,7 +103,7 @@
                             </asp:DropDownList>
                             <br />
                             <br />
-                            <asp:Button ID="btnGenerateMonthReport" runat="server"
+                            <asp:LinkButton ID="btnGenerateMonthReport" runat="server" PostBackUrl="#scrollSpot"
                                 CssClass="btn btn-success"
                                 UseSubmitBehavior="false"
                                 CauseValidation="true"
@@ -119,7 +119,7 @@
 
                 <div class="col-lg-6 col-md- 6 col-s-12 col-xl-6">
                     <div class="card mx-auto AnimalReportCard">
-                        <div class="card-body">
+                        <div id="scrollSpot" class="card-body">
                             <h5 class="card-title">Annual Animal Report</h5>
                             <p>
                                 Annual Animal Report displays all birds, mammals,
@@ -134,7 +134,7 @@
                             </asp:DropDownList>
                             <br />
                             <br />
-                            <asp:Button ID="btnGenerateAnnualReport" runat="server"
+                            <asp:LinkButton ID="btnGenerateAnnualReport" runat="server" PostBackUrl="#scrollSpot"
                                 CssClass="btn btn-success"
                                 UseSubmitBehavior="false"
                                 CauseValidation="true"
@@ -157,7 +157,7 @@
     <div class="table-responsive PaymentContainer  " style="background-color: transparent; padding-top: 0% !important;">
         <div class="row mx-auto ">
             <div class="col-xl-8 col-lg-12 col-md-12 col-s-12 ">
-                <div class="col-xl-7 col-lg-12 col-md-12 col-s-12">
+                <div id="genGrid" class="col-xl-7 col-lg-12 col-md-12 col-s-12">
                     <asp:GridView ID="grdViewReport" Class=" table table-condensed table-bordered table-hover AnimalCard" AllowSorting="true" onsorting="grdViewReport_Sorting" runat="server">
                         <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
                     </asp:GridView>
