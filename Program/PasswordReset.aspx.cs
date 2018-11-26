@@ -54,11 +54,13 @@ public partial class PasswordReset : System.Web.UI.Page
 
         emailBody.Append("Dear " + UserName + ", <br /><br />");
         emailBody.Append("Please click on the following link to reset your password.");
-        emailBody.Append("<br />");
+        emailBody.Append("<br /><br />");
         emailBody.Append("http://localhost:55158/ResetPasswordPage.aspx?uid=" + UniqueId);
         emailBody.Append("<br /><br />");
         emailBody.Append("<br/>Very respectfully,<br />");
+        emailBody.Append("<b>Edwin Fernando Muzo - Project Manager</b><br />");
         emailBody.Append("<b>K&B Consulting</b>");
+
 
         mailMessage.IsBodyHtml = true;
 
