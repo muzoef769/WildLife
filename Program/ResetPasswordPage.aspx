@@ -7,7 +7,7 @@
     <br />
     <br />
     <fieldset class="text-white">
-        <asp:Label ID="lblPass" runat="server" Text="New Password: " CssClass="bg-white"></asp:Label>
+        <asp:Label ID="lblPass" runat="server" Text="New Password: " ></asp:Label>
         <asp:TextBox ID="txtPass" runat="server" TextMode="Password"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RV1"
             runat="server"
@@ -21,7 +21,7 @@
         </asp:RegularExpressionValidator>
         <br />
         <br />
-        <asp:Label ID="lblConfirmPass" runat="server" Text="Confirm Password: " CssClass="bg-white"></asp:Label>
+        <asp:Label ID="lblConfirmPass" runat="server" Text="Confirm Password: "></asp:Label>
         <asp:TextBox ID="txtConfirmPass" runat="server" TextMode="Password"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RV2"
             runat="server"
