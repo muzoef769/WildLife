@@ -15,6 +15,7 @@ public partial class AnimalReport : System.Web.UI.Page
     static int Month;
     protected void Page_Load(object sender, EventArgs e)
     {
+        
     }
     protected void SearchByDate(object sender, EventArgs e)
     {
@@ -68,6 +69,7 @@ public partial class AnimalReport : System.Web.UI.Page
                 sda.Fill(data);
                 this.grdViewReport.DataSource = data;
                 grdViewReport.DataBind();
+                ViewState["dtbl"] = data;
             }
         }
     }
@@ -100,5 +102,32 @@ public partial class AnimalReport : System.Web.UI.Page
                 grdViewReport.DataBind();
             }
         }
+    }
+
+    protected void grdViewReport_Sorting(object sender, GridViewSortEventArgs e)
+    {
+        DataTable dataTable = ViewState["dtbl"] as DataTable;
+        if (dataTable != null)
+        {
+            DataView dataView = new DataView(dataTable);
+            dataView.Sort = e.SortExpression + " " + ConvertSortDirection(e.SortDirection);
+            grdViewReport.DataSource = dataView;
+            grdViewReport.DataBind();
+        }
+    }
+    private string ConvertSortDirection(SortDirection sortDirection)
+    {
+        string newSortDirection = String.Empty;
+        switch (sortDirection)
+        {
+            case SortDirection.Ascending:
+                newSortDirection = "ASC";
+                break;
+            case SortDirection.Descending:
+                newSortDirection = "DESC";
+                break;
+        }
+
+        return newSortDirection;
     }
 }

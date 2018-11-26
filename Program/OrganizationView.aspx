@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="OrganizationView.aspx.cs" Inherits="OrganizationView" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="OrganizationView.aspx.cs" Inherits="OrganizationView" EnableEventValidation="false"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
@@ -40,7 +40,7 @@
  <div class="row mx-auto ">
             <div class="col-xl-12 col-lg-12 col-md-12 col-s-12 ">
                         
-              <asp:GridView ID="grdOrganizations"    HeaderStyle-ForeColor="black" Class =" table table-condensed table-bordered table-hover AnimalCard" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowSorting="True" >
+              <asp:GridView ID="grdOrganizations" EnableSortingAndPagingCallbacks="true"  HeaderStyle-ForeColor="black" Class =" table table-condensed table-bordered table-hover AnimalCard" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowSorting="True" >
    
                   <Columns>
         <asp:BoundField DataField="OrganizationName"  HeaderText="Organization Name" SortExpression="OrganizationName" />
@@ -54,7 +54,7 @@
                  <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
         
               </asp:GridView>
-         
+         <asp:Button id="orgButton" class=" btn btn-success" runat="server" OnClick="orgButton_Click" Text="Export To Excel"></asp:Button>
       </div>
            </div> </div>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>" SelectCommand="SELECT Organization.OrganizationName, Address.Street, Address.State, Address.County, (Contact.FirstName + ' '+  Contact.LastName) AS Name, Contact.Email, Contact.PrimaryPhoneNumber

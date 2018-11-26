@@ -5,12 +5,15 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class SimpleReport : System.Web.UI.Page
 {
+    private string SearchString = "";
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -34,12 +37,12 @@ public partial class SimpleReport : System.Web.UI.Page
         {
             HtmlTextWriter hw = new HtmlTextWriter(sw);
             offsiteGrid.AllowPaging = false;
-            onlineGrid.AllowPaging = false;
-            onsiteGrid.AllowPaging = false;
-            totProgramsGrid.AllowPaging = false;
-            totKidsGrid.AllowPaging = false;
-            totAdultsGrid.AllowPaging = false;
-            totPeopleGrid.AllowPaging = false;
+            //onlineGrid.AllowPaging = false;
+            //onsiteGrid.AllowPaging = false;
+            //totProgramsGrid.AllowPaging = false;
+            //totKidsGrid.AllowPaging = false;
+            //totAdultsGrid.AllowPaging = false;
+            //totPeopleGrid.AllowPaging = false;
             foreach (System.Web.UI.WebControls.TableCell cell in offsiteGrid.HeaderRow.Cells)
             {
                 dt.Columns.Add(cell.Text);
@@ -52,54 +55,54 @@ public partial class SimpleReport : System.Web.UI.Page
                     dt.Rows[dt.Rows.Count - 1][j] = row.Cells[j].Text;
                 }
             }
-            foreach (GridViewRow row in onlineGrid.Rows)
-            {
-                dt.Rows.Add();
-                for (int j = 0; j < row.Cells.Count; j++)
-                {
-                    dt.Rows[dt.Rows.Count - 1][j] = row.Cells[j].Text;
-                }
-            }
-            foreach (GridViewRow row in onsiteGrid.Rows)
-            {
-                dt.Rows.Add();
-                for (int j = 0; j < row.Cells.Count; j++)
-                {
-                    dt.Rows[dt.Rows.Count - 1][j] = row.Cells[j].Text;
-                }
-            }
-            foreach (GridViewRow row in totProgramsGrid.Rows)
-            {
-                dt.Rows.Add();
-                for (int j = 0; j < row.Cells.Count; j++)
-                {
-                    dt.Rows[dt.Rows.Count - 1][j] = row.Cells[j].Text;
-                }
-            }
-            foreach (GridViewRow row in totKidsGrid.Rows)
-            {
-                dt.Rows.Add();
-                for (int j = 0; j < row.Cells.Count; j++)
-                {
-                    dt.Rows[dt.Rows.Count - 1][j] = row.Cells[j].Text;
-                }
-            }
-            foreach (GridViewRow row in totAdultsGrid.Rows)
-            {
-                dt.Rows.Add();
-                for (int j = 0; j < row.Cells.Count; j++)
-                {
-                    dt.Rows[dt.Rows.Count - 1][j] = row.Cells[j].Text;
-                }
-            }
-            foreach (GridViewRow row in totPeopleGrid.Rows)
-            {
-                dt.Rows.Add();
-                for (int j = 0; j < row.Cells.Count; j++)
-                {
-                    dt.Rows[dt.Rows.Count - 1][j] = row.Cells[j].Text;
-                }
-            }
+            //foreach (GridViewRow row in onlineGrid.Rows)
+            //{
+            //    dt.Rows.Add();
+            //    for (int j = 0; j < row.Cells.Count; j++)
+            //    {
+            //        dt.Rows[dt.Rows.Count - 1][j] = row.Cells[j].Text;
+            //    }
+            //}
+            //foreach (GridViewRow row in onsiteGrid.Rows)
+            //{
+            //    dt.Rows.Add();
+            //    for (int j = 0; j < row.Cells.Count; j++)
+            //    {
+            //        dt.Rows[dt.Rows.Count - 1][j] = row.Cells[j].Text;
+            //    }
+            //}
+            //foreach (GridViewRow row in totProgramsGrid.Rows)
+            //{
+            //    dt.Rows.Add();
+            //    for (int j = 0; j < row.Cells.Count; j++)
+            //    {
+            //        dt.Rows[dt.Rows.Count - 1][j] = row.Cells[j].Text;
+            //    }
+            //}
+            //foreach (GridViewRow row in totKidsGrid.Rows)
+            //{
+            //    dt.Rows.Add();
+            //    for (int j = 0; j < row.Cells.Count; j++)
+            //    {
+            //        dt.Rows[dt.Rows.Count - 1][j] = row.Cells[j].Text;
+            //    }
+            //}
+            //foreach (GridViewRow row in totAdultsGrid.Rows)
+            //{
+            //    dt.Rows.Add();
+            //    for (int j = 0; j < row.Cells.Count; j++)
+            //    {
+            //        dt.Rows[dt.Rows.Count - 1][j] = row.Cells[j].Text;
+            //    }
+            //}
+            //foreach (GridViewRow row in totPeopleGrid.Rows)
+            //{
+            //    dt.Rows.Add();
+            //    for (int j = 0; j < row.Cells.Count; j++)
+            //    {
+            //        dt.Rows[dt.Rows.Count - 1][j] = row.Cells[j].Text;
+            //    }
+            //}
 
             GridView gridView = new GridView();
             gridView.DataSource = dt;
@@ -134,5 +137,47 @@ public partial class SimpleReport : System.Web.UI.Page
         animalGrid.RenderControl(htmltextwrtter);
         Response.Write(strwritter.ToString());
         Response.End();
+    }
+    protected void dateFilter_Click(object sender, EventArgs e)
+    {
+        DateTime start = Convert.ToDateTime(startDate.Value);
+        DateTime end = Convert.ToDateTime(endDate.Value);
+
+        SqlDataSource48.SelectCommand = "SELECT distinct Format(DateCompleted, 'MM/dd/yyyy') as 'DateCompleted', AnimalName, count(a.AnimalID) as Programs, sum(TotalPeople) as TotalPeople from Animal a inner join AssignAnimal aa on a.AnimalID = aa.AnimalID inner join NewProgram np on np.NewProgramID = aa.NewProgramID WHERE DateCompleted >= '" + start + "' and DateCompleted <= '" + end + "' GROUP BY AnimalName, DateCompleted";
+        animalGrid.DataBind();
+    }
+    public string HighlightText(string InputTxt)
+    {
+        string Search_Str = txtYear.Text;
+        // Setup the regular expression and add the Or operator.
+        Regex RegExp = new Regex(Search_Str.Replace(" ", "|").Trim(), RegexOptions.IgnoreCase);
+        // Highlight keywords by calling the
+        //delegate each time a keyword is found.
+        return RegExp.Replace(InputTxt, new MatchEvaluator(ReplaceKeyWords));
+    }
+
+    public string ReplaceKeyWords(Match m)
+    {
+        return ("<span class=highlight>" + m.Value + "</span>");
+    }
+    protected void btnFilter_Click(object sender, EventArgs e)
+    {
+        //  Set the value of the SearchString so it gets
+        SearchString = Convert.ToString(txtYear.Text);
+    }
+
+    protected void dateClear_Click(object sender, EventArgs e)
+    {
+        //  Simple clean up text to return the Gridview to it's default state
+        txtYear.Text = "";
+        SearchString = "";
+        offsiteGrid.DataBind();
+        onsiteGrid.DataBind();
+        onlineGrid.DataBind();
+        totAdultsGrid.DataBind();
+        totKidsGrid.DataBind();
+        totPeopleGrid.DataBind();
+        totProgramsGrid.DataBind();
+        
     }
 }

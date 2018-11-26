@@ -158,7 +158,7 @@
         <div class="row mx-auto ">
             <div class="col-xl-8 col-lg-12 col-md-12 col-s-12 ">
                 <div class="col-xl-7 col-lg-12 col-md-12 col-s-12">
-                    <asp:GridView ID="grdViewReport" Class=" table table-condensed table-bordered table-hover AnimalCard" runat="server">
+                    <asp:GridView ID="grdViewReport" Class=" table table-condensed table-bordered table-hover AnimalCard" AllowSorting="true" onsorting="grdViewReport_Sorting" runat="server">
                         <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
                     </asp:GridView>
                 </div>
