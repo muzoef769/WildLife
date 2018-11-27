@@ -21,13 +21,13 @@ public partial class Payment : System.Web.UI.Page
 
     protected void gridRefresh_Click(object sender, EventArgs e)
     {
-        //outstandingSource.EnableCaching = false;
-        //outInvGrid.DataBind();
-        //outstandingSource.EnableCaching = true;
+        outstandingSource.EnableCaching = false;
+        outInvGrid.DataBind();
+        outstandingSource.EnableCaching = true;
 
-        //paidSource.EnableCaching = false;
-        //paidGrid.DataBind();
-        //paidSource.EnableCaching = true;
+        paidSource.EnableCaching = false;
+        paidGrid.DataBind();
+        paidSource.EnableCaching = true;
 
         programSource.EnableCaching = false;
         allInvGrid.DataBind();
@@ -61,32 +61,32 @@ public partial class Payment : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        //// Hides the first column in the grid (zero-based index)
-        //outInvGrid.HeaderRow.Cells[0].Visible = false;
+        // Hides the first column in the grid (zero-based index)
+        outInvGrid.HeaderRow.Cells[0].Visible = false;
 
-        //// Loop through the rows and hide the cell in the first column
-        //for (int i = 0; i < outInvGrid.Rows.Count; i++)
-        //{
-        //    GridViewRow row = outInvGrid.Rows[i];
-        //    row.Cells[0].Visible = false;
-        //}
+        // Loop through the rows and hide the cell in the first column
+        for (int i = 0; i < outInvGrid.Rows.Count; i++)
+        {
+            GridViewRow row = outInvGrid.Rows[i];
+            row.Cells[0].Visible = false;
+        }
 
-        //ExportToExcel(outInvGrid, "Outstanding");
+        ExportToExcel(outInvGrid, "Outstanding");
     }
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-        //// Hides the first column in the grid (zero-based index)
-        //paidGrid.HeaderRow.Cells[0].Visible = false;
+        // Hides the first column in the grid (zero-based index)
+        paidGrid.HeaderRow.Cells[0].Visible = false;
 
-        //// Loop through the rows and hide the cell in the first column
-        //for (int i = 0; i < paidGrid.Rows.Count; i++)
-        //{
-        //    GridViewRow row = paidGrid.Rows[i];
-        //    row.Cells[0].Visible = false;
-        //}
+        // Loop through the rows and hide the cell in the first column
+        for (int i = 0; i < paidGrid.Rows.Count; i++)
+        {
+            GridViewRow row = paidGrid.Rows[i];
+            row.Cells[0].Visible = false;
+        }
 
-        //ExportToExcel(paidGrid, "Completed");
+        ExportToExcel(paidGrid, "Fulfilled");
     }
 
     protected void Button3_Click(object sender, EventArgs e)
@@ -132,23 +132,34 @@ public partial class Payment : System.Web.UI.Page
         //outInvGrid.DataBind();
     }
 
-    //protected void btnFilter_Click(object sender, EventArgs e)
-    //{
-    //    //  Set the value of the SearchString so it gets
-    //    SearchString = txtYear.Text;
-    //}
-    //public string HighlightText(string InputTxt)
-    //{
-    //    string Search_Str = txtYear.Text;
-    //    // Setup the regular expression and add the Or operator.
-    //    Regex RegExp = new Regex(Search_Str.Replace(" ", "|").Trim(), RegexOptions.IgnoreCase);
-    //    // Highlight keywords by calling the
-    //    //delegate each time a keyword is found.
-    //    return RegExp.Replace(InputTxt, new MatchEvaluator(ReplaceKeyWords));
-    //}
+    protected void btnFilter_Click(object sender, EventArgs e)
+    {
+        //  Set the value of the SearchString so it gets
+        SearchString = txtYear.Text;
+    }
+    public string HighlightText(string InputTxt)
+    {
+        string Search_Str = txtYear.Text;
+        // Setup the regular expression and add the Or operator.
+        Regex RegExp = new Regex(Search_Str.Replace(" ", "|").Trim(), RegexOptions.IgnoreCase);
+        // Highlight keywords by calling the
+        //delegate each time a keyword is found.
+        return RegExp.Replace(InputTxt, new MatchEvaluator(ReplaceKeyWords));
+    }
 
     public string ReplaceKeyWords(Match m)
     {
         return ("<span class=highlight>" + m.Value + "</span>");
+    }
+
+    protected void dateClear_Click(object sender, EventArgs e)
+    {
+        //  Simple clean up text to return the Gridview to it's default state
+        txtYear.Text = "";
+        SearchString = "";
+        allInvGrid.DataBind();
+        outInvGrid.DataBind();
+        paidGrid.DataBind();
+
     }
 }

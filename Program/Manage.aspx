@@ -186,7 +186,8 @@
                             HorizontalAlign="Left"
                             AllowSorting="True"
                             Width="900px"
-                            Class="table table-condensed table-bordered table-hover AnimalCard">
+                            Class="table table-condensed table-bordered table-hover AnimalCard"
+                            OnRowDataBound="OnRowDataBound">
 
 
                             <Columns>
@@ -200,9 +201,10 @@
                                     <ItemTemplate>
                                         <asp:UpdatePanel runat="server" ID="updateAll" UpdateMode="Conditional">
                                             <ContentTemplate>
-                                                <asp:DropDownList runat="server" ID="ddlStatus" OnSelectedIndexChanged="Unnamed_SelectedIndexChanged"
+                                                <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("UserStatus") %>' Visible = "false" />
+                                                <asp:DropDownList runat="server" ID="ddlStatus" OnSelectedIndexChanged="ddlStatus_SelectedIndexChanged"
                                                     CssClass=" btn-sm text-center" AutoPostBack="true">
-                                                    <asp:ListItem Value = ""></asp:ListItem>
+                                                    <%--<asp:ListItem Value=""></asp:ListItem>--%>
                                                     <asp:ListItem Value="Active">Active</asp:ListItem>
                                                     <asp:ListItem Value="Inactive">Inactive</asp:ListItem>
                                                     <asp:ListItem Value="Temporarily Inactive">Temporarily Inactive</asp:ListItem>
@@ -211,7 +213,7 @@
                                             </ContentTemplate>
                                             <Triggers>
                                                 <asp:AsyncPostBackTrigger ControlID="ddlStatus" EventName="SelectedIndexChanged" />
-                                                
+
                                             </Triggers>
                                         </asp:UpdatePanel>
                                     </ItemTemplate>

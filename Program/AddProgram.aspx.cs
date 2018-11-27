@@ -460,7 +460,7 @@ public partial class AddProgram : System.Web.UI.Page
             //lblTotalCostPrice.Text = totalReal.ToString();
             //totalReal = Convert.ToDouble(lblSubtotalCost.Text) + mileageCost;
             //lblTotalCostPrice.Text = totalReal.ToString();
-            Invoice newInvoice = new Invoice(txtInvoiceNumber.Text, totalReal, Convert.ToDateTime(datepicker.Value), "Incompleted", DateTime.Today, "Raina");
+            Invoice newInvoice = new Invoice(txtInvoiceNumber.Text, totalReal, Convert.ToDateTime(datepicker.Value), "Unpaid", DateTime.Today, "Raina");
 
         string invoiceInsert = "Insert into Invoice([InvoiceNumber], [TotalCost], [DateCreated], [InvoiceStatus], [LastUpdated], [LastUpdatedBy])VALUES (" +
                "@InvoiceNumber, @TotalCost, @DateCreated, @InvoiceStatus, @LastUpdated, @LastUpdatedBy)";

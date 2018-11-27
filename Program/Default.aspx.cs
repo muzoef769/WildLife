@@ -180,7 +180,7 @@ public partial class Default : System.Web.UI.Page
 
                 }
 
-                // if the username doesn't exist, it will show failure
+                // if the username doesn't exist
                 else
                 {
                     myConnection.Close();
@@ -189,13 +189,13 @@ public partial class Default : System.Web.UI.Page
                     txtFirstName.Text,
                     txtLastName.Text,
                     rdoPosition.SelectedValue,
-                    "InActive",
+                    "Not Approved",
                     DateTime.Now,
                     txtNewUsername.Text,
-                    "user@gmail.com"
+                    txtEmail.Text
                     );
 
-                    String myQuery = "INSERT INTO [WildlifeCenter].[dbo].[User] (FirstName, LastName, Username, UserType, UserStatus, LastUpdated, LastUpdatedBy) VALUES (@firstName, @lastName, @userName, @userType, @status, @lastUpdated, @lastUpdatedBy)";
+                    String myQuery = "INSERT INTO [WildlifeCenter].[dbo].[User] (FirstName, LastName, Username, UserType, UserStatus, LastUpdated, LastUpdatedBy, Email) VALUES (@firstName, @lastName, @userName, @userType, @status, @lastUpdated, @lastUpdatedBy, @email)";
 
                     try
                     {
@@ -209,6 +209,7 @@ public partial class Default : System.Web.UI.Page
                         myCommand.Parameters.AddWithValue("@status", newUser.getStatus());
                         myCommand.Parameters.AddWithValue("@lastUpdated", newUser.getLastUpdated());
                         myCommand.Parameters.AddWithValue("@lastUpdatedBy", newUser.getLastUpdatedBy());
+                        myCommand.Parameters.AddWithValue("@email", newUser.getEmail());
 
                         myCommand.ExecuteNonQuery();
 

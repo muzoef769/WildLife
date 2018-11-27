@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Payment.aspx.cs" Inherits="Payment" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <div class="main">
+    <asp:scriptmanager id="ScriptManager1" runat="server"></asp:scriptmanager>
+
+    <%--<div class="main">
         <br />
         <br />
         <br />
@@ -294,7 +294,7 @@
             </div>
         </div>
     </div>--%>
-     <br />
+    <br />
     <br />
     <br />
     <script>$("button").click(function () {
@@ -326,21 +326,25 @@
         </div>
     </div>
     <br />
-    <div class="" >
-        <div class="row mx-auto d-flex justify-content-center  " >
-            <ul class="nav nav-tabs  col-xl-7 col-lg-12 col-md-12 col-s-12 " style=" padding-left:15px; border-bottom:none;" id="myTab" role="tablist">
+    <div class="">
+        <div class="row mx-auto d-flex justify-content-center  ">
+            <ul class="nav nav-tabs  col-xl-7 col-lg-12 col-md-12 col-s-12 " style="padding-left: 15px; border-bottom: none;" id="myTab" role="tablist">
                 <li class="nav-item ">
-                    <a style=" margin-right:5px; color:black;"class="nav-link active " id="homee-tab" data-toggle="tab" href="#All" role="tab" aria-controls="homee" aria-selected="true">All</a>
+                    <a style="margin-right: 5px; color: black;" class="nav-link active " id="homee-tab" data-toggle="tab" href="#All" role="tab" aria-controls="homee" aria-selected="true">All</a>
                 </li>
                 <li class="nav-item ">
-                    <a style=" margin-right:5px; color:black;"class="nav-link" id="home-tab" data-toggle="tab" href="#Online" role="tab" aria-controls="home" aria-selected="false">Online</a>
+                    <a style="margin-right: 5px; color: black;" class="nav-link" id="home-tab" data-toggle="tab" href="#Outstanding" role="tab" aria-controls="home" aria-selected="false">Outstanding</a>
                 </li>
                 <li class="nav-item ">
-                    <a style=" margin-right:5px; color:black;" class="nav-link " id="profile-tab" data-toggle="tab" href="#OnSite" role="tab" aria-controls="profile" aria-selected="false">OnSite</a>
+                    <a style="margin-right: 5px; color: black;" class="nav-link " id="profile-tab" data-toggle="tab" href="#Fulfilled" role="tab" aria-controls="profile" aria-selected="false">Fulfilled</a>
                 </li>
             </ul>
 
         </div>
+        <asp:textbox id="txtYear" runat="server" width="25%" class="form-control" placeholder="Filter By Year (e.g. '2018')"></asp:textbox>
+        <asp:button id="btnFilter" runat="server" class="btn btn-success" text="Filter By Year" onclick="btnFilter_Click" />
+        <asp:Button runat="server" class="btn btn-primary" id="dateClear" OnClick="dateClear_Click" Text="Clear Filter"/>
+        <asp:regularexpressionvalidator validationexpression="^\d{4}$" id="RegularExpressionValidator1" runat="server" errormessage="Please enter a valid year (e.g. '2018')" controltovalidate="txtYear" />
         <div class="tab-content">
             <div id="All" class="tab-pane fade show active">
                 <div class="table-responsive">
@@ -348,7 +352,7 @@
                     <div class="row mx-auto d-flex justify-content-center ">
                         <div class="col-xl-7 col-lg-12 col-md-12 col-s-12 ">
 
-                                                    <asp:GridView ID="allInvGrid" runat="server" HeaderStyle-ForeColor="black" DataKeyNames="InvoiceID" AutoGenerateEditButton="True" AutoGenerateColumns="False" DataSourceID="programSource" AllowPaging="True" AllowSorting="True">
+                            <asp:gridview id="allInvGrid" runat="server" headerstyle-forecolor="black" datakeynames="InvoiceID" autogenerateeditbutton="True" autogeneratecolumns="False" datasourceid="programSource" allowpaging="True" allowsorting="True">
                                                         <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
                                                         <Columns>
                                                             <asp:BoundField DataField="InvoiceID" HeaderText="InvoiceID" SortExpression="InvoiceID" ReadOnly="true" Visible="False" />
@@ -356,7 +360,7 @@
                                                             <asp:BoundField DataField="DateCreated" HeaderText="Date Created" SortExpression="DateCreated" ReadOnly="true" />
                                                             <asp:BoundField DataField="ProgramName" HeaderText="Program Name" SortExpression="ProgramName" ReadOnly="true" />
                                                             <asp:BoundField DataField="OrganizationName" HeaderText="Organization" SortExpression="OrganizationName" ReadOnly="true" />
-                                                            <asp:BoundField DataField="ProgramCost" HeaderText="Program Cost" DataFormatString="${0:###,###,###.00}" SortExpression="ProgramCost" ReadOnly="true" />
+                                                            <asp:BoundField DataField="TotalCost" HeaderText="Total Cost" DataFormatString="${0:###,###,###.00}" SortExpression="TotalCost" ReadOnly="true" />
                                                             <asp:TemplateField HeaderText="Payment Status" SortExpression="InvoiceStatus">
                                                                 <EditItemTemplate>
                                                                     <asp:DropDownList ID="DropDownList3" runat="server" SelectedValue='<%# Bind ("InvoiceStatus") %>'>
@@ -369,33 +373,200 @@
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
                                                         </Columns>
-                                                    </asp:GridView>
+                                                    </asp:gridview>
 
-                                            <asp:SqlDataSource ID="programSource" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>"
-
-                                                SelectCommand="SELECT i.InvoiceID, InvoiceNumber, FORMAT(DateCreated, 'MM/dd/yyyy') as 'DateCreated', ProgramName, OrganizationName, ProgramCost, InvoiceStatus
-                                                    FROM 
-                                                    dbo.Program p inner join dbo.NewProgram np on p.ProgramID = np.ProgramID 
-                                                    inner join dbo.AssignInvoice ai on ai.NewProgramID = np.NewProgramID
-                                                    inner join dbo.Address a on a.AddressID = np.AddressID
-                                                    inner join dbo.Organization o on o.AddressID = a.AddressID
-													inner join dbo.Invoice i on i.InvoiceID = ai.InvoiceID"
-                                                UpdateCommand="UPDATE dbo.Invoice set InvoiceStatus = @InvoiceStatus where InvoiceID = @InvoiceID ">
-
+                            <asp:sqldatasource id="programSource" runat="server" connectionstring="<%$ ConnectionStrings:connString %>"
+                                filterexpression="Convert(DateCreated, 'System.String') LIKE '%{0}%'"
+                                selectcommand="SELECT        Invoice.InvoiceID, Invoice.InvoiceNumber, Invoice.DateCreated, Program.ProgramName, Organization.OrganizationName, Invoice.TotalCost, Invoice.InvoiceStatus
+                        
+FROM            Program INNER JOIN
+                         NewProgram ON Program.ProgramID = NewProgram.ProgramID INNER JOIN
+                         AssignInvoice ON NewProgram.NewProgramID = AssignInvoice.NewProgramID FULL OUTER JOIN
+                         Invoice ON AssignInvoice.AssignInvoiceID = Invoice.InvoiceID FULL OUTER JOIN 
+                         Payment ON Invoice.InvoiceID = Payment.InvoiceID LEFT OUTER JOIN
+                         Organization ON Payment.OrganizationID = Organization.OrganizationID"
+                                updatecommand="UPDATE dbo.Invoice set InvoiceStatus = @InvoiceStatus where InvoiceID = @InvoiceID ">
+                                <FilterParameters>
+                                                    <asp:ControlParameter Name="DateCreated" ControlID="txtYear" PropertyName="Text" />
+                                                </FilterParameters>
                                                 <UpdateParameters>
                                                     <asp:Parameter Name="InvoiceStatus" Type="String" />
                                                     <asp:Parameter Name="InvoiceID" Type="String" />
                                                 </UpdateParameters>
 
-                                            </asp:SqlDataSource>
+                                            </asp:sqldatasource>
 
-                                            <br />
+                            <br />
 
-                                <asp:Button ID="Button6" class="btn btn-success" runat="server" Text="Refresh Table" OnClick="gridRefresh_Click" />
-                            
-                                            <asp:Button id="Button3" class=" btn btn-success" runat="server" OnClick="Button3_Click" Text="Export To Excel"></asp:Button>
-                          
-                            
+                            <asp:updatepanel id="UpdatePanel10" runat="server">
+                            <ContentTemplate>
+                                <asp:Button ID="Button3" class="btn btn-success" runat="server" Text="Refresh Table" OnClick="gridRefresh_Click" />
+                                
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="Button3" />
+
+                            </Triggers>
+                        </asp:updatepanel>
+                            <asp:button id="Button6" class=" btn btn-success" runat="server" onclick="Button2_Click" text="Export To Excel"></asp:button>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="Outstanding" class="tab-pane fade">
+                <div class="table-responsive">
+
+                    <div class="row mx-auto d-flex justify-content-center ">
+                        <div class="col-xl-7 col-lg-12 col-md-12 col-s-12 ">
+                            <asp:updatepanel id="outstandingPan" runat="server">
+                                                <ContentTemplate>
+                                                    <asp:GridView ID="outInvGrid" HeaderStyle-ForeColor="black" runat="server" DataKeyNames="InvoiceID" EnableSortingAndPagingCallbacks="false" AutoGenerateEditButton="True" AutoGenerateColumns="False" DataSourceID="outstandingSource" AllowPaging="True" AllowSorting="True">
+                                                       <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
+                                                        <Columns>
+                                                            <asp:BoundField DataField="InvoiceID" HeaderText="InvoiceID" SortExpression="InvoiceID" ReadOnly="true" Visible="False" />
+                                                            <asp:BoundField DataField="InvoiceNumber" HeaderText="Invoice #" SortExpression="InvoiceNumber" ReadOnly="true" />
+                                                            <asp:BoundField DataField="DateCreated" HeaderText="Date Created" SortExpression="DateCreated" ReadOnly="true" />
+                                                            <asp:BoundField DataField="ProgramName" HeaderText="Program Name" SortExpression="ProgramName" ReadOnly="true" />
+                                                            <asp:BoundField DataField="OrganizationName" HeaderText="Organization" SortExpression="OrganizationName" ReadOnly="true" />
+                                                            <asp:BoundField DataField="TotalCost" HeaderText="Total Cost" DataFormatString="${0:###,###,###.00}" SortExpression="TotalCost" ReadOnly="true" />
+                                                            
+                                                            <asp:TemplateField HeaderText="Payment Status" SortExpression="InvoiceStatus">
+                                                                <EditItemTemplate>
+                                                                    <asp:DropDownList ID="DropDownList1" runat="server" SelectedValue='<%# Bind ("InvoiceStatus") %>'>
+                                                                        <asp:ListItem>Unpaid</asp:ListItem>
+                                                                        <asp:ListItem>Paid</asp:ListItem>
+                                                                    </asp:DropDownList>
+                                                                </EditItemTemplate>
+                                                                <ItemTemplate>
+                                                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("InvoiceStatus") %>'></asp:Label>
+                                                                </ItemTemplate>
+                                                            </asp:TemplateField>
+                                                        </Columns>
+                                                    </asp:GridView>
+                                                </ContentTemplate>
+                                                <Triggers>
+                                                    <asp:AsyncPostBackTrigger ControlID="outInvGrid" EventName="SelectedIndexChanged" />
+
+                                                </Triggers>
+                                            </asp:updatepanel>
+                            <asp:sqldatasource id="outstandingSource" runat="server" connectionstring="<%$ ConnectionStrings:connString %>"
+                                filterexpression="Convert(DateCreated, 'System.String') LIKE '%{0}%'"
+                                selectcommand="SELECT        Invoice.InvoiceID, Invoice.InvoiceNumber, Invoice.DateCreated, Program.ProgramName, Organization.OrganizationName, Invoice.TotalCost, Invoice.InvoiceStatus
+                        
+FROM            Program INNER JOIN
+                         NewProgram ON Program.ProgramID = NewProgram.ProgramID INNER JOIN
+                         AssignInvoice ON NewProgram.NewProgramID = AssignInvoice.NewProgramID FULL OUTER JOIN
+                         Invoice ON AssignInvoice.AssignInvoiceID = Invoice.InvoiceID FULL OUTER JOIN 
+                         Payment ON Invoice.InvoiceID = Payment.InvoiceID LEFT OUTER JOIN
+                         Organization ON Payment.OrganizationID = Organization.OrganizationID
+WHERE InvoiceStatus = 'Unpaid'"
+                                updatecommand="UPDATE dbo.Invoice set InvoiceStatus = @InvoiceStatus where InvoiceID = @InvoiceID "
+                                deletecommand="DELETE from dbo.AssignInvoice where NewProgramID = @NewProgramID">
+                                                <FilterParameters>
+                                                    <asp:ControlParameter Name="DateCreated" ControlID="txtYear" PropertyName="Text" />
+                                                </FilterParameters>
+                                                <UpdateParameters>
+                                                    <asp:Parameter Name="InvoiceStatus" Type="String" />
+                                                    <asp:Parameter Name="InvoiceID" Type="String" />
+                                                </UpdateParameters>
+                                                <DeleteParameters>
+                                                    <asp:Parameter Name="NewProgramID" Type="String" />
+                                                </DeleteParameters>
+
+                                            </asp:sqldatasource>
+                            <br />
+                            <br />
+                            <asp:updatepanel id="UpdatePanel20" runat="server">
+                            <ContentTemplate>
+                                <asp:Button ID="Button1" class="btn btn-success" runat="server" Text="Refresh Table" OnClick="gridRefresh_Click" />
+                                
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="Button1" />
+
+                            </Triggers>
+                        </asp:updatepanel>
+                            <asp:button id="Button2" class=" btn btn-success" runat="server" onclick="Button2_Click" text="Export To Excel"></asp:button>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="Fulfilled" class="tab-pane fade">
+                <div class="table-responsive">
+
+                    <div class="row mx-auto d-flex justify-content-center ">
+                        <div class="col-xl-7 col-lg-12 col-md-12 col-s-12 ">
+                            <asp:updatepanel id="paidPan" runat="server">
+                                                <ContentTemplate>
+                                                    <asp:GridView ID="paidGrid" runat="server" HeaderStyle-ForeColor="black" DataKeyNames="InvoiceID" AutoGenerateEditButton="True" AutoGenerateColumns="False" DataSourceID="paidSource" AllowPaging="True" AllowSorting="True">
+                                                        <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
+                                                        <Columns>
+                                                            <asp:BoundField DataField="InvoiceID" HeaderText="InvoiceID" SortExpression="InvoiceID" ReadOnly="true" Visible="False" />
+                                                            <asp:BoundField DataField="InvoiceNumber" HeaderText="Invoice #" SortExpression="InvoiceNumber" ReadOnly="true" />
+                                                            <asp:BoundField DataField="DateCreated" HeaderText="Date Created" SortExpression="DateCreated" ReadOnly="true" />
+                                                            <asp:BoundField DataField="ProgramName" HeaderText="Program Name" SortExpression="ProgramName" ReadOnly="true" />
+                                                            <asp:BoundField DataField="OrganizationName" HeaderText="Organization" SortExpression="OrganizationName" ReadOnly="true" />
+                                                            <asp:BoundField DataField="TotalCost" HeaderText="Total Cost" DataFormatString="${0:###,###,###.00}" SortExpression="TotalCost" ReadOnly="true" />
+                                                            <asp:TemplateField HeaderText="Payment Status" SortExpression="InvoiceStatus">
+                                                                <EditItemTemplate>
+                                                                    <asp:DropDownList ID="DropDownList2" runat="server" SelectedValue='<%# Bind ("InvoiceStatus") %>'>
+                                                                        <asp:ListItem>Unpaid</asp:ListItem>
+                                                                        <asp:ListItem>Paid</asp:ListItem>
+                                                                    </asp:DropDownList>
+                                                                </EditItemTemplate>
+                                                                <ItemTemplate>
+                                                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("InvoiceStatus") %>'></asp:Label>
+                                                                </ItemTemplate>
+                                                            </asp:TemplateField>
+                                                        </Columns>
+                                                    </asp:GridView>
+                                                </ContentTemplate>
+                                                <Triggers>
+                                                    <asp:AsyncPostBackTrigger ControlID="paidGrid" EventName="SelectedIndexChanged" />
+
+                                                </Triggers>
+                                            </asp:updatepanel>
+                            <asp:sqldatasource id="paidSource" runat="server" connectionstring="<%$ ConnectionStrings:connString %>"
+                                filterexpression="Convert(DateCreated, 'System.String') LIKE '%{0}%'"
+                                selectcommand="SELECT        Invoice.InvoiceID, Invoice.InvoiceNumber, Invoice.DateCreated, Program.ProgramName, Organization.OrganizationName, Invoice.TotalCost, Invoice.InvoiceStatus
+                        
+FROM            Program INNER JOIN
+                         NewProgram ON Program.ProgramID = NewProgram.ProgramID INNER JOIN
+                         AssignInvoice ON NewProgram.NewProgramID = AssignInvoice.NewProgramID FULL OUTER JOIN
+                         Invoice ON AssignInvoice.AssignInvoiceID = Invoice.InvoiceID FULL OUTER JOIN 
+                         Payment ON Invoice.InvoiceID = Payment.InvoiceID LEFT OUTER JOIN
+                         Organization ON Payment.OrganizationID = Organization.OrganizationID
+WHERE InvoiceStatus = 'Paid'"
+                                updatecommand="UPDATE dbo.Invoice set InvoiceStatus = @InvoiceStatus where InvoiceID = @InvoiceID ">
+                                                <FilterParameters>
+                                                    <asp:ControlParameter Name="DateCreated" ControlID="txtYear" PropertyName="Text" />
+                                                </FilterParameters>
+                                                <UpdateParameters>
+                                                    <asp:Parameter Name="InvoiceStatus" Type="String" />
+                                                    <asp:Parameter Name="InvoiceID" Type="String" />
+                                                </UpdateParameters>
+                                            </asp:sqldatasource>
+
+                            <br />
+                            <br />
+
+                            <asp:updatepanel id="UpdatePanel30" runat="server">
+                            <ContentTemplate>
+                                <asp:Button ID="Button4" class="btn btn-success" runat="server" Text="Refresh Table" OnClick="gridRefresh_Click" />
+                                
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="Button4" />
+
+                            </Triggers>
+                        </asp:updatepanel>
+                            <asp:button id="Button5" class=" btn btn-success" runat="server" onclick="Button3_Click" text="Export To Excel"></asp:button>
+
+
                         </div>
                     </div>
                 </div>
