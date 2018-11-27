@@ -337,6 +337,15 @@ public partial class AddProgram : System.Web.UI.Page
 
                     command.ExecuteNonQuery();
                 }
+
+
+                
+
+
+
+
+
+
                 int newProgramID;
                 string findProgramID = "Select NewProgramID from NewProgram where NewProgramID = (Select Max(NewProgramID) from NewProgram)";
                 using (SqlCommand command = new SqlCommand(findProgramID, connection))
@@ -530,12 +539,33 @@ public partial class AddProgram : System.Web.UI.Page
                 command.Parameters.AddWithValue("@InvoiceID", invoiceID);
                 command.Parameters.AddWithValue("@NewProgramID", newProgramID2);
                 command.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
-                command.Parameters.AddWithValue("@LastUpdatedBy", "Raina"); ///Need to change this
+                command.Parameters.AddWithValue("@LastUpdatedBy", Session["UserFullName"]); ///Need to change this
 
                 command.ExecuteNonQuery();
 
             }
 
+            //INSERT INTO THE PAYMENT TABLE
+            int orgID;
+            string findOrgID = "SELECT OrganizationID from Organization where OrganizationName = @selectedOrg";
+            using (SqlCommand command = new SqlCommand(findOrgID, connection))
+            {
+                command.Parameters.AddWithValue("@selectedOrg", Convert.ToString(drpOrganizationList.SelectedItem.Text));
+                orgID = Convert.ToInt32(command.ExecuteScalar());
+            }
+
+            string insertIntoPayment = "Insert into Payment([PaymentType],[OrganizationID],[InvoiceID],[LastUpdated],[LastUpdatedBy]) VALUES (@paymentType, @organizationID, @invoiceID, @lastUpdated, @lastUpdatedBy)";
+            using (SqlCommand command = new SqlCommand(insertIntoPayment, connection))
+            {
+                command.Parameters.AddWithValue("@paymentType", "TBD");
+                command.Parameters.AddWithValue("@organizationID", orgID);
+                command.Parameters.AddWithValue("@invoiceID", invoiceID);
+                command.Parameters.AddWithValue("@lastUpdated", DateTime.Today);
+                command.Parameters.AddWithValue("@lastUpdatedBy", Session["UserFullName"]);
+
+                command.ExecuteNonQuery();
+            }
+            //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
             connection.Close();

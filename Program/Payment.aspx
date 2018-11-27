@@ -353,18 +353,35 @@
                     <div class="row mx-auto d-flex justify-content-center ">
                         <div class="col-xl-7 col-lg-12 col-md-12 col-s-12 ">
 
+                            <asp:UpdatePanel runat="server" ID="updateAllInvoices">
+                                <ContentTemplate>
+
+
                             <asp:gridview id="allInvGrid" runat="server" headerstyle-forecolor="black" datakeynames="InvoiceID" autogenerateeditbutton="True" autogeneratecolumns="False" datasourceid="programSource" allowpaging="True" allowsorting="True">
                                                         <HeaderStyle ForeColor="Black" BackColor="#339933"></HeaderStyle>
                                                         <Columns>
                                                             <asp:BoundField DataField="InvoiceID" HeaderText="InvoiceID" SortExpression="InvoiceID" ReadOnly="true" Visible="False" />
                                                             <asp:BoundField DataField="InvoiceNumber" HeaderText="Invoice #" SortExpression="InvoiceNumber" ReadOnly="true" />
+                                                            <asp:TemplateField HeaderText="Payment Type" SortExpression="PaymentType">
+                                                                <EditItemTemplate>
+                                                                    <asp:DropDownList ID="ddlPayTypeAll" runat="server" SelectedValue='<%# Bind ("PaymentType") %>'>
+                                                                        <asp:ListItem Value="TBD">TBD</asp:ListItem>
+                                                                        <asp:ListItem Value="Cash">Cash</asp:ListItem>
+                                                                        <asp:ListItem Value="Check">Check</asp:ListItem>
+                                                                        <asp:ListItem Value="Credit/Debit">Credit/Debit</asp:ListItem>
+                                                                    </asp:DropDownList>
+                                                                </EditItemTemplate>
+                                                                <ItemTemplate>
+                                                                    <asp:Label ID="lblPayTypeAll" runat="server" Text='<%# Bind("PaymentType") %>'></asp:Label>
+                                                                </ItemTemplate>
+                                                            </asp:TemplateField>
                                                             <asp:BoundField DataField="DateCreated" HeaderText="Date Created" SortExpression="DateCreated" ReadOnly="true" />
                                                             <asp:BoundField DataField="ProgramName" HeaderText="Program Name" SortExpression="ProgramName" ReadOnly="true" />
                                                             <asp:BoundField DataField="OrganizationName" HeaderText="Organization" SortExpression="OrganizationName" ReadOnly="true" />
                                                             <asp:BoundField DataField="TotalCost" HeaderText="Total Cost" DataFormatString="${0:###,###,###.00}" SortExpression="TotalCost" ReadOnly="true" />
                                                             <asp:TemplateField HeaderText="Payment Status" SortExpression="InvoiceStatus">
                                                                 <EditItemTemplate>
-                                                                    <asp:DropDownList ID="DropDownList3" runat="server" SelectedValue='<%# Bind ("InvoiceStatus") %>'>
+                                                                    <asp:DropDownList ID="DropDownList3" runat="server" SelectedValue='<%# Bind ("InvoiceStatus") %>' OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged" AutoPostBack="True">
                                                                         <asp:ListItem>Unpaid</asp:ListItem>
                                                                         <asp:ListItem>Paid</asp:ListItem>
                                                                     </asp:DropDownList>
@@ -376,9 +393,14 @@
                                                         </Columns>
                                                     </asp:gridview>
 
+                                    </ContentTemplate>
+
+                            </asp:UpdatePanel>
+
+
                             <asp:sqldatasource id="programSource" runat="server" connectionstring="<%$ ConnectionStrings:connString %>"
                                 filterexpression="Convert(DateCreated, 'System.String') LIKE '%{0}%'"
-                                selectcommand="SELECT        Invoice.InvoiceID, Invoice.InvoiceNumber, Invoice.DateCreated, Program.ProgramName, Organization.OrganizationName, Invoice.TotalCost, Invoice.InvoiceStatus
+                                selectcommand="SELECT        Invoice.InvoiceID, Invoice.InvoiceNumber, Payment.PaymentType, Invoice.DateCreated, Program.ProgramName, Organization.OrganizationName, Invoice.TotalCost, Invoice.InvoiceStatus
                         
 FROM            Program INNER JOIN
                          NewProgram ON Program.ProgramID = NewProgram.ProgramID INNER JOIN
@@ -386,13 +408,15 @@ FROM            Program INNER JOIN
                          Invoice ON AssignInvoice.AssignInvoiceID = Invoice.InvoiceID FULL OUTER JOIN 
                          Payment ON Invoice.InvoiceID = Payment.InvoiceID LEFT OUTER JOIN
                          Organization ON Payment.OrganizationID = Organization.OrganizationID"
-                                updatecommand="UPDATE dbo.Invoice set InvoiceStatus = @InvoiceStatus where InvoiceID = @InvoiceID ">
+                                UpdateCommandType="StoredProcedure"
+                                updatecommand="updatePaymentInvoice">
                                 <FilterParameters>
                                                     <asp:ControlParameter Name="DateCreated" ControlID="txtYear" PropertyName="Text" />
                                                 </FilterParameters>
                                                 <UpdateParameters>
                                                     <asp:Parameter Name="InvoiceStatus" Type="String" />
                                                     <asp:Parameter Name="InvoiceID" Type="String" />
+                                                    <asp:Parameter Name="PaymentType" Type="String" />
                                                 </UpdateParameters>
 
                                             </asp:sqldatasource>
@@ -428,6 +452,19 @@ FROM            Program INNER JOIN
                                                         <Columns>
                                                             <asp:BoundField DataField="InvoiceID" HeaderText="InvoiceID" SortExpression="InvoiceID" ReadOnly="true" Visible="False" />
                                                             <asp:BoundField DataField="InvoiceNumber" HeaderText="Invoice #" SortExpression="InvoiceNumber" ReadOnly="true" />
+                                                            <asp:TemplateField HeaderText="Payment Type" SortExpression="PaymentType">
+                                                                <EditItemTemplate>
+                                                                    <asp:DropDownList ID="ddlPayTypeOut" runat="server" SelectedValue='<%# Bind ("PaymentType") %>'>
+                                                                        <asp:ListItem Value="TBD">TBD</asp:ListItem>
+                                                                        <asp:ListItem Value="Cash">Cash</asp:ListItem>
+                                                                        <asp:ListItem Value="Check">Check</asp:ListItem>
+                                                                        <asp:ListItem Value="Credit/Debit">Credit/Debit</asp:ListItem>
+                                                                    </asp:DropDownList>
+                                                                </EditItemTemplate>
+                                                                <ItemTemplate>
+                                                                    <asp:Label ID="lblPayTypeOut" runat="server" Text='<%# Bind("PaymentType") %>'></asp:Label>
+                                                                </ItemTemplate>
+                                                            </asp:TemplateField>
                                                             <asp:BoundField DataField="DateCreated" HeaderText="Date Created" SortExpression="DateCreated" ReadOnly="true" />
                                                             <asp:BoundField DataField="ProgramName" HeaderText="Program Name" SortExpression="ProgramName" ReadOnly="true" />
                                                             <asp:BoundField DataField="OrganizationName" HeaderText="Organization" SortExpression="OrganizationName" ReadOnly="true" />
@@ -435,7 +472,7 @@ FROM            Program INNER JOIN
                                                             
                                                             <asp:TemplateField HeaderText="Payment Status" SortExpression="InvoiceStatus">
                                                                 <EditItemTemplate>
-                                                                    <asp:DropDownList ID="DropDownList1" runat="server" SelectedValue='<%# Bind ("InvoiceStatus") %>'>
+                                                                    <asp:DropDownList ID="DropDownList1" runat="server" SelectedValue='<%# Bind ("InvoiceStatus") %>' OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True">
                                                                         <asp:ListItem>Unpaid</asp:ListItem>
                                                                         <asp:ListItem>Paid</asp:ListItem>
                                                                     </asp:DropDownList>
@@ -454,7 +491,7 @@ FROM            Program INNER JOIN
                                             </asp:updatepanel>
                             <asp:sqldatasource id="outstandingSource" runat="server" connectionstring="<%$ ConnectionStrings:connString %>"
                                 filterexpression="Convert(DateCreated, 'System.String') LIKE '%{0}%'"
-                                selectcommand="SELECT        Invoice.InvoiceID, Invoice.InvoiceNumber, Invoice.DateCreated, Program.ProgramName, Organization.OrganizationName, Invoice.TotalCost, Invoice.InvoiceStatus
+                                selectcommand="SELECT        Invoice.InvoiceID, Invoice.InvoiceNumber, Payment.PaymentType, Invoice.DateCreated, Program.ProgramName, Organization.OrganizationName, Invoice.TotalCost, Invoice.InvoiceStatus
                         
 FROM            Program INNER JOIN
                          NewProgram ON Program.ProgramID = NewProgram.ProgramID INNER JOIN
@@ -463,14 +500,15 @@ FROM            Program INNER JOIN
                          Payment ON Invoice.InvoiceID = Payment.InvoiceID LEFT OUTER JOIN
                          Organization ON Payment.OrganizationID = Organization.OrganizationID
 WHERE InvoiceStatus = 'Unpaid'"
-                                updatecommand="UPDATE dbo.Invoice set InvoiceStatus = @InvoiceStatus where InvoiceID = @InvoiceID "
-                                deletecommand="DELETE from dbo.AssignInvoice where NewProgramID = @NewProgramID">
+                                UpdateCommandType="StoredProcedure"
+                                updatecommand="updatePaymentInvoice">             
                                                 <FilterParameters>
                                                     <asp:ControlParameter Name="DateCreated" ControlID="txtYear" PropertyName="Text" />
                                                 </FilterParameters>
                                                 <UpdateParameters>
                                                     <asp:Parameter Name="InvoiceStatus" Type="String" />
                                                     <asp:Parameter Name="InvoiceID" Type="String" />
+                                                    <asp:Parameter Name="PaymentType" Type="String" />
                                                 </UpdateParameters>
                                                 <DeleteParameters>
                                                     <asp:Parameter Name="NewProgramID" Type="String" />
@@ -508,13 +546,26 @@ WHERE InvoiceStatus = 'Unpaid'"
                                                         <Columns>
                                                             <asp:BoundField DataField="InvoiceID" HeaderText="InvoiceID" SortExpression="InvoiceID" ReadOnly="true" Visible="False" />
                                                             <asp:BoundField DataField="InvoiceNumber" HeaderText="Invoice #" SortExpression="InvoiceNumber" ReadOnly="true" />
+                                                            <asp:TemplateField HeaderText="Payment Type" SortExpression="PaymentType">
+                                                                <EditItemTemplate>
+                                                                    <asp:DropDownList ID="ddlPayType" runat="server" SelectedValue='<%# Bind ("PaymentType") %>'>
+                                                                        <asp:ListItem Value="TBD">TBD</asp:ListItem>
+                                                                        <asp:ListItem Value="Cash">Cash</asp:ListItem>
+                                                                        <asp:ListItem Value="Check">Check</asp:ListItem>
+                                                                        <asp:ListItem Value="Credit/Debit">Credit/Debit</asp:ListItem>
+                                                                    </asp:DropDownList>
+                                                                </EditItemTemplate>
+                                                                <ItemTemplate>
+                                                                    <asp:Label ID="lblPayType" runat="server" Text='<%# Bind("PaymentType") %>'></asp:Label>
+                                                                </ItemTemplate>
+                                                            </asp:TemplateField>
                                                             <asp:BoundField DataField="DateCreated" HeaderText="Date Created" SortExpression="DateCreated" ReadOnly="true" />
                                                             <asp:BoundField DataField="ProgramName" HeaderText="Program Name" SortExpression="ProgramName" ReadOnly="true" />
                                                             <asp:BoundField DataField="OrganizationName" HeaderText="Organization" SortExpression="OrganizationName" ReadOnly="true" />
                                                             <asp:BoundField DataField="TotalCost" HeaderText="Total Cost" DataFormatString="${0:###,###,###.00}" SortExpression="TotalCost" ReadOnly="true" />
                                                             <asp:TemplateField HeaderText="Payment Status" SortExpression="InvoiceStatus">
                                                                 <EditItemTemplate>
-                                                                    <asp:DropDownList ID="DropDownList2" runat="server" SelectedValue='<%# Bind ("InvoiceStatus") %>'>
+                                                                    <asp:DropDownList ID="DropDownList2" runat="server" SelectedValue='<%# Bind ("InvoiceStatus") %>' OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="True">
                                                                         <asp:ListItem>Unpaid</asp:ListItem>
                                                                         <asp:ListItem>Paid</asp:ListItem>
                                                                     </asp:DropDownList>
@@ -533,7 +584,7 @@ WHERE InvoiceStatus = 'Unpaid'"
                                             </asp:updatepanel>
                             <asp:sqldatasource id="paidSource" runat="server" connectionstring="<%$ ConnectionStrings:connString %>"
                                 filterexpression="Convert(DateCreated, 'System.String') LIKE '%{0}%'"
-                                selectcommand="SELECT        Invoice.InvoiceID, Invoice.InvoiceNumber, Invoice.DateCreated, Program.ProgramName, Organization.OrganizationName, Invoice.TotalCost, Invoice.InvoiceStatus
+                                selectcommand="SELECT        Invoice.InvoiceID, Invoice.InvoiceNumber, Payment.PaymentType, Invoice.DateCreated, Program.ProgramName, Organization.OrganizationName, Invoice.TotalCost, Invoice.InvoiceStatus
                         
 FROM            Program INNER JOIN
                          NewProgram ON Program.ProgramID = NewProgram.ProgramID INNER JOIN
@@ -542,13 +593,15 @@ FROM            Program INNER JOIN
                          Payment ON Invoice.InvoiceID = Payment.InvoiceID LEFT OUTER JOIN
                          Organization ON Payment.OrganizationID = Organization.OrganizationID
 WHERE InvoiceStatus = 'Paid'"
-                                updatecommand="UPDATE dbo.Invoice set InvoiceStatus = @InvoiceStatus where InvoiceID = @InvoiceID ">
+                                UpdateCommandType="StoredProcedure"
+                                updatecommand="updatePaymentInvoice">
                                                 <FilterParameters>
                                                     <asp:ControlParameter Name="DateCreated" ControlID="txtYear" PropertyName="Text" />
                                                 </FilterParameters>
                                                 <UpdateParameters>
                                                     <asp:Parameter Name="InvoiceStatus" Type="String" />
                                                     <asp:Parameter Name="InvoiceID" Type="String" />
+                                                    <asp:Parameter Name="PaymentType" Type="String" />
                                                 </UpdateParameters>
                                             </asp:sqldatasource>
 

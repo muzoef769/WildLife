@@ -164,4 +164,58 @@ public partial class Payment : System.Web.UI.Page
         paidGrid.DataBind();
 
     }
+
+
+
+    protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        //DropDownList ddl = (DropDownList)sender;
+        //if (ddl.SelectedItem.Text == "Unpaid")
+        //{
+        //    using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+        //    {
+        //        string updatePayType = "UPDATE dbo.Payment set PaymentType = 'TBD' where Payment.InvoiceID = @InvoiceID";
+
+        //        using (SqlCommand command = new SqlCommand(updatePayType, connection))
+        //        {
+        //            command.Parameters.AddWithValue("@InvoiceID", );
+        //        }
+        //    }
+        //}
+
+        DropDownList ddl = (DropDownList)sender;
+        GridViewRow row = (GridViewRow)ddl.NamingContainer;
+        DropDownList ddlPaymentType = (row.Cells[2].FindControl("ddlPayTypeAll") as DropDownList);
+
+        if (ddl.SelectedItem.Text == "Unpaid")
+        {
+            ddlPaymentType.SelectedValue = "TBD";
+        }
+}
+
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        DropDownList ddl = (DropDownList)sender;
+        GridViewRow row = (GridViewRow)ddl.NamingContainer;
+        DropDownList ddlPaymentType = (row.Cells[2].FindControl("ddlPayTypeOut") as DropDownList);
+
+        if (ddl.SelectedItem.Text == "Unpaid")
+        {
+            ddlPaymentType.SelectedValue = "TBD";
+        }
+    }
+
+    protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        DropDownList ddl = (DropDownList)sender;
+        GridViewRow row = (GridViewRow)ddl.NamingContainer;
+        DropDownList ddlPaymentType = (row.Cells[2].FindControl("ddlPayType") as DropDownList);
+
+        if (ddl.SelectedItem.Text == "Unpaid")
+        {
+            ddlPaymentType.SelectedValue = "TBD";
+        }
+    }
+
+    
 }
