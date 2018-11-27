@@ -1,38 +1,83 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Web.Configuration;
+using System.Data;
+using System.Collections.Generic;
 
 public partial class ResetPasswordPage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
-    }
-    protected void ChangePassword(object sender, EventArgs e)
-    {
-        string name = Users.USER_NAME;
-        using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+        if (!IsPostBack)
         {
-            connection.Open();
-            SqlCommand getPassword = new SqlCommand("SELECT UserID FROM [dbo].[User] WHERE Username = @User1", connection);
-            getPassword.Parameters.AddWithValue("@User1", name);
-            int getUserID = Convert.ToInt32(getPassword.ExecuteScalar());
-
-
-            string updatePassword = "UPDATE Password Set PasswordHash = @Pass WHERE UserID = @User";
-            using (SqlCommand cmd2 = new SqlCommand(updatePassword, connection))
+            if (!IsPasswordResetLinkValid())
             {
-                cmd2.Parameters.AddWithValue("@Pass", PasswordHash.HashPassword(txtConfirmPass.Text));
-                cmd2.Parameters.AddWithValue("@User", getUserID);
-
-                cmd2.ExecuteNonQuery();
+                lblMessage1.ForeColor = System.Drawing.Color.Red;
+                lblMessage1.Text = "Password Reset link has expired or is invalid";
             }
         }
-        Users.USER_NAME = "";
+    }
+    protected void ChangeResetPassword(object sender, EventArgs e)
+    {
+        if (ChangePassword())
+        {
+            lblMessage1.Text = "Password Changed Successfully";
+        }
+        else
+        {
+            lblMessage1.ForeColor = System.Drawing.Color.Red;
+            lblMessage1.Text = "Password Reset link has expired or is invalid";
+        }
+    }
+    private bool ChangePassword()
+    {
+        List<SqlParameter> paramList = new List<SqlParameter>()
+        {
+            new SqlParameter()
+            {
+                ParameterName = "@GUID",
+                Value = Request.QueryString["uid"]
+            },
+            new SqlParameter()
+            {
+                ParameterName = "@Password",
+                Value = PasswordHash.HashPassword(txtConfirmPass.Text)
+            }
+        };
+
+        return ExecuteSP("spChangePassword", paramList);
+    }
+    private bool ExecuteSP(string SPName, List<SqlParameter> SPParamters)
+    {
+        using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+        {
+            SqlCommand command = new SqlCommand(SPName, connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            foreach(SqlParameter parameter in SPParamters)
+            {
+                command.Parameters.Add(parameter);
+            }
+            connection.Open();
+            return Convert.ToBoolean(command.ExecuteScalar());
+        }
+    }
+    private bool IsPasswordResetLinkValid()
+    {
+        List<SqlParameter> paramList = new List<SqlParameter>()
+        {
+            new SqlParameter()
+            {
+                ParameterName = "@GUID",
+                Value = Request.QueryString["uid"]
+            }
+        };
+
+        return ExecuteSP("spIsPasswordResetLinkValid", paramList);
+    }
+
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        Server.TransferRequest("Default.aspx");
     }
 }
