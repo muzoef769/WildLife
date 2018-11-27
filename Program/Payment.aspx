@@ -322,7 +322,7 @@
 
     <div class="row">
         <div class="col-md-6 mx-auto text-center">
-            <h1 class="CardTitle">View Program Info</h1>
+            <h1 class="CardTitle">Payments</h1>
         </div>
     </div>
     <br />
@@ -338,13 +338,14 @@
                 <li class="nav-item ">
                     <a style="margin-right: 5px; color: black;" class="nav-link " id="profile-tab" data-toggle="tab" href="#Fulfilled" role="tab" aria-controls="profile" aria-selected="false">Fulfilled</a>
                 </li>
+                <asp:textbox id="txtYear" runat="server" width="25%" class="form-control" placeholder="Filter By Year (e.g. '2018')"></asp:textbox>
+                <asp:button id="btnFilter" runat="server" class="btn btn-success" text="Filter By Year" onclick="btnFilter_Click" />
+                <asp:Button runat="server" class="btn btn-primary" id="dateClear" OnClick="dateClear_Click" Text="Clear Filter"/>
+                <asp:regularexpressionvalidator validationexpression="^\d{4}$" id="RegularExpressionValidator1" runat="server" errormessage="Please enter a valid year (e.g. '2018')" controltovalidate="txtYear" />
             </ul>
 
         </div>
-        <asp:textbox id="txtYear" runat="server" width="25%" class="form-control" placeholder="Filter By Year (e.g. '2018')"></asp:textbox>
-        <asp:button id="btnFilter" runat="server" class="btn btn-success" text="Filter By Year" onclick="btnFilter_Click" />
-        <asp:Button runat="server" class="btn btn-primary" id="dateClear" OnClick="dateClear_Click" Text="Clear Filter"/>
-        <asp:regularexpressionvalidator validationexpression="^\d{4}$" id="RegularExpressionValidator1" runat="server" errormessage="Please enter a valid year (e.g. '2018')" controltovalidate="txtYear" />
+        
         <div class="tab-content">
             <div id="All" class="tab-pane fade show active">
                 <div class="table-responsive">

@@ -21,6 +21,10 @@ public partial class Payment : System.Web.UI.Page
 
     protected void gridRefresh_Click(object sender, EventArgs e)
     {
+        programSource.EnableCaching = false;
+        allInvGrid.DataBind();
+        programSource.EnableCaching = true;
+
         outstandingSource.EnableCaching = false;
         outInvGrid.DataBind();
         outstandingSource.EnableCaching = true;
@@ -29,9 +33,7 @@ public partial class Payment : System.Web.UI.Page
         paidGrid.DataBind();
         paidSource.EnableCaching = true;
 
-        programSource.EnableCaching = false;
-        allInvGrid.DataBind();
-        programSource.EnableCaching = true;
+        
     }
 
     public override void VerifyRenderingInServerForm(Control control)
