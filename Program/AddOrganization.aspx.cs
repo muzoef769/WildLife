@@ -28,7 +28,7 @@ public partial class AddOrganization : System.Web.UI.Page
             txtCounty.Text,
             drpCountry.Text,
             txtZipCode.Text,
-            "Organization",
+            "Organization Address",
             DateTime.Now,
             Session["UserFullName"].ToString());
 

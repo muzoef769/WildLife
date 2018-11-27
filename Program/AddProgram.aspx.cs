@@ -22,25 +22,29 @@ public partial class AddProgram : System.Web.UI.Page
 
     protected void DrpOrganizationList_IndexChanged(object sender, EventArgs e)
     {
+
         if (drpOrganizationList.SelectedIndex > 0)
         {
-
-            DataTable contactList = new DataTable();
-            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+            if (IsPostBack || !IsPostBack)
             {
-                connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter("Select ContactID, CONCAT(FirstName,' ',LastName) as Name from Contact Where OrganizationID =" + drpOrganizationList.SelectedValue, connection);
+                DataTable contactList = new DataTable();
+                using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+                {
+                    connection.Open();
+                    SqlDataAdapter adapter = new SqlDataAdapter("Select ContactID, CONCAT(FirstName,' ',LastName) as Name from Contact Where OrganizationID =" + drpOrganizationList.SelectedValue, connection);
 
-                adapter.Fill(contactList);
+                    adapter.Fill(contactList);
 
-                drpContact.DataSource = contactList;
-                drpContact.DataTextField = "Name";
-                drpContact.DataValueField = "ContactID";
-                drpContact.DataBind();
-                drpContact.Items.Insert(0, new ListItem("Contacts", String.Empty));
-                drpContact.SelectedIndex = 0;
+                    drpContact.DataSource = contactList;
+                    drpContact.DataTextField = "Name";
+                    drpContact.DataValueField = "ContactID";
+                    drpContact.DataBind();
+                    drpContact.Items.Insert(0, new ListItem("Contacts", String.Empty));
+                    drpContact.SelectedIndex = 0;
+                    connection.Close();
 
 
+                }
             }
         }
         else
@@ -54,6 +58,8 @@ public partial class AddProgram : System.Web.UI.Page
             txtPrimaryNumber.Text = null;
             txtSecondaryNumber.Text = null;
         }
+
+
 
     }
 
@@ -128,6 +134,8 @@ public partial class AddProgram : System.Web.UI.Page
             txtSecondaryNumber.Text = null;
 
         }
+
+
     }
 
     protected void DrpProgramList_SelectedIndexChanged(object sender, EventArgs e)
@@ -140,7 +148,9 @@ public partial class AddProgram : System.Web.UI.Page
             drpLocationTypeList.Items.Add(("Online"));
             drpLocationTypeList.SelectedValue = "Online";
             txtMileage.Visible = false;
-            programLoc.Visible = false;
+            lblMileage1.Visible = false;
+            txtStreet.Visible = false;
+            lblStreet.Visible = false;
         }
         else
         {
@@ -154,6 +164,7 @@ public partial class AddProgram : System.Web.UI.Page
         {
             drpLocationTypeList.SelectedValue = "Offsite";
             drpLocationTypeList.Enabled = false;
+           
         }
 
         if (value == "1" || value == "2" || value == "3" || value == "4" || value == "5" || value == "6" || value == "7" || value == "8" || value == "9" || value == "10" || value == "11" || value == "12")
@@ -164,7 +175,7 @@ public partial class AddProgram : System.Web.UI.Page
         else
         {
             drpLocationTypeList.Items.Add(("Online"));
-           
+
         }
     }
 
@@ -238,7 +249,7 @@ public partial class AddProgram : System.Web.UI.Page
         {
 
             connection.Open();
-            Address address = new Address(txtStreet.Text, txtState.Text, txtCity.Text, txtCounty.Text, txtCountry.Text, txtZipCode.Text, "Program Location", DateTime.Today, Session["UserFullName"].ToString());
+            Address address = new Address(txtStreet.Text, drpState.Text, txtCity.Text, txtCounty.Text, drpCountry.Text, txtZipCode.Text, "Program Address", DateTime.Today, Session["UserFullName"].ToString());
             int newAddressID;
 
             if (drpLocationTypeList.SelectedValue == "Onsite")
@@ -303,9 +314,9 @@ public partial class AddProgram : System.Web.UI.Page
             for (int j = 0; j < NewProgram.programList.Count; j++)
             {
                 string insertIntoNewProgram = "INSERT INTO NewProgram([TotalKids], [TotalAdults]," +
-               "[TotalPeople], [AgeLevel], [TotalMileage], [NewProgramStatus], [TimeSlot]," +
+               "[TotalPeople], [AgeLevel], [NewProgramStatus], [TimeSlot]," +
                "[DateCompleted], [LocationType], [MiscNotes], [ProgramID], [AddressID],[LastUpdated], [LastUpdatedBy]) VALUES (" +
-               "@kid, @adult, @totalPeople, @age, @mileage, @status, @time, @complete," +
+               "@kid, @adult, @totalPeople, @age, @status, @time, @complete," +
                "@location, @miscNotes, @programid, @addressid, @LU, @LUB)";
 
                 using (SqlCommand command = new SqlCommand(insertIntoNewProgram, connection))
@@ -314,16 +325,6 @@ public partial class AddProgram : System.Web.UI.Page
                     command.Parameters.AddWithValue("@adult", NewProgram.programList[j].getNumAdults());
                     command.Parameters.AddWithValue("@totalpeople", NewProgram.programList[j].getTotalPeople());
                     command.Parameters.AddWithValue("@age", NewProgram.programList[j].getAgeLevel());
-                    if (programLoc.Visible == true)
-                    {
-                        command.Parameters.AddWithValue("@mileage", Convert.ToInt32(txtMileage.Text));
-
-                        
-                    }
-                    else if (programLoc.Visible ==false)
-                    {
-                        command.Parameters.AddWithValue("@mileage", NewProgram.programList[j].getTotalMileage());
-                    }
                     command.Parameters.AddWithValue("@status", NewProgram.programList[j].getProgramStatus());
                     command.Parameters.AddWithValue("@time", NewProgram.programList[j].getTimeSlot());
                     command.Parameters.AddWithValue("@complete", NewProgram.programList[j].getDateCompleted());
@@ -460,25 +461,48 @@ public partial class AddProgram : System.Web.UI.Page
             //lblTotalCostPrice.Text = totalReal.ToString();
             //totalReal = Convert.ToDouble(lblSubtotalCost.Text) + mileageCost;
             //lblTotalCostPrice.Text = totalReal.ToString();
-            Invoice newInvoice = new Invoice(txtInvoiceNumber.Text, totalReal, Convert.ToDateTime(datepicker.Value), "Incompleted", DateTime.Today, "Raina");
+            if (drpLocationTypeList.SelectedValue == "Offsite")
+            {
+                Invoice newInvoice = new Invoice(txtInvoiceNumber.Text, totalReal, Convert.ToDateTime(datepicker.Value), "Unpaid", DateTime.Today, "Raina", Convert.ToInt32(txtMileage.Text));
+                string invoiceInsert = "Insert into Invoice([InvoiceNumber], [TotalCost], [DateCreated], [InvoiceStatus], [LastUpdated], [LastUpdatedBy], [TotalMileage]) VALUES (" +
+                   "@InvoiceNumber, @TotalCost, @DateCreated, @InvoiceStatus, @LastUpdated, @LastUpdatedBy, @Mileage)";
 
-        string invoiceInsert = "Insert into Invoice([InvoiceNumber], [TotalCost], [DateCreated], [InvoiceStatus], [LastUpdated], [LastUpdatedBy])VALUES (" +
-               "@InvoiceNumber, @TotalCost, @DateCreated, @InvoiceStatus, @LastUpdated, @LastUpdatedBy)";
-
-        using (SqlCommand command = new SqlCommand(invoiceInsert, connection))
-        {
+                using (SqlCommand command = new SqlCommand(invoiceInsert, connection))
+                {
 
 
-            command.Parameters.AddWithValue("@InvoiceNumber", newInvoice.getInvoiceNumber());
-            command.Parameters.AddWithValue("@TotalCost", newInvoice.getTotal());
-            command.Parameters.AddWithValue("@DateCreated", newInvoice.getDateCreated());
-            command.Parameters.AddWithValue("@InvoiceStatus", newInvoice.getInvoiceStatus());
-            command.Parameters.AddWithValue("@LastUpdated", newInvoice.getLastUpdated());
-            command.Parameters.AddWithValue("@LastUpdatedBy", newInvoice.getLastUpdatedBy());
+                    command.Parameters.AddWithValue("@InvoiceNumber", newInvoice.getInvoiceNumber());
+                    command.Parameters.AddWithValue("@TotalCost", newInvoice.getTotal());
+                    command.Parameters.AddWithValue("@DateCreated", newInvoice.getDateCreated());
+                    command.Parameters.AddWithValue("@InvoiceStatus", newInvoice.getInvoiceStatus());
+                    command.Parameters.AddWithValue("@LastUpdated", newInvoice.getLastUpdated());
+                    command.Parameters.AddWithValue("@LastUpdatedBy", newInvoice.getLastUpdatedBy());
+                    command.Parameters.AddWithValue("@Mileage", newInvoice.getMileage());
+                    command.ExecuteNonQuery();
+                }
+            }
+            else
+            {
+                Invoice newInvoice = new Invoice(txtInvoiceNumber.Text, totalReal, Convert.ToDateTime(datepicker.Value), "Unpaid", DateTime.Today, "Raina", 0);
 
-            command.ExecuteNonQuery();
+                string invoiceInsert = "Insert into Invoice([InvoiceNumber], [TotalCost], [DateCreated], [InvoiceStatus], [LastUpdated], [LastUpdatedBy], [TotalMileage]) VALUES (" +
+                       "@InvoiceNumber, @TotalCost, @DateCreated, @InvoiceStatus, @LastUpdated, @LastUpdatedBy, @Mileage)";
 
-        }
+                using (SqlCommand command = new SqlCommand(invoiceInsert, connection))
+                {
+
+
+                    command.Parameters.AddWithValue("@InvoiceNumber", newInvoice.getInvoiceNumber());
+                    command.Parameters.AddWithValue("@TotalCost", newInvoice.getTotal());
+                    command.Parameters.AddWithValue("@DateCreated", newInvoice.getDateCreated());
+                    command.Parameters.AddWithValue("@InvoiceStatus", newInvoice.getInvoiceStatus());
+                    command.Parameters.AddWithValue("@LastUpdated", newInvoice.getLastUpdated());
+                    command.Parameters.AddWithValue("@LastUpdatedBy", newInvoice.getLastUpdatedBy());
+                    command.Parameters.AddWithValue("@Mileage", newInvoice.getMileage());
+                    command.ExecuteNonQuery();
+
+                }
+            }
 
 
             int newProgramID2;
@@ -500,24 +524,24 @@ public partial class AddProgram : System.Web.UI.Page
                   "@InvoiceID, @NewProgramID, @LastUpdated, @LastUpdatedBy)";
 
 
-            
-                using (SqlCommand command = new SqlCommand(assignInvoice, connection))
-                {
-                    command.Parameters.AddWithValue("@InvoiceID", invoiceID);
-                    command.Parameters.AddWithValue("@NewProgramID", newProgramID2);
-                    command.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
-                    command.Parameters.AddWithValue("@LastUpdatedBy", "Raina"); ///Need to change this
 
-                    command.ExecuteNonQuery();
+            using (SqlCommand command = new SqlCommand(assignInvoice, connection))
+            {
+                command.Parameters.AddWithValue("@InvoiceID", invoiceID);
+                command.Parameters.AddWithValue("@NewProgramID", newProgramID2);
+                command.Parameters.AddWithValue("@LastUpdated", DateTime.Today);
+                command.Parameters.AddWithValue("@LastUpdatedBy", "Raina"); ///Need to change this
 
-                }
+                command.ExecuteNonQuery();
+
+            }
 
 
 
-                connection.Close();
+            connection.Close();
         }
 
-       
+
 
 
         //lblSubtotalCost.Text = totalCost.ToString();
@@ -562,8 +586,8 @@ public partial class AddProgram : System.Web.UI.Page
         }
         //totalCost = totalCost + mileageCost;
         //lblTotalCostPrice.Text = totalCost.ToString();
-      
-      
+
+
         NewProgram.programList.Clear();
         NewProgram.btnCount = 0;
 
@@ -582,7 +606,7 @@ public partial class AddProgram : System.Web.UI.Page
         //totalCost += mileageCost;
         //lblTotalCostPrice.Text = totalCost.ToString();
         //Page.DataBind();
-        
+
 
 
 
@@ -593,8 +617,8 @@ public partial class AddProgram : System.Web.UI.Page
 
     protected void BtnAddProgram_Click(object sender, EventArgs e)
     {
-     
-      
+
+
         programID = Convert.ToInt32(drpProgramList.SelectedValue); /*Grab ProgramID*/
 
         int totalPeople;
@@ -627,15 +651,16 @@ public partial class AddProgram : System.Web.UI.Page
                 programCost = 160.00;
             }
         }
-        if (Page.IsValid) { 
-        NewProgram newProgram = new NewProgram(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
-                totalPeople, drpAgeLevel.SelectedValue, "Paid", Convert.ToDateTime(programTime.Text),
-                Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
-                programID, DateTime.Now, Session["UserFullName"].ToString(), programCost);
+        if (Page.IsValid)
+        {
+            NewProgram newProgram = new NewProgram(Int32.Parse(txtKids.Text), Int32.Parse(txtAdults.Text),
+                    totalPeople, drpAgeLevel.SelectedValue, "Completed", Convert.ToDateTime(programTime.Text),
+                    Convert.ToDateTime(datepicker.Value), txtMiscNotes.Value, drpLocationTypeList.SelectedValue,
+                    programID, DateTime.Now, Session["UserFullName"].ToString(), programCost);
 
-        NewProgram.programList.Add(newProgram);
+            NewProgram.programList.Add(newProgram);
 
-            }
+        }
 
 
 
@@ -645,6 +670,11 @@ public partial class AddProgram : System.Web.UI.Page
         txtMiscNotes.InnerText = null;
         drpLocationTypeList.SelectedValue = null;
         drpProgramList.SelectedValue = null;
+        CheckBoxList1.Text = null;
+        CheckBoxList2.Text = null;
+        CheckBoxList3.Text = null;
+        CheckBoxList4.Text = null;
+
         NewProgram.baseCost = 250 + (160 * (NewProgram.programList.Count - 1));
 
 
@@ -705,7 +735,7 @@ public partial class AddProgram : System.Web.UI.Page
         totalCost += mileageCost;
         lblTotalCostPrice.Text = totalCost.ToString();
         NewProgram.btnCount += 1;
-        TextBox1.Text = NewProgram.programList[0].getPrgCost().ToString();
+        //TextBox1.Text = NewProgram.programList[0].getPrgCost().ToString();
 
 
     }
@@ -720,10 +750,43 @@ public partial class AddProgram : System.Web.UI.Page
         else
         {
             programLoc.Visible = true;
+            
         }
     }
 
-  
+
+
+    //if (drpContact.SelectedIndex > 0)
+    //    {
+    //        using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+    //        {
+
+    //            string retrieveContact = "Select FirstName, LastName, Email, PrimaryPhoneNumber, SecondaryPhoneNumber from Contact where ContactID = @contactID";
+
+    //            try
+    //            {
+    //                connection.Open();
+    //                String getProgramID = "SELECT ProgramID FROM Program WHERE ProgramName = @ProgramName";
+    //SqlCommand getIDCommand = new SqlCommand(getProgramID, connection);
+    //getIDCommand.Parameters.AddWithValue("@ProgramName", drpProgramList.SelectedValue);
+    //                getIDCommand.ExecuteNonQuery();
+    //                connection.Close();
+
+    //            }
+    //            catch (Exception)
+    //            {
+
+    //            }
+
+
+
+
+
+
+
+
+
+
 
     protected void btnUpdateMileage_Click(object sender, EventArgs e)
     {
@@ -737,14 +800,14 @@ public partial class AddProgram : System.Web.UI.Page
         NewProgram.programList.Clear();
         lblCartTotal.Text = Convert.ToString(NewProgram.programList.Count);
         NewProgram.btnCount = 0;
-         programCost =0.0;
-     mileageCost =0.0;
+        programCost = 0.0;
+        mileageCost = 0.0;
         lblMileageCost.Text = Convert.ToString(mileageCost);
-     totalCost =0.0;
-    totalReal =0.0;
+        totalCost = 0.0;
+        totalReal = 0.0;
         lblSubtotalCost.Text = totalCost.ToString();
-    lblTotalCostPrice.Text = totalCost.ToString();
-        if (lblProgramOne.Visible==true)
+        lblTotalCostPrice.Text = totalCost.ToString();
+        if (lblProgramOne.Visible == true)
         {
             lblProgramOne.Visible = false;
             lblProgramCostOne.Visible = false;
@@ -769,22 +832,106 @@ public partial class AddProgram : System.Web.UI.Page
             lblProgramCostThree.Visible = false;
         }
 
+        drpOrganizationList.SelectedIndex = 0;
+        txtInvoiceNumber.Text = null;
+        drpProgramList.SelectedIndex = 0;
+        drpLocationTypeList.SelectedIndex = 0;
+        txtAdults.Text = null;
+        txtKids.Text = null;
+        drpAgeLevel.SelectedIndex = 0;
+        CheckBoxList1.Text = null;
+        CheckBoxList2.Text = null;
+        CheckBoxList3.Text = null;
+        CheckBoxList4.Text = null;
+        drpAgeLevel.Text = null;
+        txtMiscNotes.Value = null;
+        datepicker.Value = null;
+        programTime.Text = null;
+        txtFirstName.Text = null;
+        txtLastName.Text = null;
+        txtEmail.Text = null;
+        txtPrimaryNumber.Text = null;
+        txtSecondaryNumber.Text = null;
+        txtStreet.Text = null;
+        txtCity.Text = null;
+        txtCounty.Text = null;
+        txtMileage.Text = null;
+        txtProgramCostOne.Text = null;
+        drpCountry.SelectedIndex = 0;
+        drpContact.SelectedIndex = 0;
+        drpState.SelectedIndex = 0;
+        txtZipCode.Text = null;
+
+
+
     }
 
     protected void txtMileage_TextChanged(object sender, EventArgs e)
     {
+
         int miles;
-        if (programLoc.Visible == true)
+
+        try
         {
-            miles = Convert.ToInt32(txtMileage.Text);
-            mileageCost = miles * .57;
-            lblMileageCost.Text = mileageCost.ToString();
+            if (programLoc.Visible == true)
+            {
+                miles = Convert.ToInt32(txtMileage.Text);
+                mileageCost = miles * .57;
+                lblMileageCost.Text = mileageCost.ToString();
+            }
+            else
+            {
+                miles = 0;
+            }
+            totalReal = Convert.ToDouble(lblSubtotalCost.Text) + mileageCost;
+            lblTotalCostPrice.Text = totalReal.ToString();
+        }
+        catch (Exception E)
+        {
+
+        }
+    }
+
+    protected void chkLocation_CheckedChanged(object sender, EventArgs e)
+    {
+        if (chkLocation.Checked)
+        {
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connString"].ConnectionString))
+            {
+
+                connection.Open();
+                string locationQuery = "Select Address.* FROM Address INNER JOIN Organization ON Address.AddressID = Organization.AddressID WHERE OrganizationID = @OrganizationID";
+                SqlCommand locationCommand = new SqlCommand(locationQuery, connection);
+
+                locationCommand.Parameters.AddWithValue("@OrganizationID", drpOrganizationList.SelectedValue);
+                SqlDataReader locationReader = locationCommand.ExecuteReader();
+
+                if (locationReader.HasRows)
+                {
+                    while (locationReader.Read())
+                    {
+                        txtStreet.Text = locationReader.GetString(1);
+                        txtCity.Text = locationReader.GetString(2);
+                        drpState.Text = locationReader.GetString(3);
+                        txtCounty.Text = locationReader.GetString(4);
+                        drpCountry.Text = locationReader.GetString(5);
+                        txtZipCode.Text = locationReader.GetString(6);
+                    }
+                }
+
+            }
         }
         else
         {
-            miles = 0;
+            txtStreet.Text = null;
+            txtCity.Text = null;
+            drpState.Text = null;
+            txtCounty.Text = null;
+            drpCountry.Text = null;
+            txtZipCode.Text = null;
         }
-        totalReal = Convert.ToDouble(lblSubtotalCost.Text) + mileageCost;
-        lblTotalCostPrice.Text = totalReal.ToString();
     }
+
+
+    
 }

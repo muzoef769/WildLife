@@ -263,6 +263,7 @@ public partial class Default : System.Web.UI.Page
             txtNewPassword.Value = null;
             txtConfirmPassword.Value = null;
             rdoPosition.Text = null;
+            txtEmail.Text = null;
         }
     }
 

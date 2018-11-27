@@ -120,7 +120,7 @@
 
                         <div class="row">
                             <div class="form-group col-md-4 mx-auto">
-                                <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="btn btn-success btn-block" OnClick="btnRegister_Click" UseSubmitBehavior="false" ValidationGroup="registerValidation" />
+                                <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="btn btn-success btn-block" OnClick="btnRegister_Click" UseSubmitBehavior="false" ValidationGroup="registerValidation" OnClientClick="$('#Confirmation').modal()" role="button" />
 
                                 <div class="text-center">
                                     <a class="d-block small mt-3" data-dismiss="modal" href="#" runat="server">Login Page</a>
@@ -133,6 +133,32 @@
             </div>
             <br />
             <br />
+        </div>
+    </div>
+
+    <div class="modal" id="Confirmation" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body p-4" id="confirmationMod">
+
+                    <div class="row  ">
+
+                        <h5>Successfully Created User!</h5>
+                    </div>
+
+                    <div class="row">
+                    </div>
+                    <div class="modal-footer">
+                        <%--                    <button type="button" data-toggle="modal" data-target="#EditModal" class="btn btn-secondary" data-dismiss="modal">Edit</button>--%>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -155,6 +181,31 @@
         });
 
     </script>
+    <script>
+<%--    <script type="text/javascript">
+        $(document).ready(function () {
+            e.preventDefault();
+            $("#btnRegister<?php echo $rnt['id'];?>").click(function () {
+                $("#Confirmation<?php echo $rnt['id'];?>").modal('show');
+            });
+        });
+    --%>
+
+        var modal = document.getElementById('Confirmation');
+        var btn = document.getElementById("btnRegister");
+        var span = document.getElementsByClassName("close")[0];
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+    </script>
+
 
 </asp:Content>
 

@@ -88,7 +88,7 @@
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connString %>"
                             SelectCommand="SELECT [FirstName], [LastName], [Username] FROM [User] WHERE ([UserStatus] = @UserStatus) AND ([UserType] = @UserType)">
                             <SelectParameters>
-                                <asp:Parameter DefaultValue="Not Approved" Name="UserStatus" Type="String" />
+                                <asp:Parameter DefaultValue="In Active" Name="UserStatus" Type="String" />
                                 <asp:Parameter DefaultValue="Volunteer" Name="UserType" Type="String" />
                             </SelectParameters>
                         </asp:SqlDataSource>
