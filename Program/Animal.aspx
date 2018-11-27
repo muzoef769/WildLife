@@ -30,8 +30,11 @@
     <br />
   <div class="row mr-auto">
     <div class=" col-md-11 text-right">
-                         <asp:TextBox  Placeholder=" Search by Animal" runat="server" ></asp:TextBox>
-                    <asp:Button  runat="server"   CssClass="btn btn-success"  Text="Search" />
+                         <asp:TextBox  Placeholder=" Search by Animal" runat="server" ID="txtSearchAnimal"></asp:TextBox>
+                    <asp:Button  runat="server"   CssClass="btn btn-success" onclick="btnSearchAll_Click" Text="Search" />
+                    <br />
+                    <br />
+                    <asp:Button  runat="server"   CssClass="btn btn-success" onclick="Unnamed2_Click" Text="Reset Search" />
                     </div>
       </div>
     <br />
@@ -61,7 +64,7 @@
             <div class="col-xl-8 col-lg-12 col-md-12 col-s-12 ">
                 <asp:GridView ID="GridView1" runat="server" EnableSortingAndPagingCallbacks="true" HeaderStyle-ForeColor="black" ItemStyle-ForeColor="black" AutoGenerateColumns="False" DataKeyNames="AnimalID"
                     Class="  table table-condensed table-bordered table-hover AnimalCard" DataSourceID="AnimalSQL" BackColor="White" HorizontalAlign="Left"
-                    OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowSorting="True" Width="900px" Height="600px" OnRowDataBound="GridView1_RowDataBound1">
+                    OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowSorting="True" AllowPaging="true"  Width="900px" Height="600px" OnRowDataBound="GridView1_RowDataBound1">
 
                   
 
@@ -106,6 +109,7 @@
         OldValuesParameterFormatString="original_{0}"
         SelectCommand="SELECT Animal.AnimalID, Animal.AnimalName, Animal.AnimalType, Animal.Status, Animal.Image, SUM(ISNULL(NewProgram.TotalKids, '0')) AS TotalKids, SUM(ISNULL(NewProgram.TotalAdults, '0')) AS TotalAdults, SUM(ISNULL(NewProgram.TotalPeople, '0')) AS TotalPeople, COUNT(AssignAnimal.AssignAnimalID) AS TotalPrograms FROM Animal LEFT OUTER JOIN AssignAnimal ON Animal.AnimalID = AssignAnimal.AnimalID LEFT OUTER JOIN NewProgram ON AssignAnimal.NewProgramID = NewProgram.NewProgramID GROUP BY Animal.AnimalID, Animal.AnimalName, Animal.AnimalType, Animal.Status, Animal.LastUpdatedBy, Animal.Image"
         UpdateCommand="UPDATE [Animal] SET [AnimalName] = @AnimalName, [AnimalType] = @AnimalType, [Status] = @Status, [LastUpdated] = @LastUpdated, [LastUpdatedBy] = @LastUpdatedBy WHERE [AnimalID] = @original_AnimalID AND [AnimalName] = @original_AnimalName AND [AnimalType] = @original_AnimalType AND [Status] = @original_Status AND [LastUpdated] = @original_LastUpdated AND [LastUpdatedBy] = @original_LastUpdatedBy">
+        
         <DeleteParameters>
             <asp:Parameter Name="original_AnimalID" Type="Int32" />
             <asp:Parameter Name="original_AnimalName" Type="String" />

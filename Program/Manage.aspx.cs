@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -16,22 +18,18 @@ public partial class Manage : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
         if (!IsPostBack)
         {
-
-
             foreach (GridViewRow row in allGridView.Rows)
             {
                 DropDownList ddl = (row.Cells[5].FindControl("ddlStatus") as DropDownList);
-                String status = (row.Cells[4].Text);
+                String status = (row.Cells[5].Text);
+
 
                 if (status == "Active")
                 {
                     ddlStatus.SelectedValue = "Active";
-
-
-
+       
                 }
 
                 if (status == "Inactive")
@@ -55,15 +53,33 @@ public partial class Manage : System.Web.UI.Page
 
                 allGridView.Columns[4].Visible = false;
                 ddl.DataBind();
-
             }
-
-
         }
+        
 
     }
+    protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            //Find the DropDownList in the Row.
+            DropDownList ddl = (e.Row.FindControl("ddlStatus") as DropDownList);
+            ddl.DataSource = GetData("SELECT DISTINCT UserStatus FROM [dbo].[User]");
+            ddl.DataTextField = "UserStatus";
+            ddl.DataValueField = "UserStatus";
+            ddl.DataBind();
 
-        protected void btnStatusUpdate_Click(object sender, EventArgs e)
+            //Add Default Item in the DropDownList.
+            ddl.Items.Insert(0, new ListItem("Inactive"));
+            ddl.Items.Insert(1, new ListItem("Temporarily Inactive"));
+
+            //Select the Status of User in DropDownList.
+            string status = (e.Row.FindControl("lblStatus") as Label).Text;
+            ddl.Items.FindByValue(status).Selected = true;
+        }
+    }
+
+    protected void btnStatusUpdate_Click(object sender, EventArgs e)
         {
             try
             {
@@ -140,29 +156,6 @@ public partial class Manage : System.Web.UI.Page
 
         }
 
-
-        protected void Unnamed_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            //try
-            //{
-
-            DropDownList ddl = (DropDownList)sender;
-            GridViewRow row = (GridViewRow)ddl.NamingContainer;
-            String userName = (row.Cells[0].Text);
-
-            updateRow3(userName, ddl.SelectedValue);
-
-
-            //}
-            //catch (Exception)
-            //{
-
-            //}
-
-
-        }
-
         protected void updateRow3(String userName, String MarkStatus)
         {
             sc.Close();
@@ -177,4 +170,42 @@ public partial class Manage : System.Web.UI.Page
 
         }
 
+
+    protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        //try
+        //{
+
+        DropDownList ddl = (DropDownList)sender;
+        GridViewRow row = (GridViewRow)ddl.NamingContainer;
+        String userName = (row.Cells[0].Text);
+
+        updateRow3(userName, ddl.SelectedValue);
+
+
+        //}
+        //catch (Exception)
+        //{
+
+        //}
     }
+
+    private DataSet GetData(string query)
+    {
+        string conString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+        SqlCommand cmd = new SqlCommand(query);
+        using (SqlConnection con = new SqlConnection(conString))
+        {
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = con;
+                sda.SelectCommand = cmd;
+                using (DataSet ds = new DataSet())
+                {
+                    sda.Fill(ds);
+                    return ds;
+                }
+            }
+        }
+    }
+}
