@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Web.Configuration;
 using System.Data.SqlClient;
-using System.Configuration;
 using System.Data;
 using System.Net.Mail;
 using System.Text;
@@ -47,8 +41,7 @@ public partial class PasswordReset : System.Web.UI.Page
     }
     protected void SendPasswordResetEmail(string ToEmail, string UserName, string UniqueId)
     {
-        MailMessage mailMessage = new MailMessage("fernando.muzo895@gmail.com", ToEmail);
-        Users.USER_NAME = UserName;
+        MailMessage mailMessage = new MailMessage("YourGmail@gmail.com", ToEmail);
 
         StringBuilder emailBody = new StringBuilder();
 
@@ -78,5 +71,10 @@ public partial class PasswordReset : System.Web.UI.Page
         
         client.EnableSsl = true;
         client.Send(mailMessage);
+    }
+
+    protected void btnHome_Click(object sender, EventArgs e)
+    {
+        Server.Transfer("Default.aspx");
     }
 }

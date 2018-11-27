@@ -284,8 +284,8 @@ public partial class Default : System.Web.UI.Page
     }
 
 protected void PasswordReset(object sender, EventArgs e)
-    {
-        Response.Redirect("PasswordReset.aspx", false);
+    { 
+        Server.Transfer("PasswordReset.aspx");
     }
 
 
